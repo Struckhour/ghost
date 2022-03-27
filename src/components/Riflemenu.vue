@@ -1,18 +1,24 @@
 <script setup lang="ts">
     import { ref } from 'vue'
     
+
     defineProps<{ rifles: string[]}>()
+
+    const emit = defineEmits(['selected'])
+    
 
     let id = 0
     let show2 = ref(false);
     const isOpen2 = () => (show2.value = !show2.value);
 
-    const rifleName= ref('');
+    const rifleName= ref('Rifles');
 
     const changeRifle = (rifle: string) => {
         rifleName.value = rifle;
+        emit('selected', rifleName.value)
         show2.value = !show2.value;
     }
+
 
 
 

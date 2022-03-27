@@ -45,13 +45,17 @@
 
 
 
-    let selectedRifle = ref(Object.keys(fullT5XIData.value)[14]);
+    let selectedRifle = ref(Object.keys(fullT5XIData.value)[0]);
 
     const selectedScope = fullT5XIData.value;
 
     let scopeTitle = ref('T5XI')
 
     let rifleNames: string[] = Object.keys(fullT5XIData.value);
+
+    function changeRifle(rifle: string) {
+        selectedRifle.value = rifle;
+    }
 
 </script>
 
@@ -75,13 +79,14 @@
 
                 <div>
                     <div class="absolute top-[2%] left-[60%] z-50">
-                        <Riflemenu :rifles="rifleNames" />
+                        <Riflemenu :rifles="rifleNames" @selected="(rifle) => selectedRifle = rifle" />
                     </div>
                 </div>
 
                 <!-- T5XI RANGE LABELS -->
                 <div class="absolute text-black px-2 text-2xl top-[20%] left-[30%] -translate-x-[5rem] z-0"><u>Scope:</u> {{scopeTitle}}</div>
                 <div class="absolute text-black px-2 text-2xl top-[30%] left-[30%] -translate-x-[5rem]"><u>Rifle:</u> {{selectedRifle}}</div>
+                
                 <div class="absolute bg-green-900 px-2 rounded-lg text-lg top-[48%] left-[50%] -translate-x-[5rem]">{{'<' + selectedScope[selectedRifle][0]}}m</div>
                 <div class="absolute bg-green-900 px-2 rounded-lg text-lg top-[51%] left-[54%]">{{selectedScope[selectedRifle][1]}}m</div>
                 <div class="absolute bg-green-900 px-2 rounded-lg text-lg top-[54%] left-[50%] -translate-x-[4.5rem]">{{selectedScope[selectedRifle][2]}}m</div>
