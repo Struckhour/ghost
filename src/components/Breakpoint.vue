@@ -1,17 +1,15 @@
 <script setup lang="ts">
     import { ref } from 'vue'
+    import Scopemenu from './Scopemenu.vue'
+    import Riflemenu from './Riflemenu.vue'
 
-    let show = ref(false);
-    const isOpen = () => (show.value = !show.value);
+    const T5XIData = ref({'416 SCOUT': [100, 200, 300, 400, 525], '416 SCOUT MAWL-DA': [100, 225, 350, 500, 650], '416 SCOUT RANGE FINDER': [100, 250, 375, 550, 700]})
 
+    let selectedRifle = ref('416 SCOUT RANGE FINDER');
 
-    let show2 = ref(false);
-    const isOpen2 = () => (show2.value = !show2.value);
+    const selectedScope = T5XIData.value;
 
 </script>
-
-
-
 
 <template>
     <body class="bg-slate-900 w-screen h-screen text-white">
@@ -21,54 +19,11 @@
 
                 <img src="../assets/BP-T5XISight.jpg" class="h-[100%] w-[100%] object-cover m-auto">
 
-
+                <!-- SCOPE MENU -->
 
                   <div>
-                    <div class="absolute top-[2%] left-[10%]">
-                    <!-- Dropdown toggle button -->
-                    <button
-                        @click="isOpen"
-                        class="flex items-center p-2 text-black bg-slate-100 rounded-md"
-                    >
-                        <span class="mr-4">Scopes</span>
-                        <svg
-                        class="w-5 h-5 text-slate-900 dark:text-white"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                        >
-                        <path
-                            fill-rule="evenodd"
-                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                            clip-rule="evenodd"
-                        />
-                        </svg>
-                    </button>
-
-                    <!-- Dropdown menu -->
-                    <div
-                        v-show="show"
-                        class="absolute right-0 py-2 mt-2 bg-slate-100 rounded-md shadow-xl  w-44"
-                    >
-                        <router-link
-                        to="/"
-                        class="block px-4 py-2 text-sm text-slate-900  hover:bg-green-800 hover:text-indigo-100"
-                        >
-                        Dual Range
-                        </router-link>
-                        <router-link
-                        to="/"
-                        class="block px-4 py-2 text-sm text-slate-900  hover:bg-green-800 hover:text-indigo-100"
-                        >
-                        T5XI
-                        </router-link>
-                        <router-link
-                        to="/"
-                        class="block px-4 py-2 text-sm text-slate-900  hover:bg-green-800 hover:text-indigo-100"
-                        >
-                        TARS101
-                        </router-link>
-                    </div>
+                    <div class="absolute top-[2%] left-[45%] -translate-x-[4.5rem]">
+                        <Scopemenu />
                     </div>
                 </div>
 
@@ -76,64 +31,18 @@
 
                 <div>
                     <div class="absolute top-[2%] left-[60%]">
-                    <!-- Dropdown toggle button -->
-                    <button
-                        @click="isOpen2"
-                        class="flex items-center p-2 text-black bg-slate-100 rounded-md"
-                    >
-                        <span class="mr-4">Rifles</span>
-                        <svg
-                        class="w-5 h-5 text-slate-900 dark:text-white"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                        >
-                        <path
-                            fill-rule="evenodd"
-                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                            clip-rule="evenodd"
-                        />
-                        </svg>
-                    </button>
-
-                    <!-- Dropdown menu -->
-                    <div
-                        v-show="show2"
-                        class="absolute right-0 py-2 mt-2 bg-slate-100 rounded-md shadow-xl w-44"
-                    >
-                        <router-link
-                        to="/"
-                        class="block px-4 py-2 text-sm text-slate-900  hover:bg-green-800 hover:text-slate-100"
-                        >
-                        Dropdown List 1
-                        </router-link>
-                        <router-link
-                        to="/"
-                        class="block px-4 py-2 text-sm text-slate-900  hover:bg-green-800 hover:text-slate-100"
-                        >
-                        Dropdown List 2
-                        </router-link>
-                        <router-link
-                        to="/"
-                        class="block px-4 py-2 text-sm text-slate-900  hover:bg-green-800 hover:text-slate-100"
-                        >
-                        Dropdown List 3
-                        </router-link>
-                    </div>
+                        <Riflemenu />
                     </div>
                 </div>
 
+                <!-- T5XI RANGE LABELS -->
 
-
-                    <!-- RANGE LABELS -->
-
-
-                <div class="absolute bg-green-900 px-2 rounded-lg text-lg top-[48%] left-[50%] -translate-x-[4.5rem]">100m</div>
-                <div class="absolute bg-green-900 px-2 rounded-lg text-lg top-[51%] left-[54%]">200m</div>
-                <div class="absolute bg-green-900 px-2 rounded-lg text-lg top-[54%] left-[50%] -translate-x-[4.5rem]">300m</div>
-                <div class="absolute bg-green-900 px-2 rounded-lg text-lg top-[58%] left-[54%]">400m</div>
-                <div class="absolute bg-green-900 px-2 rounded-lg text-lg top-[62%] left-[50%] -translate-x-[4.5rem]">525m</div>
-                <div class="absolute bg-green-900 px-2 rounded-lg text-lg top-[72%] left-[51%]"></div>
+                <div class="absolute bg-green-900 px-2 rounded-lg text-lg top-[48%] left-[50%] -translate-x-[5rem]">{{'<' + selectedScope[selectedRifle][0]}}m</div>
+                <div class="absolute bg-green-900 px-2 rounded-lg text-lg top-[51%] left-[54%]">{{selectedScope[selectedRifle][1]}}m</div>
+                <div class="absolute bg-green-900 px-2 rounded-lg text-lg top-[54%] left-[50%] -translate-x-[4.5rem]">{{selectedScope[selectedRifle][2]}}m</div>
+                <div class="absolute bg-green-900 px-2 rounded-lg text-lg top-[57.5%] left-[54%]">{{selectedScope[selectedRifle][3]}}m</div>
+                <div class="absolute bg-green-900 px-2 rounded-lg text-lg top-[61%] left-[50%] -translate-x-[4.5rem]">{{selectedScope[selectedRifle][4]}}m</div>
+                <div class="absolute bg-green-900 px-2 rounded-lg text-lg top-[67%] left-[54%]">{{selectedScope[selectedRifle][5] ? selectedScope[selectedRifle][5] + 'm' : ''}}</div>
             </div>
         </div>
 
