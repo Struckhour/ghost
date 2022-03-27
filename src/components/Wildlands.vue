@@ -8,11 +8,13 @@
                     <li>T5XI</li>
                     <li>scopey 2</li>
                 </ul>
-                <img src="../assets/scope.jpg" class="h-[100%] w-[100%] object-cover m-auto">
+                <img src="../assets/BP-T5XISight.jpg" class="h-[100%] w-[100%] object-cover m-auto">
                 <div class="absolute bg-green-900 px-2 rounded-lg text-lg top-[51%] left-[44%]">150m</div>
                 <div class="absolute bg-green-900 px-2 rounded-lg text-lg top-[54.5%] left-[51%]">200m</div>
                 <div class="absolute bg-green-900 px-2 rounded-lg text-lg top-[58%] left-[44%]">250m</div>
                 <div class="absolute bg-green-900 px-2 rounded-lg text-lg top-[61%] left-[51%]">375m</div>
+                <div class="absolute bg-green-900 px-2 rounded-lg text-lg top-[67%] left-[44%]">500m</div>
+                <div class="absolute bg-green-900 px-2 rounded-lg text-lg top-[72%] left-[51%]">600m</div>
             </div>
         </div>
 
