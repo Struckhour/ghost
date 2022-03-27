@@ -1,11 +1,19 @@
 <script setup lang="ts">
     import { ref } from 'vue'
+    
+    defineProps<{ rifles: string[]}>()
 
-
+    let id = 0
     let show2 = ref(false);
     const isOpen2 = () => (show2.value = !show2.value);
 
-    
+    const rifleName= ref('');
+
+    const changeRifle = (rifle: string) => {
+        rifleName.value = rifle;
+        show2.value = !show2.value;
+    }
+
 
 
 </script>
@@ -16,7 +24,7 @@
                         @click="isOpen2"
                         class="flex items-center p-2 text-black bg-slate-100 rounded-md"
                     >
-                        <span class="mr-4">Rifles</span>
+                        <span class="mr-4">{{rifleName}}</span>
                         <svg
                         class="w-5 h-5 text-slate-900 dark:text-white"
                         xmlns="http://www.w3.org/2000/svg"
@@ -34,25 +42,10 @@
                     <!-- Dropdown menu -->
                     <div
                         v-show="show2"
-                        class="absolute right-0 py-2 mt-2 bg-slate-100 rounded-md shadow-xl w-44"
-                    >
-                        <router-link
-                        to="/"
-                        class="block px-4 py-2 text-sm text-slate-900  hover:bg-green-800 hover:text-slate-100"
+                        v-for="(rifle) in rifles" :key="rifle"
+                        class="right-0 py-0 mt-0 bg-slate-100 rounded-sm shadow-xl w-44"
                         >
-                        Dropdown List 1
-                        </router-link>
-                        <router-link
-                        to="/"
-                        class="block px-4 py-2 text-sm text-slate-900  hover:bg-green-800 hover:text-slate-100"
-                        >
-                        Dropdown List 2
-                        </router-link>
-                        <router-link
-                        to="/"
-                        class="block px-4 py-2 text-sm text-slate-900  hover:bg-green-800 hover:text-slate-100"
-                        >
-                        Dropdown List 3
-                        </router-link>
+                        <div @click="changeRifle(rifle)" class="block px-4 py-0 text-sm text-slate-900  hover:bg-green-800 hover:text-indigo-100">{{rifle}}</div>
+
                     </div>
 </template>

@@ -51,13 +51,15 @@
 
     let scopeTitle = ref('T5XI')
 
+    let rifleNames: string[] = Object.keys(fullT5XIData.value);
+
 </script>
 
 <template>
     <body class="bg-slate-900 w-screen h-screen text-white">
         <img src="../assets/breakpoint.jpg" class="w-96 h-20 m-auto rounded-md object-cover">
         <div class="h-[90%]">
-            <div class="h-[80%] w-[40%] absolute left-2/4 -translate-x-2/4 mt-8">
+            <div class="h-[80%] sm:w-[80%] md:w-[60%] w-full max-w-4xl absolute left-2/4 -translate-x-2/4 mt-8">
 
                 <img src="../assets/BP-T5XISight.jpg" class="h-[100%] w-[100%] object-cover m-auto rounded-2xl">
 
@@ -73,13 +75,13 @@
 
                 <div>
                     <div class="absolute top-[2%] left-[60%] z-50">
-                        <Riflemenu />
+                        <Riflemenu :rifles="rifleNames" />
                     </div>
                 </div>
 
                 <!-- T5XI RANGE LABELS -->
-                <div class="absolute text-black px-2 rounded-lg text-2xl top-[20%] left-[30%] -translate-x-[5rem] z-0">Scope: {{scopeTitle}}</div>
-                <div class="absolute text-black px-2 rounded-lg text-2xl top-[30%] left-[30%] -translate-x-[5rem]">Rifle: {{selectedRifle}}</div>
+                <div class="absolute text-black px-2 text-2xl top-[20%] left-[30%] -translate-x-[5rem] z-0"><u>Scope:</u> {{scopeTitle}}</div>
+                <div class="absolute text-black px-2 text-2xl top-[30%] left-[30%] -translate-x-[5rem]"><u>Rifle:</u> {{selectedRifle}}</div>
                 <div class="absolute bg-green-900 px-2 rounded-lg text-lg top-[48%] left-[50%] -translate-x-[5rem]">{{'<' + selectedScope[selectedRifle][0]}}m</div>
                 <div class="absolute bg-green-900 px-2 rounded-lg text-lg top-[51%] left-[54%]">{{selectedScope[selectedRifle][1]}}m</div>
                 <div class="absolute bg-green-900 px-2 rounded-lg text-lg top-[54%] left-[50%] -translate-x-[4.5rem]">{{selectedScope[selectedRifle][2]}}m</div>
