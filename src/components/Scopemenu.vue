@@ -30,7 +30,7 @@
                     <!-- Dropdown menu -->
                     <div
                         v-show="show"
-                        class="absolute right-0 py-2 mt-2 bg-slate-100 rounded-md shadow-xl  w-44"
+                        class="absolute right-0 py-2 mt-2 bg-slate-100 rounded-md shadow-xl w-44"
                     >
                         <router-link
                         to="/"

@@ -5,6 +5,9 @@
     let show2 = ref(false);
     const isOpen2 = () => (show2.value = !show2.value);
 
+    
+
+
 </script>
 
 <template>
