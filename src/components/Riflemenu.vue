@@ -46,12 +46,15 @@
                     </button>
 
                     <!-- Dropdown menu -->
-                    <div
+                    <div class="grid md:grid-cols-2 grid-cols-1 md:w-[30rem] w-[15rem] bg-black -translate-x-[4rem]">
+                        <div
                         v-show="show2"
                         v-for="(rifle) in rifles" :key="rifle"
-                        class="right-0 py-0 mt-0 bg-slate-100 rounded-sm shadow-xl w-44"
+                        class="right-0 py-0 mt-0 rounded-sm shadow-xl shadow-black "
                         >
-                        <div @click="changeRifle(rifle)" class="block px-4 py-0 text-sm text-slate-900  hover:bg-green-800 hover:text-indigo-100">{{rifle}}</div>
+                        <div @click="changeRifle(rifle)" class="px-4 md:py-0 py-4 md:my-0 my-2 bg-slate-100 md:text-[.85rem] text-base text-slate-900  hover:bg-green-800 hover:text-indigo-100">{{rifle}}</div>
 
+                        </div>
                     </div>
+                    
 </template>

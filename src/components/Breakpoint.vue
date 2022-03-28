@@ -3,16 +3,16 @@
     import Scopemenu from './Scopemenu.vue'
     import Riflemenu from './Riflemenu.vue'
 
-    const T5XIData = ref({'416 SCOUT': [100, 200, 300, 400, 525], '416 SCOUT MAWL-DA': [100, 225, 350, 500, 650], '416 SCOUT RANGE FINDER': [100, 250, 375, 550, 700]})
+    const T5XIOn = ref(true)
 
-    const fullT5XIData = ref({
+    const T5XIData = ref({
         '416 SCOUT':[100,200,300,400,525,],
         '416 SCOUT MAWL-DA':[100,225,350,500,650,],
         '416 SCOUT RANGE FINDER':[100,250,375,550,700,],
         '553 SCOUT':[75,200,275,375,500,],
         '553 SCOUT MAWL-DA':[75,225,325,475,625,],
         '553 SCOUT RANGE FINDER':[75,225,350,525,675,],
-        'AK74 SCOUT':['not ranged yet'],
+        'AK74 SCOUT':[],
         'FRF2':[150,260,325,390,466,580,],
         'G28':[133,290,425,585,],
         'G28 WILDERNESS MAWL-DA':[125,325,515,715,],
@@ -42,20 +42,42 @@
         'SR-1':[175,440,650,]
         })
 
+    const dualRange = ref({
+        '553 SCOUT':[100,133,200,250,285,366,425,500,],
+        '553 SCOUT MAWL-DA':[,525,],
+        '553 SCOUT RANGE FINDER':[],
+        'FRF2':[150,225,300,350,410,485,],
+        'G28':[100,200,295,350,433,533,615,680,733,],
+        'G28 MAWL-DA':[125,225,325,425,540,660,750,],
+        'G28 WILDERNESS':[100,200,295,350,433,533,],
+        'G28 WILDERNESS MAWL-DA':[125,225,325,425,540,660,750,],
+        'G28 WILDERNESS RANGE FINDER':[100,220,350,450,580,715,815,],
+        'G36C Scout':[80,133,200,250,300,366,433,507,],
+        'G36C SCOUT MAWL-DA':[80,150,230,290,360,450,550,],
+        'HTI SURVIVAL':[200,275,375,420,490,],
+        'L115A3':[150,233,325,375,450,533,],
+        'M110':[115,175,250,305,380,465,535,],
+        'M110 MAWL-DA':[150,190,295,360,470,575,],
+        'M110 RANGE FINDER':[100,200,300,400,500,635,720,800,],
+        'M4A1 SCOUT MAWL-DA':[100,175,275,350,425,545,],
+        'M4A1 SCOUT RANGE FINDER':[100,200,300,375,475,600,],
+        'MK14 MAWL-DA':[125,200,270,300,350,400,450,],
+        'MK17 SCOUT':[100,175,250,300,366,433,513,],
+        'MK17 SCOUT RANGE FINDER':[100,200,300,375,475,600,],
+        'SCORPIO SCOUT':[170,235,300,335,385,435,495,540,],
+        'SCORPIO SCOUT QUIET':[200,225,275,313,350,400,450,480,],
+        'SVD-63':[150,219,275,300,340,380,425,480,],
+    })
 
 
+    let selectedScope:object = ref({});
 
-    let selectedRifle = ref(Object.keys(fullT5XIData.value)[0]);
-
-    const selectedScope = fullT5XIData.value;
-
+    selectedScope = dualRange.value;
+    // selectedScope = T5XIData.value;
+    let selectedRifle = ref(Object.keys(selectedScope)[0]);
     let scopeTitle = ref('T5XI')
-
-    let rifleNames: string[] = Object.keys(fullT5XIData.value);
-
-    function changeRifle(rifle: string) {
-        selectedRifle.value = rifle;
-    }
+    let rifleNames: string[] = Object.keys(selectedScope);
+    const scopeNames = ref(['T5XI SIGHT', 'DUAL RANGE SIGHT'])
 
 </script>
 
@@ -63,36 +85,49 @@
     <body class="bg-slate-900 w-screen h-screen text-white">
         <img src="../assets/breakpoint.jpg" class="w-96 h-20 m-auto rounded-md object-cover">
         <div class="h-[90%]">
-            <div class="h-[80%] sm:w-[80%] md:w-[60%] w-full max-w-4xl absolute left-2/4 -translate-x-2/4 mt-8">
+            <div class="text-white text-2xl pl-4 mt-1 w-[60%] block m-auto">
+                <router-link to="/" class="bg-orange-900 px-4 rounded-lg shadow-black shadow-md">Home</router-link>
+            </div>
+            
+            <div class="h-[80%] md:w-[60%] w-full max-w-4xl absolute left-2/4 -translate-x-2/4 mt-2">
 
                 <img src="../assets/BP-T5XISight.jpg" class="h-[100%] w-[100%] object-cover m-auto rounded-2xl">
 
                 <!-- SCOPE MENU -->
 
                   <div>
-                    <div class="absolute top-[2%] left-[45%] -translate-x-[4.5rem] z-50">
-                        <Scopemenu />
+                    <div class="absolute top-[2%] left-[40%] -translate-x-[4.5rem] z-50">
+                        <Scopemenu :scopes="scopeNames" />
                     </div>
                 </div>
 
                 <!-- RIFLE MENU -->
 
                 <div>
-                    <div class="absolute top-[2%] left-[60%] z-50">
+                    <div class="absolute top-[2%] left-[55%] z-50">
                         <Riflemenu :rifles="rifleNames" @selected="(rifle) => selectedRifle = rifle" />
                     </div>
                 </div>
 
-                <!-- T5XI RANGE LABELS -->
-                <div class="absolute text-black px-2 text-2xl top-[20%] left-[30%] -translate-x-[5rem] z-0"><u>Scope:</u> {{scopeTitle}}</div>
-                <div class="absolute text-black px-2 text-2xl top-[30%] left-[30%] -translate-x-[5rem]"><u>Rifle:</u> {{selectedRifle}}</div>
+                <!-- Scope and Rifle LABELS -->
+                    <div class="absolute text-black px-2 text-2xl top-[20%] left-[30%] -translate-x-[5rem] z-0"><u>Scope:</u><br> {{scopeTitle}}</div>
+                    <div class="absolute text-black px-0 text-2xl top-[20%] left-[75%] -translate-x-[5rem]"><u>Rifle:</u><br> {{selectedRifle}}</div>
                 
-                <div class="absolute bg-green-900 px-2 rounded-lg text-lg top-[48%] left-[50%] -translate-x-[5rem]">{{'<' + selectedScope[selectedRifle][0]}}m</div>
-                <div class="absolute bg-green-900 px-2 rounded-lg text-lg top-[51%] left-[54%]">{{selectedScope[selectedRifle][1]}}m</div>
-                <div class="absolute bg-green-900 px-2 rounded-lg text-lg top-[54%] left-[50%] -translate-x-[4.5rem]">{{selectedScope[selectedRifle][2]}}m</div>
-                <div class="absolute bg-green-900 px-2 rounded-lg text-lg top-[57.5%] left-[54%]">{{selectedScope[selectedRifle][3]}}m</div>
-                <div class="absolute bg-green-900 px-2 rounded-lg text-lg top-[61%] left-[50%] -translate-x-[4.5rem]">{{selectedScope[selectedRifle][4]}}m</div>
-                <div class="absolute bg-green-900 px-2 rounded-lg text-lg top-[67%] left-[54%]">{{selectedScope[selectedRifle][5] ? selectedScope[selectedRifle][5] + 'm' : ''}}</div>
+                <!-- T5XI RANGE LABELS -->
+                <div v-if="T5XIOn">   
+                    <div class="absolute bg-red-900 px-2 rounded-lg text-lg top-[48%] left-[50%] -translate-x-[5rem]">{{selectedScope[selectedRifle][0] ? '<' + selectedScope[selectedRifle][0] + 'm' : 'not ranged yet'}}</div>
+                    
+                    <div class="absolute bg-red-900 px-2 rounded-lg text-lg top-[51%] left-[52%]">{{selectedScope[selectedRifle][1] ? selectedScope[selectedRifle][1] + 'm' : ''}}</div>
+                    
+                    <div class="absolute bg-red-900 px-2 rounded-lg text-lg top-[54%] left-[50%] -translate-x-[4.5rem]">{{selectedScope[selectedRifle][2] ? selectedScope[selectedRifle][2] + 'm' : ''}}</div>
+                    
+                    <div class="absolute bg-red-900 px-2 rounded-lg text-lg top-[57.5%] left-[52%]">{{selectedScope[selectedRifle][3] ? selectedScope[selectedRifle][3] + 'm' : ''}}</div>
+                    
+                    <div class="absolute bg-red-900 px-2 rounded-lg text-lg top-[61%] left-[50%] -translate-x-[4.5rem]">{{selectedScope[selectedRifle][4] ? selectedScope[selectedRifle][4] + 'm' : ''}}</div>
+                    
+                    <div class="absolute bg-red-900 px-2 rounded-lg text-lg top-[67%] left-[52%]">{{selectedScope[selectedRifle][5] ? selectedScope[selectedRifle][5] + 'm' : ''}}</div>
+                </div>
+                
                 
             </div>
         </div>

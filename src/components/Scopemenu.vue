@@ -1,9 +1,23 @@
 <script setup lang="ts">
-    import { ref,  } from 'vue'
+    import { ref } from 'vue'
+    
 
+    defineProps<{ scopes: string[]}>()
+
+    const emit = defineEmits(['chosenScope'])
+    
+
+    let id = 0
     let show = ref(false);
     const isOpen = () => (show.value = !show.value);
 
+    const scopeName= ref('Scopes');
+
+    const changeScope = (scope: string) => {
+        scopeName.value = scope;
+        emit('chosenScope', scopeName.value)
+        show.value = !show.value;
+    }
 
 </script>
 
@@ -28,27 +42,14 @@
                     </button>
 
                     <!-- Dropdown menu -->
-                    <div
+                    <div class="grid md:grid-cols-2 grid-cols-1 md:w-[30rem] w-[15rem] bg-black -translate-x-[4rem]">
+                        <div
                         v-show="show"
-                        class="absolute right-0 py-2 mt-2 bg-slate-100 rounded-md shadow-xl w-44"
-                    >
-                        <router-link
-                        to="/"
-                        class="block px-4 py-2 text-sm text-slate-900  hover:bg-green-800 hover:text-indigo-100"
+                        v-for="(scope) in scopes" :key="scope"
+                        class="right-0 py-0 mt-0 rounded-sm shadow-xl shadow-black "
                         >
-                        Dual Range
-                        </router-link>
-                        <router-link
-                        to="/"
-                        class="block px-4 py-2 text-sm text-slate-900  hover:bg-green-800 hover:text-indigo-100"
-                        >
-                        T5XI
-                        </router-link>
-                        <router-link
-                        to="/"
-                        class="block px-4 py-2 text-sm text-slate-900  hover:bg-green-800 hover:text-indigo-100"
-                        >
-                        TARS101
-                        </router-link>
+                        <div @click="changeScope(scope)" class="px-4 md:py-0 py-4 md:my-0 my-2 bg-slate-100 md:text-[.85rem] text-base text-slate-900  hover:bg-green-800 hover:text-indigo-100">{{rifle}}</div>
+
+                        </div>
                     </div>
 </template>
