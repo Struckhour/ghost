@@ -3,7 +3,7 @@
     import Scopemenu from './Scopemenu.vue'
     import Riflemenu from './Riflemenu.vue'
 
-    const T5XIOn = ref(true)
+
 
     const T5XIData = ref({
         '416 SCOUT':[100,200,300,400,525,],
@@ -69,9 +69,12 @@
         'SVD-63':[150,219,275,300,340,380,425,480,],
     })
 
+    const T5XIOn = ref(true)
 
+    const imageUrl = ref('./src/assets/BP-T5XISight.jpg')
+    
     let selectedScope:object = ref({});
-
+    let selectedScopeName:string = ref('')
     selectedScope = dualRange.value;
     // selectedScope = T5XIData.value;
     let selectedRifle = ref(Object.keys(selectedScope)[0]);
@@ -91,13 +94,13 @@
             
             <div class="h-[80%] md:w-[60%] w-full max-w-4xl absolute left-2/4 -translate-x-2/4 mt-2">
 
-                <img src="../assets/BP-T5XISight.jpg" class="h-[100%] w-[100%] object-cover m-auto rounded-2xl">
+                <img :src="imageUrl" class="h-[100%] w-[100%] object-cover m-auto rounded-2xl">
 
                 <!-- SCOPE MENU -->
 
                   <div>
-                    <div class="absolute top-[2%] left-[40%] -translate-x-[4.5rem] z-50">
-                        <Scopemenu :scopes="scopeNames" />
+                    <div class="absolute top-[2%] left-[20%] -translate-x-[4.5rem] z-50">
+                        <Scopemenu :scopes="scopeNames" @chosenScope="(scope) => selectedScopeName = scope" />
                     </div>
                 </div>
 
@@ -110,8 +113,9 @@
                 </div>
 
                 <!-- Scope and Rifle LABELS -->
-                    <div class="absolute text-black px-2 text-2xl top-[20%] left-[30%] -translate-x-[5rem] z-0"><u>Scope:</u><br> {{scopeTitle}}</div>
+                    <div class="absolute text-black px-2 text-2xl w-[11rem] top-[20%] left-[30%] -translate-x-[5rem] z-0"><u>Scope:</u><br> {{selectedScopeName}}</div>
                     <div class="absolute text-black px-0 text-2xl top-[20%] left-[75%] -translate-x-[5rem]"><u>Rifle:</u><br> {{selectedRifle}}</div>
+                    
                 
                 <!-- T5XI RANGE LABELS -->
                 <div v-if="T5XIOn">   

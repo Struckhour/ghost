@@ -22,11 +22,11 @@
 </script>
 
 <template>
-    <button
+                        <button
                         @click="isOpen"
                         class="flex items-center p-2 text-black bg-slate-100 rounded-md"
-                    >
-                        <span class="mr-4">Scopes</span>
+                        >
+                        <span class="mr-4">{{scopeName}}</span>
                         <svg
                         class="w-5 h-5 text-slate-900 dark:text-white"
                         xmlns="http://www.w3.org/2000/svg"
@@ -42,13 +42,13 @@
                     </button>
 
                     <!-- Dropdown menu -->
-                    <div class="grid md:grid-cols-2 grid-cols-1 md:w-[30rem] w-[15rem] bg-black -translate-x-[4rem]">
+                    <div class="grid grid-cols-1 md:w-[15rem] w-[15rem] bg-black">
                         <div
                         v-show="show"
                         v-for="(scope) in scopes" :key="scope"
-                        class="right-0 py-0 mt-0 rounded-sm shadow-xl shadow-black "
+                        class="right-0 py-0 mt-0 rounded-sm shadow-xl shadow-black"
                         >
-                        <div @click="changeScope(scope)" class="px-4 md:py-0 py-4 md:my-0 my-2 bg-slate-100 md:text-[.85rem] text-base text-slate-900  hover:bg-green-800 hover:text-indigo-100">{{rifle}}</div>
+                        <div @click="changeScope(scope)" class="px-4 md:py-0 py-4 md:my-0 my-2 bg-slate-100 md:text-[.85rem] text-base text-slate-900  hover:bg-green-800 hover:text-indigo-100">{{scope}}</div>
 
                         </div>
                     </div>
