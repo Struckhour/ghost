@@ -3,7 +3,10 @@
     import Scopemenu from './Scopemenu.vue'
     import Riflemenu from './Riflemenu.vue'
 
-
+    const images = ref({
+        'T5XI SIGHT': './src/assets/BP-T5XISight.jpg',
+        'DUAL RANGE SIGHT': './src/assets/BP-DualRangeSight-zoom.jpg'
+    })
 
     const T5XIData = ref({
         '416 SCOUT':[100,200,300,400,525,],
@@ -70,11 +73,10 @@
     })
 
     const T5XIOn = ref(true)
-
-    const imageUrl = ref('./src/assets/BP-T5XISight.jpg')
+    let selectedScopeName:string = ref('T5XI SIGHT')
     
     let selectedScope:object = ref({});
-    let selectedScopeName:string = ref('')
+    
     selectedScope = dualRange.value;
     // selectedScope = T5XIData.value;
     let selectedRifle = ref(Object.keys(selectedScope)[0]);
@@ -94,7 +96,7 @@
             
             <div class="h-[80%] md:w-[60%] w-full max-w-4xl absolute left-2/4 -translate-x-2/4 mt-2">
 
-                <img :src="imageUrl" class="h-[100%] w-[100%] object-cover m-auto rounded-2xl">
+                <img :src="images[selectedScopeName]" class="h-[100%] w-[100%] object-cover m-auto rounded-2xl">
 
                 <!-- SCOPE MENU -->
 
@@ -113,23 +115,23 @@
                 </div>
 
                 <!-- Scope and Rifle LABELS -->
-                    <div class="absolute text-black px-2 text-2xl w-[11rem] top-[20%] left-[30%] -translate-x-[5rem] z-0"><u>Scope:</u><br> {{selectedScopeName}}</div>
-                    <div class="absolute text-black px-0 text-2xl top-[20%] left-[75%] -translate-x-[5rem]"><u>Rifle:</u><br> {{selectedRifle}}</div>
+                    <div class="absolute text-black px-2 text-xl w-[11rem] top-[25%] left-[30%] -translate-x-[5rem] z-0"><u>Scope:</u><br> {{selectedScopeName}}</div>
+                    <div class="absolute text-black px-0 text-xl top-[25%] left-[75%] -translate-x-[5rem]"><u>Rifle:</u><br> {{selectedRifle}}</div>
                     
                 
                 <!-- T5XI RANGE LABELS -->
                 <div v-if="T5XIOn">   
-                    <div class="absolute bg-red-900 px-2 rounded-lg text-lg top-[48%] left-[50%] -translate-x-[5rem]">{{selectedScope[selectedRifle][0] ? '<' + selectedScope[selectedRifle][0] + 'm' : 'not ranged yet'}}</div>
+                    <!-- <div class="absolute bg-red-900 bg-opacity-0 hidden text-black px-2 rounded-lg text-lg top-[47.5%] left-[50%] -translate-x-[5rem]">{{selectedScope[selectedRifle][0] ? '<' + selectedScope[selectedRifle][0] + 'm' : 'not ranged yet'}}</div> -->
                     
-                    <div class="absolute bg-red-900 px-2 rounded-lg text-lg top-[51%] left-[52%]">{{selectedScope[selectedRifle][1] ? selectedScope[selectedRifle][1] + 'm' : ''}}</div>
+                    <div class="absolute bg-red-900 bg-opacity-0 text-black px-2 rounded-lg text-lg top-[51%] left-[51%]">{{selectedScope[selectedRifle][1] ? selectedScope[selectedRifle][1] + 'm' : ''}}</div>
                     
-                    <div class="absolute bg-red-900 px-2 rounded-lg text-lg top-[54%] left-[50%] -translate-x-[4.5rem]">{{selectedScope[selectedRifle][2] ? selectedScope[selectedRifle][2] + 'm' : ''}}</div>
+                    <div class="absolute bg-black px-2 bg-opacity-0 text-black text-lg top-[54%] left-[50%] -translate-x-[4.5rem]">{{selectedScope[selectedRifle][2] ? selectedScope[selectedRifle][2] + 'm' : ''}}</div>
                     
-                    <div class="absolute bg-red-900 px-2 rounded-lg text-lg top-[57.5%] left-[52%]">{{selectedScope[selectedRifle][3] ? selectedScope[selectedRifle][3] + 'm' : ''}}</div>
+                    <div class="absolute bg-red-900 bg-opacity-0 text-black px-2 rounded-lg text-lg top-[57.5%] left-[51%]">{{selectedScope[selectedRifle][3] ? selectedScope[selectedRifle][3] + 'm' : ''}}</div>
                     
-                    <div class="absolute bg-red-900 px-2 rounded-lg text-lg top-[61%] left-[50%] -translate-x-[4.5rem]">{{selectedScope[selectedRifle][4] ? selectedScope[selectedRifle][4] + 'm' : ''}}</div>
+                    <div class="absolute bg-red-900 bg-opacity-0 text-black px-2 rounded-lg text-lg top-[61%] left-[50%] -translate-x-[4.5rem]">{{selectedScope[selectedRifle][4] ? selectedScope[selectedRifle][4] + 'm' : ''}}</div>
                     
-                    <div class="absolute bg-red-900 px-2 rounded-lg text-lg top-[67%] left-[52%]">{{selectedScope[selectedRifle][5] ? selectedScope[selectedRifle][5] + 'm' : ''}}</div>
+                    <div class="absolute bg-red-900 bg-opacity-0 text-black px-2 rounded-lg text-lg top-[66.5%] left-[51%]">{{selectedScope[selectedRifle][5] ? selectedScope[selectedRifle][5] + 'm' : ''}}</div>
                 </div>
                 
                 
