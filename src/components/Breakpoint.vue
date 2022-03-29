@@ -111,9 +111,9 @@ function changeScope(scope: string) {
       <div class="text-white text-2xl mt-1 h-10 text-center">
         <router-link
           to="/"
-          class="bg-[#c4c4c4] bg-opacity-0 px-2 border border-[#5d6e4e] rounded-lg shadow-black shadow-md font-sans absolute -rotate-12 -translate-x-[65%]"
-          style="font-family: angel; color: #5d6e4e"
-          >Home</router-link
+          class="bg-[#c4c4c4] bg-opacity-0 px-2 border text-[#a33232] border-[#a33232] rounded-lg shadow-black shadow-md font-sans absolute -rotate-[9deg] -translate-x-[60%] z-40"
+          style="font-family: angel;"
+          >Redeploy</router-link
         >
       </div>
 
