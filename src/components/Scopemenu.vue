@@ -2,7 +2,7 @@
     import { ref } from 'vue'
 
 
-    defineProps<{ scopes: string[]}>()
+    defineProps<{ scopes: string[] }>()
 
     const emit = defineEmits(['chosenScope'])
 
@@ -11,7 +11,7 @@
     let show = ref(false);
     const isOpen = () => (show.value = !show.value);
 
-    const scopeName= ref('Scopes');
+    const scopeName= ref('Choose a scope');
 
     const changeScope = (scope: string) => {
         scopeName.value = scope;

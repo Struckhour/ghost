@@ -11,6 +11,7 @@ const images = ref<{ [sightName: string]: string }>({
 });
 
 const T5XIData = ref<ScopeData>({
+  "Choose a rifle": [],
   "416 SCOUT": [100, 200, 300, 400, 525],
   "416 SCOUT MAWL-DA": [100, 225, 350, 500, 650],
   "416 SCOUT RANGE FINDER": [100, 250, 375, 550, 700],
@@ -48,6 +49,7 @@ const T5XIData = ref<ScopeData>({
 });
 
 const dualRange = ref<ScopeData>({
+  "Choose a rifle": [],
   "553 SCOUT": [100, 133, 200, 250, 285, 366, 425, 500],
   "553 SCOUT MAWL-DA": [525],
   "553 SCOUT RANGE FINDER": [],
@@ -84,7 +86,7 @@ const selectedScopeData = computed(() => {
     ? dualRange.value
     : T5XIData.value;
 });
-//selectedScopeData = T5XIData.value;
+
 let selectedRifle = ref(Object.keys(selectedScopeData.value)[0]);
 const rifleNames = computed(() => {
   return Object.keys(selectedScopeData.value);
@@ -93,48 +95,52 @@ const rifleNames = computed(() => {
 const scopeNames = ref(["T5XI SIGHT", "DUAL RANGE SIGHT"]);
 
 function changeScope(scope: string) {
-  selectedRifle.value = 'SCORPIO SCOUT';
+  selectedRifle.value = 'Choose a rifle';
   selectedScopeName.value = scope;
 }
 
 </script>
 
 <template>
-  <body class="bg-slate-900 w-screen h-screen text-white">
+  <body class="bg-slate-900 w-screen h-full text-white">
     <img
       src="../assets/breakpoint.jpg"
-      class="w-96 h-20 m-auto rounded-md object-cover"
+      class="hidden sm:block w-96 h-20 m-auto rounded-md object-cover"
     />
     <div class="h-[90%]">
-      <div class="text-white text-2xl pl-4 mt-1 w-[60%] block m-auto">
+      <div class="text-white text-2xl mt-1 h-10 text-center">
         <router-link
           to="/"
-          class="bg-orange-900 px-4 rounded-lg shadow-black shadow-md"
+          class="bg-[#c4c4c4] bg-opacity-0 px-2 border border-[#5d6e4e] rounded-lg shadow-black shadow-md font-sans absolute -rotate-12 -translate-x-[65%]"
+          style="font-family: angel; color: #5d6e4e"
           >Home</router-link
         >
       </div>
 
       <div
+        style="font-family: ZCOOL"
         class="
-          h-[80%]
-          md:w-[60%]
-          w-full
+          tracking-wide
+          h-[600px]
+
+          w-[500px]
           max-w-4xl
           absolute
           left-2/4
           -translate-x-2/4
-          mt-2
+          mt-0
         "
       >
+
         <img
           :src="images[selectedScopeName]"
-          class="h-[100%] w-[100%] object-cover m-auto rounded-2xl"
+          class="h-full w-full object-cover m-auto rounded-2xl"
         />
 
         <!-- SCOPE MENU -->
 
         <div>
-          <div class="absolute top-[2%] left-[20%] -translate-x-[4.5rem] z-50">
+          <div class="absolute top-[2%] left-[17%] -translate-x-[4.5rem] z-50 font-sans tracking-normal">
             <Scopemenu
               :scopes="scopeNames"
               @chosenScope="changeScope"
@@ -145,9 +151,10 @@ function changeScope(scope: string) {
         <!-- RIFLE MENU -->
 
         <div>
-          <div class="absolute top-[2%] left-[55%] z-50">
+          <div class="absolute top-[2%] left-[51%] z-50 font-sans tracking-normal">
             <Riflemenu
               :rifles="rifleNames"
+              :rifle-title="selectedRifle"
               @selected="(rifle) => (selectedRifle = rifle)"
             />
           </div>
@@ -198,7 +205,7 @@ function changeScope(scope: string) {
               px-2
               rounded-lg
               text-lg
-              top-[51%]
+              top-[50.7%]
               left-[51%]
             "
           >
@@ -251,7 +258,7 @@ function changeScope(scope: string) {
               px-2
               rounded-lg
               text-lg
-              top-[61%]
+              top-[60.7%]
               left-[50%]
               -translate-x-[4rem]
             "
@@ -293,7 +300,7 @@ function changeScope(scope: string) {
               px-2
               rounded-lg
               text-lg
-              top-[50.5%]
+              top-[50.4%]
               left-[50%]
             "
           >
@@ -309,8 +316,8 @@ function changeScope(scope: string) {
               absolute
               px-2
               text-black text-lg
-              top-[54.5%]
-              left-[50%]
+              top-[54.3%]
+              left-[51%]
               -translate-x-[4.5rem]
             "
           >
@@ -328,7 +335,7 @@ function changeScope(scope: string) {
               px-2
               rounded-lg
               text-lg
-              top-[57.5%]
+              top-[57.2%]
               left-[50%]
             "
           >
@@ -346,8 +353,8 @@ function changeScope(scope: string) {
               px-2
               rounded-lg
               text-lg
-              top-[61%]
-              left-[50%]
+              top-[60.5%]
+              left-[51%]
               -translate-x-[4.5rem]
             "
           >
@@ -383,8 +390,8 @@ function changeScope(scope: string) {
               px-2
               rounded-lg
               text-lg
-              top-[67.5%]
-              left-[50%]
+              top-[67%]
+              left-[51%]
               -translate-x-[4.5rem]
             "
           >

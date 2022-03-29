@@ -1,17 +1,21 @@
 <script setup lang="ts">
-    import { ref } from 'vue'
-    
+    import { ref, computed } from 'vue'
 
-    defineProps<{ rifles: string[]}>()
+
+    const props = defineProps<{ rifles: string[], rifleTitle: string}>()
 
     const emit = defineEmits(['selected'])
-    
+
 
     let id = 0
     let show2 = ref(false);
     const isOpen2 = () => (show2.value = !show2.value);
 
-    const rifleName= ref('Rifles');
+    const rifleTitle1 = computed(() => {
+      return ref(props.rifleTitle);
+    })
+
+    const rifleName = ref('Pick a rifle')
 
     const changeRifle = (rifle: string) => {
         rifleName.value = rifle;
@@ -30,7 +34,7 @@
                         @click="isOpen2"
                         class="flex items-center p-2 text-black bg-slate-100 rounded-md"
                     >
-                        <span class="mr-4">{{rifleName}}</span>
+                        <span class="mr-4">{{rifleTitle1.value}}</span>
                         <svg
                         class="w-5 h-5 text-slate-900 dark:text-white"
                         xmlns="http://www.w3.org/2000/svg"
@@ -56,5 +60,5 @@
 
                         </div>
                     </div>
-                    
+
 </template>
