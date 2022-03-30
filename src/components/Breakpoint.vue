@@ -170,7 +170,7 @@ function changeScope(scope: string) {
             bg-gray-900
             bg-opacity-0
 
-            text-black
+            text-[#4dd5ff]
             px-2
             text-center
             text-xl
@@ -179,6 +179,7 @@ function changeScope(scope: string) {
             right-[55%]
 
           "
+          style='text-shadow: 0 0 5px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff;'
         >
 
           <u>Scope:</u><br />
@@ -190,7 +191,7 @@ function changeScope(scope: string) {
             absolute
             bg-gray-900
             bg-opacity-0
-            text-black
+            text-[#4dd5ff]
             px-2
             text-center
             text-xl
@@ -198,10 +199,19 @@ function changeScope(scope: string) {
             top-[25%]
             left-[55%]
 
+
+          "
+          style="
+
+          animation: glow 6000ms infinite;
+
           "
         >
-          <u>Rifle:</u><br />
-          <glitched-writer :text="selectedRifle" appear preset="nier" />
+          <div  style='animation: flicker 4.5s infinite;'>
+            <u>Rifle:</u><br />
+            <glitched-writer :text="selectedRifle" appear preset="nier" />
+          </div>
+
         </div>
 
         <!-- T5XI RANGE LABELS -->
@@ -213,7 +223,7 @@ function changeScope(scope: string) {
           <div
             class="
               absolute
-              text-black
+              text-[#4dd5ff]
               px-2
 
               bg-opacity-80
@@ -222,6 +232,7 @@ function changeScope(scope: string) {
               top-[50.7%]
               left-[51%]
             "
+            style='text-shadow: 0 0 6px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff;'
           >
 
               <glitched-writer :text="selectedScopeData[selectedRifle][1]
@@ -237,12 +248,13 @@ function changeScope(scope: string) {
               bg-gray-900
               bg-opacity-0
 
-              text-black
+              text-[#4dd5ff]
               text-lg
               top-[54%]
               left-[50%]
               -translate-x-[4rem]
             "
+            style='text-shadow: 0 0 5px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff;'
           >
             <glitched-writer :text="selectedScopeData[selectedRifle][2]
                 ? selectedScopeData[selectedRifle][2] + 'm'
@@ -254,13 +266,15 @@ function changeScope(scope: string) {
               absolute
               bg-gray-900
               bg-opacity-0
-              text-black
+              text-[#4dd5ff]
               px-2
 
               text-lg
               top-[57.5%]
               left-[51%]
             "
+            style='text-shadow: 0 0 5px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff;'
+
           >
             <glitched-writer :text="selectedScopeData[selectedRifle][3]
                 ? selectedScopeData[selectedRifle][3] + 'm'
@@ -273,13 +287,14 @@ function changeScope(scope: string) {
               bg-gray-900
               bg-opacity-0
 
-              text-black
+              text-[#4dd5ff]
               px-2
               text-lg
               top-[60.7%]
               left-[50%]
               -translate-x-[4rem]
             "
+            style='text-shadow: 0 0 5px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff;'
           >
             <glitched-writer :text="selectedScopeData[selectedRifle][4]
                 ? selectedScopeData[selectedRifle][4] + 'm'
@@ -292,13 +307,15 @@ function changeScope(scope: string) {
               bg-gray-900
               bg-opacity-0
 
-              text-black
+              text-[#4dd5ff]
               px-2
 
               text-lg
               top-[66.5%]
               left-[51%]
             "
+            style='text-shadow: 0 0 5px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff;'
+
           >
             <glitched-writer :text="selectedScopeData[selectedRifle][5]
                 ? selectedScopeData[selectedRifle][5] + 'm'
@@ -441,3 +458,183 @@ function changeScope(scope: string) {
     </div>
   </body>
 </template>
+
+
+<style>
+  @keyframes glow {
+    0% {
+      color:#4dd5ff;
+      text-shadow: 0 0 5px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff;
+    }
+    0.5% {
+      color:#82dffc;
+      text-shadow: 0 0 5px #000, 0 0 9px #fff, 0 0 15px #4dd5ff, 0 0 20px #4dd5ff;
+    }
+    1% {
+      color:#4dd5ff;
+      text-shadow: 0 0 5px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff;
+    }
+    1.5% {
+      color:#82dffc;
+      text-shadow: 0 0 5px #000, 0 0 9px #fff, 0 0 15px #4dd5ff, 0 0 20px #4dd5ff;
+    }
+    2% {
+      color:#4dd5ff;
+      text-shadow: 0 0 5px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff;
+    }
+    2.5% {
+      color:#82dffc;
+      text-shadow: 0 0 5px #000, 0 0 9px #fff, 0 0 15px #4dd5ff, 0 0 20px #4dd5ff;
+    }
+    3% {
+      color:#4dd5ff;
+      text-shadow: 0 0 5px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff;
+    }
+    3.5% {
+      color:#4dd5ff;
+      text-shadow: 0 0 5px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff;
+    }
+    16% {
+      color:#4dd5ff;
+      text-shadow: 0 0 5px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff;
+    }
+    16.5% {
+      color:#82dffc;
+      text-shadow: 0 0 5px #000, 0 0 9px #fff, 0 0 15px #4dd5ff, 0 0 20px #4dd5ff;
+    }
+    17% {
+      color:#4dd5ff;
+      text-shadow: 0 0 5px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff;
+    }
+    17.5% {
+      color:#82dffc;
+      text-shadow: 0 0 5px #000, 0 0 9px #fff, 0 0 15px #4dd5ff, 0 0 20px #4dd5ff;
+    }
+    18% {
+      color:#4dd5ff;
+      text-shadow: 0 0 5px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff;
+    }
+    18.5% {
+      color:#82dffc;
+      text-shadow: 0 0 5px #000, 0 0 9px #fff, 0 0 15px #4dd5ff, 0 0 20px #4dd5ff;
+    }
+    19% {
+      color:#4dd5ff;
+      text-shadow: 0 0 5px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff;
+    }
+    30% {
+      color:#4dd5ff;
+      text-shadow: 0 0 5px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff;
+    }
+    30.5% {
+      color:#4dd5ff;
+      text-shadow: 0 0 5px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff;
+    }
+    31% {
+      color:#82dffc;
+      text-shadow: 0 0 5px #000, 0 0 9px #fff, 0 0 15px #4dd5ff, 0 0 20px #4dd5ff;
+    }
+    31.5% {
+      color:#4dd5ff;
+      text-shadow: 0 0 5px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff;
+    }
+    32% {
+      color:#82dffc;
+      text-shadow: 0 0 5px #000, 0 0 9px #fff, 0 0 15px #4dd5ff, 0 0 20px #4dd5ff;
+    }
+    32.5% {
+      color:#4dd5ff;
+      text-shadow: 0 0 5px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff;
+    }
+    33% {
+      color:#82dffc;
+      text-shadow: 0 0 5px #000, 0 0 9px #fff, 0 0 15px #4dd5ff, 0 0 20px #4dd5ff;
+    }
+    33.5% {
+      color:#4dd5ff;
+      text-shadow: 0 0 5px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff;
+      opacity: 1;
+    }
+    34% {
+      color:#4dd5ff;
+      text-shadow: 0 0 5px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff;
+      opacity: .5;
+    }
+    34.5% {
+      color:#4dd5ff;
+      text-shadow: 0 0 5px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff;
+      opacity: 1;
+    }
+    35% {
+      color:#82dffc;
+      text-shadow: 0 0 5px #000, 0 0 9px #fff, 0 0 15px #4dd5ff, 0 0 20px #4dd5ff;
+    }
+    35.5% {
+      color:#4dd5ff;
+      text-shadow: 0 0 5px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff;
+    }
+    36% {
+      color:#82dffc;
+      text-shadow: 0 0 5px #000, 0 0 9px #fff, 0 0 15px #4dd5ff, 0 0 20px #4dd5ff;
+    }
+    36.5% {
+      color:#4dd5ff;
+      text-shadow: 0 0 5px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff;
+    }
+    37% {
+      color:#82dffc;
+      text-shadow: 0 0 5px #000, 0 0 9px #fff, 0 0 15px #4dd5ff, 0 0 20px #4dd5ff;
+    }
+    37.5% {
+      color:#4dd5ff;
+      text-shadow: 0 0 5px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff;
+    }
+    50% {
+      color:#4dd5ff;
+      text-shadow: 0 0 5px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff;
+    }
+    70% {
+      color:#4dd5ff;
+      text-shadow: 0 0 5px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff;
+      opacity: 1;
+      transform: skewX(0deg);
+    }
+    70.5% {
+      color:#4dd5ff;
+      text-shadow: 0 0 5px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff;
+      opacity: 0.8;
+      transform: skewX(10deg);
+    }
+    71% {
+      color:#4dd5ff;
+      text-shadow: 0 0 5px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff;
+      opacity: 1;
+      transform: skewX(0deg);
+    }
+    100% {
+      color:#4dd5ff;
+      text-shadow: 0 0 5px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff;
+    }
+  }
+
+  @keyframes flicker {
+    0% {
+
+    }
+    30% {
+
+      transform: skewX(0deg);
+    }
+    30.5% {
+
+      transform: skewX(5deg);
+    }
+    31% {
+
+      transform: skewX(0deg);
+    }
+    100% {
+
+    }
+  }
+</style>
