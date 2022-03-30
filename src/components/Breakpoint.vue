@@ -2,6 +2,7 @@
 import Scopemenu from "./Scopemenu.vue";
 import Riflemenu from "./Riflemenu.vue";
 import { ref, computed } from "vue";
+import GlitchedWriter from 'vue-glitched-writer'
 
 type ScopeData = { [rifleName: string]: number[] };
 
@@ -111,7 +112,7 @@ function changeScope(scope: string) {
       <div class="text-white text-2xl mt-1 h-10">
         <router-link
           to="/"
-          class="bg-[#c4c4c4] bg-opacity-0 px-2 border text-[#a33232] border-[#a33232] rounded-lg shadow-black shadow-md font-sans absolute left-2/4 -rotate-[9deg] -translate-x-2/4 z-40"
+          class="bg-[#c4c4c4] active:text-[#702323] bg-opacity-0 px-2 border text-[#a33232] border-[#a33232] rounded-lg shadow-black shadow-md font-sans absolute left-2/4 -rotate-[9deg] -translate-x-2/4 z-40"
           style="font-family: angel;"
           >Redeploy</router-link
         >
@@ -166,6 +167,9 @@ function changeScope(scope: string) {
         <div
           class="
             absolute
+            bg-gray-900
+            bg-opacity-0
+
             text-black
             px-2
             text-center
@@ -176,12 +180,16 @@ function changeScope(scope: string) {
 
           "
         >
+
           <u>Scope:</u><br />
-          {{ selectedScopeName }}
+          <glitched-writer :text="selectedScopeName" appear preset="nier" />
         </div>
+
         <div
           class="
             absolute
+            bg-gray-900
+            bg-opacity-0
             text-black
             px-2
             text-center
@@ -193,7 +201,7 @@ function changeScope(scope: string) {
           "
         >
           <u>Rifle:</u><br />
-          {{ selectedRifle }}
+          <glitched-writer :text="selectedRifle" appear preset="nier" />
         </div>
 
         <!-- T5XI RANGE LABELS -->
@@ -207,89 +215,94 @@ function changeScope(scope: string) {
               absolute
               text-black
               px-2
-              rounded-lg
+
+              bg-opacity-80
+
               text-lg
               top-[50.7%]
               left-[51%]
             "
           >
-            {{
-              selectedScopeData[selectedRifle][1]
-                ? selectedScopeData[selectedRifle][1] + "m"
-                : ""
-            }}
+
+              <glitched-writer :text="selectedScopeData[selectedRifle][1]
+                ? selectedScopeData[selectedRifle][1] + 'm'
+                : ''" appear preset='nier' />
+
           </div>
 
           <div
             class="
               absolute
               px-2
-              text-black text-lg
+              bg-gray-900
+              bg-opacity-0
+
+              text-black
+              text-lg
               top-[54%]
               left-[50%]
               -translate-x-[4rem]
             "
           >
-            {{
-              selectedScopeData[selectedRifle][2]
-                ? selectedScopeData[selectedRifle][2] + "m"
-                : ""
-            }}
+            <glitched-writer :text="selectedScopeData[selectedRifle][2]
+                ? selectedScopeData[selectedRifle][2] + 'm'
+                : ''" appear preset='nier' />
           </div>
 
           <div
             class="
               absolute
+              bg-gray-900
+              bg-opacity-0
               text-black
               px-2
-              rounded-lg
+
               text-lg
               top-[57.5%]
               left-[51%]
             "
           >
-            {{
-              selectedScopeData[selectedRifle][3]
-                ? selectedScopeData[selectedRifle][3] + "m"
-                : ""
-            }}
+            <glitched-writer :text="selectedScopeData[selectedRifle][3]
+                ? selectedScopeData[selectedRifle][3] + 'm'
+                : ''" appear preset='nier' />
           </div>
 
           <div
             class="
               absolute
+              bg-gray-900
+              bg-opacity-0
+
               text-black
               px-2
-              rounded-lg
               text-lg
               top-[60.7%]
               left-[50%]
               -translate-x-[4rem]
             "
           >
-            {{
-              selectedScopeData[selectedRifle][4]
-                ? selectedScopeData[selectedRifle][4] + "m"
-                : ""
-            }}
+            <glitched-writer :text="selectedScopeData[selectedRifle][4]
+                ? selectedScopeData[selectedRifle][4] + 'm'
+                : ''" appear preset='nier' />
           </div>
 
           <div
             class="
               absolute
+              bg-gray-900
+              bg-opacity-0
+
               text-black
               px-2
-              rounded-lg
+
               text-lg
               top-[66.5%]
               left-[51%]
             "
           >
-            {{
-              selectedScopeData[selectedRifle][5] != null
-                ? selectedScopeData[selectedRifle][5] + "m"
-                : ""
-            }}
+            <glitched-writer :text="selectedScopeData[selectedRifle][5]
+                ? selectedScopeData[selectedRifle][5] + 'm'
+                : ''" appear preset='nier' />
           </div>
         </div>
 

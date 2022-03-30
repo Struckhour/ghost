@@ -8,8 +8,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "glitched-writer": "^2.0.29",
     "scrollin": "^0.4.1",
     "vue": "^3.2.31",
+    "vue-glitched-writer": "^1.2.2",
     "vue-router": "^4.0.14"
   },
   "devDependencies": {
