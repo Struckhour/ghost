@@ -32,11 +32,11 @@
     <!-- Dropdown toggle button -->
                     <button
                         @click="isOpen2"
-                        class="flex items-center p-2 text-black bg-slate-100 rounded-md"
+                        class="flex justify-end mr-0 p-2 text-black bg-slate-200 opacity-80 rounded-md border-slate-800 border"
                     >
                         <span class="mr-4">{{rifleTitle1.value}}</span>
                         <svg
-                        class="w-5 h-5 text-slate-900 dark:text-white"
+                        class="w-5 h-5 text-slate-900"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 20 20"
                         fill="currentColor"
@@ -50,13 +50,13 @@
                     </button>
 
                     <!-- Dropdown menu -->
-                    <div class="grid md:grid-cols-2 grid-cols-1 md:w-[30rem] w-[15rem] bg-black -translate-x-[4rem]">
+                    <div class="grid md:grid-cols-2 grid-cols-1 md:w-[30rem] w-[15rem] bg-black -translate-x-[4rem] z-49">
                         <div
                         v-show="show2"
                         v-for="(rifle) in rifles" :key="rifle"
                         class="right-0 py-0 mt-0 rounded-sm shadow-xl shadow-black "
                         >
-                        <div @click="changeRifle(rifle)" class="px-4 md:py-0 py-4 md:my-0 my-2 bg-slate-100 md:text-[.85rem] text-base text-slate-900 hover:bg-green-800 hover:text-indigo-100">{{rifle}}</div>
+                        <div @click="changeRifle(rifle)" class="px-4 md:py-0 py-2 md:my-0 my-1 bg-slate-100 md:text-[.85rem] text-base text-slate-900 hover:bg-green-800 hover:text-indigo-100">{{rifle}}</div>
 
                         </div>
                     </div>

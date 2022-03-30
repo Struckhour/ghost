@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import Scopemenu from "./Scopemenu.vue";
 import Riflemenu from "./Riflemenu.vue";
-import { ref, reactive, computed } from "vue";
+import { ref, computed } from "vue";
 
 type ScopeData = { [rifleName: string]: number[] };
 
 const images = ref<{ [sightName: string]: string }>({
-  "T5XI SIGHT": "./src/assets/BP-T5XISight.jpg",
-  "DUAL RANGE SIGHT": "./src/assets/BP-DualRangeSight-zoom.jpg",
+  "T5XI SIGHT": "/assets/BP-T5XISight.jpg",
+  "DUAL RANGE SIGHT": "/assets/BP-DualRangeSight-zoom.jpg",
 });
 
 const T5XIData = ref<ScopeData>({
@@ -108,10 +108,10 @@ function changeScope(scope: string) {
       class="hidden sm:block w-96 h-20 m-auto rounded-md object-cover"
     />
     <div class="h-[90%]">
-      <div class="text-white text-2xl mt-1 h-10 text-center">
+      <div class="text-white text-2xl mt-1 h-10">
         <router-link
           to="/"
-          class="bg-[#c4c4c4] bg-opacity-0 px-2 border text-[#a33232] border-[#a33232] rounded-lg shadow-black shadow-md font-sans absolute -rotate-[9deg] -translate-x-[60%] z-40"
+          class="bg-[#c4c4c4] bg-opacity-0 px-2 border text-[#a33232] border-[#a33232] rounded-lg shadow-black shadow-md font-sans absolute left-2/4 -rotate-[9deg] -translate-x-2/4 z-40"
           style="font-family: angel;"
           >Redeploy</router-link
         >
@@ -122,13 +122,14 @@ function changeScope(scope: string) {
         class="
           tracking-wide
           h-[600px]
-
-          w-[500px]
+          w-screen
+          sm:w-[500px]
           max-w-4xl
           absolute
           left-2/4
           -translate-x-2/4
           mt-0
+
         "
       >
 
@@ -140,8 +141,9 @@ function changeScope(scope: string) {
         <!-- SCOPE MENU -->
 
         <div>
-          <div class="absolute top-[2%] left-[17%] -translate-x-[4.5rem] z-50 font-sans tracking-normal">
+          <div class="absolute top-[2%] right-[51%] z-50 font-sans w-[30%]">
             <Scopemenu
+              class=""
               :scopes="scopeNames"
               @chosenScope="changeScope"
             />
@@ -150,8 +152,8 @@ function changeScope(scope: string) {
 
         <!-- RIFLE MENU -->
 
-        <div>
-          <div class="absolute top-[2%] left-[51%] z-50 font-sans tracking-normal">
+        <div class="">
+          <div class="w-[35%] absolute top-[2%] left-[51%] z-40 font-sans tracking-normal">
             <Riflemenu
               :rifles="rifleNames"
               :rifle-title="selectedRifle"
@@ -166,12 +168,12 @@ function changeScope(scope: string) {
             absolute
             text-black
             px-2
+            text-center
             text-xl
-            w-[11rem]
+            w-[25%]
             top-[25%]
-            left-[30%]
-            -translate-x-[5rem]
-            z-0
+            right-[55%]
+
           "
         >
           <u>Scope:</u><br />
@@ -181,11 +183,13 @@ function changeScope(scope: string) {
           class="
             absolute
             text-black
-            px-0
+            px-2
+            text-center
             text-xl
+            w-[25%]
             top-[25%]
-            left-[75%]
-            -translate-x-[5rem]
+            left-[55%]
+
           "
         >
           <u>Rifle:</u><br />

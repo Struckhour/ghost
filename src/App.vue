@@ -28,8 +28,7 @@ import HelloWorld from './components/HelloWorld.vue'
 
 
 html {
-  overflow-y: scroll;
-  overflow-x: hidden;
+
 }
 
 #app {
