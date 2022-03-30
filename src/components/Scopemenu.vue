@@ -25,11 +25,11 @@
 <template>
     <div
         @click="isOpen"
-        class="flex items-center justify-end p-2 text-black bg-slate-200 bg-opacity-75 rounded-md hover:cursor-pointer"
+        class="flex items-center justify-end p-2 text-cyan-300 hover:text-cyan-200 hover:bg-opacity-[90%] bg-slate-900 bg-opacity-75 rounded-md hover:cursor-pointer"
         >
         <span class="mr-2">{{scopeName}}</span>
         <svg
-        class="w-5 h-5 text-slate-900"
+        class="w-5 h-5 text-cyan-300"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"
         fill="currentColor"
@@ -43,13 +43,13 @@
     </div>
 
     <!-- Dropdown menu -->
-    <div class="grid grid-cols-1 md:w-[15rem] w-[15rem] bg-black">
+    <div class="grid grid-cols-1 md:w-[15rem] w-[15rem] bg-black bg-opacity-0">
         <div
         v-show="show"
         v-for="(scope) in scopes" :key="scope"
         class="right-0 py-0 mt-0 rounded-sm shadow-xl shadow-black"
         >
-        <div @click="changeScope(scope)" class="px-4 md:py-0 py-2 md:my-0 my-1 bg-slate-100 md:text-[.85rem] text-base text-slate-900  hover:bg-green-800 hover:text-indigo-100">{{scope}}</div>
+        <div @click="changeScope(scope)" class="px-4 md:py-0 py-2 md:my-0 my-1 bg-slate-900 opacity-80 md:text-[.85rem] text-base text-cyan-300  hover:bg-cyan-700 hover:text-indigo-100">{{scope}}</div>
 
         </div>
     </div>
