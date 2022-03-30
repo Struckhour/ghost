@@ -133,16 +133,23 @@ function changeScope(scope: string) {
 
         "
       >
-
-        <img
-          :src="images[selectedScopeName]"
-          class="h-full w-full object-cover m-auto rounded-2xl"
+        <Transition>
+          <img
+          v-show="selectedScopeName==='T5XI SIGHT'" src="/assets/BP-T5XISight.jpg"
+          class="h-full w-full absolute object-cover m-auto rounded-2xl"
         />
+        </Transition>
+        <Transition>
+          <img
+          v-show="selectedScopeName==='DUAL RANGE SIGHT'" src="/assets/BP-DualRangeSight-zoom.jpg"
+          class="h-full w-full absolute object-cover m-auto rounded-2xl"
+        />
+        </Transition>
 
         <!-- SCOPE MENU -->
 
         <div>
-          <div class="absolute top-[2%] right-[51%] z-50 font-sans w-[30%]">
+          <div class="absolute top-[2%] right-[51%] z-30 font-sans w-[30%]">
             <Scopemenu
               class=""
               :scopes="scopeNames"
@@ -175,11 +182,11 @@ function changeScope(scope: string) {
             text-center
             text-xl
             w-[25%]
-            top-[25%]
+            top-[20%]
             right-[55%]
 
           "
-          style='text-shadow: 0 0 5px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff;'
+          style='text-shadow: 0 0 5px #000, 0 0 6px #ffffff86, 0 0 7px #4dd5ff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff; animation: saturate 15s infinite'
         >
 
           <u>Scope:</u><br />
@@ -196,7 +203,7 @@ function changeScope(scope: string) {
             text-center
             text-xl
             w-[25%]
-            top-[25%]
+            top-[20%]
             left-[55%]
 
 
@@ -461,6 +468,17 @@ function changeScope(scope: string) {
 
 
 <style>
+
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+
   @keyframes glow {
     0% {
       color:#4dd5ff;
@@ -632,6 +650,62 @@ function changeScope(scope: string) {
     31% {
 
       transform: skewX(0deg);
+    }
+    100% {
+
+    }
+  }
+
+    @keyframes flicker {
+    0% {
+
+    }
+    30% {
+
+      filter: grayscale(0%);
+    }
+    30.5% {
+
+      filter: grayscale(100%);
+    }
+    33.5% {
+
+      filter: grayscale(0%);
+    }
+    100% {
+
+    }
+  }
+
+      @keyframes saturate {
+    0% {
+
+    }
+    30% {
+      transform: skewX(0);
+      filter: saturate(100%);
+    }
+    30.1% {
+      transform: skewX(-30deg);
+      filter: saturate(50%);
+    }
+    30.2% {
+      transform: skewX(0)
+    }
+    51.9% {
+      transform: skewX(0deg);
+      filter: saturate(50%);
+    }
+    52% {
+      transform: skewX(-30deg);
+      filter: saturate(100%);
+    }
+    52.1% {
+      transform: skewX(0);
+    }
+    81.5% {
+
+      filter: saturate(100%);
     }
     100% {
 

@@ -50,13 +50,13 @@
                     </button>
 
                     <!-- Dropdown menu -->
-                    <div class="grid md:grid-cols-2 grid-cols-1 md:w-[30rem] w-[15rem] bg-black bg-opacity-0 -translate-x-[4rem] z-49">
+                    <div class="grid md:grid-cols-2 grid-cols-1 md:w-[30rem] w-[15rem] bg-black bg-opacity-0 -translate-x-[4rem] z-40">
                         <div
                         v-show="show2"
                         v-for="(rifle) in rifles" :key="rifle"
                         class="right-0 py-0 mt-0 rounded-sm shadow-xl shadow-black "
                         >
-                        <div @click="changeRifle(rifle)" class="px-4 md:py-0 py-2 md:my-0 my-1 bg-slate-900 bg-opacity-80 md:text-[.85rem] text-base text-cyan-300 hover:bg-cyan-700 hover:text-indigo-100">{{rifle}}</div>
+                        <div @click="changeRifle(rifle)" class="px-4 md:py-0 py-2 md:my-0 my-1 bg-slate-900 bg-opacity-80 z-40 md:text-[.85rem] text-base text-cyan-300 hover:bg-cyan-700 hover:text-indigo-100">{{rifle}}</div>
 
                         </div>
                     </div>
