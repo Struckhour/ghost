@@ -3,7 +3,7 @@ import Scopemenu from "./Scopemenu.vue";
 import Riflemenu from "./Riflemenu.vue";
 import { ref, computed, getCurrentInstance } from "vue";
 import GlitchedWriter from 'vue-glitched-writer';
-import { useRoute } from 'vue-router'
+import wonky from '../../stuff.json'
 
 const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]: number[]}} } = {
   Breakpoint: {
@@ -158,13 +158,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
 
 const gameName = defineProps<{game: string}>()
 
-// const route = useRoute();
-// const gameName: string | string[] = route.params.game
-
-
 const selectedScopeName = ref("T5XI SIGHT");
-
-
 
 let selectedRifle = ref(Object.keys(fullData[gameName.game][selectedScopeName.value])[14]);
 
@@ -187,6 +181,27 @@ function changeScope(scope: string) {
 const ranges = computed(() => {
   return fullData[gameName.game][selectedScopeName.value][selectedRifle.value]
 })
+
+const scopeLabelStyles: { [scopeName: string]: string } = {
+  'T5XI SIGHT': 'color: #4dd5ff; font-size: 1.25rem; line-height: 1.75rem; text-shadow: 0 0 5px #000, 0 0 6px #ffffff86, 0 0 7px #4dd5ff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff; animation: saturate 11s infinite;',
+  'DUAL RANGE SIGHT': 'color: black; font-size: 1.25rem; line-height: 1.75rem;',
+  'TARS101': 'color: #1de02d; font-size: 1.25rem; line-height: 1.75rem; text-shadow: 0 0 5px #000, 0 0 6px #ffffff11, 0 0 7px #1de02d86, 0 0 10px #1de02d86, 0 0 15px #1de02d; animation: saturate 11s infinite;',
+}
+
+function getScopeLabelStyle() {
+  return `${scopeLabelStyles[selectedScopeName.value]}`
+}
+
+const rifleLabelStyles: { [scopeName: string]: string } = {
+  'T5XI SIGHT': 'color: #4dd5ff; font-size: 1.25rem; line-height: 1.75rem; animation: glow 6000ms infinite;',
+  'DUAL RANGE SIGHT': 'color: black; font-size: 1.25rem; line-height: 1.75rem;',
+  'TARS101': 'color: #1de02d; font-size: 1.25rem; line-height: 1.75rem; text-shadow: 0 0 5px #000, 0 0 6px #ffffff86, 0 0 7px #1de02d, 0 0 10px #1de02d86, 0 0 15px #1de02d; animation: flicker 5s infinite;',
+}
+
+function getRifleLabelStyle() {
+  return `${rifleLabelStyles[selectedScopeName.value]}`
+}
+
 
 const scopeStyles: { [scopeName: string]: string } = {
   'T5XI SIGHT': 'color: #4dd5ff; text-shadow: 0 0 5px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff;',
@@ -239,18 +254,24 @@ function getStyle(index: number) {
 </script>
 
 <template>
-  <body class="bg-slate-900 w-screen h-full text-white">
+  <body class="w-screen h-full">
     <img
+      v-show="gameName.game === 'Breakpoint'"
       src="../assets/breakpoint.jpg"
+      class="hidden sm:block w-96 h-20 m-auto rounded-md object-cover"
+    />
+    <img
+      v-show="gameName.game === 'Wildlands'"
+      src="../assets/wildlands.jpg"
       class="hidden sm:block w-96 h-20 m-auto rounded-md object-cover"
     />
     <div class="h-[90%]">
       <div class="text-white text-2xl mt-1 h-10">
         <router-link
           to="/"
-          class="bg-[#c4c4c4] active:text-[#702323] bg-opacity-0 px-2 border text-[#a33232] border-[#a33232] rounded-lg shadow-black shadow-md font-sans absolute left-2/4 -rotate-[9deg] -translate-x-2/4 z-40"
+          class="active:text-[#4b1818] px-2 border text-[#752424] border-[#752424] hover:text-[#af3b3b] rounded-lg shadow-black shadow-md font-sans absolute left-2/4 -rotate-[9deg] -translate-x-2/4 z-40"
           style="font-family: angel;"
-          >{{gameName.game}}</router-link
+          >{{wonky[0].stuff}}</router-link
         >
       </div>
 
@@ -260,7 +281,7 @@ function getStyle(index: number) {
           tracking-wide
           h-[600px]
           w-screen
-          sm:w-[500px]
+          sm:w-[600px]
           max-w-4xl
           absolute
           left-2/4
@@ -275,7 +296,7 @@ function getStyle(index: number) {
         <Transition>
           <img
           v-show="selectedScopeName==='T5XI SIGHT'" src="/assets/BP-T5XISight.jpg"
-          class="h-full w-full absolute object-cover m-auto rounded-2xl"
+          class="h-full w-full absolute object-cover m-auto rounded-2xl sm:rounded-full"
         />
         </Transition>
         <Transition>
@@ -287,7 +308,7 @@ function getStyle(index: number) {
         <Transition>
           <img
           v-show="selectedScopeName==='TARS101'" src="/assets/TARS101.jpg"
-          class="h-full w-full absolute object-cover m-auto rounded-2xl"
+          class="h-full w-full absolute object-cover m-auto rounded-2xl sm:rounded-full"
         />
         </Transition>
 
@@ -318,19 +339,14 @@ function getStyle(index: number) {
         <div
           class="
             absolute
-            bg-gray-900
-            bg-opacity-0
-
-            text-[#4dd5ff]
             px-2
             text-center
-            text-xl
             w-[25%]
             top-[20%]
             right-[55%]
 
           "
-          style='text-shadow: 0 0 5px #000, 0 0 6px #ffffff86, 0 0 7px #4dd5ff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff; animation: saturate 11s infinite'
+          :style='getScopeLabelStyle()'
         >
 
           <u>Scope:</u><br />
@@ -340,23 +356,15 @@ function getStyle(index: number) {
         <div
           class="
             absolute
-            bg-gray-900
-            bg-opacity-0
-            text-[#4dd5ff]
             px-2
             text-center
-            text-xl
             w-[25%]
             top-[20%]
             left-[55%]
 
 
           "
-          style="
-
-          animation: glow 6000ms infinite;
-
-          "
+          :style="getRifleLabelStyle()"
         >
           <div  style='animation: flicker 4.5s infinite;'>
             <u>Rifle:</u><br />
@@ -383,7 +391,7 @@ function getStyle(index: number) {
 
 .v-enter-active,
 .v-leave-active {
-  transition: all 0.5s linear;
+  transition: all 0.25s linear;
 }
 
 .v-enter-from,

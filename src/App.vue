@@ -1,12 +1,17 @@
 <script setup lang="ts">
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
-import HelloWorld from './components/HelloWorld.vue'
+import { ref, computed } from 'vue'
+
+
+const selectedGame = ref('Breakpoint')
+
+
 </script>
 
 <template>
-  <body>
-    <router-view></router-view>
+  <body :class="selectedGame === 'Breakpoint' ? 'breakpoint' : 'wildlands'">
+    <router-view @gameChoice="(game: string) => (selectedGame = game)"></router-view>
   </body>
 
 
@@ -20,6 +25,7 @@ import HelloWorld from './components/HelloWorld.vue'
    url(./assets/fonts/ZCOOLQingKeHuangYou-Regular.ttf) format("truetype");
 }
 
+
 @font-face {
   font-family: "angel";
   src: local("angel"),
@@ -31,12 +37,17 @@ html {
   overflow-x: hidden;
 }
 
-#app {
 
+.breakpoint {
+  background-color: #13172b;
+  padding-top: 4px;
+  height: 1000px;
 }
 
-body {
-  background-color: rgb(15,23,42);
+.wildlands {
+  background-color: #262014;
   padding-top: 4px;
+  height: 1000px;
+
 }
 </style>

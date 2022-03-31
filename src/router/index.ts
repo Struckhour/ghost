@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '/src/components/Home.vue'
-import Breakpoint from '/src/components/Breakpoint.vue'
-import Wildlands from '/src/components/Wildlands.vue'
+import Main from '/src/components/Main.vue'
+
 const routes = [
     {
         path: '/',
@@ -11,13 +11,13 @@ const routes = [
     {
         path: '/app/:game',
         name: 'Breakpoint',
-        component: Breakpoint,
+        component: Main,
         props: true,
     },
     {
         path: '/app/:game',
         name: 'Wildlands',
-        component: Breakpoint,
+        component: Main,
         props: true,
     },
 ]
