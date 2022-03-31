@@ -2,20 +2,13 @@
 import Scopemenu from "./Scopemenu.vue";
 import Riflemenu from "./Riflemenu.vue";
 import { ref, computed, getCurrentInstance } from "vue";
-import GlitchedWriter from 'vue-glitched-writer'
-
-type ScopeData = { [rifleName: string]: number[] };
-
-const images = ref<{ [sightName: string]: string }>({
-  "T5XI SIGHT": "/assets/BP-T5XISight.jpg",
-  "DUAL RANGE SIGHT": "/assets/BP-DualRangeSight-zoom.jpg",
-});
-
+import GlitchedWriter from 'vue-glitched-writer';
+import { useRoute } from 'vue-router'
 
 const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]: number[]}} } = {
   Breakpoint: {
     'T5XI SIGHT': {
-      "Choose a rifle": [],
+
       "416 SCOUT": [100, 200, 300, 400, 525],
       "416 SCOUT MAWL-DA": [100, 225, 350, 500, 650],
       "416 SCOUT RANGE FINDER": [100, 250, 375, 550, 700],
@@ -52,7 +45,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       "SR-1": [175, 440, 650],
     },
     'DUAL RANGE SIGHT': {
-        "Choose a rifle": [],
+
         "553 SCOUT": [100, 133, 200, 250, 285, 366, 425, 500],
         "553 SCOUT MAWL-DA": [525],
         "553 SCOUT RANGE FINDER": [],
@@ -120,39 +113,85 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
         'TAC50 BROWN':[150,300,400,512,650,750,],
         'VSK-50':[150,250,300,366,425,475,540,595,633,666,700,725,750,],
     }
+  },
+    Wildlands: {
+    'T5XI SIGHT': {
+
+      "416 SCOUT": [100, 200, 300, 400, 525],
+      "416 SCOUT MAWL-DA": [100, 225, 350, 500, 650],
+      "416 SCOUT RANGE FINDER": [100, 250, 375, 550, 700],
+      "553 SCOUT": [75, 200, 275, 375, 500],
+      "553 SCOUT MAWL-DA": [75, 225, 325, 475, 625],
+      "553 SCOUT RANGE FINDER": [75, 225, 350, 525, 675],
+      "AK74 SCOUT": [],
+      FRF2: [150, 260, 325, 390, 466, 580],
+      G28: [133, 290, 425, 585],
+      "G28 WILDERNESS MAWL-DA": [125, 325, 515, 715],
+      "G28 WILDERNESS RANGE FINDER": [125, 350, 575],
+      "G28 SCOUT": [],
+      "G36C SCOUT": [75, 175, 275, 375, 475],
+      "G36C SCOUT MAWL-DA": [75, 200, 300, 450, 600],
+      "G36C SCOUT RANGE FINDER": [75, 225, 350, 500, 650],
+      "HTI SURVIVAL": [200, 345, 445, 560, 666, 800],
+      L115A3: [150, 300, 400, 510, 625, 750],
+      M110: [100, 225, 315, 425, 535],
+      "M110 MAWL-DA": [100, 250, 375, 525, 660, 808],
+      "M110 RANGE FINDER": [100, 270, 400, 580, 725],
+      "M4A1 SCOUT": [100, 200, 250, 325, 400],
+      "M4A1 SCOUT MAWL-DA": [100, 225, 300, 400, 500],
+      "M4A1 SCOUT RANGE FINDER": [125, 225, 325, 425, 475],
+      M82: [175, 325, 440, 580, 720],
+      MK14: [],
+      "MK14 MAWL-DA": [175, 260, 320, 390, 460, 566],
+      "MK14 RANGE FINDER": [],
+      "MK14 ASSAULT": [],
+      "MK17 SCOUT": [100, 275, 400, 575, 700],
+      "MK17 SCOUT RANGE FINDER": [100, 325, 550, 775],
+      MSR: [175, 275, 325, 390, 450, 555],
+      "PALADIN 9": [70, 233, 366, 560],
+      "SCORPIO SCOUT": [170, 275, 340, 415, 490],
+      "SR-1": [175, 440, 650],
+    },
   }
 }
 
 
+const gameName = defineProps<{game: string}>()
+
+// const route = useRoute();
+// const gameName: string | string[] = route.params.game
 
 
-const gameName = ref('Breakpoint');
-
-const selectedScopeName = ref("TARS101");
+const selectedScopeName = ref("T5XI SIGHT");
 
 
 
-let selectedRifle = ref(Object.keys(fullData[gameName.value][selectedScopeName.value])[14]);
+let selectedRifle = ref(Object.keys(fullData[gameName.game][selectedScopeName.value])[14]);
 
 const rifleNames = computed(() => {
-  return Object.keys(fullData[gameName.value][selectedScopeName.value]);
+  return Object.keys(fullData[gameName.game][selectedScopeName.value]);
 });
 
-const scopeNames = ref(Object.keys(fullData[gameName.value]));
+const scopeNames = ref(Object.keys(fullData[gameName.game]));
 
 function changeScope(scope: string) {
-  selectedRifle.value = 'Choose a rifle';
-  selectedScopeName.value = scope;
+  if (Object.keys(fullData[gameName.game][scope]).includes(selectedRifle.value)) {
+    selectedScopeName.value = scope;
+  } else {
+    selectedRifle.value = 'Choose a rifle';
+    selectedScopeName.value = scope;
+  }
+
 }
 
 const ranges = computed(() => {
-  return fullData[gameName.value][selectedScopeName.value][selectedRifle.value]
+  return fullData[gameName.game][selectedScopeName.value][selectedRifle.value]
 })
 
 const scopeStyles: { [scopeName: string]: string } = {
   'T5XI SIGHT': 'color: #4dd5ff; text-shadow: 0 0 5px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff;',
   'DUAL RANGE SIGHT': 'color: black;',
-  'TARS101': 'color: #4dd5ff; text-shadow: 0 0 5px #000, 0 0 0px #fff, 0 0 10px #4dd5ff44, 0 0 15px #4dd5ff;',
+  'TARS101': 'color: #1de02d; text-shadow: 0 0 5px #000, 0 0 0px #fff, 0 0 10px #1de02d44, 0 0 15px #1de02d;',
 }
 
 function getScopeStyle() {
@@ -188,7 +227,7 @@ const styleTranslations: { [scopeName: string]: string[] } ={
     'top: 71%; left: 50%; transform: translateX(20px)',
     'top: 75%; right: 50%; transform: translateX(-15px);',
     'top: 79%; left: 50%; transform: translateX(20px)',
-    ]
+    ],
   }
 
 function getStyle(index: number) {
@@ -211,7 +250,7 @@ function getStyle(index: number) {
           to="/"
           class="bg-[#c4c4c4] active:text-[#702323] bg-opacity-0 px-2 border text-[#a33232] border-[#a33232] rounded-lg shadow-black shadow-md font-sans absolute left-2/4 -rotate-[9deg] -translate-x-2/4 z-40"
           style="font-family: angel;"
-          >Redeploy</router-link
+          >{{gameName.game}}</router-link
         >
       </div>
 
@@ -230,6 +269,9 @@ function getStyle(index: number) {
 
         "
       >
+
+        <!-- SCOPE IMAGES -->
+
         <Transition>
           <img
           v-show="selectedScopeName==='T5XI SIGHT'" src="/assets/BP-T5XISight.jpg"
@@ -254,7 +296,6 @@ function getStyle(index: number) {
         <div>
           <div class="absolute top-[2%] right-[51%] z-30 font-sans w-[30%]">
             <Scopemenu
-              class=""
               :scopes="scopeNames"
               @chosenScope="changeScope"
             />
@@ -289,7 +330,7 @@ function getStyle(index: number) {
             right-[55%]
 
           "
-          style='text-shadow: 0 0 5px #000, 0 0 6px #ffffff86, 0 0 7px #4dd5ff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff; animation: saturate 15s infinite'
+          style='text-shadow: 0 0 5px #000, 0 0 6px #ffffff86, 0 0 7px #4dd5ff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff; animation: saturate 11s infinite'
         >
 
           <u>Scope:</u><br />
@@ -324,18 +365,13 @@ function getStyle(index: number) {
 
         </div>
 
-<!-- TEST LABELS FOR RANGE -->
+      <!-- RANGE LABELS -->
 
-        <div v-for="(range, index) in ranges" class="absolute w-2/4 h-2/4 top-2/4 left-1/4" :style="getScopeStyle()">
-          <div :style="getStyle(index)">
-            <glitched-writer :text="range + 'm'" appear preset="nier" />
+          <div v-for="(range, index) in ranges" class="absolute w-2/4 h-2/4 top-2/4 left-1/4" :style="getScopeStyle()">
+            <div :style="getStyle(index)">
+              <glitched-writer :text="range + 'm'" appear preset="nier" />
+            </div>
           </div>
-        </div>
-
-        <!-- T5XI RANGE LABELS -->
-
-
-
 
         </div>
       </div>

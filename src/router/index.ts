@@ -9,14 +9,16 @@ const routes = [
         component: Home,
     },
     {
-        path: '/breakpoint',
+        path: '/app/:game',
         name: 'Breakpoint',
         component: Breakpoint,
+        props: true,
     },
     {
-        path: '/wildlands',
+        path: '/app/:game',
         name: 'Wildlands',
-        component: Wildlands,
+        component: Breakpoint,
+        props: true,
     },
 ]
 const router = createRouter({
