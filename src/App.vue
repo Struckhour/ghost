@@ -39,7 +39,7 @@ html {
 
 
 .breakpoint {
-  background-color: #13172b;
+  background-color: #161926;
   padding-top: 4px;
   height: 1000px;
 }

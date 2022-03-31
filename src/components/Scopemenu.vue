@@ -49,7 +49,7 @@
         v-for="(scope) in scopes" :key="scope"
         class="right-0 py-0 mt-0 rounded-sm shadow-xl shadow-black"
         >
-        <div @click="changeScope(scope)" class="px-4 md:py-0 py-2 md:my-0 my-1 bg-slate-900 opacity-80 md:text-[.85rem] text-base text-cyan-300 z-50 hover:bg-cyan-700 hover:text-indigo-100">{{scope}}</div>
+        <div @click="changeScope(scope)" class="px-4 md:py-0 py-2 my-0 bg-slate-900 opacity-80 md:text-[.85rem] text-base text-cyan-300 z-50 hover:bg-cyan-700 hover:text-indigo-100">{{scope}}</div>
 
         </div>
     </div>
