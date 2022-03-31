@@ -38,6 +38,7 @@ const scopeLabelStyles: { [scopeName: string]: string } = {
   'TARS101': 'color: #1de02d; font-size: 1.25rem; line-height: 1.75rem; text-shadow: 0 0 5px #000, 0 0 6px #ffffff11, 0 0 7px #1de02d86, 0 0 10px #1de02d86, 0 0 15px #1de02d; animation: saturate 11s infinite;',
   'VC16': 'color: #4dd5ff; font-size: 1.25rem; line-height: 1.75rem; text-shadow: 0 0 5px #000, 0 0 6px #ffffff86, 0 0 7px #4dd5ff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff; animation: saturate 11s infinite;',
   'ACSS': 'color: black; font-size: 1.25rem; line-height: 1.75rem;',
+  'DIGITAL SIGHT': 'color: #3fd467; font-size: 1.rem; line-height: 1.25rem; text-shadow: 0 0 5px #000, 0 0 6px #ffffff11, 0 0 7px #3fd46786, 0 0 10px #3fd46786, 0 0 15px #3fd467; transform: translate(40px, 70px);',
 }
 
 function getScopeLabelStyle() {
@@ -50,6 +51,7 @@ const rifleLabelStyles: { [scopeName: string]: string } = {
   'TARS101': 'color: #1de02d; font-size: 1.25rem; line-height: 1.75rem; text-shadow: 0 0 5px #000, 0 0 6px #ffffff86, 0 0 7px #1de02d, 0 0 10px #1de02d86, 0 0 15px #1de02d; animation: flicker 5s infinite;',
   'VC16': 'color: #4dd5ff; font-size: 1.25rem; line-height: 1.75rem; animation: glow 6000ms infinite;',
   'ACSS': 'color: black; font-size: 1.25rem; line-height: 1.75rem;',
+  'DIGITAL SIGHT': 'color: #3fd467; font-size: 1.rem; line-height: 1.25rem; text-shadow: 0 0 5px #000, 0 0 6px #ffffff11, 0 0 7px #3fd46786, 0 0 10px #3fd46786, 0 0 15px #3fd467; transform: translate(-40px, 70px);',
 }
 
 function getRifleLabelStyle() {
@@ -63,6 +65,7 @@ const rangeStyles: { [scopeName: string]: string } = {
   'TARS101': 'color: #1de02d; text-shadow: 0 0 5px #000, 0 0 0px #fff, 0 0 10px #1de02d44, 0 0 15px #1de02d;',
   'VC16': 'color: #4dd5ff; text-shadow: 0 0 5px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff;',
   'ACSS': 'color: black;',
+  'DIGITAL SIGHT': 'color: #3fd467; text-shadow: 0 0 5px #000, 0 0 0px #fff, 0 0 10px #3fd46744, 0 0 15px #3fd467;',
 }
 
 function getRangeStyle() {
@@ -71,7 +74,7 @@ function getRangeStyle() {
 
 const styleTranslations: { [scopeName: string]: string[] } ={
   'T5XI SIGHT':
-   ['display: none; color: green;', 'top: 2.4%; left: 50%; transform: translateX(15px)', 'top: 8%; right: 50%; transform: translateX(-15px);', 'top: 16%; left: 50%; transform: translateX(15px)', 'top: 22%; right: 50%; transform: translateX(-15px);', 'top: 35%; left: 50%; transform: translateX(15px)', 'top: 45%; right: 50%; transform: translateX(-15px);', 'top: 56%; left: 50%; transform: translateX(15px)'],
+   ['display: none;', 'top: 2.4%; left: 50%; transform: translateX(15px)', 'top: 8%; right: 50%; transform: translateX(-15px);', 'top: 16%; left: 50%; transform: translateX(15px)', 'top: 22%; right: 50%; transform: translateX(-15px);', 'top: 33%; left: 50%; transform: translateX(15px)', 'top: 40%; right: 50%; transform: translateX(-15px);', 'top: 56%; left: 50%; transform: translateX(15px)'],
 
    'DUAL RANGE SIGHT': ['display: none;', 'top: 0.5%; left: 50%; transform: translateX(15px)', 'top: 8%; right: 50%; transform: translateX(-15px);', 'top: 14%; left: 50%; transform: translateX(15px)', 'top: 20%; right: 50%; transform: translateX(-15px);', 'top: 27.5%; left: 50%; transform: translateX(15px)', 'top: 34%; right: 50%; transform: translateX(-15px);', 'top: 41%; left: 50%; transform: translateX(15px)'],
 
@@ -100,9 +103,11 @@ const styleTranslations: { [scopeName: string]: string[] } ={
     'top: 79%; left: 50%; transform: translateX(20px)',
     ],
     'VC16':
-   ['display: none; color: green;', 'top: 2.4%; left: 50%; transform: translateX(15px)', 'top: 8%; right: 50%; transform: translateX(-15px);', 'top: 16%; left: 50%; transform: translateX(15px)', 'top: 22%; right: 50%; transform: translateX(-15px);', 'top: 35%; left: 50%; transform: translateX(15px)', 'top: 45%; right: 50%; transform: translateX(-15px);', 'top: 56%; left: 50%; transform: translateX(15px)'],
+   ['display: none;', 'top: 2.4%; left: 50%; transform: translateX(15px)', 'top: 8%; right: 50%; transform: translateX(-15px);', 'top: 16%; left: 50%; transform: translateX(15px)', 'top: 22%; right: 50%; transform: translateX(-15px);', 'top: 35%; left: 50%; transform: translateX(15px)', 'top: 45%; right: 50%; transform: translateX(-15px);', 'top: 56%; left: 50%; transform: translateX(15px)'],
     'ACSS':
-   ['display: none; color: green;', 'top: 2.4%; left: 50%; transform: translateX(15px)', 'top: 8%; right: 50%; transform: translateX(-15px);', 'top: 16%; left: 50%; transform: translateX(15px)', 'top: 22%; right: 50%; transform: translateX(-15px);', 'top: 35%; left: 50%; transform: translateX(15px)', 'top: 45%; right: 50%; transform: translateX(-15px);', 'top: 56%; left: 50%; transform: translateX(15px)'],
+   ['display: none;', 'top: 2.4%; left: 50%; transform: translateX(15px)', 'top: 8%; right: 50%; transform: translateX(-15px);', 'top: 16%; left: 50%; transform: translateX(15px)', 'top: 22%; right: 50%; transform: translateX(-15px);', 'top: 35%; left: 50%; transform: translateX(15px)', 'top: 45%; right: 50%; transform: translateX(-15px);', 'top: 56%; left: 50%; transform: translateX(15px)'],
+   'DIGITAL SIGHT':
+   ['display: none;', 'top: 2.4%; left: 50%; transform: translateX(15px)', 'top: 8%; right: 50%; transform: translateX(-15px);', 'top: 16%; left: 50%; transform: translateX(15px)', 'top: 22%; right: 50%; transform: translateX(-15px);', 'top: 35%; left: 50%; transform: translateX(15px)', 'top: 45%; right: 50%; transform: translateX(-15px);', 'top: 56%; left: 50%; transform: translateX(15px)'],
   }
 
 function getStyle(index: number) {
@@ -185,7 +190,7 @@ function getStyle(index: number) {
         </Transition>
         <Transition>
           <img
-          v-show="selectedScopeName==='DIGITAL'" src="/assets/BP-Digital-Sight.jpg"
+          v-show="selectedScopeName==='DIGITAL SIGHT'" src="/assets/BP-Digital-Sight.jpg"
           class="h-full w-full absolute object-cover m-auto rounded-2xl sm:rounded-full"
           />
         </Transition>
