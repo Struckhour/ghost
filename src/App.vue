@@ -28,7 +28,7 @@ import HelloWorld from './components/HelloWorld.vue'
 
 
 html {
-
+  overflow-x: hidden;
 }
 
 #app {

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Scopemenu from "./Scopemenu.vue";
 import Riflemenu from "./Riflemenu.vue";
-import { ref, computed } from "vue";
+import { ref, computed, getCurrentInstance } from "vue";
 import GlitchedWriter from 'vue-glitched-writer'
 
 type ScopeData = { [rifleName: string]: number[] };
@@ -11,93 +11,190 @@ const images = ref<{ [sightName: string]: string }>({
   "DUAL RANGE SIGHT": "/assets/BP-DualRangeSight-zoom.jpg",
 });
 
-const T5XIData = ref<ScopeData>({
-  "Choose a rifle": [],
-  "416 SCOUT": [100, 200, 300, 400, 525],
-  "416 SCOUT MAWL-DA": [100, 225, 350, 500, 650],
-  "416 SCOUT RANGE FINDER": [100, 250, 375, 550, 700],
-  "553 SCOUT": [75, 200, 275, 375, 500],
-  "553 SCOUT MAWL-DA": [75, 225, 325, 475, 625],
-  "553 SCOUT RANGE FINDER": [75, 225, 350, 525, 675],
-  "AK74 SCOUT": [],
-  FRF2: [150, 260, 325, 390, 466, 580],
-  G28: [133, 290, 425, 585],
-  "G28 WILDERNESS MAWL-DA": [125, 325, 515, 715],
-  "G28 WILDERNESS RANGE FINDER": [125, 350, 575],
-  "G28 SCOUT": [],
-  "G36C SCOUT": [75, 175, 275, 375, 475],
-  "G36C SCOUT MAWL-DA": [75, 200, 300, 450, 600],
-  "G36C SCOUT RANGE FINDER": [75, 225, 350, 500, 650],
-  "HTI SURVIVAL": [200, 345, 445, 560, 666, 800],
-  L115A3: [150, 300, 400, 510, 625, 750],
-  M110: [100, 225, 315, 425, 535],
-  "M110 MAWL-DA": [100, 250, 375, 525, 660, 808],
-  "M110 RANGE FINDER": [100, 270, 400, 580, 725],
-  "M4A1 SCOUT": [100, 200, 250, 325, 400],
-  "M4A1 SCOUT MAWL-DA": [100, 225, 300, 400, 500],
-  "M4A1 SCOUT RANGE FINDER": [125, 225, 325, 425, 475],
-  M82: [175, 325, 440, 580, 720],
-  MK14: [],
-  "MK14 MAWL-DA": [175, 260, 320, 390, 460, 566],
-  "MK14 RANGE FINDER": [],
-  "MK14 ASSAULT": [],
-  "MK17 SCOUT": [100, 275, 400, 575, 700],
-  "MK17 SCOUT RANGE FINDER": [100, 325, 550, 775],
-  MSR: [175, 275, 325, 390, 450, 555],
-  "PALADIN 9": [70, 233, 366, 560],
-  "SCORPIO SCOUT": [170, 275, 340, 415, 490],
-  "SR-1": [175, 440, 650],
-});
 
-const dualRange = ref<ScopeData>({
-  "Choose a rifle": [],
-  "553 SCOUT": [100, 133, 200, 250, 285, 366, 425, 500],
-  "553 SCOUT MAWL-DA": [525],
-  "553 SCOUT RANGE FINDER": [],
-  FRF2: [150, 225, 300, 350, 410, 485],
-  G28: [100, 200, 295, 350, 433, 533, 615, 680, 733],
-  "G28 MAWL-DA": [125, 225, 325, 425, 540, 660, 750],
-  "G28 WILDERNESS": [100, 200, 295, 350, 433, 533],
-  "G28 WILDERNESS MAWL-DA": [125, 225, 325, 425, 540, 660, 750],
-  "G28 WILDERNESS RANGE FINDER": [100, 220, 350, 450, 580, 715, 815],
-  "G36C Scout": [80, 133, 200, 250, 300, 366, 433, 507],
-  "G36C SCOUT MAWL-DA": [80, 150, 230, 290, 360, 450, 550],
-  "HTI SURVIVAL": [200, 275, 375, 420, 490],
-  L115A3: [150, 233, 325, 375, 450, 533],
-  M110: [115, 175, 250, 305, 380, 465, 535],
-  "M110 MAWL-DA": [150, 190, 295, 360, 470, 575],
-  "M110 RANGE FINDER": [100, 200, 300, 400, 500, 635, 720, 800],
-  "M4A1 SCOUT MAWL-DA": [100, 175, 275, 350, 425, 545],
-  "M4A1 SCOUT RANGE FINDER": [100, 200, 300, 375, 475, 600],
-  "MK14 MAWL-DA": [125, 200, 270, 300, 350, 400, 450],
-  "MK17 SCOUT": [100, 175, 250, 300, 366, 433, 513],
-  "MK17 SCOUT RANGE FINDER": [100, 200, 300, 375, 475, 600],
-  "SCORPIO SCOUT": [170, 235, 300, 335, 385, 435, 495, 540],
-  "SCORPIO SCOUT QUIET": [200, 225, 275, 313, 350, 400, 450, 480],
-  "SVD-63": [150, 219, 275, 300, 340, 380, 425, 480],
-});
+const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]: number[]}} } = {
+  Breakpoint: {
+    'T5XI SIGHT': {
+      "Choose a rifle": [],
+      "416 SCOUT": [100, 200, 300, 400, 525],
+      "416 SCOUT MAWL-DA": [100, 225, 350, 500, 650],
+      "416 SCOUT RANGE FINDER": [100, 250, 375, 550, 700],
+      "553 SCOUT": [75, 200, 275, 375, 500],
+      "553 SCOUT MAWL-DA": [75, 225, 325, 475, 625],
+      "553 SCOUT RANGE FINDER": [75, 225, 350, 525, 675],
+      "AK74 SCOUT": [],
+      FRF2: [150, 260, 325, 390, 466, 580],
+      G28: [133, 290, 425, 585],
+      "G28 WILDERNESS MAWL-DA": [125, 325, 515, 715],
+      "G28 WILDERNESS RANGE FINDER": [125, 350, 575],
+      "G28 SCOUT": [],
+      "G36C SCOUT": [75, 175, 275, 375, 475],
+      "G36C SCOUT MAWL-DA": [75, 200, 300, 450, 600],
+      "G36C SCOUT RANGE FINDER": [75, 225, 350, 500, 650],
+      "HTI SURVIVAL": [200, 345, 445, 560, 666, 800],
+      L115A3: [150, 300, 400, 510, 625, 750],
+      M110: [100, 225, 315, 425, 535],
+      "M110 MAWL-DA": [100, 250, 375, 525, 660, 808],
+      "M110 RANGE FINDER": [100, 270, 400, 580, 725],
+      "M4A1 SCOUT": [100, 200, 250, 325, 400],
+      "M4A1 SCOUT MAWL-DA": [100, 225, 300, 400, 500],
+      "M4A1 SCOUT RANGE FINDER": [125, 225, 325, 425, 475],
+      M82: [175, 325, 440, 580, 720],
+      MK14: [],
+      "MK14 MAWL-DA": [175, 260, 320, 390, 460, 566],
+      "MK14 RANGE FINDER": [],
+      "MK14 ASSAULT": [],
+      "MK17 SCOUT": [100, 275, 400, 575, 700],
+      "MK17 SCOUT RANGE FINDER": [100, 325, 550, 775],
+      MSR: [175, 275, 325, 390, 450, 555],
+      "PALADIN 9": [70, 233, 366, 560],
+      "SCORPIO SCOUT": [170, 275, 340, 415, 490],
+      "SR-1": [175, 440, 650],
+    },
+    'DUAL RANGE SIGHT': {
+        "Choose a rifle": [],
+        "553 SCOUT": [100, 133, 200, 250, 285, 366, 425, 500],
+        "553 SCOUT MAWL-DA": [525],
+        "553 SCOUT RANGE FINDER": [],
+        FRF2: [150, 225, 300, 350, 410, 485],
+        G28: [100, 200, 295, 350, 433, 533, 615, 680, 733],
+        "G28 MAWL-DA": [125, 225, 325, 425, 540, 660, 750],
+        "G28 WILDERNESS": [100, 200, 295, 350, 433, 533],
+        "G28 WILDERNESS MAWL-DA": [125, 225, 325, 425, 540, 660, 750],
+        "G28 WILDERNESS RANGE FINDER": [100, 220, 350, 450, 580, 715, 815],
+        "G36C Scout": [80, 133, 200, 250, 300, 366, 433, 507],
+        "G36C SCOUT MAWL-DA": [80, 150, 230, 290, 360, 450, 550],
+        "HTI SURVIVAL": [200, 275, 375, 420, 490],
+        L115A3: [150, 233, 325, 375, 450, 533],
+        M110: [115, 175, 250, 305, 380, 465, 535],
+        "M110 MAWL-DA": [150, 190, 295, 360, 470, 575],
+        "M110 RANGE FINDER": [100, 200, 300, 400, 500, 635, 720, 800],
+        "M4A1 SCOUT MAWL-DA": [100, 175, 275, 350, 425, 545],
+        "M4A1 SCOUT RANGE FINDER": [100, 200, 300, 375, 475, 600],
+        "MK14 MAWL-DA": [125, 200, 270, 300, 350, 400, 450],
+        "MK17 SCOUT": [100, 175, 250, 300, 366, 433, 513],
+        "MK17 SCOUT RANGE FINDER": [100, 200, 300, 375, 475, 600],
+        "SCORPIO SCOUT": [170, 235, 300, 335, 385, 435, 495, 540],
+        "SCORPIO SCOUT QUIET": [200, 225, 275, 313, 350, 400, 450, 480],
+        "SVD-63": [150, 219, 275, 300, 340, 380, 425, 480],
+      },
+    'TARS101': {
+        '416 SCOUT':[100,150,200,275,325,375,450,525,575,625,675,],
+        '416 SCOUT MAWL-DA':[100,175,250,300,400,475,575,650,],
+        '416 SCOUT RANGE FINDER':[],
+        '553 SCOUT':[75,150,225,275,350,425,500,],
+        '553 SCOUT MAWL-DA':[75,175,250,335,425,525,625,],
+        '553 SCOUT RANGE FINDER':[],
+        'AUG SCOUT':[100,166,233,290,350,413,490,550,],
+        'AUG SCOUT MAWL-DA':[],
+        'AUG SCOUT RANGE FINDER':[],
+        'FRF2':[160,240,300,360,420,480,540,590,635,670,700,725,750,],
+        'G28':[133,200,266,333,400,466,533,600,666,700,745,],
+        'G28 MAWL-DA':[125,225,300,400,475,575,666,740,],
+        'G28 RANGE FINDER':[133,240,330,420,520,640,],
+        'G28 SCOUT':[100,160,195,220,245,270,295,320,350,375,400,420,440,460,480,495,505,],
+        'G28 SCOUT MAWL-DA':[100,175,215,250,280,320,350,400,433,466,495,525,550,566,588,604,622,633,644,655,666,],
+        'G28 SCOUT RANGE FINDER':[],
+        'G28 WILDERNESS':[133,200,266,333,400,466,533,600,666,700,745,],
+        'G28 WILDERNESS MAWL-DA':[125,225,300,400,475,575,666,740,],
+        'G28 WILDERNESS RANGE FINDER':[133,240,330,420,520,640,],
+        'HTI SURVIVAL':[200,300,365,440,510,585,650,700,],
+        'M4A1 SCOUT':[],
+        'M4A1 SCOUT MAWL-DA':[100,175,250,325,400,475,550,625,680,725,767,797,827,],
+        'M4A1 RANGE FINDER':[],
+        'L115A3':[150,250,300,350,400,466,525,575,625,666,700,733,760,787,808,827,],
+        'L115A3 BALLISTIC ADV.':[200,400,575,],
+        'M110':[100,175,240,295,350,410,475,535,590,],
+        'M110 MAWL-DA':[100,200,265,340,415,500,585,660,720,760,],
+        'M110 RANGE FINDER':[100,200,290,375,455,550,645,725,785,825,],
+        'M110 MAWL-DA WITH BALLISTIC ADV.':[100,333,550,875,],
+        'M82':[150,250,350,433,500,600,675,750,],
+        'MK14 MAWL-DA':[150,225,275,333,400,450,500,550,590,625,650,680,700,],
+        'MK17 SCOUT':[100,200,285,366,450,550,],
+        'MSR':[175,240,280,320,360,400,440,485,525,550,],
+        'RECON-A1':[150,233,290,340,395,450,505,],
+        'SCORPIO SCOUT':[170,240,295,340,385,425,480,525,566,605,640,],
+        'SR-1':[175,350,450,600,750,],
+        'SVD-63':[150,212,273,320,370,420,460,511,762,],
+        'TAC50':[100,250,380,550,],
+        'TAC50 BROWN':[150,300,400,512,650,750,],
+        'VSK-50':[150,250,300,366,425,475,540,595,633,666,700,725,750,],
+    }
+  }
+}
 
 
 
 
-const selectedScopeName = ref("T5XI SIGHT");
+const gameName = ref('Breakpoint');
 
-const selectedScopeData = computed(() => {
-  return selectedScopeName.value === "DUAL RANGE SIGHT"
-    ? dualRange.value
-    : T5XIData.value;
-});
+const selectedScopeName = ref("TARS101");
 
-let selectedRifle = ref(Object.keys(selectedScopeData.value)[0]);
+
+
+let selectedRifle = ref(Object.keys(fullData[gameName.value][selectedScopeName.value])[14]);
+
 const rifleNames = computed(() => {
-  return Object.keys(selectedScopeData.value);
+  return Object.keys(fullData[gameName.value][selectedScopeName.value]);
 });
 
-const scopeNames = ref(["T5XI SIGHT", "DUAL RANGE SIGHT"]);
+const scopeNames = ref(Object.keys(fullData[gameName.value]));
 
 function changeScope(scope: string) {
   selectedRifle.value = 'Choose a rifle';
   selectedScopeName.value = scope;
+}
+
+const ranges = computed(() => {
+  return fullData[gameName.value][selectedScopeName.value][selectedRifle.value]
+})
+
+const scopeStyles: { [scopeName: string]: string } = {
+  'T5XI SIGHT': 'color: #4dd5ff; text-shadow: 0 0 5px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff;',
+  'DUAL RANGE SIGHT': 'color: black;',
+  'TARS101': 'color: #4dd5ff; text-shadow: 0 0 5px #000, 0 0 0px #fff, 0 0 10px #4dd5ff44, 0 0 15px #4dd5ff;',
+}
+
+function getScopeStyle() {
+  return `${scopeStyles[selectedScopeName.value]}`
+}
+
+const styleTranslations: { [scopeName: string]: string[] } ={
+  'T5XI SIGHT':
+   ['display: none; color: green;', 'top: 2.4%; left: 50%; transform: translateX(15px)', 'top: 8%; right: 50%; transform: translateX(-15px);', 'top: 16%; left: 50%; transform: translateX(15px)', 'top: 22%; right: 50%; transform: translateX(-15px);', 'top: 35%; left: 50%; transform: translateX(15px)', 'top: 45%; right: 50%; transform: translateX(-15px);', 'top: 56%; left: 50%; transform: translateX(15px)'],
+
+   'DUAL RANGE SIGHT': ['display: none;', 'top: 0.5%; left: 50%; transform: translateX(15px)', 'top: 8%; right: 50%; transform: translateX(-15px);', 'top: 14%; left: 50%; transform: translateX(15px)', 'top: 20%; right: 50%; transform: translateX(-15px);', 'top: 27.5%; left: 50%; transform: translateX(15px)', 'top: 34%; right: 50%; transform: translateX(-15px);', 'top: 41%; left: 50%; transform: translateX(15px)'],
+
+   'TARS101':
+   ['display: none;',
+    'top: 2.3%; left: 50%; transform: translateX(20px)',
+    'top: 6.6%; right: 50%; transform: translateX(-15px);',
+    'top: 10.2%; left: 50%; transform: translateX(20px)',
+    'top: 14%; right: 50%; transform: translateX(-15px);',
+    'top: 18%; left: 50%; transform: translateX(20px)',
+    'top: 22%; right: 50%; transform: translateX(-15px);',
+    'top: 26%; left: 50%; transform: translateX(20px)',
+    'top: 29%; right: 50%; transform: translateX(-15px);',
+    'top: 33%; left: 50%; transform: translateX(20px)',
+    'top: 36.5%; right: 50%; transform: translateX(-15px);',
+    'top: 40.5%; left: 50%; transform: translateX(20px)',
+    'top: 44%; right: 50%; transform: translateX(-15px);',
+    'top: 48%; left: 50%; transform: translateX(20px)',
+    'top: 52%; right: 50%; transform: translateX(-15px);',
+    'top: 56%; left: 50%; transform: translateX(20px)',
+    'top: 59.2%; right: 50%; transform: translateX(-15px);',
+    'top: 63%; left: 50%; transform: translateX(20px)',
+    'top: 67%; right: 50%; transform: translateX(-15px);',
+    'top: 71%; left: 50%; transform: translateX(20px)',
+    'top: 75%; right: 50%; transform: translateX(-15px);',
+    'top: 79%; left: 50%; transform: translateX(20px)',
+    ]
+  }
+
+function getStyle(index: number) {
+  return `
+          position: absolute;
+          ${styleTranslations[selectedScopeName.value][index]}`
 }
 
 </script>
@@ -141,7 +238,13 @@ function changeScope(scope: string) {
         </Transition>
         <Transition>
           <img
-          v-show="selectedScopeName==='DUAL RANGE SIGHT'" src="/assets/BP-DualRangeSight-zoom.jpg"
+          v-show="selectedScopeName==='DUAL RANGE SIGHT'" src="/assets/BP-DualRange.jpg"
+          class="h-full w-full absolute object-cover m-auto rounded-2xl"
+        />
+        </Transition>
+        <Transition>
+          <img
+          v-show="selectedScopeName==='TARS101'" src="/assets/TARS101.jpg"
           class="h-full w-full absolute object-cover m-auto rounded-2xl"
         />
         </Transition>
@@ -221,248 +324,21 @@ function changeScope(scope: string) {
 
         </div>
 
-        <!-- T5XI RANGE LABELS -->
-        <div v-if="selectedScopeName === 'T5XI SIGHT'">
-          <!-- <div class="absolute  hidden text-black px-2 rounded-lg text-lg top-[47.5%] left-[50%] -translate-x-[5rem]">{{selectedScopeData[selectedRifle][0] ? '<' + selectedScopeData[selectedRifle][0] + 'm' : 'not ranged yet'}}</div> -->
+<!-- TEST LABELS FOR RANGE -->
 
-  <!-- <pre>{{JSON.stringify(selectedScopeData[selectedRifle], null, 2)}}</pre> -->
-
-          <div
-            class="
-              absolute
-              text-[#4dd5ff]
-              px-2
-
-              bg-opacity-80
-
-              text-lg
-              top-[50.7%]
-              left-[51%]
-            "
-            style='text-shadow: 0 0 6px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff;'
-          >
-
-              <glitched-writer :text="selectedScopeData[selectedRifle][1]
-                ? selectedScopeData[selectedRifle][1] + 'm'
-                : ''" appear preset='nier' />
-
-          </div>
-
-          <div
-            class="
-              absolute
-              px-2
-              bg-gray-900
-              bg-opacity-0
-
-              text-[#4dd5ff]
-              text-lg
-              top-[54%]
-              left-[50%]
-              -translate-x-[4rem]
-            "
-            style='text-shadow: 0 0 5px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff;'
-          >
-            <glitched-writer :text="selectedScopeData[selectedRifle][2]
-                ? selectedScopeData[selectedRifle][2] + 'm'
-                : ''" appear preset='nier' />
-          </div>
-
-          <div
-            class="
-              absolute
-              bg-gray-900
-              bg-opacity-0
-              text-[#4dd5ff]
-              px-2
-
-              text-lg
-              top-[57.5%]
-              left-[51%]
-            "
-            style='text-shadow: 0 0 5px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff;'
-
-          >
-            <glitched-writer :text="selectedScopeData[selectedRifle][3]
-                ? selectedScopeData[selectedRifle][3] + 'm'
-                : ''" appear preset='nier' />
-          </div>
-
-          <div
-            class="
-              absolute
-              bg-gray-900
-              bg-opacity-0
-
-              text-[#4dd5ff]
-              px-2
-              text-lg
-              top-[60.7%]
-              left-[50%]
-              -translate-x-[4rem]
-            "
-            style='text-shadow: 0 0 5px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff;'
-          >
-            <glitched-writer :text="selectedScopeData[selectedRifle][4]
-                ? selectedScopeData[selectedRifle][4] + 'm'
-                : ''" appear preset='nier' />
-          </div>
-
-          <div
-            class="
-              absolute
-              bg-gray-900
-              bg-opacity-0
-
-              text-[#4dd5ff]
-              px-2
-
-              text-lg
-              top-[66.5%]
-              left-[51%]
-            "
-            style='text-shadow: 0 0 5px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff;'
-
-          >
-            <glitched-writer :text="selectedScopeData[selectedRifle][5]
-                ? selectedScopeData[selectedRifle][5] + 'm'
-                : ''" appear preset='nier' />
+        <div v-for="(range, index) in ranges" class="absolute w-2/4 h-2/4 top-2/4 left-1/4" :style="getScopeStyle()">
+          <div :style="getStyle(index)">
+            <glitched-writer :text="range + 'm'" appear preset="nier" />
           </div>
         </div>
 
-        <!-- DUAL RANGE LABELS -->
-        <div v-if="selectedScopeName === 'DUAL RANGE SIGHT'">
-          <!-- <div class="absolute  hidden text-black px-2 rounded-lg text-lg top-[47.5%] left-[50%] -translate-x-[5rem]">{{selectedScopeData[selectedRifle][0] ? '<' + selectedScopeData[selectedRifle][0] + 'm' : 'not ranged yet'}}</div> -->
+        <!-- T5XI RANGE LABELS -->
 
-          <div
-            class="
-              absolute
-              text-black
-              px-2
-              rounded-lg
-              text-lg
-              top-[50.4%]
-              left-[50%]
-            "
-          >
-            {{
-              selectedScopeData[selectedRifle][1]
-                ? selectedScopeData[selectedRifle][1] + "m"
-                : ""
-            }}
-          </div>
 
-          <div
-            class="
-              absolute
-              px-2
-              text-black text-lg
-              top-[54.3%]
-              left-[51%]
-              -translate-x-[4.5rem]
-            "
-          >
-            {{
-              selectedScopeData[selectedRifle][2]
-                ? selectedScopeData[selectedRifle][2] + "m"
-                : ""
-            }}
-          </div>
 
-          <div
-            class="
-              absolute
-              text-black
-              px-2
-              rounded-lg
-              text-lg
-              top-[57.2%]
-              left-[50%]
-            "
-          >
-            {{
-              selectedScopeData[selectedRifle][3]
-                ? selectedScopeData[selectedRifle][3] + "m"
-                : ""
-            }}
-          </div>
 
-          <div
-            class="
-              absolute
-              text-black
-              px-2
-              rounded-lg
-              text-lg
-              top-[60.5%]
-              left-[51%]
-              -translate-x-[4.5rem]
-            "
-          >
-            {{
-              selectedScopeData[selectedRifle][4]
-                ? selectedScopeData[selectedRifle][4] + "m"
-                : ""
-            }}
-          </div>
-
-          <div
-            class="
-              absolute
-              text-black
-              px-2
-              rounded-lg
-              text-lg
-              top-[64%]
-              left-[50%]
-            "
-          >
-            {{
-              selectedScopeData[selectedRifle][5]
-                ? selectedScopeData[selectedRifle][5] + "m"
-                : ""
-            }}
-          </div>
-
-          <div
-            class="
-              absolute
-              text-black
-              px-2
-              rounded-lg
-              text-lg
-              top-[67%]
-              left-[51%]
-              -translate-x-[4.5rem]
-            "
-          >
-            {{
-              selectedScopeData[selectedRifle][6]
-                ? selectedScopeData[selectedRifle][6] + "m"
-                : ""
-            }}
-          </div>
-
-          <div
-            class="
-              absolute
-              text-black
-              px-2
-              rounded-lg
-              text-lg
-              top-[70.7%]
-              left-[50%]
-            "
-          >
-            {{
-              selectedScopeData[selectedRifle][7]
-                ? selectedScopeData[selectedRifle][7] + "m"
-                : ""
-            }}
-          </div>
         </div>
       </div>
-    </div>
   </body>
 </template>
 
@@ -471,12 +347,14 @@ function changeScope(scope: string) {
 
 .v-enter-active,
 .v-leave-active {
-  transition: opacity 0.5s ease;
+  transition: all 0.5s linear;
 }
 
 .v-enter-from,
 .v-leave-to {
   opacity: 0;
+  filter: blur(20px);
+  transform: skewX(0deg)
 }
 
   @keyframes glow {
