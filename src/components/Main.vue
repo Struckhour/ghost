@@ -38,7 +38,7 @@ const scopeLabelStyles: { [scopeName: string]: string } = {
   'TARS101': 'color: #1de02d; font-size: 1.25rem; line-height: 1.75rem; text-shadow: 0 0 5px #000, 0 0 6px #ffffff11, 0 0 7px #1de02d86, 0 0 10px #1de02d86, 0 0 15px #1de02d; animation: saturate 11s infinite;',
   'VC16': 'color: #4dd5ff; font-size: 1.25rem; line-height: 1.75rem; text-shadow: 0 0 5px #000, 0 0 6px #ffffff86, 0 0 7px #4dd5ff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff; animation: saturate 11s infinite;',
   'ACSS': 'color: black; font-size: 1.25rem; line-height: 1.75rem;',
-  'DIGITAL SIGHT': 'color: #3fd467; font-size: 1.rem; line-height: 1.25rem; text-shadow: 0 0 5px #000, 0 0 6px #ffffff11, 0 0 7px #3fd46786, 0 0 10px #3fd46786, 0 0 15px #3fd467; transform: translate(40px, 70px);',
+  'DIGITAL SIGHT': 'color: #3fd467; font-size: 0.8rem; line-height: 1.25rem; text-shadow: 0 0 5px #000, 0 0 6px #ffffff11, 0 0 7px #3fd46786, 0 0 10px #3fd46786, 0 0 15px #3fd467; transform: translate(35px, 70px);',
 }
 
 function getScopeLabelStyle() {
@@ -51,7 +51,7 @@ const rifleLabelStyles: { [scopeName: string]: string } = {
   'TARS101': 'color: #1de02d; font-size: 1.25rem; line-height: 1.75rem; text-shadow: 0 0 5px #000, 0 0 6px #ffffff86, 0 0 7px #1de02d, 0 0 10px #1de02d86, 0 0 15px #1de02d; animation: flicker 5s infinite;',
   'VC16': 'color: #4dd5ff; font-size: 1.25rem; line-height: 1.75rem; animation: glow 6000ms infinite;',
   'ACSS': 'color: black; font-size: 1.25rem; line-height: 1.75rem;',
-  'DIGITAL SIGHT': 'color: #3fd467; font-size: 1.rem; line-height: 1.25rem; text-shadow: 0 0 5px #000, 0 0 6px #ffffff11, 0 0 7px #3fd46786, 0 0 10px #3fd46786, 0 0 15px #3fd467; transform: translate(-40px, 70px);',
+  'DIGITAL SIGHT': 'color: #3fd467; font-size: 0.8rem; line-height: 1.25rem; text-shadow: 0 0 5px #000, 0 0 6px #ffffff11, 0 0 7px #3fd46786, 0 0 10px #3fd46786, 0 0 15px #3fd467; transform: translate(-35px, 70px);',
 }
 
 function getRifleLabelStyle() {
@@ -130,7 +130,7 @@ function getStyle(index: number) {
       src="../assets/wildlands.jpg"
       class="hidden sm:block w-96 h-20 m-auto rounded-md object-cover border-black border-2"
     />
-    <div class="h-[90%]">
+    <div class="">
       <div class="text-white text-2xl mt-1 h-10">
         <router-link
           to="/"
