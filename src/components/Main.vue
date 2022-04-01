@@ -87,14 +87,14 @@ const styleTranslations: { [scopeName: string]: string[] } ={
     'top: 18%; left: 50%; transform: translateX(20px)',
     'top: 22%; right: 50%; transform: translateX(-15px);',
     'top: 26%; left: 50%; transform: translateX(20px)',
-    'top: 29%; right: 50%; transform: translateX(-15px);',
-    'top: 33%; left: 50%; transform: translateX(20px)',
-    'top: 36.5%; right: 50%; transform: translateX(-15px);',
-    'top: 40.5%; left: 50%; transform: translateX(20px)',
-    'top: 44%; right: 50%; transform: translateX(-15px);',
-    'top: 48%; left: 50%; transform: translateX(20px)',
-    'top: 52%; right: 50%; transform: translateX(-15px);',
-    'top: 56%; left: 50%; transform: translateX(20px)',
+    'top: 30%; right: 50%; transform: translateX(-15px);',
+    'top: 34%; left: 50%; transform: translateX(20px)',
+    'top: 37.5%; right: 50%; transform: translateX(-15px);',
+    'top: 41.5%; left: 50%; transform: translateX(20px)',
+    'top: 45%; right: 50%; transform: translateX(-15px);',
+    'top: 49%; left: 50%; transform: translateX(20px)',
+    'top: 53%; right: 50%; transform: translateX(-15px);',
+    'top: 57%; left: 50%; transform: translateX(20px)',
     'top: 59.2%; right: 50%; transform: translateX(-15px);',
     'top: 63%; left: 50%; transform: translateX(20px)',
     'top: 67%; right: 50%; transform: translateX(-15px);',
@@ -119,7 +119,7 @@ function getStyle(index: number) {
 </script>
 
 <template>
-  <body class="w-screen h-full">
+  <body class="w-screen max-w-2xl max-h-[42rem] m-auto border-blue-400 border-4">
     <img
       v-show="gameName.game === 'Breakpoint'"
       src="../assets/breakpoint.jpg"
@@ -141,18 +141,16 @@ function getStyle(index: number) {
       </div>
 
       <div
-        style="font-family: ZCOOL"
+        style="font-family: ZCOOL; padding-top: 100%;"
         class="
+          relative
           tracking-wide
-          h-[600px]
           w-screen
-          sm:w-[600px]
-          max-w-4xl
-          absolute
+          max-w-2xl
+
           left-2/4
           -translate-x-2/4
-          mt-0
-
+          border-red-400 border-2
         "
       >
 
@@ -161,7 +159,7 @@ function getStyle(index: number) {
         <Transition>
           <img
           v-show="selectedScopeName==='T5XI SIGHT'" src="/assets/BP-T5XISight.jpg"
-          class="h-full w-full absolute object-cover m-auto rounded-2xl sm:rounded-full"
+          class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full"
         />
         </Transition>
         <Transition>
@@ -258,7 +256,7 @@ function getStyle(index: number) {
 
       <!-- RANGE LABELS -->
 
-          <div v-for="(range, index) in ranges" class="absolute w-2/4 h-2/4 top-2/4 left-1/4" :style="getRangeStyle()">
+          <div v-for="(range, index) in ranges" class="absolute w-2/4 h-full left-1/4 border-red-400 border" :style="getRangeStyle()">
             <div :style="getStyle(index)">
               <glitched-writer :text="range + 'm'" appear preset="nier" />
             </div>

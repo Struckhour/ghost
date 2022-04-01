@@ -35,7 +35,7 @@ const selectedGame = ref('Breakpoint')
 
 html {
   overflow-x: hidden;
-  overflow-y: hidden;
+  background-color: black;
 }
 
 @media screen and (min-width: 600px) {
