@@ -59,7 +59,7 @@ html {
 }
 
 .wildlands {
-  background-color: #262014;
+  background-color: #1b170f;
   padding-top: 4px;
   height: 1000px;
 
