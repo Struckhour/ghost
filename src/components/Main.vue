@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Scopemenu from "./Scopemenu.vue";
 import Riflemenu from "./Riflemenu.vue";
-import { ref, computed, getCurrentInstance } from "vue";
+import { ref, computed } from "vue";
 import GlitchedWriter from 'vue-glitched-writer';
 import fullData from '../assets/data';
 
@@ -10,7 +10,7 @@ const gameName = defineProps<{game: string}>()
 
 const selectedScopeName = ref("T5XI SIGHT");
 
-let selectedRifle = ref('553 SCOUT');
+let selectedRifle = ref('G28 SCOUT');
 
 const rifleNames = computed(() => {
   return Object.keys(fullData[gameName.game][selectedScopeName.value]);
@@ -75,79 +75,79 @@ function getRangeStyle() {
 const styleTranslations: { [scopeName: string]: string[] } ={
   'T5XI SIGHT':
    ['display: none;',
-   'top: 51%; left: 50%; transform: translateX(15px)',
-   'top: 54.3%; right: 50%; transform: translateX(-15px);',
-   'top: 57.5%; left: 50%; transform: translateX(15px)',
-   'top: 61%; right: 50%; transform: translateX(-15px);',
-   'top: 66%; left: 50%; transform: translateX(15px)',
-   'top: 68%; right: 50%; transform: translateX(-15px);',
-   'top: 70%; left: 50%; transform: translateX(15px)'],
+   'top: 52.3%; left: 50%; transform: translate(15px, -0.5em)',
+   'top: 55.6%; right: 50%; transform: translate(-15px, -0.5em);',
+   'top: 59.2%; left: 50%; transform: translate(15px, -0.5em)',
+   'top: 62.3%; right: 50%; transform: translate(-15px, -0.5em);',
+   'top: 68%; left: 50%; transform: translate(15px, -0.5em)',
+   'top: 73.3%; right: 50%; transform: translate(-15px, -0.5em);',
+   'top: 74%; left: 50%; transform: translate(15px, -0.5em)'],
 
    'DUAL RANGE SIGHT': ['display: none;',
-   'top: 51%; left: 50%; transform: translateX(15px)',
-   'top: 54%; right: 50%; transform: translateX(-15px);',
-   'top: 57.5%; left: 50%; transform: translateX(15px)',
-   'top: 60.5%; right: 50%; transform: translateX(-15px);',
-   'top: 64%; left: 50%; transform: translateX(15px)',
-   'top: 67%; right: 50%; transform: translateX(-15px);',
-   'top: 70.5%; left: 50%; transform: translateX(15px)',
-   'top: 73.5%; right: 50%; transform: translateX(-15px)',
+   'top: 51%; left: 50%; transform: translate(15px)',
+   'top: 54%; right: 50%; transform: translate(-15px);',
+   'top: 57.5%; left: 50%; transform: translate(15px)',
+   'top: 60.5%; right: 50%; transform: translate(-15px);',
+   'top: 64%; left: 50%; transform: translate(15px)',
+   'top: 67%; right: 50%; transform: translate(-15px);',
+   'top: 70.5%; left: 50%; transform: translate(15px)',
+   'top: 73.5%; right: 50%; transform: translate(-15px)',
    ],
 
    'TARS101':
    ['display: none;',
-    'top: 49%; right: 50%; transform: translateX(-15px);',
-    'top: 51.5%; left: 50%; transform: translateX(20px)',
-    'top: 53.5%; right: 50%; transform: translateX(-15px);',
-    'top: 55.5%; left: 50%; transform: translateX(20px)',
-    'top: 57.8%; right: 50%; transform: translateX(-15px);',
-    'top: 59.5%; left: 50%; transform: translateX(20px)',
-    'top: 61.5%; right: 50%; transform: translateX(-15px);',
-    'top: 63%; left: 50%; transform: translateX(20px)',
-    'top: 65%; right: 50%; transform: translateX(-15px);',
-    'top: 67%; left: 50%; transform: translateX(20px)',
-    'top: 68.5%; right: 50%; transform: translateX(-15px);',
-    'top: 70.5%; left: 50%; transform: translateX(20px)',
-    'top: 72.5%; right: 50%; transform: translateX(-15px);',
-    'top: 74%; left: 50%; transform: translateX(20px)',
-    'top: 76%; right: 50%; transform: translateX(-15px);',
-    'top: 78%; left: 50%; transform: translateX(20px)',
-    'top: 80%; right: 50%; transform: translateX(-15px);',
-    'top: 81.5%; left: 50%; transform: translateX(20px)',
-    'top: 83.5%; right: 50%; transform: translateX(-15px);',
-    'top: 85%; left: 50%; transform: translateX(20px)',
-    'top: 87%; right: 50%; transform: translateX(-15px);',
-    'top: 88%; left: 50%; transform: translateX(20px)',
+    'top: 49%; right: 50%; transform: translate(-15px);',
+    'top: 51.5%; left: 50%; transform: translate(20px)',
+    'top: 53.5%; right: 50%; transform: translate(-15px);',
+    'top: 55.5%; left: 50%; transform: translate(20px)',
+    'top: 57.8%; right: 50%; transform: translate(-15px);',
+    'top: 59.5%; left: 50%; transform: translate(20px)',
+    'top: 61.5%; right: 50%; transform: translate(-15px);',
+    'top: 63%; left: 50%; transform: translate(20px)',
+    'top: 65%; right: 50%; transform: translate(-15px);',
+    'top: 67%; left: 50%; transform: translate(20px)',
+    'top: 68.5%; right: 50%; transform: translate(-15px);',
+    'top: 70.5%; left: 50%; transform: translate(20px)',
+    'top: 72.5%; right: 50%; transform: translate(-15px);',
+    'top: 74%; left: 50%; transform: translate(20px)',
+    'top: 76%; right: 50%; transform: translate(-15px);',
+    'top: 78%; left: 50%; transform: translate(20px)',
+    'top: 80%; right: 50%; transform: translate(-15px);',
+    'top: 81.5%; left: 50%; transform: translate(20px)',
+    'top: 83.5%; right: 50%; transform: translate(-15px);',
+    'top: 85%; left: 50%; transform: translate(20px)',
+    'top: 87%; right: 50%; transform: translate(-15px);',
+    'top: 88%; left: 50%; transform: translate(20px)',
     ],
     'VC16':
    ['display: none;',
-    'top: 48.9%; left: 50%; transform: translateX(15px)',
-    'top: 49.9%; right: 50%; transform: translateX(-15px);',
-    'top: 51.5%; left: 50%; transform: translateX(15px)',
-    'top: 52.9%; right: 50%; transform: translateX(-15px);',
-    'top: 55%; left: 50%; transform: translateX(15px)',
-    'top: 57.7%; right: 50%; transform: translateX(-15px);',
-    'top: 59.5%; left: 50%; transform: translateX(15px)'
+    'top: 48.9%; left: 50%; transform: translate(15px)',
+    'top: 49.9%; right: 50%; transform: translate(-15px);',
+    'top: 51.5%; left: 50%; transform: translate(15px)',
+    'top: 52.9%; right: 50%; transform: translate(-15px);',
+    'top: 55%; left: 50%; transform: translate(15px)',
+    'top: 57.7%; right: 50%; transform: translate(-15px);',
+    'top: 59.5%; left: 50%; transform: translate(15px)'
    ],
     'ACSS':
    ['display: none;',
-    'top: 49.5%; left: 50%; transform: translateX(20px)',
-    'top: 50.6%; right: 50%; transform: translateX(-15px);',
-    'top: 53.1%; left: 50%; transform: translateX(15px)',
-    'top: 55.6%; right: 50%; transform: translateX(-15px);',
-    'top: 58.2%; left: 50%; transform: translateX(15px)',
-    'top: 62.5%; right: 50%; transform: translateX(-15px);',
-    'top: 65.5%; left: 50%; transform: translateX(15px)'
+    'top: 49.5%; left: 50%; transform: translate(20px)',
+    'top: 50.6%; right: 50%; transform: translate(-15px);',
+    'top: 53.1%; left: 50%; transform: translate(15px)',
+    'top: 55.6%; right: 50%; transform: translate(-15px);',
+    'top: 58.2%; left: 50%; transform: translate(15px)',
+    'top: 62.5%; right: 50%; transform: translate(-15px);',
+    'top: 65.5%; left: 50%; transform: translate(15px)'
    ],
    'DIGITAL SIGHT':
       ['display: none;',
-    'top: 50.5%; left: 50%; transform: translateX(15px)',
-    'top: 53.5%; right: 50%; transform: translateX(-15px);',
-    'top: 59%; left: 50%; transform: translateX(15px)',
-    'top: 64.5%; right: 50%; transform: translateX(-15px);',
-    'top: 70%; left: 50%; transform: translateX(15px)',
-    'top: 72%; right: 50%; transform: translateX(-15px);',
-    'top: 76%; left: 50%; transform: translateX(15px)'
+    'top: 50.5%; left: 50%; transform: translate(15px)',
+    'top: 53.5%; right: 50%; transform: translate(-15px);',
+    'top: 59%; left: 50%; transform: translate(15px)',
+    'top: 64.5%; right: 50%; transform: translate(-15px);',
+    'top: 70%; left: 50%; transform: translate(15px)',
+    'top: 72%; right: 50%; transform: translate(-15px);',
+    'top: 76%; left: 50%; transform: translate(15px)'
    ],
   }
 

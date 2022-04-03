@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 
 
 const selectedGame = ref('Breakpoint')
@@ -54,14 +54,14 @@ html {
 .breakpoint {
   background-color: #161926;
   padding-top: 4px;
-  height: 1000px;
+  height: 100vh;
 
 }
 
 .wildlands {
   background-color: #1b170f;
   padding-top: 4px;
-  height: 1000px;
+  height: 100vh;
 
 }
 </style>
