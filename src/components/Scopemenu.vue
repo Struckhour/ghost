@@ -1,21 +1,27 @@
 <script setup lang="ts">
-    import { ref } from 'vue'
+    import { ref, computed } from 'vue'
 
 
-    defineProps<{ scopes: string[] }>()
+    const props = defineProps<{ scopes: string[]; show: boolean }>()
 
-    const emit = defineEmits(['chosenScope'])
+    const emit = defineEmits(['chosenScope', 'menuClicked'])
 
+   let shower = computed(() => {
+      return ref(props.show);
+    })
 
     let id = 0
-    let show = ref(false);
-    const isOpen = () => (show.value = !show.value);
+    const isOpen = () => {
+      shower.value.value = !shower.value.value;
+      emit('menuClicked', shower.value.value)
+    };
 
     const scopeName= ref('Choose a scope');
 
     const changeScope = (scope: string) => {
         scopeName.value = scope;
-        show.value = !show.value;
+        shower.value.value = !shower.value.value;
+        emit('menuClicked', shower.value.value)
         emit('chosenScope', scopeName.value);
 
     }
@@ -45,7 +51,7 @@
     <!-- Dropdown menu -->
     <div class="grid grid-cols-1 md:w-[15rem] w-[15rem] bg-black bg-opacity-0 z-50 absolute right-2/5">
         <div
-        v-show="show"
+        v-show="shower.value"
         v-for="(scope) in scopes" :key="scope"
         class="right-0 py-0 mt-0 rounded-sm shadow-xl shadow-black"
         >

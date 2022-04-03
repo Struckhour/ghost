@@ -1,6 +1,6 @@
 const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]: number[]}} } = {
   Breakpoint: {
-    'T5XI SIGHT': {
+    'T5XI': {
       '416 SCOUT':[100,200,300,400,525,],
       '416 SCOUT MAWL-DA':[100,225,350,500,650,],
       '416 SCOUT RANGE FINDER':[100,250,375,550,700,],
@@ -41,7 +41,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'SCORPIO SCOUT':[170,275,340,415,490,],
       'SR-1':[175,440,650,],
     },
-    'DUAL RANGE SIGHT': {
+    'DUAL RANGE': {
 
         "553 SCOUT": [100, 133, 200, 250, 285, 366, 425, 500],
         "553 SCOUT MAWL-DA": [525],
@@ -144,7 +144,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'M110 RANGE FINDER':[100,200,265,350,465,625,770,],
       'SVD-63':[150,215,255,300,345,420,500,],
       },
-    'DIGITAL SIGHT': {
+    'DIGITAL': {
       'AK47 RANGE FINDER':[100,150,250,350,500,650,],
       'AR-18':[100,150,225,325,450,590,],
       'FAL':[80,120,160,210,260,330,],
@@ -194,7 +194,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'SVD-63':[],
       'SVD-63 PATCHWORK':[],
     },
-    'RU LONG-RANGE SIGHT': {
+    'RU LONG-RANGE': {
       'FRF2':[150,250,300,350,400,460,],
       'FRF2 BALLISTIC ADV.':[200,450,650,],
       'M82':[175,300,375,450,550,625,],

@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import Scopemenu from "./Scopemenu.vue";
 import Riflemenu from "./Riflemenu.vue";
-import { ref, computed } from "vue";
+import { ref, computed, setBlockTracking } from "vue";
 import GlitchedWriter from 'vue-glitched-writer';
 import fullData from '../assets/data';
 
 
 const gameName = defineProps<{game: string}>()
 
+let showScopeMenu = ref(false);
 const selectedScopeName = ref("TA31H");
 
 let selectedRifle = ref('Select a rifle');
@@ -28,21 +29,33 @@ function changeScope(scope: string) {
 
 }
 
+function removeScopeMenu() {
+  if (showScopeMenu.value) {
+    showScopeMenu.value = false;
+  }
+
+}
+
+function changeScopeMenu() {
+  showScopeMenu.value = !showScopeMenu.value;
+}
+
 const ranges = computed(() => {
   return fullData[gameName.game][selectedScopeName.value][selectedRifle.value]
 })
 
 const scopeLabelStyles: { [scopeName: string]: string } = {
-  'T5XI SIGHT': 'color: #4dd5ff; text-shadow: 0 0 5px #000, 0 0 6px #ffffff86, 0 0 7px #4dd5ff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff; animation: saturate 11s infinite;',
-  'DUAL RANGE SIGHT': 'color: black;',
-  'TARS101': 'color: #1de02d; text-shadow: 0 0 5px #000, 0 0 6px #ffffff11, 0 0 7px #1de02d86, 0 0 10px #1de02d86, 0 0 15px #1de02d; animation: saturate 11s infinite;',
+  'T5XI': 'color: #4dd5ff; text-shadow: 0 0 5px #000, 0 0 6px #ffffff86, 0 0 7px #4dd5ff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff; animation: saturate 11s infinite;',
+  'DUAL RANGE': 'color: black;',
+ // 'TARS101': 'color: #1de02d; text-shadow: 0 0 5px #000, 0 0 6px #ffffff11, 0 0 7px #1de02d86, 0 0 10px #1de02d86, 0 0 15px #1de02d; animation: saturate 11s infinite;',
+  'TARS101': 'color: black; font-family: courier; opacity: 0.7;',
   'VC16': 'color: #4dd5ff; text-shadow: 0 0 5px #000, 0 0 6px #ffffff86, 0 0 7px #4dd5ff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff; animation: saturate 11s infinite;',
   'ACSS': 'color: #f4c59e;',
-  'DIGITAL SIGHT': 'color: #e2b7bd;  text-shadow: 0 0 5px #000, 0 0 6px #ffffff11, 0 0 7px #e2b7bd86, 0 0 10px #e2b7bd86, 0 0 15px #e2b7bd;',
+  'DIGITAL': 'color: #e2b7bd;  text-shadow: 0 0 5px #000, 0 0 6px #ffffff11, 0 0 7px #e2b7bd86, 0 0 10px #e2b7bd86, 0 0 15px #e2b7bd;',
   'SLX5': 'color: #fddebf;',
   'TA31H': 'color: #fddebf;',
   'RU LONG-RANGE FOV': 'color: #f4c59e;',
-  'RU LONG-RANGE SIGHT': 'color: #f4c59e;',
+  'RU LONG-RANGE': 'color: #f4c59e;',
   'PALADIN OPTIC': 'color: #f4c59e;',
 }
 
@@ -51,16 +64,17 @@ function getScopeLabelStyle() {
 }
 
 const rifleLabelStyles: { [scopeName: string]: string } = {
-  'T5XI SIGHT': 'color: #4dd5ff; animation: glow 6000ms infinite;',
-  'DUAL RANGE SIGHT': 'color: black;',
-  'TARS101': 'color: #1de02d; text-shadow: 0 0 5px #000, 0 0 6px #ffffff86, 0 0 7px #1de02d, 0 0 10px #1de02d86, 0 0 15px #1de02d; animation: flicker 5s infinite;',
+  'T5XI': 'color: #4dd5ff; animation: glow 6000ms infinite;',
+  'DUAL RANGE': 'color: black;',
+  //'TARS101': 'color: #1de02d; text-shadow: 0 0 5px #000, 0 0 6px #ffffff86, 0 0 7px #1de02d, 0 0 10px #1de02d86, 0 0 15px #1de02d; animation: flicker 5s infinite;',
+  'TARS101': 'color: black; font-family: courier; opacity: 0.7;',
   'VC16': 'color: #4dd5ff; animation: glow 6000ms infinite;',
   'ACSS': 'color: #f4c59e;',
-  'DIGITAL SIGHT': 'color: #e2b7bd;  text-shadow: 0 0 5px #000, 0 0 6px #ffffff11, 0 0 7px #e2b7bd86, 0 0 10px #e2b7bd86, 0 0 15px #e2b7bd;',
+  'DIGITAL': 'color: #e2b7bd;  text-shadow: 0 0 5px #000, 0 0 6px #ffffff11, 0 0 7px #e2b7bd86, 0 0 10px #e2b7bd86, 0 0 15px #e2b7bd;',
   'SLX5': 'color: #fddebf;',
   'TA31H': 'color: #fddebf;',
   'RU LONG-RANGE FOV': 'color: #f4c59e;',
-  'RU LONG-RANGE SIGHT': 'color: #f4c59e;',
+  'RU LONG-RANGE': 'color: #f4c59e;',
   'PALADIN OPTIC': 'color: #f4c59e;',
 
 }
@@ -71,16 +85,17 @@ function getRifleLabelStyle() {
 
 
 const rangeStyles: { [scopeName: string]: string } = {
-  'T5XI SIGHT': 'color: #4dd5ff; text-shadow: 0 0 5px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff;',
-  'DUAL RANGE SIGHT': 'color: black;',
-  'TARS101': 'color: #1de02d; text-shadow: 0 0 5px #000, 0 0 0px #fff, 0 0 10px #1de02d44, 0 0 15px #1de02d;',
+  'T5XI': 'color: #4dd5ff; text-shadow: 0 0 5px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff; animation: glow 5000ms infinite;',
+  'DUAL RANGE': 'color: black;',
+  // 'TARS101': 'color: #1de02d; text-shadow: 0 0 5px #000, 0 0 0px #fff, 0 0 10px #1de02d44, 0 0 15px #1de02d;',
+  'TARS101': 'color: black; font-family: courier; opacity: 0.7;',
   'VC16': 'color: #4dd5ff; font-size: 1rem; text-shadow: 0 0 5px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff;',
   'ACSS': 'color: #f4c59e;',
-  'DIGITAL SIGHT': 'color: #e2b7bd; text-shadow: 0 0 5px #000, 0 0 0px #fff, 0 0 10px #e2b7bd44, 0 0 15px #e2b7bd;',
+  'DIGITAL': 'color: #e2b7bd; text-shadow: 0 0 5px #000, 0 0 0px #fff, 0 0 10px #e2b7bd44, 0 0 15px #e2b7bd;',
   'SLX5': 'color: #fddebf;',
   'TA31H': 'color: #fddebf;',
   'RU LONG-RANGE FOV': 'color: #f4c59e;',
-  'RU LONG-RANGE SIGHT': 'color: #f4c59e;',
+  'RU LONG-RANGE': 'color: #f4c59e;',
   'PALADIN OPTIC': 'color: #f4c59e;',
 }
 
@@ -89,18 +104,18 @@ function getRangeStyle() {
 }
 
 const styleTranslations: { [scopeName: string]: string[] } ={
-  'T5XI SIGHT':
+  'T5XI':
    ['display: none;',
-   'top: 53.8%; left: 52%; transform: translate(0px, -1em)',
-   'top: 57%; right: 52%; transform: translate(0px, -1em);',
-   'top: 60.5%; left: 52%; transform: translate(0px, -1em)',
-   'top: 63.7%; right: 52%; transform: translate(0px, -1em);',
-   'top: 69.3%; left: 52%; transform: translate(0px, -1em)',
-   'top: 74.7%; right: 52%; transform: translate(0px, -1em);',
-   'top: 74%; left: 52%; transform: translate(0px, -1em)'],
+   'top: 54.5%; left: 52%; transform: translate(0px, -1em)',
+   'top: 58.6%; right: 52%; transform: translate(0px, -1em);',
+   'top: 62.5%; left: 52%; transform: translate(0px, -1em)',
+   'top: 66.7%; right: 52%; transform: translate(0px, -1em);',
+   'top: 73.8%; left: 52%; transform: translate(0px, -1em)',
+   'top: 80.7%; right: 52%; transform: translate(0px, -1em);',
+   ],
 
-   'DUAL RANGE SIGHT': ['display: none;',
-   'font-size: 0.9rem; top: 53.5%; left: 51.5%; transform: translate(0px, -1em)',
+   'DUAL RANGE': ['display: none;',
+   'font-size: 0.7rem; top: 53.6%; left: 51.5%; transform: translate(0px, -1em)',
    'top: 57.3%; right: 52%; transform: translate(0px, -1em);',
    'top: 60.2%; left: 52%; transform: translate(0px, -1em)',
    'top: 63.2%; right: 52%; transform: translate(0px, -1em);',
@@ -121,7 +136,7 @@ const styleTranslations: { [scopeName: string]: string[] } ={
     'top: 64%; right: 52%; transform: translate(0px, -1em);',
     'top: 66%; left: 53%; transform: translate(0px, -1em)',
     'top: 67.5%; right: 52%; transform: translate(0px, -1em);',
-    'top: 69.3%; left: 53%; transform: translate(0px, -1em)',
+    'top: 69.5%; left: 54.75%; transform: translate(0px, -1em)',
     'top: 71.5%; right: 52%; transform: translate(0px, -1em);',
     'top: 73.5%; left: 53%; transform: translate(0px, -1em)',
     'top: 75%; right: 52%; transform: translate(0px, -1em);',
@@ -155,7 +170,7 @@ const styleTranslations: { [scopeName: string]: string[] } ={
     'top: 65%; right: 52%; transform: translate(0px, -1em);',
 
    ],
-   'DIGITAL SIGHT':
+   'DIGITAL':
       ['display: none;',
     'display: none;',
     'top: 55.8%; right: 51%; transform: translate(0px, -1em);',
@@ -196,7 +211,7 @@ const styleTranslations: { [scopeName: string]: string[] } ={
     'display: none; top: 67.5%; right: 52%; transform: translate(0px, -1em);',
 
     ],
-    'RU LONG-RANGE SIGHT':
+    'RU LONG-RANGE':
          ['display: none;',
     'display: none; top: 53.6%; right: 51%; transform: translate(0px, -1em);',
     'font-size: 0.8rem; top: 55.2%; right: 51%; transform: translate(0px, -1em);',
@@ -225,17 +240,19 @@ function getStylePosition(index: number) {
 <template>
   <body class="w-screen max-w-2xl max-h-[42rem] m-auto">
     <img
+      @click="removeScopeMenu"
       v-show="gameName.game === 'Breakpoint'"
       src="../assets/breakpoint.jpg"
       class="hidden sm:block w-96 h-20 m-auto rounded-md object-cover border-black border-2"
     />
     <img
+      @click="removeScopeMenu"
       v-show="gameName.game === 'Wildlands'"
       src="../assets/wildlands.jpg"
       class="hidden sm:block w-96 h-20 m-auto rounded-md object-cover border-black border-2"
     />
 
-      <div class="text-white text-2xl mt-1 h-10 relative">
+      <div class="text-white text-2xl mt-1 h-10 relative" @click="removeScopeMenu">
         <router-link
           to="/"
           class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute left-2/4 -rotate-[9deg] -translate-x-2/4 z-40"
@@ -244,12 +261,16 @@ function getStylePosition(index: number) {
         >
       </div>
 
+  <!-- Scope and Rifle Menus -->
+
       <div class="grid grid-cols-2">
 
         <div class="z-30 font-sans tracking-normal justify-self-end mr-4 border-slate-600 border">
           <Scopemenu
-            :scopes="scopeNames"
+
+            :scopes="scopeNames" :show="showScopeMenu"
             @chosenScope="changeScope"
+            @menu-clicked="changeScopeMenu"
           />
         </div>
 
@@ -262,10 +283,11 @@ function getStylePosition(index: number) {
         </div>
       </div>
 
-
+        <!-- SCOPE IMAGES -->
 
       <div
-        style="font-family: ZCOOL; font-size:1rem; padding-top: 100%;"
+        style="font-family: ZCOOL; font-size:1rem; padding-top: 100%; "
+        @click="removeScopeMenu"
         class="
           relative
           tracking-wide
@@ -273,22 +295,18 @@ function getStylePosition(index: number) {
           max-w-2xl
           z-[10]
           left-2/4
-          -translate-x-2/4
-
-        "
+          -translate-x-2/4"
       >
-
-        <!-- SCOPE IMAGES -->
 
         <Transition>
           <img
-          v-show="selectedScopeName==='T5XI SIGHT'" src="/assets/BP-Scopes/BP-T5XISight.jpg"
+          v-show="selectedScopeName==='T5XI'" src="/assets/BP-Scopes/BP-T5XISight.jpg"
           class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full"
         />
         </Transition>
         <Transition>
           <img
-          v-show="selectedScopeName==='DUAL RANGE SIGHT'" src="/assets/BP-Scopes/BP-Dual-Range-Sight.jpg"
+          v-show="selectedScopeName==='DUAL RANGE'" src="/assets/BP-Scopes/BP-Dual-Range-Sight.jpg"
           class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full"
         />
         </Transition>
@@ -318,7 +336,7 @@ function getStylePosition(index: number) {
         </Transition>
         <Transition>
           <img
-          v-show="selectedScopeName==='DIGITAL SIGHT'" src="/assets/BP-Scopes/BP-Digital-Sight.jpg"
+          v-show="selectedScopeName==='DIGITAL'" src="/assets/BP-Scopes/BP-Digital-Sight.jpg"
           class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full"
           />
         </Transition>
@@ -330,7 +348,7 @@ function getStylePosition(index: number) {
         </Transition>
         <Transition>
           <img
-          v-show="selectedScopeName==='RU LONG-RANGE SIGHT'" src="/assets/BP-Scopes/BP-RU-Long-Range-Sight.jpg"
+          v-show="selectedScopeName==='RU LONG-RANGE'" src="/assets/BP-Scopes/BP-RU-Long-Range-Sight.jpg"
           class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full"
           />
         </Transition>
@@ -355,29 +373,6 @@ function getStylePosition(index: number) {
           class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full"
           />
         </Transition>
-
-        <!-- SCOPE MENU -->
-
-        <!-- <div>
-          <div class="absolute top-[2%] right-[51%] z-30 font-sans w-[30%]">
-            <Scopemenu
-              :scopes="scopeNames"
-              @chosenScope="changeScope"
-            />
-          </div>
-        </div> -->
-
-        <!-- RIFLE MENU -->
-<!--
-        <div class="">
-          <div class="w-[35%] absolute top-[2%] left-[51%] z-40 font-sans tracking-normal">
-            <Riflemenu
-              :rifles="rifleNames"
-              :rifle-title="selectedRifle"
-              @selected="(rifle) => (selectedRifle = rifle)"
-            />
-          </div>
-        </div> -->
 
         <!-- Scope and Rifle LABELS -->
         <div
@@ -412,7 +407,7 @@ function getStylePosition(index: number) {
           "
           :style="getRifleLabelStyle()"
         >
-          <div  style='animation: flicker 4.5s infinite;'>
+          <div>
             <u>Rifle:</u><br />
             <glitched-writer :text="selectedRifle" appear preset="nier" />
           </div>
