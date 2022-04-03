@@ -25,7 +25,7 @@
 <template>
     <div
         @click="isOpen"
-        class="flex justify-end p-2 text-cyan-300 hover:text-cyan-200 hover:bg-opacity-[90%] bg-slate-900 bg-opacity-75 rounded-md hover:cursor-pointer z-50"
+        class="flex justify-end p-1 text-cyan-300 hover:text-cyan-200 hover:bg-opacity-[90%] bg-slate-900 bg-opacity-75 rounded-md hover:cursor-pointer z-50"
         >
         <span class="mr-2">{{scopeName}}</span>
         <svg
@@ -43,7 +43,7 @@
     </div>
 
     <!-- Dropdown menu -->
-    <div class="grid grid-cols-1 md:w-[15rem] w-[15rem] bg-black bg-opacity-0 z-50 absolute right-2/4">
+    <div class="grid grid-cols-1 md:w-[15rem] w-[15rem] bg-black bg-opacity-0 z-50 absolute right-2/5">
         <div
         v-show="show"
         v-for="(scope) in scopes" :key="scope"

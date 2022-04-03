@@ -33,31 +33,31 @@ const ranges = computed(() => {
 })
 
 const scopeLabelStyles: { [scopeName: string]: string } = {
-  'T5XI SIGHT': 'color: #4dd5ff; font-size: 1.25rem; line-height: 1.75rem; text-shadow: 0 0 5px #000, 0 0 6px #ffffff86, 0 0 7px #4dd5ff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff; animation: saturate 11s infinite;',
-  'DUAL RANGE SIGHT': 'color: black; font-size: 1.25rem; line-height: 1.75rem;',
-  'TARS101': 'color: #1de02d; font-size: 1.25rem; line-height: 1.75rem; text-shadow: 0 0 5px #000, 0 0 6px #ffffff11, 0 0 7px #1de02d86, 0 0 10px #1de02d86, 0 0 15px #1de02d; animation: saturate 11s infinite;',
-  'VC16': 'color: #4dd5ff; font-size: 1.25rem; line-height: 1.75rem; text-shadow: 0 0 5px #000, 0 0 6px #ffffff86, 0 0 7px #4dd5ff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff; animation: saturate 11s infinite;',
-  'ACSS': 'color: #f4c59e; font-size: 1.25rem; line-height: 1.75rem;',
-  'DIGITAL SIGHT': 'color: #e2b7bd; font-size: 1.25rem; line-height: 1.75rem; text-shadow: 0 0 5px #000, 0 0 6px #ffffff11, 0 0 7px #e2b7bd86, 0 0 10px #e2b7bd86, 0 0 15px #e2b7bd;',
-  'SLX5': 'color: #fddebf; font-size: 1.25rem; line-height: 1.75rem;',
+  'T5XI SIGHT': 'color: #4dd5ff; text-shadow: 0 0 5px #000, 0 0 6px #ffffff86, 0 0 7px #4dd5ff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff; animation: saturate 11s infinite;',
+  'DUAL RANGE SIGHT': 'color: black;',
+  'TARS101': 'color: #1de02d; text-shadow: 0 0 5px #000, 0 0 6px #ffffff11, 0 0 7px #1de02d86, 0 0 10px #1de02d86, 0 0 15px #1de02d; animation: saturate 11s infinite;',
+  'VC16': 'color: #4dd5ff; text-shadow: 0 0 5px #000, 0 0 6px #ffffff86, 0 0 7px #4dd5ff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff; animation: saturate 11s infinite;',
+  'ACSS': 'color: #f4c59e;',
+  'DIGITAL SIGHT': 'color: #e2b7bd;  text-shadow: 0 0 5px #000, 0 0 6px #ffffff11, 0 0 7px #e2b7bd86, 0 0 10px #e2b7bd86, 0 0 15px #e2b7bd;',
+  'SLX5': 'color: #fddebf;',
 }
 
 function getScopeLabelStyle() {
-  return `${scopeLabelStyles[selectedScopeName.value]}`
+  return `font-size: 1.1rem; line-height: 1.25rem; ${scopeLabelStyles[selectedScopeName.value]}`
 }
 
 const rifleLabelStyles: { [scopeName: string]: string } = {
-  'T5XI SIGHT': 'color: #4dd5ff; font-size: 1.25rem; line-height: 1.75rem; animation: glow 6000ms infinite;',
-  'DUAL RANGE SIGHT': 'color: black; font-size: 1.25rem; line-height: 1.75rem;',
-  'TARS101': 'color: #1de02d; font-size: 1.25rem; line-height: 1.75rem; text-shadow: 0 0 5px #000, 0 0 6px #ffffff86, 0 0 7px #1de02d, 0 0 10px #1de02d86, 0 0 15px #1de02d; animation: flicker 5s infinite;',
-  'VC16': 'color: #4dd5ff; font-size: 1.25rem; line-height: 1.75rem; animation: glow 6000ms infinite;',
-  'ACSS': 'color: #f4c59e; font-size: 1.25rem; line-height: 1.75rem;',
-  'DIGITAL SIGHT': 'color: #e2b7bd; font-size: 1.25rem; line-height: 1.75rem; text-shadow: 0 0 5px #000, 0 0 6px #ffffff11, 0 0 7px #e2b7bd86, 0 0 10px #e2b7bd86, 0 0 15px #e2b7bd;',
-  'SLX5': 'color: #fddebf; font-size: 1.25rem; line-height: 1.75rem;',
+  'T5XI SIGHT': 'color: #4dd5ff; animation: glow 6000ms infinite;',
+  'DUAL RANGE SIGHT': 'color: black;',
+  'TARS101': 'color: #1de02d; text-shadow: 0 0 5px #000, 0 0 6px #ffffff86, 0 0 7px #1de02d, 0 0 10px #1de02d86, 0 0 15px #1de02d; animation: flicker 5s infinite;',
+  'VC16': 'color: #4dd5ff; animation: glow 6000ms infinite;',
+  'ACSS': 'color: #f4c59e;',
+  'DIGITAL SIGHT': 'color: #e2b7bd;  text-shadow: 0 0 5px #000, 0 0 6px #ffffff11, 0 0 7px #e2b7bd86, 0 0 10px #e2b7bd86, 0 0 15px #e2b7bd;',
+  'SLX5': 'color: #fddebf;',
 }
 
 function getRifleLabelStyle() {
-  return `${rifleLabelStyles[selectedScopeName.value]}`
+  return `font-size: 1.1rem; line-height: 1.25rem; ${rifleLabelStyles[selectedScopeName.value]}`
 }
 
 
@@ -319,9 +319,10 @@ function getStylePosition(index: number) {
             absolute
             px-2
             text-center
-            w-[25%]
+            w-[32%]
+            sm:w-[25%]
             top-[20%]
-            right-[55%]
+            right-[52%]
 
           "
           :style='getScopeLabelStyle()'
@@ -336,9 +337,10 @@ function getStylePosition(index: number) {
             absolute
             px-2
             text-center
-            w-[25%]
+            w-[32%]
+            sm:w-[25%]
             top-[20%]
-            left-[55%]
+            left-[52%]
 
 
           "
