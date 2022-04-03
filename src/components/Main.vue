@@ -8,9 +8,9 @@ import fullData from '../assets/data';
 
 const gameName = defineProps<{game: string}>()
 
-const selectedScopeName = ref("T5XI SIGHT");
+const selectedScopeName = ref("SLX5");
 
-let selectedRifle = ref('G28 SCOUT');
+let selectedRifle = ref('M110 RANGE FINDER');
 
 const rifleNames = computed(() => {
   return Object.keys(fullData[gameName.game][selectedScopeName.value]);
@@ -39,6 +39,7 @@ const scopeLabelStyles: { [scopeName: string]: string } = {
   'VC16': 'color: #4dd5ff; font-size: 1.25rem; line-height: 1.75rem; text-shadow: 0 0 5px #000, 0 0 6px #ffffff86, 0 0 7px #4dd5ff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff; animation: saturate 11s infinite;',
   'ACSS': 'color: #f4c59e; font-size: 1.25rem; line-height: 1.75rem;',
   'DIGITAL SIGHT': 'color: #e2b7bd; font-size: 1.25rem; line-height: 1.75rem; text-shadow: 0 0 5px #000, 0 0 6px #ffffff11, 0 0 7px #e2b7bd86, 0 0 10px #e2b7bd86, 0 0 15px #e2b7bd;',
+  'SLX5': 'color: #fddebf; font-size: 1.25rem; line-height: 1.75rem;',
 }
 
 function getScopeLabelStyle() {
@@ -52,6 +53,7 @@ const rifleLabelStyles: { [scopeName: string]: string } = {
   'VC16': 'color: #4dd5ff; font-size: 1.25rem; line-height: 1.75rem; animation: glow 6000ms infinite;',
   'ACSS': 'color: #f4c59e; font-size: 1.25rem; line-height: 1.75rem;',
   'DIGITAL SIGHT': 'color: #e2b7bd; font-size: 1.25rem; line-height: 1.75rem; text-shadow: 0 0 5px #000, 0 0 6px #ffffff11, 0 0 7px #e2b7bd86, 0 0 10px #e2b7bd86, 0 0 15px #e2b7bd;',
+  'SLX5': 'color: #fddebf; font-size: 1.25rem; line-height: 1.75rem;',
 }
 
 function getRifleLabelStyle() {
@@ -66,6 +68,7 @@ const rangeStyles: { [scopeName: string]: string } = {
   'VC16': 'color: #4dd5ff; font-size: 1rem; text-shadow: 0 0 5px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff;',
   'ACSS': 'color: #f4c59e;',
   'DIGITAL SIGHT': 'color: #e2b7bd; text-shadow: 0 0 5px #000, 0 0 0px #fff, 0 0 10px #e2b7bd44, 0 0 15px #e2b7bd;',
+  'SLX5': 'color: #fddebf;',
 }
 
 function getRangeStyle() {
@@ -75,79 +78,88 @@ function getRangeStyle() {
 const styleTranslations: { [scopeName: string]: string[] } ={
   'T5XI SIGHT':
    ['display: none;',
-   'top: 52.3%; left: 50%; transform: translate(15px, -0.5em)',
-   'top: 55.6%; right: 50%; transform: translate(-15px, -0.5em);',
-   'top: 59.2%; left: 50%; transform: translate(15px, -0.5em)',
-   'top: 62.3%; right: 50%; transform: translate(-15px, -0.5em);',
-   'top: 68%; left: 50%; transform: translate(15px, -0.5em)',
-   'top: 73.3%; right: 50%; transform: translate(-15px, -0.5em);',
-   'top: 74%; left: 50%; transform: translate(15px, -0.5em)'],
+   'top: 53.8%; left: 52%; transform: translate(0px, -1em)',
+   'top: 57%; right: 52%; transform: translate(0px, -1em);',
+   'top: 60.5%; left: 52%; transform: translate(0px, -1em)',
+   'top: 63.7%; right: 52%; transform: translate(0px, -1em);',
+   'top: 69.3%; left: 52%; transform: translate(0px, -1em)',
+   'top: 74.7%; right: 52%; transform: translate(0px, -1em);',
+   'top: 74%; left: 52%; transform: translate(0px, -1em)'],
 
    'DUAL RANGE SIGHT': ['display: none;',
-   'top: 51%; left: 50%; transform: translate(15px)',
-   'top: 54%; right: 50%; transform: translate(-15px);',
-   'top: 57.5%; left: 50%; transform: translate(15px)',
-   'top: 60.5%; right: 50%; transform: translate(-15px);',
-   'top: 64%; left: 50%; transform: translate(15px)',
-   'top: 67%; right: 50%; transform: translate(-15px);',
-   'top: 70.5%; left: 50%; transform: translate(15px)',
-   'top: 73.5%; right: 50%; transform: translate(-15px)',
+   'font-size: 0.9rem; top: 53.5%; left: 51.5%; transform: translate(0px, -1em)',
+   'top: 57.3%; right: 52%; transform: translate(0px, -1em);',
+   'top: 60.2%; left: 52%; transform: translate(0px, -1em)',
+   'top: 63.2%; right: 52%; transform: translate(0px, -1em);',
+   'top: 66.7%; left: 52%; transform: translate(0px, -1em)',
+   'top: 69.8%; right: 52%; transform: translate(0px, -1em);',
+   'top: 73.2%; left: 52%; transform: translate(0px, -1em)',
+   'top: 76.5%; right: 52%; transform: translate(0px, -1em)',
    ],
 
    'TARS101':
    ['display: none;',
-    'top: 49%; right: 50%; transform: translate(-15px);',
-    'top: 51.5%; left: 50%; transform: translate(20px)',
-    'top: 53.5%; right: 50%; transform: translate(-15px);',
-    'top: 55.5%; left: 50%; transform: translate(20px)',
-    'top: 57.8%; right: 50%; transform: translate(-15px);',
-    'top: 59.5%; left: 50%; transform: translate(20px)',
-    'top: 61.5%; right: 50%; transform: translate(-15px);',
-    'top: 63%; left: 50%; transform: translate(20px)',
-    'top: 65%; right: 50%; transform: translate(-15px);',
-    'top: 67%; left: 50%; transform: translate(20px)',
-    'top: 68.5%; right: 50%; transform: translate(-15px);',
-    'top: 70.5%; left: 50%; transform: translate(20px)',
-    'top: 72.5%; right: 50%; transform: translate(-15px);',
-    'top: 74%; left: 50%; transform: translate(20px)',
-    'top: 76%; right: 50%; transform: translate(-15px);',
-    'top: 78%; left: 50%; transform: translate(20px)',
-    'top: 80%; right: 50%; transform: translate(-15px);',
-    'top: 81.5%; left: 50%; transform: translate(20px)',
-    'top: 83.5%; right: 50%; transform: translate(-15px);',
-    'top: 85%; left: 50%; transform: translate(20px)',
-    'top: 87%; right: 50%; transform: translate(-15px);',
-    'top: 88%; left: 50%; transform: translate(20px)',
+    'display: none;',
+    'top: 54.5%; left: 53%; transform: translate(0px, -1em)',
+    'top: 56.5%; right: 52%; transform: translate(0px, -1em);',
+    'top: 58.5%; left: 53%; transform: translate(0px, -1em)',
+    'top: 60.2%; right: 52%; transform: translate(0px, -1em);',
+    'top: 62%; left: 53%; transform: translate(0px, -1em)',
+    'top: 64%; right: 52%; transform: translate(0px, -1em);',
+    'top: 66%; left: 53%; transform: translate(0px, -1em)',
+    'top: 67.5%; right: 52%; transform: translate(0px, -1em);',
+    'top: 69.3%; left: 53%; transform: translate(0px, -1em)',
+    'top: 71.5%; right: 52%; transform: translate(0px, -1em);',
+    'top: 73.5%; left: 53%; transform: translate(0px, -1em)',
+    'top: 75%; right: 52%; transform: translate(0px, -1em);',
+    'top: 77%; left: 53%; transform: translate(0px, -1em)',
+    'top: 78.5%; right: 52%; transform: translate(0px, -1em);',
+    'top: 80.5%; left: 53%; transform: translate(0px, -1em)',
+    'top: 82.5%; right: 52%; transform: translate(0px, -1em);',
+    'top: 84.5%; left: 53%; transform: translate(0px, -1em)',
+    'top: 86%; right: 52%; transform: translate(0px, -1em);',
+    'top: 88%; left: 53%; transform: translate(0px, -1em)',
+    'top: 90%; right: 52%; transform: translate(0px, -1em);',
+    'top: 93%; left: 53%; transform: translate(0px, -1em)',
     ],
     'VC16':
    ['display: none;',
-    'top: 48.9%; left: 50%; transform: translate(15px)',
-    'top: 49.9%; right: 50%; transform: translate(-15px);',
-    'top: 51.5%; left: 50%; transform: translate(15px)',
-    'top: 52.9%; right: 50%; transform: translate(-15px);',
-    'top: 55%; left: 50%; transform: translate(15px)',
-    'top: 57.7%; right: 50%; transform: translate(-15px);',
-    'top: 59.5%; left: 50%; transform: translate(15px)'
+    'font-size: 0.9rem; top: 51.6%; left: 51.5%; transform: translate(0px, -1em)',
+    'font-size: 0.9rem; top: 52.5%; right: 51.5%; transform: translate(0px, -1em);',
+    'font-size: 0.9rem; top: 54%; left: 51.5%; transform: translate(0px, -1em)',
+    'top: 55.5%; right: 52%; transform: translate(0px, -1em);',
+    'top: 58%; left: 52%; transform: translate(0px, -1em)',
+    'top: 60.4%; right: 52%; transform: translate(0px, -1em);',
+    'top: 62.2%; left: 52%; transform: translate(0px, -1em)'
    ],
     'ACSS':
    ['display: none;',
-    'top: 49.5%; left: 50%; transform: translate(20px)',
-    'top: 50.6%; right: 50%; transform: translate(-15px);',
-    'top: 53.1%; left: 50%; transform: translate(15px)',
-    'top: 55.6%; right: 50%; transform: translate(-15px);',
-    'top: 58.2%; left: 50%; transform: translate(15px)',
-    'top: 62.5%; right: 50%; transform: translate(-15px);',
-    'top: 65.5%; left: 50%; transform: translate(15px)'
+    'display: none;',
+    'top: 53.6%; right: 52%; transform: translate(0px, -1em);',
+    'top: 55.7%; left: 52%; transform: translate(0px, -1em)',
+    'top: 58.3%; right: 52%; transform: translate(0px, -1em);',
+    'top: 61.4%; left: 52%; transform: translate(0px, -1em)',
+    'top: 65%; right: 52%; transform: translate(0px, -1em);',
+
    ],
    'DIGITAL SIGHT':
       ['display: none;',
-    'top: 50.5%; left: 50%; transform: translate(15px)',
-    'top: 53.5%; right: 50%; transform: translate(-15px);',
-    'top: 59%; left: 50%; transform: translate(15px)',
-    'top: 64.5%; right: 50%; transform: translate(-15px);',
-    'top: 70%; left: 50%; transform: translate(15px)',
-    'top: 72%; right: 50%; transform: translate(-15px);',
-    'top: 76%; left: 50%; transform: translate(15px)'
+    'display: none;',
+    'top: 55.8%; right: 51%; transform: translate(0px, -1em);',
+    'top: 61.5%; left: 52%; transform: translate(0px, -1em)',
+    'top: 67%; right: 51%; transform: translate(0px, -1em);',
+    'top: 72.5%; left: 52%; transform: translate(0px, -1em)',
+
+   ],
+   'SLX5':
+      ['display: none;',
+    'display: none; top: 53.6%; right: 52%; transform: translate(0px, -1em);',
+    'top: 55.6%; right: 52%; transform: translate(0px, -1em);',
+    'top: 59%; left: 52.5%; transform: translate(0px, -1em)',
+    'top: 63%; right: 52%; transform: translate(0px, -1em);',
+    'top: 68.4%; left: 52.5%; transform: translate(0px, -1em)',
+    'top: 74.5%; right: 52%; transform: translate(0px, -1em);',
+
    ],
   }
 
@@ -171,7 +183,7 @@ function getStylePosition(index: number) {
       src="../assets/wildlands.jpg"
       class="hidden sm:block w-96 h-20 m-auto rounded-md object-cover border-black border-2"
     />
-    <div class="">
+
       <div class="text-white text-2xl mt-1 h-10">
         <router-link
           to="/"
@@ -181,8 +193,28 @@ function getStylePosition(index: number) {
         >
       </div>
 
+      <div class="grid grid-cols-2">
+
+        <div class="z-30 font-sans tracking-normal justify-self-end mr-4 border-slate-600 border">
+          <Scopemenu
+            :scopes="scopeNames"
+            @chosenScope="changeScope"
+          />
+        </div>
+
+        <div class="z-40 font-sans tracking-normal ml-2 ">
+          <Riflemenu
+            :rifles="rifleNames"
+            :rifle-title="selectedRifle"
+            @selected="(rifle) => (selectedRifle = rifle)"
+          />
+        </div>
+      </div>
+
+
+
       <div
-        style="font-family: ZCOOL; padding-top: 100%;"
+        style="font-family: ZCOOL; font-size:1rem; padding-top: 100%;"
         class="
           relative
           tracking-wide
@@ -260,17 +292,17 @@ function getStylePosition(index: number) {
 
         <!-- SCOPE MENU -->
 
-        <div>
+        <!-- <div>
           <div class="absolute top-[2%] right-[51%] z-30 font-sans w-[30%]">
             <Scopemenu
               :scopes="scopeNames"
               @chosenScope="changeScope"
             />
           </div>
-        </div>
+        </div> -->
 
         <!-- RIFLE MENU -->
-
+<!--
         <div class="">
           <div class="w-[35%] absolute top-[2%] left-[51%] z-40 font-sans tracking-normal">
             <Riflemenu
@@ -279,7 +311,7 @@ function getStylePosition(index: number) {
               @selected="(rifle) => (selectedRifle = rifle)"
             />
           </div>
-        </div>
+        </div> -->
 
         <!-- Scope and Rifle LABELS -->
         <div
@@ -328,7 +360,7 @@ function getStylePosition(index: number) {
           </div>
 
         </div>
-      </div>
+
   </body>
 </template>
 

@@ -158,7 +158,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'M110 RANGE FINDER':[100,150,245,350,475,625,],
       'M4A1 RANGE FINDER':[100,145,205,290,400,],
       'MK17 ASSAULT MAWL-DA':[100,150,250,350,525,650,],
-    },
+      },
     'SLX5': {
       '553 SCOUT MAWL-DA':[75,150,225,300,425,600,],
       '553 SCOUT':[75,100,200,250,350,500,],
