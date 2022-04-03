@@ -8,9 +8,9 @@ import fullData from '../assets/data';
 
 const gameName = defineProps<{game: string}>()
 
-const selectedScopeName = ref("SLX5");
+const selectedScopeName = ref("TA31H");
 
-let selectedRifle = ref('M110 RANGE FINDER');
+let selectedRifle = ref('Select a rifle');
 
 const rifleNames = computed(() => {
   return Object.keys(fullData[gameName.game][selectedScopeName.value]);
@@ -40,6 +40,10 @@ const scopeLabelStyles: { [scopeName: string]: string } = {
   'ACSS': 'color: #f4c59e;',
   'DIGITAL SIGHT': 'color: #e2b7bd;  text-shadow: 0 0 5px #000, 0 0 6px #ffffff11, 0 0 7px #e2b7bd86, 0 0 10px #e2b7bd86, 0 0 15px #e2b7bd;',
   'SLX5': 'color: #fddebf;',
+  'TA31H': 'color: #fddebf;',
+  'RU LONG-RANGE FOV': 'color: #f4c59e;',
+  'RU LONG-RANGE SIGHT': 'color: #f4c59e;',
+  'PALADIN OPTIC': 'color: #f4c59e;',
 }
 
 function getScopeLabelStyle() {
@@ -54,6 +58,11 @@ const rifleLabelStyles: { [scopeName: string]: string } = {
   'ACSS': 'color: #f4c59e;',
   'DIGITAL SIGHT': 'color: #e2b7bd;  text-shadow: 0 0 5px #000, 0 0 6px #ffffff11, 0 0 7px #e2b7bd86, 0 0 10px #e2b7bd86, 0 0 15px #e2b7bd;',
   'SLX5': 'color: #fddebf;',
+  'TA31H': 'color: #fddebf;',
+  'RU LONG-RANGE FOV': 'color: #f4c59e;',
+  'RU LONG-RANGE SIGHT': 'color: #f4c59e;',
+  'PALADIN OPTIC': 'color: #f4c59e;',
+
 }
 
 function getRifleLabelStyle() {
@@ -69,6 +78,10 @@ const rangeStyles: { [scopeName: string]: string } = {
   'ACSS': 'color: #f4c59e;',
   'DIGITAL SIGHT': 'color: #e2b7bd; text-shadow: 0 0 5px #000, 0 0 0px #fff, 0 0 10px #e2b7bd44, 0 0 15px #e2b7bd;',
   'SLX5': 'color: #fddebf;',
+  'TA31H': 'color: #fddebf;',
+  'RU LONG-RANGE FOV': 'color: #f4c59e;',
+  'RU LONG-RANGE SIGHT': 'color: #f4c59e;',
+  'PALADIN OPTIC': 'color: #f4c59e;',
 }
 
 function getRangeStyle() {
@@ -161,6 +174,44 @@ const styleTranslations: { [scopeName: string]: string[] } ={
     'top: 74.5%; right: 52%; transform: translate(0px, -1em);',
 
    ],
+   'TA31H':
+         ['display: none;',
+    'display: none; top: 53.6%; right: 51%; transform: translate(0px, -1em);',
+    'top: 55.6%; right: 51%; transform: translate(0px, -1em);',
+    'font-size: 0.8rem; top: 58.5%; left: 52%; transform: translate(0px, -1em)',
+    'top: 62%; right: 51%; transform: translate(0px, -1em);',
+    'top: 66.7%; left: 52%; transform: translate(0px, -1em)',
+    'top: 72.5%; right: 51%; transform: translate(0px, -1em);',
+    ],
+   'RU LONG-RANGE FOV':
+   ['display: none;',
+    'display: none;',
+    'font-size: 0.8rem; top: 53.5%; left: 51.5%; transform: translate(0px, -1em)',
+    'display: none; top: 56.5%; right: 52%; transform: translate(0px, -1em);',
+    'top: 56.2%; right: 52%; transform: translate(0px, -1em)',
+    'display: none; top: 60.2%; right: 52%; transform: translate(0px, -1em);',
+    'top: 61.2%; left: 52%; transform: translate(0px, -1em)',
+    'display: none; top: 64%; right: 52%; transform: translate(0px, -1em);',
+    'top: 66.4%; right: 52%; transform: translate(0px, -1em)',
+    'display: none; top: 67.5%; right: 52%; transform: translate(0px, -1em);',
+
+    ],
+    'RU LONG-RANGE SIGHT':
+         ['display: none;',
+    'display: none; top: 53.6%; right: 51%; transform: translate(0px, -1em);',
+    'font-size: 0.8rem; top: 55.2%; right: 51%; transform: translate(0px, -1em);',
+    'top: 57.5%; left: 52.5%; transform: translate(0px, -1em)',
+    'font-size: 0.7rem; top: 59.4%; right: 51%; transform: translate(0px, -1em);',
+    'top: 61.7%; left: 52.5%; transform: translate(0px, -1em)',
+    ],
+    'PALADIN OPTIC':
+         ['display: none;',
+    'display: none; top: 53.6%; right: 51%; transform: translate(0px, -1em);',
+    'font-size: 0.8rem; top: 55.2%; right: 51%; transform: translate(0px, -1em);',
+    'top: 57.5%; left: 52.5%; transform: translate(0px, -1em)',
+    'font-size: 0.7rem; top: 59.4%; right: 51%; transform: translate(0px, -1em);',
+    'top: 61.7%; left: 52.5%; transform: translate(0px, -1em)',
+    ],
   }
 
 function getStylePosition(index: number) {
@@ -184,7 +235,7 @@ function getStylePosition(index: number) {
       class="hidden sm:block w-96 h-20 m-auto rounded-md object-cover border-black border-2"
     />
 
-      <div class="text-white text-2xl mt-1 h-10">
+      <div class="text-white text-2xl mt-1 h-10 relative">
         <router-link
           to="/"
           class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute left-2/4 -rotate-[9deg] -translate-x-2/4 z-40"
@@ -243,7 +294,7 @@ function getStylePosition(index: number) {
         </Transition>
         <Transition>
           <img
-          v-show="selectedScopeName==='TARS101'" src="/assets/BP-Scopes/BP-TARS101.jpg"
+          v-show="selectedScopeName==='TARS101' && gameName.game === 'Breakpoint'" src="/assets/BP-Scopes/BP-TARS101.jpg"
           class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full"
         />
         </Transition>
@@ -287,6 +338,21 @@ function getStylePosition(index: number) {
           <img
           v-show="selectedScopeName==='RU LONG-RANGE FOV'" src="/assets/BP-Scopes/BP-RU-Long-Range-FOV-Sight.jpg"
           class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full border-4 border-black"
+          />
+        </Transition>
+        <Transition>
+          <img
+          v-show="selectedScopeName==='PALADIN OPTIC'" src="/assets/BP-Scopes/BP-RU-Long-Range-Sight.jpg"
+          class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full border-4 border-black"
+          />
+        </Transition>
+
+        <!-- WILDLANDS SCOPE IMAGES -->
+
+        <Transition>
+          <img
+          v-show="selectedScopeName==='TA31H' && gameName.game==='Wildlands'" src="/assets/WL-Scopes/WL-TA31H.jpg"
+          class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full"
           />
         </Transition>
 
