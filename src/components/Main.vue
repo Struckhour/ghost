@@ -9,9 +9,24 @@ import fullData from '../assets/data';
 const gameName = defineProps<{game: string}>()
 
 let showScopeMenu = ref(false);
-const selectedScopeName = ref("TA31H");
 
-let selectedRifle = ref('Select a rifle');
+const selectedScopeName = ref('');
+
+if(gameName.game === 'Breakpoint') {
+  selectedScopeName.value = ('T5XI');
+} else {
+  selectedScopeName.value = ('TA31H');
+}
+
+
+let selectedRifle = ref('');
+
+if(gameName.game === 'Breakpoint') {
+  selectedRifle.value = ('Choose a rifle');
+} else {
+  selectedRifle.value = ('Choose a rifle');
+}
+
 
 const rifleNames = computed(() => {
   return Object.keys(fullData[gameName.game][selectedScopeName.value]);
@@ -44,196 +59,267 @@ const ranges = computed(() => {
   return fullData[gameName.game][selectedScopeName.value][selectedRifle.value]
 })
 
-const scopeLabelStyles: { [scopeName: string]: string } = {
-  'T5XI': 'color: #4dd5ff; text-shadow: 0 0 5px #000, 0 0 6px #ffffff86, 0 0 7px #4dd5ff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff; animation: saturate 11s infinite;',
-  'DUAL RANGE': 'color: black;',
- // 'TARS101': 'color: #1de02d; text-shadow: 0 0 5px #000, 0 0 6px #ffffff11, 0 0 7px #1de02d86, 0 0 10px #1de02d86, 0 0 15px #1de02d; animation: saturate 11s infinite;',
-  'TARS101': 'color: black; font-family: courier; opacity: 0.7;',
-  'VC16': 'color: #4dd5ff; text-shadow: 0 0 5px #000, 0 0 6px #ffffff86, 0 0 7px #4dd5ff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff; animation: saturate 11s infinite;',
-  'ACSS': 'color: #f4c59e;',
-  'DIGITAL': 'color: #e2b7bd;  text-shadow: 0 0 5px #000, 0 0 6px #ffffff11, 0 0 7px #e2b7bd86, 0 0 10px #e2b7bd86, 0 0 15px #e2b7bd;',
-  'SLX5': 'color: #fddebf;',
-  'TA31H': 'color: #fddebf;',
-  'RU LONG-RANGE FOV': 'color: #f4c59e;',
-  'RU LONG-RANGE': 'color: #f4c59e;',
-  'PALADIN OPTIC': 'color: #f4c59e;',
+const scopeLabelStyles: { [gameName: string]:{[scopeName: string]: string }} = {
+  Breakpoint: {
+    'T5XI': 'color: #4dd5ff; text-shadow: 0 0 5px #000, 0 0 6px #ffffff86, 0 0 7px #4dd5ff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff; animation: saturate 11s infinite;',
+    'DUAL RANGE': 'color: black;',
+  // 'TARS101': 'color: #1de02d; text-shadow: 0 0 5px #000, 0 0 6px #ffffff11, 0 0 7px #1de02d86, 0 0 10px #1de02d86, 0 0 15px #1de02d; animation: saturate 11s infinite;',
+    'TARS101': 'color: black; font-family: courier; opacity: 0.7;',
+    'VC16': 'color: #4dd5ff; text-shadow: 0 0 5px #000, 0 0 6px #ffffff86, 0 0 7px #4dd5ff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff; animation: saturate 11s infinite;',
+    'ACSS': 'color: #f4c59e;',
+    'DIGITAL': 'color: #e2b7bd;  text-shadow: 0 0 5px #000, 0 0 6px #ffffff11, 0 0 7px #e2b7bd86, 0 0 10px #e2b7bd86, 0 0 15px #e2b7bd;',
+    'SLX5': 'color: #fddebf;',
+    'TA31H': 'color: #fddebf;',
+    'RU LONG-RANGE FOV': 'color: #f4c59e;',
+    'RU LONG-RANGE': 'color: #f4c59e;',
+    'PALADIN OPTIC': 'color: #f4c59e;',
+  },
+  Wildlands: {
+    'TA31H': 'color: black;',
+    'TARS101': 'color: #e2b7bd; text-shadow: 0 0 5px #000, 0 0 0px #fff, 0 0 10px #e2b7bd44, 0 0 15px #e2b7bd;',
+    'T5XI TACTICAL': 'color:black;'
+  }
 }
 
 function getScopeLabelStyle() {
-  return `font-size: 1.1rem; line-height: 1.25rem; ${scopeLabelStyles[selectedScopeName.value]}`
+  return `font-size: 1.1rem; line-height: 1.25rem; ${scopeLabelStyles[gameName.game][selectedScopeName.value]}`
 }
 
-const rifleLabelStyles: { [scopeName: string]: string } = {
+const rifleLabelStyles: { [gameName: string]: {[scopeName: string]: string} } = {
+  Breakpoint:{
   'T5XI': 'color: #4dd5ff; animation: glow 6000ms infinite;',
-  'DUAL RANGE': 'color: black;',
-  //'TARS101': 'color: #1de02d; text-shadow: 0 0 5px #000, 0 0 6px #ffffff86, 0 0 7px #1de02d, 0 0 10px #1de02d86, 0 0 15px #1de02d; animation: flicker 5s infinite;',
-  'TARS101': 'color: black; font-family: courier; opacity: 0.7;',
-  'VC16': 'color: #4dd5ff; animation: glow 6000ms infinite;',
-  'ACSS': 'color: #f4c59e;',
-  'DIGITAL': 'color: #e2b7bd;  text-shadow: 0 0 5px #000, 0 0 6px #ffffff11, 0 0 7px #e2b7bd86, 0 0 10px #e2b7bd86, 0 0 15px #e2b7bd;',
-  'SLX5': 'color: #fddebf;',
-  'TA31H': 'color: #fddebf;',
-  'RU LONG-RANGE FOV': 'color: #f4c59e;',
-  'RU LONG-RANGE': 'color: #f4c59e;',
-  'PALADIN OPTIC': 'color: #f4c59e;',
-
+    'DUAL RANGE': 'color: black;',
+    //'TARS101': 'color: #1de02d; text-shadow: 0 0 5px #000, 0 0 6px #ffffff86, 0 0 7px #1de02d, 0 0 10px #1de02d86, 0 0 15px #1de02d; animation: flicker 5s infinite;',
+    'TARS101': 'color: black; font-family: courier; opacity: 0.7;',
+    'VC16': 'color: #4dd5ff; animation: glow 6000ms infinite;',
+    'ACSS': 'color: #f4c59e;',
+    'DIGITAL': 'color: #e2b7bd;  text-shadow: 0 0 5px #000, 0 0 6px #ffffff11, 0 0 7px #e2b7bd86, 0 0 10px #e2b7bd86, 0 0 15px #e2b7bd;',
+    'SLX5': 'color: #fddebf;',
+    'TA31H': 'color: #fddebf;',
+    'RU LONG-RANGE FOV': 'color: #f4c59e;',
+    'RU LONG-RANGE': 'color: #f4c59e;',
+    'PALADIN OPTIC': 'color: #f4c59e;',
+  },
+  Wildlands: {
+    'TA31H': 'color: black;',
+    'TARS101': 'color: #e2b7bd; text-shadow: 0 0 5px #000, 0 0 0px #fff, 0 0 10px #e2b7bd44, 0 0 15px #e2b7bd;',
+    'T5XI TACTICAL': 'color:black;'
+  }
 }
 
 function getRifleLabelStyle() {
-  return `font-size: 1.1rem; line-height: 1.25rem; ${rifleLabelStyles[selectedScopeName.value]}`
+  return `font-size: 1.1rem; line-height: 1.25rem; ${rifleLabelStyles[gameName.game][selectedScopeName.value]}`
 }
 
 
-const rangeStyles: { [scopeName: string]: string } = {
-  'T5XI': 'color: #4dd5ff; text-shadow: 0 0 5px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff; animation: glow 5000ms infinite;',
-  'DUAL RANGE': 'color: black;',
-  // 'TARS101': 'color: #1de02d; text-shadow: 0 0 5px #000, 0 0 0px #fff, 0 0 10px #1de02d44, 0 0 15px #1de02d;',
-  'TARS101': 'color: black; font-family: courier; opacity: 0.7;',
-  'VC16': 'color: #4dd5ff; font-size: 1rem; text-shadow: 0 0 5px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff;',
-  'ACSS': 'color: #f4c59e;',
-  'DIGITAL': 'color: #e2b7bd; text-shadow: 0 0 5px #000, 0 0 0px #fff, 0 0 10px #e2b7bd44, 0 0 15px #e2b7bd;',
-  'SLX5': 'color: #fddebf;',
-  'TA31H': 'color: #fddebf;',
-  'RU LONG-RANGE FOV': 'color: #f4c59e;',
-  'RU LONG-RANGE': 'color: #f4c59e;',
-  'PALADIN OPTIC': 'color: #f4c59e;',
+const rangeStyles: { [gameName: string]: {[scopeName: string]: string }} = {
+  Breakpoint:{
+    'T5XI': 'color: #4dd5ff; text-shadow: 0 0 5px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff; animation: glow 5000ms infinite;',
+    'DUAL RANGE': 'color: black;',
+    // 'TARS101': 'color: #1de02d; text-shadow: 0 0 5px #000, 0 0 0px #fff, 0 0 10px #1de02d44, 0 0 15px #1de02d;',
+    'TARS101': 'color: black; font-family: courier; opacity: 0.7;',
+    'VC16': 'color: #4dd5ff; font-size: 1rem; text-shadow: 0 0 5px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff;',
+    'ACSS': 'color: #f4c59e;',
+    'DIGITAL': 'color: #e2b7bd; text-shadow: 0 0 5px #000, 0 0 0px #fff, 0 0 10px #e2b7bd44, 0 0 15px #e2b7bd;',
+    'SLX5': 'color: #fddebf;',
+    'TA31H': 'color: #fddebf;',
+    'RU LONG-RANGE FOV': 'color: #f4c59e;',
+    'RU LONG-RANGE': 'color: #f4c59e;',
+    'PALADIN OPTIC': 'color: #f4c59e;',
+    },
+  Wildlands: {
+    'TA31H': 'color: black;',
+    'TARS101': 'color: #e2b7bd; text-shadow: 0 0 5px #000, 0 0 0px #fff, 0 0 10px #e2b7bd44, 0 0 15px #e2b7bd;',
+    'T5XI TACTICAL': 'color: black;'
+  }
 }
 
 function getRangeStyle() {
-  return `${rangeStyles[selectedScopeName.value]}`
+  return `${rangeStyles[gameName.game][selectedScopeName.value]}`
 }
 
-const styleTranslations: { [scopeName: string]: string[] } ={
-  'T5XI':
-   ['display: none;',
-   'top: 54.5%; left: 52%; transform: translate(0px, -1em)',
-   'top: 58.6%; right: 52%; transform: translate(0px, -1em);',
-   'top: 62.5%; left: 52%; transform: translate(0px, -1em)',
-   'top: 66.7%; right: 52%; transform: translate(0px, -1em);',
-   'top: 73.8%; left: 52%; transform: translate(0px, -1em)',
-   'top: 80.7%; right: 52%; transform: translate(0px, -1em);',
-   ],
-
-   'DUAL RANGE': ['display: none;',
-   'font-size: 0.7rem; top: 53.6%; left: 51.5%; transform: translate(0px, -1em)',
-   'top: 57.3%; right: 52%; transform: translate(0px, -1em);',
-   'top: 60.2%; left: 52%; transform: translate(0px, -1em)',
-   'top: 63.2%; right: 52%; transform: translate(0px, -1em);',
-   'top: 66.7%; left: 52%; transform: translate(0px, -1em)',
-   'top: 69.8%; right: 52%; transform: translate(0px, -1em);',
-   'top: 73.2%; left: 52%; transform: translate(0px, -1em)',
-   'top: 76.5%; right: 52%; transform: translate(0px, -1em)',
-   ],
-
-   'TARS101':
-   ['display: none;',
-    'display: none;',
-    'top: 54.5%; left: 53%; transform: translate(0px, -1em)',
-    'top: 56.5%; right: 52%; transform: translate(0px, -1em);',
-    'top: 58.5%; left: 53%; transform: translate(0px, -1em)',
-    'top: 60.2%; right: 52%; transform: translate(0px, -1em);',
-    'top: 62%; left: 53%; transform: translate(0px, -1em)',
-    'top: 64%; right: 52%; transform: translate(0px, -1em);',
-    'top: 66%; left: 53%; transform: translate(0px, -1em)',
-    'top: 67.5%; right: 52%; transform: translate(0px, -1em);',
-    'top: 69.5%; left: 54.75%; transform: translate(0px, -1em)',
-    'top: 71.5%; right: 52%; transform: translate(0px, -1em);',
-    'top: 73.5%; left: 53%; transform: translate(0px, -1em)',
-    'top: 75%; right: 52%; transform: translate(0px, -1em);',
-    'top: 77%; left: 53%; transform: translate(0px, -1em)',
-    'top: 78.5%; right: 52%; transform: translate(0px, -1em);',
-    'top: 80.5%; left: 53%; transform: translate(0px, -1em)',
-    'top: 82.5%; right: 52%; transform: translate(0px, -1em);',
-    'top: 84.5%; left: 53%; transform: translate(0px, -1em)',
-    'top: 86%; right: 52%; transform: translate(0px, -1em);',
-    'top: 88%; left: 53%; transform: translate(0px, -1em)',
-    'top: 90%; right: 52%; transform: translate(0px, -1em);',
-    'top: 93%; left: 53%; transform: translate(0px, -1em)',
+const styleTranslations: { [gameName: string]: {[scopeName: string]: string[]} } ={
+  'Breakpoint':
+    {
+    T5XI:
+    ['display: none;',
+    'top: 54.5%; left: 52%; transform: translate(0px, -1em)',
+    'top: 58.6%; right: 52%; transform: translate(0px, -1em);',
+    'top: 62.5%; left: 52%; transform: translate(0px, -1em)',
+    'top: 66.7%; right: 52%; transform: translate(0px, -1em);',
+    'top: 73.8%; left: 52%; transform: translate(0px, -1em)',
+    'top: 80.7%; right: 52%; transform: translate(0px, -1em);',
     ],
-    'VC16':
-   ['display: none;',
-    'font-size: 0.9rem; top: 51.6%; left: 51.5%; transform: translate(0px, -1em)',
-    'font-size: 0.9rem; top: 52.5%; right: 51.5%; transform: translate(0px, -1em);',
-    'font-size: 0.9rem; top: 54%; left: 51.5%; transform: translate(0px, -1em)',
-    'top: 55.5%; right: 52%; transform: translate(0px, -1em);',
-    'top: 58%; left: 52%; transform: translate(0px, -1em)',
-    'top: 60.4%; right: 52%; transform: translate(0px, -1em);',
-    'top: 62.2%; left: 52%; transform: translate(0px, -1em)'
-   ],
-    'ACSS':
-   ['display: none;',
-    'display: none;',
-    'top: 53.6%; right: 52%; transform: translate(0px, -1em);',
-    'top: 55.7%; left: 52%; transform: translate(0px, -1em)',
-    'top: 58.3%; right: 52%; transform: translate(0px, -1em);',
-    'top: 61.4%; left: 52%; transform: translate(0px, -1em)',
-    'top: 65%; right: 52%; transform: translate(0px, -1em);',
 
-   ],
-   'DIGITAL':
-      ['display: none;',
-    'display: none;',
-    'top: 55.8%; right: 51%; transform: translate(0px, -1em);',
-    'top: 61.5%; left: 52%; transform: translate(0px, -1em)',
-    'top: 67%; right: 51%; transform: translate(0px, -1em);',
-    'top: 72.5%; left: 52%; transform: translate(0px, -1em)',
-
-   ],
-   'SLX5':
-      ['display: none;',
-    'display: none; top: 53.6%; right: 52%; transform: translate(0px, -1em);',
-    'top: 55.6%; right: 52%; transform: translate(0px, -1em);',
-    'top: 59%; left: 52.5%; transform: translate(0px, -1em)',
-    'top: 63%; right: 52%; transform: translate(0px, -1em);',
-    'top: 68.4%; left: 52.5%; transform: translate(0px, -1em)',
-    'top: 74.5%; right: 52%; transform: translate(0px, -1em);',
-
-   ],
-   'TA31H':
-         ['display: none;',
-    'display: none; top: 53.6%; right: 51%; transform: translate(0px, -1em);',
-    'top: 55.6%; right: 51%; transform: translate(0px, -1em);',
-    'font-size: 0.8rem; top: 58.5%; left: 52%; transform: translate(0px, -1em)',
-    'top: 62%; right: 51%; transform: translate(0px, -1em);',
+    'DUAL RANGE': ['display: none;',
+    'font-size: 0.7rem; top: 53.6%; left: 51.5%; transform: translate(0px, -1em)',
+    'top: 57.3%; right: 52%; transform: translate(0px, -1em);',
+    'top: 60.2%; left: 52%; transform: translate(0px, -1em)',
+    'top: 63.2%; right: 52%; transform: translate(0px, -1em);',
     'top: 66.7%; left: 52%; transform: translate(0px, -1em)',
-    'top: 72.5%; right: 51%; transform: translate(0px, -1em);',
+    'top: 69.8%; right: 52%; transform: translate(0px, -1em);',
+    'top: 73.2%; left: 52%; transform: translate(0px, -1em)',
+    'top: 76.5%; right: 52%; transform: translate(0px, -1em)',
     ],
-   'RU LONG-RANGE FOV':
-   ['display: none;',
-    'display: none;',
-    'font-size: 0.8rem; top: 53.5%; left: 51.5%; transform: translate(0px, -1em)',
-    'display: none; top: 56.5%; right: 52%; transform: translate(0px, -1em);',
-    'top: 56.2%; right: 52%; transform: translate(0px, -1em)',
-    'display: none; top: 60.2%; right: 52%; transform: translate(0px, -1em);',
-    'top: 61.2%; left: 52%; transform: translate(0px, -1em)',
-    'display: none; top: 64%; right: 52%; transform: translate(0px, -1em);',
-    'top: 66.4%; right: 52%; transform: translate(0px, -1em)',
-    'display: none; top: 67.5%; right: 52%; transform: translate(0px, -1em);',
+
+    'TARS101':
+    ['display: none;',
+      'display: none;',
+      'top: 54.5%; left: 53%; transform: translate(0px, -1em)',
+      'top: 56.5%; right: 52%; transform: translate(0px, -1em);',
+      'top: 58.5%; left: 53%; transform: translate(0px, -1em)',
+      'top: 60.2%; right: 52%; transform: translate(0px, -1em);',
+      'top: 62%; left: 53%; transform: translate(0px, -1em)',
+      'top: 64%; right: 52%; transform: translate(0px, -1em);',
+      'top: 66%; left: 53%; transform: translate(0px, -1em)',
+      'top: 67.5%; right: 52%; transform: translate(0px, -1em);',
+      'top: 69.5%; left: 54.75%; transform: translate(0px, -1em)',
+      'top: 71.5%; right: 52%; transform: translate(0px, -1em);',
+      'top: 73.5%; left: 53%; transform: translate(0px, -1em)',
+      'top: 75%; right: 52%; transform: translate(0px, -1em);',
+      'top: 77%; left: 53%; transform: translate(0px, -1em)',
+      'top: 78.5%; right: 52%; transform: translate(0px, -1em);',
+      'top: 80.5%; left: 53%; transform: translate(0px, -1em)',
+      'top: 82.5%; right: 52%; transform: translate(0px, -1em);',
+      'top: 84.5%; left: 53%; transform: translate(0px, -1em)',
+      'top: 86%; right: 52%; transform: translate(0px, -1em);',
+      'top: 88%; left: 53%; transform: translate(0px, -1em)',
+      'top: 90%; right: 52%; transform: translate(0px, -1em);',
+      'top: 93%; left: 53%; transform: translate(0px, -1em)',
+      ],
+      'VC16':
+    ['display: none;',
+      'font-size: 0.9rem; top: 51.6%; left: 51.5%; transform: translate(0px, -1em)',
+      'font-size: 0.9rem; top: 52.5%; right: 51.5%; transform: translate(0px, -1em);',
+      'font-size: 0.9rem; top: 54%; left: 51.5%; transform: translate(0px, -1em)',
+      'top: 55.5%; right: 52%; transform: translate(0px, -1em);',
+      'top: 58%; left: 52%; transform: translate(0px, -1em)',
+      'top: 60.4%; right: 52%; transform: translate(0px, -1em);',
+      'top: 62.2%; left: 52%; transform: translate(0px, -1em)'
+    ],
+      'ACSS':
+    ['display: none;',
+      'display: none;',
+      'top: 53.6%; right: 52%; transform: translate(0px, -1em);',
+      'top: 55.7%; left: 52%; transform: translate(0px, -1em)',
+      'top: 58.3%; right: 52%; transform: translate(0px, -1em);',
+      'top: 61.4%; left: 52%; transform: translate(0px, -1em)',
+      'top: 65%; right: 52%; transform: translate(0px, -1em);',
 
     ],
-    'RU LONG-RANGE':
-         ['display: none;',
-    'display: none; top: 53.6%; right: 51%; transform: translate(0px, -1em);',
-    'font-size: 0.8rem; top: 55.2%; right: 51%; transform: translate(0px, -1em);',
-    'top: 57.5%; left: 52.5%; transform: translate(0px, -1em)',
-    'font-size: 0.7rem; top: 59.4%; right: 51%; transform: translate(0px, -1em);',
-    'top: 61.7%; left: 52.5%; transform: translate(0px, -1em)',
+    'DIGITAL':
+        ['display: none;',
+      'display: none;',
+      'top: 55.8%; right: 51%; transform: translate(0px, -1em);',
+      'top: 61.5%; left: 52%; transform: translate(0px, -1em)',
+      'top: 67%; right: 51%; transform: translate(0px, -1em);',
+      'top: 72.5%; left: 52%; transform: translate(0px, -1em)',
+
     ],
-    'PALADIN OPTIC':
-         ['display: none;',
-    'display: none; top: 53.6%; right: 51%; transform: translate(0px, -1em);',
-    'font-size: 0.8rem; top: 55.2%; right: 51%; transform: translate(0px, -1em);',
-    'top: 57.5%; left: 52.5%; transform: translate(0px, -1em)',
-    'font-size: 0.7rem; top: 59.4%; right: 51%; transform: translate(0px, -1em);',
-    'top: 61.7%; left: 52.5%; transform: translate(0px, -1em)',
+    'SLX5':
+        ['display: none;',
+      'display: none; top: 53.6%; right: 52%; transform: translate(0px, -1em);',
+      'top: 55.6%; right: 52%; transform: translate(0px, -1em);',
+      'top: 59%; left: 52.5%; transform: translate(0px, -1em)',
+      'top: 63%; right: 52%; transform: translate(0px, -1em);',
+      'top: 68.4%; left: 52.5%; transform: translate(0px, -1em)',
+      'top: 74.5%; right: 52%; transform: translate(0px, -1em);',
+
     ],
+    'TA31H':
+          ['display: none;',
+      'display: none; top: 53.6%; right: 51%; transform: translate(0px, -1em);',
+      'top: 55.6%; right: 51%; transform: translate(0px, -1em);',
+      'font-size: 0.8rem; top: 58.5%; left: 52%; transform: translate(0px, -1em)',
+      'top: 62%; right: 51%; transform: translate(0px, -1em);',
+      'top: 66.7%; left: 52%; transform: translate(0px, -1em)',
+      'top: 72.5%; right: 51%; transform: translate(0px, -1em);',
+      ],
+    'RU LONG-RANGE FOV':
+    ['display: none;',
+      'display: none;',
+      'font-size: 0.8rem; top: 53.5%; left: 51.5%; transform: translate(0px, -1em)',
+      'display: none; top: 56.5%; right: 52%; transform: translate(0px, -1em);',
+      'top: 56.2%; right: 52%; transform: translate(0px, -1em)',
+      'display: none; top: 60.2%; right: 52%; transform: translate(0px, -1em);',
+      'top: 61.2%; left: 52%; transform: translate(0px, -1em)',
+      'display: none; top: 64%; right: 52%; transform: translate(0px, -1em);',
+      'top: 66.4%; right: 52%; transform: translate(0px, -1em)',
+      'display: none; top: 67.5%; right: 52%; transform: translate(0px, -1em);',
+
+      ],
+      'RU LONG-RANGE':
+          ['display: none;',
+      'display: none; top: 53.6%; right: 51%; transform: translate(0px, -1em);',
+      'font-size: 0.8rem; top: 55.2%; right: 51%; transform: translate(0px, -1em);',
+      'top: 57.5%; left: 52.5%; transform: translate(0px, -1em)',
+      'font-size: 0.7rem; top: 59.4%; right: 51%; transform: translate(0px, -1em);',
+      'top: 61.7%; left: 52.5%; transform: translate(0px, -1em)',
+      ],
+      'PALADIN OPTIC':
+          ['display: none;',
+      'display: none; top: 53.6%; right: 51%; transform: translate(0px, -1em);',
+      'font-size: 0.8rem; top: 55.2%; right: 51%; transform: translate(0px, -1em);',
+      'top: 57.5%; left: 52.5%; transform: translate(0px, -1em)',
+      'font-size: 0.7rem; top: 59.4%; right: 51%; transform: translate(0px, -1em);',
+      'top: 61.7%; left: 52.5%; transform: translate(0px, -1em)',
+      ],
+    },
+    Wildlands: {
+      'TA31H':
+        ['display: none;',
+        'display: none; top: 53.6%; right: 51%; transform: translate(0px, -1em);',
+        'top: 57%; right: 52%; transform: translate(0px, -1em);',
+        'top: 59.5%; left: 53%; transform: translate(0px, -1em)',
+        'top: 63.5%; right: 51.5%; transform: translate(0px, -1em);',
+        'top: 68.2%; left: 53%; transform: translate(0px, -1em)',
+        'top: 72.5%; right: 51.5%; transform: translate(0px, -1em);',
+        ],
+      'TARS101':
+        ['display: none;',
+        'display: none;',
+        'top: 52.5%; left: 51.5%; transform: translate(0px, -1em)',
+        'top: 54.9%; right: 52%; transform: translate(0px, -1em);',
+        'top: 57%; left: 53%; transform: translate(0px, -1em)',
+        'top: 59.2%; right: 52%; transform: translate(0px, -1em);',
+        'top: 61%; left: 53%; transform: translate(0px, -1em)',
+        'top: 63%; right: 52%; transform: translate(0px, -1em);',
+        'top: 65%; left: 53%; transform: translate(0px, -1em)',
+        'top: 66.5%; right: 52%; transform: translate(0px, -1em);',
+        'top: 68.5%; left: 54.75%; transform: translate(0px, -1em)',
+        'top: 70.5%; right: 52%; transform: translate(0px, -1em);',
+        'top: 72.6%; left: 53%; transform: translate(0px, -1em)',
+        'top: 74.2%; right: 52%; transform: translate(0px, -1em);',
+        'top: 76%; left: 53%; transform: translate(0px, -1em)',
+        'top: 78%; right: 52%; transform: translate(0px, -1em);',
+        'top: 80.2%; left: 53%; transform: translate(0px, -1em)',
+        'top: 82.5%; right: 52%; transform: translate(0px, -1em);',
+        'top: 84.5%; left: 53%; transform: translate(0px, -1em)',
+        'top: 86%; right: 52%; transform: translate(0px, -1em);',
+        'top: 88%; left: 53%; transform: translate(0px, -1em)',
+        'top: 90%; right: 52%; transform: translate(0px, -1em);',
+        'top: 93%; left: 53%; transform: translate(0px, -1em)',
+        ],
+        'T5XI TACTICAL':
+          ['display: none;',
+        'top: 54.5%; left: 53%; transform: translate(0px, -1em)',
+        'top: 59.3%; right: 55%; transform: translate(0px, -1em);',
+        'top: 63.5%; left: 53%; transform: translate(0px, -1em)',
+        'top: 68%; right: 55%; transform: translate(0px, -1em);',
+        'top: 72.6%; left: 53%; transform: translate(0px, -1em)',
+        'top: 80.7%; right: 52%; transform: translate(0px, -1em);',
+
+        ]
+    }
   }
 
 function getStylePosition(index: number) {
+
   return `
           position: absolute;
-          ${styleTranslations[selectedScopeName.value][index]}`
+          ${styleTranslations[gameName.game][selectedScopeName.value][index]}`
 }
+
 
 </script>
 
@@ -258,14 +344,15 @@ function getStylePosition(index: number) {
           class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute left-2/4 -rotate-[9deg] -translate-x-2/4 z-40"
           style="font-family: angel;"
           >Redeploy</router-link
-        >
-      </div>
+        ></div>
+
+
 
   <!-- Scope and Rifle Menus -->
 
       <div class="grid grid-cols-2">
 
-        <div class="z-30 font-sans tracking-normal justify-self-end mr-4 border-slate-600 border">
+        <div class="z-30 font-sans tracking-normal justify-self-end mr-4">
           <Scopemenu
 
             :scopes="scopeNames" :show="showScopeMenu"
@@ -370,6 +457,18 @@ function getStylePosition(index: number) {
         <Transition>
           <img
           v-show="selectedScopeName==='TA31H' && gameName.game==='Wildlands'" src="/assets/WL-Scopes/WL-TA31H.jpg"
+          class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full"
+          />
+        </Transition>
+        <Transition>
+          <img
+          v-show="selectedScopeName==='TARS101' && gameName.game==='Wildlands'" src="/assets/WL-Scopes/WL-TARS101.jpg"
+          class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full"
+          />
+        </Transition>
+        <Transition>
+          <img
+          v-show="selectedScopeName==='T5XI TACTICAL' && gameName.game==='Wildlands'" src="/assets/WL-Scopes/WL-T5XI-Tactical.jpg"
           class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full"
           />
         </Transition>

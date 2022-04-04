@@ -37,20 +37,17 @@ const selectedGame = ref('Breakpoint')
 
 html {
   overflow-x: hidden;
-
-
+  background-color: black;
 }
 
-@media screen and (min-width: 600px) {
+@media only screen and (min-width: 300px) {
 
   .breakpoint{
-    height:100%;
-      height: 200%;
+    height: 700px;
 
   }
   .wildlands{
-    height:100%;
-      height: 200%;
+    height: 700px;
 
   }
 }
@@ -59,7 +56,7 @@ html {
 .breakpoint {
   background-color: #161926;
   padding-top: 4px;
-  height: 53rem;
+  height: 60rem;
 
 
 }
@@ -67,7 +64,7 @@ html {
 .wildlands {
   background-color: #1b170f;
   padding-top: 4px;
-  height: 53rem;
+  height: 60rem;
 
 
 }

@@ -21,6 +21,7 @@
         rifleName.value = rifle;
         emit('selected', rifleName.value)
         show2.value = !show2.value;
+        window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
 

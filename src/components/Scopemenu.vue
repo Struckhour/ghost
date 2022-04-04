@@ -31,7 +31,7 @@
 <template>
     <div
         @click="isOpen"
-        class="flex justify-end p-1 text-cyan-300 hover:text-cyan-200 hover:bg-opacity-[90%] bg-slate-900 bg-opacity-75 rounded-md hover:cursor-pointer z-50"
+        class="flex justify-end p-1 text-cyan-300 hover:text-cyan-200 hover:bg-opacity-[90%] bg-slate-900 bg-opacity-75 rounded-md hover:cursor-pointer z-50 border-slate-600 border"
         >
         <span class="mr-2">{{scopeName}}</span>
         <svg

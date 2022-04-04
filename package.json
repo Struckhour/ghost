@@ -12,7 +12,8 @@
     "scrollin": "^0.4.1",
     "vue": "^3.2.31",
     "vue-glitched-writer": "^1.2.2",
-    "vue-router": "^4.0.14"
+    "vue-router": "^4.0.14",
+    "vue-simple-search-dropdown": "^1.0.1"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.2.0",
