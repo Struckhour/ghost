@@ -29,7 +29,9 @@ if(gameName.game === 'Breakpoint') {
 
 
 const rifleNames = computed(() => {
-  return Object.keys(fullData[gameName.game][selectedScopeName.value]);
+  return Object.keys(fullData[gameName.game][selectedScopeName.value]).filter((rifle) => {
+    return fullData[gameName.game][selectedScopeName.value][rifle].length !== 0;
+  });
 });
 
 const scopeNames = ref(Object.keys(fullData[gameName.game]));
@@ -577,7 +579,6 @@ function getStylePosition(index: number) {
 .v-leave-to {
   opacity: 0;
   filter: blur(20px);
-  transform: skewX(0deg)
 }
 
   @keyframes glow {
