@@ -11,13 +11,39 @@ const selectedGame = ref('Breakpoint')
 
 <template>
   <body :class="selectedGame === 'Breakpoint' ? 'breakpoint' : 'wildlands'">
-    <router-view @gameChoice="(game: string) => (selectedGame = game)"></router-view>
+
+
+    <router-view @gameChoice="(game: string) => (selectedGame = game)" v-slot="{ Component }">
+
+      <transition name="fade" mode="out-in">
+        <component :is="Component" />
+      </transition>
+
+    </router-view>
+
   </body>
 
 
 </template>
 
 <style>
+
+.fade-enter-active{
+  transition: opacity 5s;
+}
+
+/* .fade-leave-active{
+  transition: opacity .2s;
+} */
+
+
+.fade-leave-to{
+  opacity: 0;
+}
+
+.fade-enter{
+  opacity: .5;
+}
 
 @font-face {
   font-family: "ZCOOL";

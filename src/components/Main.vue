@@ -77,7 +77,9 @@ const scopeLabelStyles: { [gameName: string]:{[scopeName: string]: string }} = {
   Wildlands: {
     'TA31H': 'color: black;',
     'TARS101': 'color: #e2b7bd; text-shadow: 0 0 5px #000, 0 0 0px #fff, 0 0 10px #e2b7bd44, 0 0 15px #e2b7bd;',
-    'T5XI TACTICAL': 'color:black;'
+    'T5XI TACTICAL': 'color:black;',
+    'DIGITAL': 'color: #e2b7bd;  text-shadow: 0 0 5px #000, 0 0 6px #ffffff11, 0 0 7px #e2b7bd86, 0 0 10px #e2b7bd86, 0 0 15px #e2b7bd;',
+    'G28': 'color: black;',
   }
 }
 
@@ -103,7 +105,9 @@ const rifleLabelStyles: { [gameName: string]: {[scopeName: string]: string} } = 
   Wildlands: {
     'TA31H': 'color: black;',
     'TARS101': 'color: #e2b7bd; text-shadow: 0 0 5px #000, 0 0 0px #fff, 0 0 10px #e2b7bd44, 0 0 15px #e2b7bd;',
-    'T5XI TACTICAL': 'color:black;'
+    'T5XI TACTICAL': 'color:black;',
+    'DIGITAL': 'color: #e2b7bd;  text-shadow: 0 0 5px #000, 0 0 6px #ffffff11, 0 0 7px #e2b7bd86, 0 0 10px #e2b7bd86, 0 0 15px #e2b7bd;',
+    'G28': 'color: black;',
   }
 }
 
@@ -130,7 +134,9 @@ const rangeStyles: { [gameName: string]: {[scopeName: string]: string }} = {
   Wildlands: {
     'TA31H': 'color: black;',
     'TARS101': 'color: #e2b7bd; text-shadow: 0 0 5px #000, 0 0 0px #fff, 0 0 10px #e2b7bd44, 0 0 15px #e2b7bd;',
-    'T5XI TACTICAL': 'color: black;'
+    'T5XI TACTICAL': 'color: black;',
+    'DIGITAL': 'color: #e2b7bd; text-shadow: 0 0 5px #000, 0 0 0px #fff, 0 0 10px #e2b7bd44, 0 0 15px #e2b7bd;',
+    'G28': 'color: black;',
   }
 }
 
@@ -309,7 +315,26 @@ const styleTranslations: { [gameName: string]: {[scopeName: string]: string[]} }
         'top: 72.6%; left: 53%; transform: translate(0px, -1em)',
         'top: 80.7%; right: 52%; transform: translate(0px, -1em);',
 
-        ]
+        ],
+        'DIGITAL':
+          ['display: none;',
+        'display: none;',
+        'top: 54.8%; right: 51%; transform: translate(0px, -1em);',
+        'top: 60.5%; left: 52%; transform: translate(0px, -1em)',
+        'top: 65%; right: 51%; transform: translate(0px, -1em);',
+        'top: 70.5%; left: 52%; transform: translate(0px, -1em)',
+
+        ],
+        'G28': ['display: none;',
+        'font-size: 0.7rem; top: 52.6%; left: 52%; transform: translate(0px, -1em)',
+        'top: 55.8%; right: 51.5%; transform: translate(0px, -1em);',
+        'top: 58.7%; left: 52.5%; transform: translate(0px, -1em)',
+        'top: 61.7%; right: 51.5%; transform: translate(0px, -1em);',
+        'top: 64.9%; left: 52.5%; transform: translate(0px, -1em)',
+        'top: 67.8%; right: 51.5%; transform: translate(0px, -1em);',
+        'top: 71.2%; left: 52.5%; transform: translate(0px, -1em)',
+        'top: 74.2%; right: 51.5%; transform: translate(0px, -1em)',
+        ],
     }
   }
 
@@ -472,6 +497,18 @@ function getStylePosition(index: number) {
           class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full"
           />
         </Transition>
+        <Transition>
+          <img
+          v-show="selectedScopeName==='DIGITAL' && gameName.game==='Wildlands'" src="/assets/WL-Scopes/WL-Digital-Scope.jpg"
+          class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full"
+          />
+        </Transition>
+        <Transition>
+          <img
+          v-show="selectedScopeName==='G28' && gameName.game==='Wildlands'" src="/assets/WL-Scopes/WL-G28.jpg"
+          class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full"
+          />
+        </Transition>
 
         <!-- Scope and Rifle LABELS -->
         <div
@@ -514,14 +551,16 @@ function getStylePosition(index: number) {
         </div>
 
       <!-- RANGE LABELS -->
-
+          <div class="absolute top-[55%] left-2/4 -translate-x-2/4 text-2xl">
+            <glitched-writer v-if="ranges && ranges.length==0" :text="'Sorry, rifle not yet ranged'" appear preset="nier" :style="getRangeStyle()" />
+          </div>
           <div v-for="(range, index) in ranges" class="absolute w-full h-full top-0 left-0" :style="getRangeStyle()">
             <div :style="getStylePosition(index)">
               <glitched-writer :text="range + 'm'" appear preset="nier" />
             </div>
           </div>
 
-        </div>
+      </div>
 
   </body>
 </template>

@@ -1,4 +1,4 @@
-const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]: number[]}} } = {
+const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]: (number | string)[]}} } = {
   Breakpoint: {
     'T5XI': {
       '416 SCOUT':[100,200,300,400,525,],
@@ -323,7 +323,50 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'SR25 SHORT BARREL':[100,200,275,500,700,],
       'SR25 SHORT BARREL RANGE FINDER':[],
       'SRSA1':[],
-      }
+      },
+    'DIGITAL': {
+      '556xi':[],
+      'ACR LONG BARREL':[125,150,225,325,475,600,],
+      'ACR LONG BARREL Zoomed':[125,150,250,400,575,750,],
+      'AK12':[],
+      'AK12 LONG BARREL':[],
+      'BFG-50A':[150,200,275,400,550,700,],
+      'LVOA':[275,425,625,],
+      'L115A3':[],
+      'M4A1 LONG BARREL':[125,150,175,250,],
+      'M4A1 LONG BARREL Zoomed':[125,150,250,400,],
+      'MK17 Zoomed':[],
+      'MK17 SHORT BARREL Zoomed':[100,125,175,250,325,425,],
+      'MK17 LONG BARREL RANGE FINDER':[150,200,250,400,550,725,],
+      'MK17 LONG BARREL Zoomed':[100,150,250,375,550,700,],
+      'MK18 Zoomed':[100,150,200,300,400,525,],
+      'P416':[125,175,250,425,600,],
+      'P416 RANGE FINDER':[150,200,275,450,650,],
+      'P416 SHORT BARREL':[125,150,200,325,475,600,],
+      'PSG-1':[125,175,225,325,450,575,],
+    },
+    'G28': {
+      'FRF-2':[150,200,275,325,375,450,500,],
+      'FRF-2 LONG BARREL':[175,250,325,375,450,550,],
+      'G28':[175,200,250,275,325,375,450,500,550,],
+      'G28 LONG BARREL':[175,225,275,325,400,475,550,650,],
+      'G28 LONG BARREL RANGE FINDER':[200,250,300,350,425,500,575,650,],
+      'L115A3':[],
+      'M110':[150,200,275,350,425,525,650,],
+      'M110 RANGE FINDER':[175,225,300,375,450,575,],
+      'MK14':[150,225,275,375,475,575,],
+      'MK14 LONG BARREL':[175,275,375,475,575,675,],
+      'MK14 RANGE FINDER':[175,250,325,400,475,600,],
+      'MK14 LONG BARREL RANGE FINDER':[200,275,375,475,600,],
+      'PSG-1 STANDARD BARREL':[150,175,225,275,325,375,425,500,550,],
+      'PSG-1 LONG BARREL':[175,200,275,325,375,450,550,625,],
+      'PSG-1 MERCENARY':[200,250,325,375,450,525,600,],
+      'SR25':[175,250,325,400,475,600,],
+      'SR25 SHORT BARREL':[150,200,250,300,375,450,525,600,],
+      'SR25 RANGE FINDER':[200,250,350,400,500,638,],
+      'SR25 RANGE FINDER SHORT BARREL':[175,225,275,325,400,475,550,625,],
+      'SR25 LIBERATOR':[200,250,325,400,475,600,],
+    },
   }
 }
 
