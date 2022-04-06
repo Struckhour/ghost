@@ -9,6 +9,7 @@ import fullData from '../assets/data';
 const gameName = defineProps<{game: string}>()
 
 let showScopeMenu = ref(false);
+let showRifleMenu = ref(false);
 
 const selectedScopeName = ref('');
 
@@ -46,15 +47,24 @@ function changeScope(scope: string) {
 
 }
 
+function removeRifleMenu() {
+  if (showRifleMenu.value) {
+    showRifleMenu.value = false;
+  }
+}
+
 function removeScopeMenu() {
   if (showScopeMenu.value) {
     showScopeMenu.value = false;
   }
-
 }
 
 function changeScopeMenu() {
   showScopeMenu.value = !showScopeMenu.value;
+}
+
+function changeRifleMenu() {
+  showRifleMenu.value = !showRifleMenu.value;
 }
 
 const ranges = computed(() => {
@@ -353,19 +363,19 @@ function getStylePosition(index: number) {
 <template>
   <body class="w-screen max-w-2xl max-h-[42rem] m-auto">
     <img
-      @click="removeScopeMenu"
+      @click="removeScopeMenu(); removeRifleMenu();"
       v-show="gameName.game === 'Breakpoint'"
       src="../assets/breakpoint.jpg"
       class="hidden sm:block w-96 h-20 m-auto rounded-md object-cover border-black border-2"
     />
     <img
-      @click="removeScopeMenu"
+      @click="removeScopeMenu(); removeRifleMenu();"
       v-show="gameName.game === 'Wildlands'"
       src="../assets/wildlands.jpg"
       class="hidden sm:block w-96 h-20 m-auto rounded-md object-cover border-black border-2"
     />
 
-      <div class="text-white text-2xl mt-1 h-10 relative" @click="removeScopeMenu">
+      <div class="text-white text-2xl mt-1 h-10 relative" @click="removeScopeMenu(); removeRifleMenu();">
         <router-link
           to="/"
           class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute left-2/4 -rotate-[9deg] -translate-x-2/4 z-40"
@@ -381,7 +391,7 @@ function getStylePosition(index: number) {
 
         <div class="z-30 font-sans tracking-normal justify-self-end mr-4">
           <Scopemenu
-
+            @click="removeRifleMenu()"
             :scopes="scopeNames" :show="showScopeMenu"
             @chosenScope="changeScope"
             @menu-clicked="changeScopeMenu"
@@ -390,9 +400,12 @@ function getStylePosition(index: number) {
 
         <div class="z-40 font-sans tracking-normal ml-2 ">
           <Riflemenu
+            @click="removeScopeMenu()"
             :rifles="rifleNames"
+            :show2="showRifleMenu"
             :rifle-title="selectedRifle"
             @selected="(rifle) => (selectedRifle = rifle)"
+            @rifle-menu-clicked="changeRifleMenu"
           />
         </div>
       </div>
@@ -401,7 +414,7 @@ function getStylePosition(index: number) {
 
       <div
         style="font-family: ZCOOL; font-size:1rem; padding-top: 100%; "
-        @click="removeScopeMenu"
+        @click="removeScopeMenu(); removeRifleMenu();"
         class="
           relative
           tracking-wide

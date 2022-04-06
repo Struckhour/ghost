@@ -2,14 +2,18 @@
     import { ref, computed } from 'vue'
 
 
-    const props = defineProps<{ rifles: string[], rifleTitle: string}>()
+    const props = defineProps<{ rifles: string[], rifleTitle: string, show2: boolean}>()
 
-    const emit = defineEmits(['selected'])
+    const emit = defineEmits(['selected', 'rifleMenuClicked'])
 
+   let shower = computed(() => {
+      return ref(props.show2);
+    })
 
-    let id = 0
-    let show2 = ref(false);
-    const isOpen2 = () => (show2.value = !show2.value);
+    const isOpen2 = () => {
+      shower.value.value = !shower.value.value;
+      emit('rifleMenuClicked', shower.value.value)
+    }
 
     const rifleTitle1 = computed(() => {
       return ref(props.rifleTitle);
@@ -20,7 +24,8 @@
     const changeRifle = (rifle: string) => {
         rifleName.value = rifle;
         emit('selected', rifleName.value)
-        show2.value = !show2.value;
+        shower.value.value = !shower.value.value;
+        emit('rifleMenuClicked', shower.value.value);
         window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
@@ -53,7 +58,7 @@
   <!-- Dropdown menu -->
   <div class="grid md:grid-cols-2 grid-cols-1 md:w-[30rem] w-[15rem] bg-slate-900 bg-opacity-10 -translate-x-[4rem] z-40 absolute">
       <div
-      v-show="show2"
+      v-show="shower.value"
       v-for="(rifle) in rifles" :key="rifle"
       class="right-0 py-0 mt-0 rounded-sm shadow-xl shadow-black bg-slate-900 bg-opacity-80"
       >
