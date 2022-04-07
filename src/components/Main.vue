@@ -391,21 +391,24 @@ function getStylePosition(index: number) {
 
         <div class="z-30 font-sans tracking-normal justify-self-end mr-4">
           <Scopemenu
-            @click="removeRifleMenu()"
-            :scopes="scopeNames" :show="showScopeMenu"
+            :scopes="scopeNames"
+            :show="showScopeMenu"
+            :rifleMenu="showRifleMenu"
             @chosenScope="changeScope"
             @menu-clicked="changeScopeMenu"
+            @rifle-menu="removeRifleMenu"
           />
         </div>
 
         <div class="z-40 font-sans tracking-normal ml-2 ">
           <Riflemenu
-            @click="removeScopeMenu()"
             :rifles="rifleNames"
             :show2="showRifleMenu"
             :rifle-title="selectedRifle"
+            :scopeMenu="showScopeMenu"
             @selected="(rifle) => (selectedRifle = rifle)"
             @rifle-menu-clicked="changeRifleMenu"
+            @scope-menu="removeScopeMenu"
           />
         </div>
       </div>

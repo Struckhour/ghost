@@ -2,17 +2,23 @@
     import { ref, computed } from 'vue'
 
 
-    const props = defineProps<{ rifles: string[], rifleTitle: string, show2: boolean}>()
+    const props = defineProps<{ rifles: string[], rifleTitle: string, show2: boolean, scopeMenu: boolean}>()
 
-    const emit = defineEmits(['selected', 'rifleMenuClicked'])
+    const emit = defineEmits(['selected', 'rifleMenuClicked', 'scopeMenu'])
 
    let shower = computed(() => {
       return ref(props.show2);
     })
 
+    let scopeMenu = computed(() => {
+    return ref(props.scopeMenu);
+  })
+
     const isOpen2 = () => {
       shower.value.value = !shower.value.value;
       emit('rifleMenuClicked', shower.value.value)
+      scopeMenu.value.value = false;
+      emit('scopeMenu', scopeMenu.value.value);
     }
 
     const rifleTitle1 = computed(() => {
