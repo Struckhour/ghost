@@ -5,7 +5,7 @@ import { ref, computed, setBlockTracking } from "vue";
 import GlitchedWriter from 'vue-glitched-writer';
 import fullData from '../assets/data';
 
-
+const showIntel = ref(false);
 const gameName = defineProps<{game: string}>()
 
 let showScopeMenu = ref(false);
@@ -375,14 +375,23 @@ function getStylePosition(index: number) {
       class="hidden sm:block w-96 h-20 m-auto rounded-md object-cover border-black border-2"
     />
 
-      <div class="text-white text-2xl mt-1 h-10 relative" @click="removeScopeMenu(); removeRifleMenu();">
+      <div class="text-2xl mt-1 h-10 relative" @click="removeScopeMenu(); removeRifleMenu();">
         <router-link
           to="/"
-          class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute left-2/4 -rotate-[9deg] -translate-x-2/4 z-40"
+          class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute left-2/4 -rotate-[9deg] -translate-x-[105%] z-40"
           style="font-family: angel;"
-          >Redeploy</router-link
-        ></div>
+          >Redeploy
+        </router-link>
+        <div @click="showIntel = !showIntel" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute left-2/4 -rotate-[-3deg] translate-x-[5%] z-40 cursor-pointer" style="font-family: angel;">
+          Intel
+        </div>
+      </div>
 
+      <div v-show="showIntel" @click="showIntel = false" class="absolute top-[200px] bg-gray-400 text-xl font-serif z-[51] w-[90%] sm:w-3/4 left-2/4 -translate-x-2/4 p-4 rounded-lg" style="font-family: courier;">
+        Data is organized by scope. Not by rifle. Please select your scope first so that the rifle list will populate with rifles that have been ranged with your chosen scope.<br><br>
+        Rifles are listed with and without attachments that affect bullet drop. So if, for example, you’re using the P416 with the short barrel and the range finder attached, be sure to select P416 SHORT BARREL RANGE FINDER and not P416 or P416 SHORT BARREL or P416 RANGE FINDER.
+        <div @click="showIntel = false" class="absolute top-0 right-2 text-4xl font-sans cursor-pointer">X</div>
+      </div>
 
 
   <!-- Scope and Rifle Menus -->
@@ -570,7 +579,7 @@ function getStylePosition(index: number) {
 
       <!-- RANGE LABELS -->
           <div class="absolute top-[55%] left-2/4 -translate-x-2/4 text-2xl">
-            <glitched-writer v-if="ranges && ranges.length==0" :text="'Sorry, rifle not yet ranged'" appear preset="nier" :style="getRangeStyle()" />
+            <glitched-writer v-if="ranges && ranges.length==0" :text="'Sorry, rifle not yet ranged with this scope'" appear preset="nier" :style="getRangeStyle()" />
           </div>
           <div v-for="(range, index) in ranges" class="absolute w-full h-full top-0 left-0" :style="getRangeStyle()">
             <div :style="getStylePosition(index)">

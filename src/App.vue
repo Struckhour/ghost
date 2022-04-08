@@ -66,19 +66,21 @@ html {
   background-color: black;
 }
 
-@media only screen and (min-width: 300px) {
 
-  .breakpoint{
-    height: 700px;
+@media screen and (max-width: 550px) {
 
+.breakpoint {
+    height: 750px;
+    background-color: #161926;
   }
-  .wildlands{
-    height: 700px;
-
-  }
+.wildlands {
+    height: 750px;
+    background-color: #1b170f;
 }
 
+}
 
+@media only screen and (min-width: 550px) {
 .breakpoint {
   background-color: #161926;
   padding-top: 4px;
@@ -91,7 +93,8 @@ html {
   background-color: #1b170f;
   padding-top: 4px;
   height: 60rem;
-
-
 }
+}
+
+
 </style>
