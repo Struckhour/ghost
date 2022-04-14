@@ -76,7 +76,7 @@ const scopeLabelStyles: { [gameName: string]:{[scopeName: string]: string }} = {
     'T5XI': 'color: #4dd5ff; text-shadow: 0 0 5px #000, 0 0 6px #ffffff86, 0 0 7px #4dd5ff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff; animation: saturate 11s infinite;',
     'DUAL RANGE': 'color: black;',
   // 'TARS101': 'color: #1de02d; text-shadow: 0 0 5px #000, 0 0 6px #ffffff11, 0 0 7px #1de02d86, 0 0 10px #1de02d86, 0 0 15px #1de02d; animation: saturate 11s infinite;',
-    'TARS101': 'color: black; font-family: courier; opacity: 0.7;',
+    'TARS101': 'color: #ffb5a6; font-family: courier;',
     'VC16': 'color: #4dd5ff; text-shadow: 0 0 5px #000, 0 0 6px #ffffff86, 0 0 7px #4dd5ff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff; animation: saturate 11s infinite;',
     'ACSS': 'color: #f4c59e;',
     'DIGITAL': 'color: #e2b7bd;  text-shadow: 0 0 5px #000, 0 0 6px #ffffff11, 0 0 7px #e2b7bd86, 0 0 10px #e2b7bd86, 0 0 15px #e2b7bd;',
@@ -92,6 +92,8 @@ const scopeLabelStyles: { [gameName: string]:{[scopeName: string]: string }} = {
     'T5XI TACTICAL': 'color:black;',
     'DIGITAL': 'color: #e2b7bd;  text-shadow: 0 0 5px #000, 0 0 6px #ffffff11, 0 0 7px #e2b7bd86, 0 0 10px #e2b7bd86, 0 0 15px #e2b7bd;',
     'G28': 'color: black;',
+    'POSP': 'color: #e2b7bd;',
+    'PKS-07': 'color: #f4c59e;',
   }
 }
 
@@ -104,7 +106,7 @@ const rifleLabelStyles: { [gameName: string]: {[scopeName: string]: string} } = 
   'T5XI': 'color: #4dd5ff; animation: glow 6000ms infinite;',
     'DUAL RANGE': 'color: black;',
     //'TARS101': 'color: #1de02d; text-shadow: 0 0 5px #000, 0 0 6px #ffffff86, 0 0 7px #1de02d, 0 0 10px #1de02d86, 0 0 15px #1de02d; animation: flicker 5s infinite;',
-    'TARS101': 'color: black; font-family: courier; opacity: 0.7;',
+    'TARS101': 'color: #ffb5a6; font-family: courier;',
     'VC16': 'color: #4dd5ff; animation: glow 6000ms infinite;',
     'ACSS': 'color: #f4c59e;',
     'DIGITAL': 'color: #e2b7bd;  text-shadow: 0 0 5px #000, 0 0 6px #ffffff11, 0 0 7px #e2b7bd86, 0 0 10px #e2b7bd86, 0 0 15px #e2b7bd;',
@@ -120,6 +122,8 @@ const rifleLabelStyles: { [gameName: string]: {[scopeName: string]: string} } = 
     'T5XI TACTICAL': 'color:black;',
     'DIGITAL': 'color: #e2b7bd;  text-shadow: 0 0 5px #000, 0 0 6px #ffffff11, 0 0 7px #e2b7bd86, 0 0 10px #e2b7bd86, 0 0 15px #e2b7bd;',
     'G28': 'color: black;',
+    'POSP': 'color: #e2b7bd;',
+    'PKS-07': 'color: #f4c59e;',
   }
 }
 
@@ -133,7 +137,7 @@ const rangeStyles: { [gameName: string]: {[scopeName: string]: string }} = {
     'T5XI': 'color: #4dd5ff; text-shadow: 0 0 5px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff; animation: glow 5000ms infinite;',
     'DUAL RANGE': 'color: black;',
     // 'TARS101': 'color: #1de02d; text-shadow: 0 0 5px #000, 0 0 0px #fff, 0 0 10px #1de02d44, 0 0 15px #1de02d;',
-    'TARS101': 'color: black; font-family: courier; opacity: 0.7;',
+    'TARS101': 'color: #ffb5a6; font-family: courier;',
     'VC16': 'color: #4dd5ff; font-size: 1rem; text-shadow: 0 0 5px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff;',
     'ACSS': 'color: #f4c59e;',
     'DIGITAL': 'color: #e2b7bd; text-shadow: 0 0 5px #000, 0 0 0px #fff, 0 0 10px #e2b7bd44, 0 0 15px #e2b7bd;',
@@ -149,6 +153,8 @@ const rangeStyles: { [gameName: string]: {[scopeName: string]: string }} = {
     'T5XI TACTICAL': 'color: black;',
     'DIGITAL': 'color: #e2b7bd; text-shadow: 0 0 5px #000, 0 0 0px #fff, 0 0 10px #e2b7bd44, 0 0 15px #e2b7bd;',
     'G28': 'color: black;',
+    'POSP': 'color: #e2b7bd;',
+    'PKS-07': 'color: #f4c59e;',
   }
 }
 
@@ -255,15 +261,10 @@ const styleTranslations: { [gameName: string]: {[scopeName: string]: string[]} }
       ],
     'RU LONG-RANGE FOV':
     ['display: none;',
-      'display: none;',
       'font-size: 0.8rem; top: 53.5%; left: 51.5%; transform: translate(0px, -1em)',
-      'display: none; top: 56.5%; right: 52%; transform: translate(0px, -1em);',
       'top: 56.2%; right: 52%; transform: translate(0px, -1em)',
-      'display: none; top: 60.2%; right: 52%; transform: translate(0px, -1em);',
       'top: 61.2%; left: 52%; transform: translate(0px, -1em)',
-      'display: none; top: 64%; right: 52%; transform: translate(0px, -1em);',
       'top: 66.4%; right: 52%; transform: translate(0px, -1em)',
-      'display: none; top: 67.5%; right: 52%; transform: translate(0px, -1em);',
 
       ],
       'RU LONG-RANGE':
@@ -347,6 +348,26 @@ const styleTranslations: { [gameName: string]: {[scopeName: string]: string[]} }
         'top: 71.2%; left: 52.5%; transform: translate(0px, -1em)',
         'top: 74.2%; right: 51.5%; transform: translate(0px, -1em)',
         ],
+        'POSP':
+      ['display: none;',
+      'display: none;',
+      'font-size: 0.8rem; top: 51.8%; left: 51.5%; transform: translate(0px, -1em)',
+      'display: none; top: 56.5%; right: 52%; transform: translate(0px, -1em);',
+      'top: 53.5%; right: 51%; transform: translate(0px, -1em)',
+      'display: none; top: 60.2%; right: 52%; transform: translate(0px, -1em);',
+      'top: 56.9%; left: 52%; transform: translate(0px, -1em)',
+      'display: none; top: 64%; right: 52%; transform: translate(0px, -1em);',
+      'top: 61%; right: 51%; transform: translate(0px, -1em)',
+      'display: none; top: 67.5%; right: 52%; transform: translate(0px, -1em);',
+      ],
+        'PKS-07':
+      ['display: none;',
+      'display: none; top: 54%; right: 51%; transform: translate(0px, -1em);',
+      'font-size: 0.8rem; top: 53.2%; right: 51%; transform: translate(0px, -1em);',
+      'top: 56%; left: 52%; transform: translate(0px, -1em)',
+      'font-size: 0.7rem; top: 57.9%; right: 51%; transform: translate(0px, -1em);',
+      'top: 60%; left: 52%; transform: translate(0px, -1em)',
+      ],
     }
   }
 
@@ -361,7 +382,7 @@ function getStylePosition(index: number) {
 </script>
 
 <template>
-  <body class="w-screen max-w-2xl max-h-[42rem] m-auto">
+  <body class="w-screen max-w-2xl max-h-[42rem] m-auto sm:pt-0 pt-4">
     <img
       @click="removeScopeMenu(); removeRifleMenu();"
       v-show="gameName.game === 'Breakpoint'"
@@ -533,6 +554,18 @@ function getStylePosition(index: number) {
         <Transition>
           <img
           v-show="selectedScopeName==='G28' && gameName.game==='Wildlands'" src="/assets/WL-Scopes/WL-G28.jpg"
+          class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full"
+          />
+        </Transition>
+        <Transition>
+          <img
+          v-show="selectedScopeName==='PKS-07' && gameName.game==='Wildlands'" src="/assets/WL-Scopes/WL-PKS-07.jpg"
+          class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full"
+          />
+        </Transition>
+        <Transition>
+          <img
+          v-show="selectedScopeName==='POSP' && gameName.game==='Wildlands'" src="/assets/WL-Scopes/WL-POSP.jpg"
           class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full"
           />
         </Transition>
