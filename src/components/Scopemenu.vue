@@ -6,28 +6,22 @@
 
     const emit = defineEmits(['chosenScope', 'menuClicked', 'rifleMenu'])
 
-   let shower = computed(() => {
-      return ref(props.show);
-    })
+    let shower = ref(props.show);
+    let rifleMenu = ref(props.rifleMenu);
 
-    let rifleMenu = computed(() => {
-      return ref(props.rifleMenu)
-    })
-
-    let id = 0
     const isOpen = () => {
-      shower.value.value = !shower.value.value;
-      emit('menuClicked', shower.value.value);
-      rifleMenu.value.value = false;
-      emit('rifleMenu', rifleMenu.value.value);
+      shower.value = !shower.value;
+      emit('menuClicked', shower.value);
+      rifleMenu.value = false;
+      emit('rifleMenu', rifleMenu.value);
     };
 
     const scopeName= ref('Choose a scope');
 
     const changeScope = (scope: string) => {
         scopeName.value = scope;
-        shower.value.value = !shower.value.value;
-        emit('menuClicked', shower.value.value)
+        shower.value = !shower.value;
+        emit('menuClicked', shower.value)
         emit('chosenScope', scopeName.value);
 
     }
@@ -57,7 +51,7 @@
     <!-- Dropdown menu -->
     <div class="grid grid-cols-1 md:w-[15rem] w-[15rem] bg-black bg-opacity-0 z-50 absolute right-2/5">
         <div
-        v-show="shower.value"
+        v-show="shower"
         v-for="(scope) in scopes" :key="scope"
         class="right-0 py-0 mt-0 rounded-sm shadow-xl shadow-black"
         >
