@@ -192,21 +192,21 @@ const styleTranslations: { [gameName: string]: {[scopeName: string]: string[]} }
       'top: 54.5%; left: 53%; transform: translate(0px, -1em)',
       'top: 56.5%; right: 52%; transform: translate(0px, -1em);',
       'top: 58.5%; left: 53%; transform: translate(0px, -1em)',
-      'top: 60.2%; right: 52%; transform: translate(0px, -1em);',
-      'top: 62%; left: 53%; transform: translate(0px, -1em)',
-      'top: 64%; right: 52%; transform: translate(0px, -1em);',
+      'top: 60.4%; right: 52%; transform: translate(0px, -1em);',
+      'top: 62.3%; left: 53%; transform: translate(0px, -1em)',
+      'top: 64.3%; right: 52%; transform: translate(0px, -1em);',
       'top: 66%; left: 53%; transform: translate(0px, -1em)',
-      'top: 67.5%; right: 52%; transform: translate(0px, -1em);',
+      'top: 67.8%; right: 52%; transform: translate(0px, -1em);',
       'top: 69.5%; left: 54.75%; transform: translate(0px, -1em)',
       'top: 71.5%; right: 52%; transform: translate(0px, -1em);',
       'top: 73.5%; left: 53%; transform: translate(0px, -1em)',
-      'top: 75%; right: 52%; transform: translate(0px, -1em);',
+      'top: 75.2%; right: 52%; transform: translate(0px, -1em);',
       'top: 77%; left: 53%; transform: translate(0px, -1em)',
-      'top: 78.5%; right: 52%; transform: translate(0px, -1em);',
-      'top: 80.5%; left: 53%; transform: translate(0px, -1em)',
+      'top: 78.7%; right: 52%; transform: translate(0px, -1em);',
+      'top: 80.7%; left: 53%; transform: translate(0px, -1em)',
       'top: 82.5%; right: 52%; transform: translate(0px, -1em);',
       'top: 84.5%; left: 53%; transform: translate(0px, -1em)',
-      'top: 86%; right: 52%; transform: translate(0px, -1em);',
+      'top: 86.2%; right: 52%; transform: translate(0px, -1em);',
       'top: 88%; left: 53%; transform: translate(0px, -1em)',
       'top: 90%; right: 52%; transform: translate(0px, -1em);',
       'top: 93%; left: 53%; transform: translate(0px, -1em)',
@@ -300,11 +300,11 @@ const styleTranslations: { [gameName: string]: {[scopeName: string]: string[]} }
         'top: 52.5%; left: 51.5%; transform: translate(0px, -1em)',
         'top: 54.9%; right: 52%; transform: translate(0px, -1em);',
         'top: 57%; left: 53%; transform: translate(0px, -1em)',
-        'top: 58.8%; right: 52%; transform: translate(0px, -1em);',
+        'top: 59.1%; right: 52%; transform: translate(0px, -1em);',
         'top: 60.7%; left: 53%; transform: translate(0px, -1em)',
-        'top: 62.5%; right: 52%; transform: translate(0px, -1em);',
+        'top: 62.6%; right: 52%; transform: translate(0px, -1em);',
         'top: 64.5%; left: 53%; transform: translate(0px, -1em)',
-        'top: 66.1%; right: 52%; transform: translate(0px, -1em);',
+        'top: 66.4%; right: 52%; transform: translate(0px, -1em);',
         'top: 68.5%; left: 54.75%; transform: translate(0px, -1em)',
         'top: 70%; right: 52%; transform: translate(0px, -1em);',
         'top: 72.6%; left: 53%; transform: translate(0px, -1em)',
@@ -407,7 +407,7 @@ function getStylePosition(index: number) {
         <div @click="showIntel = !showIntel" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute left-2/4 -rotate-[-3deg] -translate-x-[50%] z-40 cursor-pointer" style="font-family: angel;">
           Intel
         </div>
-        <div @click="showIntel = !showIntel" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute left-[54%] rotate-[-2deg] translate-x-[23%] z-40 cursor-pointer" style="font-family: angel;">
+        <div class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute left-[50%] rotate-[-2deg] translate-x-[56%] z-40 cursor-pointer" style="font-family: angel;">
           <a href="https://www.youtube.com" target="_blank">Video</a>
         </div>
       </div>
