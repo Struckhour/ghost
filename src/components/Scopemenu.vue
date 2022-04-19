@@ -51,7 +51,7 @@
     <!-- Dropdown menu -->
     <div class="grid grid-cols-1 md:w-[15rem] w-[15rem] bg-black bg-opacity-0 z-50 absolute right-2/5">
         <div
-        v-show="shower"
+        v-show="props.show"
         v-for="(scope) in scopes" :key="scope"
         class="right-0 py-0 mt-0 rounded-sm shadow-xl shadow-black"
         >

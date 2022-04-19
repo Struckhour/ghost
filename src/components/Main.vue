@@ -300,13 +300,13 @@ const styleTranslations: { [gameName: string]: {[scopeName: string]: string[]} }
         'top: 52.5%; left: 51.5%; transform: translate(0px, -1em)',
         'top: 54.9%; right: 52%; transform: translate(0px, -1em);',
         'top: 57%; left: 53%; transform: translate(0px, -1em)',
-        'top: 59.2%; right: 52%; transform: translate(0px, -1em);',
-        'top: 61%; left: 53%; transform: translate(0px, -1em)',
-        'top: 63%; right: 52%; transform: translate(0px, -1em);',
-        'top: 65%; left: 53%; transform: translate(0px, -1em)',
-        'top: 66.5%; right: 52%; transform: translate(0px, -1em);',
+        'top: 58.8%; right: 52%; transform: translate(0px, -1em);',
+        'top: 60.7%; left: 53%; transform: translate(0px, -1em)',
+        'top: 62.5%; right: 52%; transform: translate(0px, -1em);',
+        'top: 64.5%; left: 53%; transform: translate(0px, -1em)',
+        'top: 66.1%; right: 52%; transform: translate(0px, -1em);',
         'top: 68.5%; left: 54.75%; transform: translate(0px, -1em)',
-        'top: 70.5%; right: 52%; transform: translate(0px, -1em);',
+        'top: 70%; right: 52%; transform: translate(0px, -1em);',
         'top: 72.6%; left: 53%; transform: translate(0px, -1em)',
         'top: 74.2%; right: 52%; transform: translate(0px, -1em);',
         'top: 76%; left: 53%; transform: translate(0px, -1em)',
@@ -321,6 +321,7 @@ const styleTranslations: { [gameName: string]: {[scopeName: string]: string[]} }
         ],
         'T5XI TACTICAL':
           ['display: none;',
+          'font-size: 0.9rem; top: 52.8%; right: 51%; transform: translate(0px, -1em)',
         'top: 54.5%; left: 53%; transform: translate(0px, -1em)',
         'top: 59.3%; right: 55%; transform: translate(0px, -1em);',
         'top: 63.5%; left: 53%; transform: translate(0px, -1em)',
@@ -399,12 +400,15 @@ function getStylePosition(index: number) {
       <div class="text-2xl mt-1 h-10 relative" @click="removeScopeMenu(); removeRifleMenu();">
         <router-link
           to="/"
-          class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute left-2/4 -rotate-[9deg] -translate-x-[105%] z-40"
+          class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute left-2/4 -rotate-[7deg] -translate-x-[135%] z-40"
           style="font-family: angel;"
           >Redeploy
         </router-link>
-        <div @click="showIntel = !showIntel" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute left-2/4 -rotate-[-3deg] translate-x-[5%] z-40 cursor-pointer" style="font-family: angel;">
+        <div @click="showIntel = !showIntel" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute left-2/4 -rotate-[-3deg] -translate-x-[50%] z-40 cursor-pointer" style="font-family: angel;">
           Intel
+        </div>
+        <div @click="showIntel = !showIntel" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute left-[54%] rotate-[-2deg] translate-x-[23%] z-40 cursor-pointer" style="font-family: angel;">
+          <a href="https://www.youtube.com" target="_blank">Video</a>
         </div>
       </div>
 
