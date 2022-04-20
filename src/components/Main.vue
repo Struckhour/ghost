@@ -351,15 +351,10 @@ const styleTranslations: { [gameName: string]: {[scopeName: string]: string[]} }
         ],
         'POSP':
       ['display: none;',
-      'display: none;',
       'font-size: 0.8rem; top: 51.8%; left: 51.5%; transform: translate(0px, -1em)',
-      'display: none; top: 56.5%; right: 52%; transform: translate(0px, -1em);',
       'top: 53.5%; right: 51%; transform: translate(0px, -1em)',
-      'display: none; top: 60.2%; right: 52%; transform: translate(0px, -1em);',
       'top: 56.9%; left: 52%; transform: translate(0px, -1em)',
-      'display: none; top: 64%; right: 52%; transform: translate(0px, -1em);',
       'top: 61%; right: 51%; transform: translate(0px, -1em)',
-      'display: none; top: 67.5%; right: 52%; transform: translate(0px, -1em);',
       ],
         'PKS-07':
       ['display: none;',
