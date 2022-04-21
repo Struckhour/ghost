@@ -156,6 +156,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'SVD-63':[150,215,255,300,345,420,500,],
       },
     'DIGITAL': {
+      'ACR MAWL-DA BALLISTIC ADV. ZOOMED':	[	100,	175,	338,	638,	1025		],
       'AK47 RANGE FINDER':[100,150,250,350,500,650,],
       'AR-18':[100,150,225,325,450,590,],
       'FAL':[80,120,160,210,260,330,],
@@ -187,12 +188,15 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
     },
     'TA31H': {
       '805 BREN':[100,140,170,200,235,290,380,],
+      'ACR MAWL-DA BALLISTIC ADV.':	[	100,	262,	350,	463,	719,	1025],
       'AK47 RANGE FINDER':[100,175,225,275,375,500,650,],
       'G28 WILDERNESS RANGE FINDER':[125,220,285,350,450,610,780,],
       'L115A3':[150, 225, 275, 313, 375, 463, 575],
       'M110':[100,165,200,240,285,355,460,],
       'M110 MAWL-DA':[100,175,225,265,330,430,560,],
       'M110 RANGE FINDER':[100,180,240,290,360,475,635,],
+      'M4A1 MAWL-DA':	[	100,	150,	200,	238,	275	],
+      'M4A1 MAWL-DA BALLISTIC ADV.':	[	100,	238,	338,	475,	688,],
       'MK14 MAWL-DA':[150,225,250,285,325,400,485,],
       'FRF2':[],
       'MK17 SCOUT':[],
