@@ -1,7 +1,7 @@
 const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]: (number | string)[]}} } = {
   Breakpoint: {
     'T5XI': {
-      '416 SCOUT':[100,200,300,400,525,],
+    '416 SCOUT':[100,200,300,400,525,],
       '416 SCOUT MAWL-DA':[100,225,350,500,650,],
       '416 SCOUT RANGE FINDER':[100,250,375,550,700,],
       '553 SCOUT':[75,200,275,375,500,],
@@ -49,7 +49,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'TAC50':[150,313,525,762,1013,],
       'TAC50 BROWN':[175,350,475,650,813,],
       'VSK-50':[],
-      'ZASTAVA M93':[],
+      'ZASTAVA M93':[], 
     },
     'DUAL RANGE': {
 
@@ -122,6 +122,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
         'VSK-50':[150,250,300,366,425,475,540,595,633,666,700,725,750,],
       },
     'VC16': {
+      'AK74':[88,163,188,238,275,338,450,500,],
       'FRF2':[150,215,240,270,305,350,410,],
       'G28':[125,175,230,260,310,380,480,533,],
       'G28 MAWL-DA':[125,200,250,300,355,460,600,],
@@ -156,7 +157,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'SVD-63':[150,215,255,300,345,420,500,],
       },
     'DIGITAL': {
-      'ACR MAWL-DA BALLISTIC ADV. ZOOMED':	[	100,	175,	338,	638,	1025		],
+      'ACR MAWL-DA BALLISTIC ADV.':	[	100,	175,	338,	638,	1025		],
       'AK47 RANGE FINDER':[100,150,250,350,500,650,],
       'AR-18':[100,150,225,325,450,590,],
       'FAL':[80,120,160,210,260,330,],
@@ -188,7 +189,9 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
     },
     'TA31H': {
       '805 BREN':[100,140,170,200,235,290,380,],
+      'ACR MAWL-DA':[63,138,188,225,288,388,525,],
       'ACR MAWL-DA BALLISTIC ADV.':	[	100,	262,	350,	463,	719,	1025],
+      'ACR RANGE FINDER':[63,150,200,238,313,438,588,],
       'AK47 RANGE FINDER':[100,175,225,275,375,500,650,],
       'G28 WILDERNESS RANGE FINDER':[125,220,285,350,450,610,780,],
       'L115A3':[150, 225, 275, 313, 375, 463, 575],
