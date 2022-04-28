@@ -458,10 +458,13 @@ function getStylePosition(index: number) {
       >
 
         <Transition>
-          <img
-          v-show="selectedScopeName==='T5XI'" src="/assets/BP-Scopes/BP-T5XISight.jpg"
-          class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full"
-        />
+          <div>
+            <img
+              v-show="selectedScopeName==='T5XI'" src="/assets/BP-Scopes/BP-T5XISight.jpg"
+              class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full"
+            />
+            <img v-show="selectedScopeName==='T5XI'" src="/assets/soldier-silhouette.png" class="absolute h-[8.4%] top-[37.2%] right-[51%]">
+          </div>
         </Transition>
         <Transition>
           <img
@@ -470,10 +473,14 @@ function getStylePosition(index: number) {
         />
         </Transition>
         <Transition>
-          <img
-          v-show="selectedScopeName==='TARS101' && gameName.game === 'Breakpoint'" src="/assets/BP-Scopes/BP-TARS101.jpg"
-          class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full"
-        />
+          <div>
+            <img
+              v-show="selectedScopeName==='TARS101' && gameName.game === 'Breakpoint'" src="/assets/BP-Scopes/BP-TARS101.jpg"
+              class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full"
+            />
+            <img v-show="selectedScopeName==='TARS101' && gameName.game === 'Breakpoint'" src="/assets/soldier-silhouette.png" class="absolute h-[15.4%] top-[31%] right-[53%]">
+          </div>
+          
         </Transition>
         <Transition>
           <img
@@ -607,8 +614,7 @@ function getStylePosition(index: number) {
             <glitched-writer :text="selectedRifle" appear preset="nier" />
           </div>
 
-        </div>
-
+        </div> 
       <!-- RANGE LABELS -->
           <div class="absolute top-[55%] left-2/4 -translate-x-2/4 text-2xl">
             <glitched-writer v-if="ranges && ranges.length==0" :text="'Sorry, rifle not yet ranged with this scope'" appear preset="nier" :style="getRangeStyle()" />
