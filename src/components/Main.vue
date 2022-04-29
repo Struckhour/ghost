@@ -4,6 +4,7 @@ import Riflemenu from "./Riflemenu.vue";
 import { ref, computed, setBlockTracking } from "vue";
 import GlitchedWriter from 'vue-glitched-writer';
 import fullData from '../assets/data';
+import silhouettes from '../assets/silhouettes';
 
 const showIntel = ref(false);
 const gameName = defineProps<{game: string}>()
@@ -69,6 +70,14 @@ function changeRifleMenu() {
 
 const ranges = computed(() => {
   return fullData[gameName.game][selectedScopeName.value][selectedRifle.value]
+})
+
+const silhRange = computed(() => {
+  return silhouettes[gameName.game][selectedScopeName.value][selectedRifle.value]
+})
+
+const silhScope = computed(() => {
+  return silhouettes[gameName.game][selectedScopeName.value]
 })
 
 const scopeLabelStyles: { [gameName: string]:{[scopeName: string]: string }} = {
@@ -463,14 +472,25 @@ function getStylePosition(index: number) {
               v-show="selectedScopeName==='T5XI'" src="/assets/BP-Scopes/BP-T5XISight.jpg"
               class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full"
             />
-            <img v-show="selectedScopeName==='T5XI'" src="/assets/soldier-silhouette.png" class="absolute h-[8.4%] top-[37.2%] right-[51%]">
+            <img v-show="selectedScopeName==='T5XI' && gameName.game === 'Breakpoint' && silhScope.hasOwnProperty(selectedRifle)" src="/assets/soldier-silhouette.png" class="absolute h-[8.4%] top-[37.2%] right-[51%]"
+            />
+            <div v-if="selectedScopeName==='T5XI' && gameName.game === 'Breakpoint' && silhScope.hasOwnProperty(selectedRifle)" class="absolute h-[15.4%] top-[39%] right-[54%]">
+              {{silhRange[0]}}m
+            </div>
           </div>
         </Transition>
         <Transition>
-          <img
-          v-show="selectedScopeName==='DUAL RANGE'" src="/assets/BP-Scopes/BP-Dual-Range-Sight.jpg"
-          class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full"
-        />
+          <div>
+            <img
+              v-show="selectedScopeName==='DUAL RANGE'" src="/assets/BP-Scopes/BP-Dual-Range-Sight.jpg"
+              class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full"
+            />
+            <img v-show="selectedScopeName==='DUAL RANGE' && gameName.game === 'Breakpoint' && silhScope.hasOwnProperty(selectedRifle)" src="/assets/soldier-silhouette.png" class="absolute h-[12.8%] top-[28.2%] right-[51%]"
+            />
+            <div v-if="selectedScopeName==='DUAL RANGE' && gameName.game === 'Breakpoint' && silhScope.hasOwnProperty(selectedRifle)" class="absolute h-[10.4%] top-[32%] right-[56%]">
+              {{silhRange[0]}}m
+            </div>
+          </div>
         </Transition>
         <Transition>
           <div>
@@ -478,7 +498,11 @@ function getStylePosition(index: number) {
               v-show="selectedScopeName==='TARS101' && gameName.game === 'Breakpoint'" src="/assets/BP-Scopes/BP-TARS101.jpg"
               class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full"
             />
-            <img v-show="selectedScopeName==='TARS101' && gameName.game === 'Breakpoint'" src="/assets/soldier-silhouette.png" class="absolute h-[15.4%] top-[31%] right-[53%]">
+            <img v-show="selectedScopeName==='TARS101' && gameName.game === 'Breakpoint' && silhScope.hasOwnProperty(selectedRifle)" src="/assets/soldier-silhouette.png" class="absolute h-[7.7%] top-[31.2%] right-[52%]"
+            />
+            <div v-if="selectedScopeName==='TARS101' && gameName.game === 'Breakpoint' && silhScope.hasOwnProperty(selectedRifle)" class="absolute h-[15.4%] top-[33%] right-[55%]">
+              {{silhRange[0]}}m
+            </div>
           </div>
           
         </Transition>
@@ -501,10 +525,17 @@ function getStylePosition(index: number) {
           />
         </Transition>
         <Transition>
-          <img
-          v-show="selectedScopeName==='DIGITAL'" src="/assets/BP-Scopes/BP-Digital-Sight.jpg"
-          class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full"
-          />
+         <div>
+            <img
+            v-show="selectedScopeName==='DIGITAL'" src="/assets/BP-Scopes/BP-Digital-Sight.jpg"
+            class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full"
+            />
+            <img v-show="selectedScopeName==='DIGITAL' && gameName.game === 'Breakpoint' && silhScope.hasOwnProperty(selectedRifle)" src="/assets/soldier-silhouette.png" class="absolute h-[11%] top-[33.8%] right-[50%]"
+            />
+            <div v-if="selectedScopeName==='DIGITAL' && gameName.game === 'Breakpoint' && silhScope.hasOwnProperty(selectedRifle)" class="absolute h-[15%] top-[37%] right-[54%]">
+                {{silhRange[0]}}m
+          </div>
+         </div>
         </Transition>
         <Transition>
           <img
@@ -540,28 +571,56 @@ function getStylePosition(index: number) {
           />
         </Transition>
         <Transition>
-          <img
-          v-show="selectedScopeName==='TARS101' && gameName.game==='Wildlands'" src="/assets/WL-Scopes/WL-TARS101.jpg"
-          class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full"
-          />
+          <div> 
+           <img
+            v-show="selectedScopeName==='TARS101' && gameName.game==='Wildlands'" src="/assets/WL-Scopes/WL-TARS101.jpg"
+            class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full"
+            />
+            <img v-show="selectedScopeName==='TARS101' && gameName.game === 'Wildlands' && silhScope.hasOwnProperty(selectedRifle)" src="/assets/soldier-silhouette.png" class="absolute h-[8%] top-[28.2%] right-[52%]"
+            />
+            <div v-if="selectedScopeName==='TARS101' && gameName.game === 'Wildlands' && silhScope.hasOwnProperty(selectedRifle)" class="absolute h-[15.4%] top-[30%] right-[55%]">
+              {{silhRange[0]}}m
+            </div>
+          </div>
         </Transition>
         <Transition>
-          <img
-          v-show="selectedScopeName==='T5XI TACTICAL' && gameName.game==='Wildlands'" src="/assets/WL-Scopes/WL-T5XI-Tactical.jpg"
-          class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full"
-          />
+          <div>
+            <img
+            v-show="selectedScopeName==='T5XI TACTICAL' && gameName.game==='Wildlands'" src="/assets/WL-Scopes/WL-T5XI-Tactical.jpg"
+            class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full"
+            />
+            <img v-show="selectedScopeName==='T5XI TACTICAL' && gameName.game === 'Wildlands' && silhScope.hasOwnProperty(selectedRifle)" src="/assets/soldier-silhouette.png" class="absolute h-[18%] top-[27.7%] right-[53%]"
+            />
+            <div v-if="selectedScopeName==='T5XI TACTICAL' && gameName.game === 'Wildlands' && silhScope.hasOwnProperty(selectedRifle)" class="absolute h-[15.4%] top-[34%] right-[60%]">
+              {{silhRange[0]}}m
+            </div>
+          </div>
         </Transition>
         <Transition>
-          <img
-          v-show="selectedScopeName==='DIGITAL' && gameName.game==='Wildlands'" src="/assets/WL-Scopes/WL-Digital-Scope.jpg"
-          class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full"
-          />
+          <div>
+            <img
+            v-show="selectedScopeName==='DIGITAL' && gameName.game==='Wildlands'" src="/assets/WL-Scopes/WL-Digital-Scope.jpg"
+            class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full"
+            />
+            <img v-show="selectedScopeName==='DIGITAL' && gameName.game === 'Wildlands' && silhScope.hasOwnProperty(selectedRifle)" src="/assets/soldier-silhouette.png" class="absolute h-[10%] top-[35%] right-[50%]"
+            />
+            <div v-if="selectedScopeName==='DIGITAL' && gameName.game === 'Wildlands' && silhScope.hasOwnProperty(selectedRifle)" class="absolute h-[15.4%] top-[38%] right-[54%]">
+              {{silhRange[0]}}m
+            </div>
+          </div>
         </Transition>
         <Transition>
-          <img
-          v-show="selectedScopeName==='G28' && gameName.game==='Wildlands'" src="/assets/WL-Scopes/WL-G28.jpg"
-          class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full"
-          />
+          <div>
+            <img
+            v-show="selectedScopeName==='G28' && gameName.game==='Wildlands'" src="/assets/WL-Scopes/WL-G28.jpg"
+            class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full"
+            />
+            <img v-show="selectedScopeName==='G28' && gameName.game === 'Wildlands' && silhScope.hasOwnProperty(selectedRifle)" src="/assets/soldier-silhouette.png" class="absolute h-[12%] top-[28%] right-[51%]"
+            />
+            <div v-if="selectedScopeName==='G28' && gameName.game === 'Wildlands' && silhScope.hasOwnProperty(selectedRifle)" class="absolute h-[15.4%] top-[32%] right-[56%]">
+              {{silhRange[0]}}m
+            </div>
+          </div>
         </Transition>
         <Transition>
           <img
