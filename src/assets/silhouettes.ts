@@ -14,6 +14,7 @@ const silhouettes: { [gameName: string]: {[scopeName: string]: {[rifleName: stri
       // 'MK17 SCOUT':[],
       // 'MK17 SCOUT RANGE FINDER':[],
       'RECON-A1':[230],
+      'RECON-A1 RANGE FINDER':[230],
       // 'SR-1':[],
 
     },
@@ -44,7 +45,7 @@ const silhouettes: { [gameName: string]: {[scopeName: string]: {[rifleName: stri
      
       },
     'DIGITAL': {
-      L115A3:[],
+      // L115A3:[],
       },
     'SLX5': {
 
