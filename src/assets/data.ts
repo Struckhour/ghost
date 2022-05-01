@@ -41,7 +41,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'MSR':[175,275,325,390,450,555,],
       'PALADIN 9 SNR':[70,233,366,560,],
       'PALADIN 9 SNR SURVIVAL':[],
-      'RECON-A1':[],
+      'RECON-A1':[175,275,350,425,513,632,713,],
       'SCORPIO':[200,275,325,388,463, 563, 638],
       'SCORPIO SCOUT':[170,275,340,415,490,],
       'SCORPIO SCOUT QUIET':[175,263,325,388,450,],

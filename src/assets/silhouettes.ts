@@ -6,24 +6,25 @@ const silhouettes: { [gameName: string]: {[scopeName: string]: {[rifleName: stri
       '416 SCOUT RANGE FINDER':[200],
       'G36C SCOUT':[220],
       'HTI SURVIVAL':[230],
-      L115A3:[],
+      // L115A3:[],
       'M4A1 SCOUT':[260],
       'M4A1 SCOUT MAWL-DA':[260],
       'M4A1 SCOUT RANGE FINDER':[260],
       'M82':[250],
-      'MK17 SCOUT':[],
-      'MK17 SCOUT RANGE FINDER':[],
-      'SR-1':[],
+      // 'MK17 SCOUT':[],
+      // 'MK17 SCOUT RANGE FINDER':[],
+      'RECON-A1':[230],
+      // 'SR-1':[],
 
     },
     'DUAL RANGE': { 
-      L115A3:[],
+      // L115A3:[],
       'M110':[150],
       'M110 MAWL-DA':[150],
       'M110 RANGE FINDER':[150],
       },
     'TARS101': {
-      '416 SCOUT':[190],
+      '416 SCOUT':[190,80],
       '416 SCOUT MAWL-DA':[190],
       '416 SCOUT RANGE FINDER':[190],
       'HTI SURVIVAL':[190],
@@ -34,7 +35,7 @@ const silhouettes: { [gameName: string]: {[scopeName: string]: {[rifleName: stri
       'M82':[200],
       'MK17 SCOUT':[150],
       'SCORPIO SCOUT':[210],
-      'SR-1':[],
+      // 'SR-1':[],
       },
     'VC16': {
       
@@ -77,8 +78,8 @@ const silhouettes: { [gameName: string]: {[scopeName: string]: {[rifleName: stri
     },
     'T5XI TACTICAL': {
       'BFG-50A':[95],
-      L115A3:[],
-      M40A5:[],
+      // L115A3:[],
+      // M40A5:[],
     },
     'DIGITAL': {
       'M4A1 LONG BARREL':[190],
