@@ -83,7 +83,7 @@ const silhScope = computed(() => {
 const scopeLabelStyles: { [gameName: string]:{[scopeName: string]: string }} = {
   Breakpoint: {
     'T5XI': 'color: #4dd5ff; text-shadow: 0 0 5px #000, 0 0 6px #ffffff86, 0 0 7px #4dd5ff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff; animation: saturate 11s infinite;',
-    'DUAL RANGE': 'color: black;',
+    'DUAL RANGE': 'color: yellow;',
   // 'TARS101': 'color: #1de02d; text-shadow: 0 0 5px #000, 0 0 6px #ffffff11, 0 0 7px #1de02d86, 0 0 10px #1de02d86, 0 0 15px #1de02d; animation: saturate 11s infinite;',
     'TARS101': 'color: #ffb5a6; font-family: courier;',
     'VC16': 'color: #4dd5ff; text-shadow: 0 0 5px #000, 0 0 6px #ffffff86, 0 0 7px #4dd5ff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff; animation: saturate 11s infinite;',
@@ -113,7 +113,7 @@ function getScopeLabelStyle() {
 const rifleLabelStyles: { [gameName: string]: {[scopeName: string]: string} } = {
   Breakpoint:{
   'T5XI': 'color: #4dd5ff; animation: glow 6000ms infinite;',
-    'DUAL RANGE': 'color: black;',
+    'DUAL RANGE': 'color: yellow;',
     //'TARS101': 'color: #1de02d; text-shadow: 0 0 5px #000, 0 0 6px #ffffff86, 0 0 7px #1de02d, 0 0 10px #1de02d86, 0 0 15px #1de02d; animation: flicker 5s infinite;',
     'TARS101': 'color: #ffb5a6; font-family: courier;',
     'VC16': 'color: #4dd5ff; animation: glow 6000ms infinite;',
@@ -144,7 +144,7 @@ function getRifleLabelStyle() {
 const rangeStyles: { [gameName: string]: {[scopeName: string]: string }} = {
   Breakpoint:{
     'T5XI': 'color: #4dd5ff; text-shadow: 0 0 5px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff; animation: glow 5000ms infinite;',
-    'DUAL RANGE': 'color: black;',
+    'DUAL RANGE': 'color: yellow;',
     // 'TARS101': 'color: #1de02d; text-shadow: 0 0 5px #000, 0 0 0px #fff, 0 0 10px #1de02d44, 0 0 15px #1de02d;',
     'TARS101': 'color: #ffb5a6; font-family: courier;',
     'VC16': 'color: #4dd5ff; font-size: 1rem; text-shadow: 0 0 5px #000, 0 0 7px #fff, 0 0 10px #4dd5ff, 0 0 15px #4dd5ff;',
@@ -186,13 +186,20 @@ const styleTranslations: { [gameName: string]: {[scopeName: string]: string[]} }
 
     'DUAL RANGE': ['display: none;',
     'font-size: 0.7rem; top: 53.6%; left: 51.5%; transform: translate(0px, -1em)',
-    'top: 57.3%; right: 52%; transform: translate(0px, -1em);',
+    'top: 57.1%; right: 52%; transform: translate(0px, -1em);',
     'top: 60.2%; left: 52%; transform: translate(0px, -1em)',
-    'top: 63.2%; right: 52%; transform: translate(0px, -1em);',
+    'top: 63.1%; right: 52%; transform: translate(0px, -1em);',
     'top: 66.7%; left: 52%; transform: translate(0px, -1em)',
     'top: 69.8%; right: 52%; transform: translate(0px, -1em);',
     'top: 73.2%; left: 52%; transform: translate(0px, -1em)',
-    'top: 76.5%; right: 52%; transform: translate(0px, -1em)',
+    'top: 76.2%; right: 52%; transform: translate(0px, -1em)',
+    'top: 79.4%; left: 52%; transform: translate(0px, -1em)',
+    'top: 82.3%; right: 52%; transform: translate(0px, -1em)',
+    'top: 85.7%; left: 52%; transform: translate(0px, -1em)',
+    'top: 88.9%; right: 52%; transform: translate(0px, -1em)',
+    'top: 92.2%; left: 52%; transform: translate(0px, -1em)',
+    'top: 95.4%; right: 52%; transform: translate(0px, -1em)',
+
     ],
 
     'TARS101':
