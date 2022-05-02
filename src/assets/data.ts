@@ -369,6 +369,8 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'SR25 SHORT BARREL':[125,175,225,300,375,450,],
       'SRSA1 ZOOMED':[150,250,300,450,550,],
       'SRSA1':[150,225,275,350,450,],
+      'Z93 AMR ZOOMED':[125,225,300,500,650,750,825,900,950,],
+      'Z93 AMR':[100,200,275,400,500,625,],
     },
     'T5XI TACTICAL': {
       'BFG-50A':[150,250,325,500,700,],
@@ -400,6 +402,8 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'SR25 SHORT BARREL':[100,200,275,500,700,],
       'SR25 SHORT BARREL RANGE FINDER':[],
       'SRSA1':[],
+      'Z93 AMR':[100,225,	275,400,575,738,838,925,1000,],
+      'Z93 AMR LONG BARREL':[150,225,325,500,725,900,],			
       },
     'DIGITAL': {
       '556xi':[],

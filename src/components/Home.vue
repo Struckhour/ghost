@@ -18,6 +18,7 @@
 <template>
     <body class="w-screen h-[53rem]">
         <h1 class="text-[#5d6e4e] text-center text-xl sm:text-4xl w-3/5 max-w-[500px] m-auto border-b border-gray-200" style="font-family:angel;">The Ghost Recon Bullet Drop Compendium</h1>
+        <h2 class="text-red-700 mt-1 text-center text-xl" style="font-family:angel;">Brought to you by HeavyHawk and Newblearbomb</h2>
         <h2 class="text-white mt-6 text-center text-xl">Choose a game</h2>
         <div class="md:w-[48rem] w-[400px] m-auto mt-4 grid md:grid-cols-2 grid-cols-1 gap-2">
 

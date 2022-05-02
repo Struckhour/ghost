@@ -78,11 +78,15 @@ const silhouettes: { [gameName: string]: {[scopeName: string]: {[rifleName: stri
       'MK14 CAPTAIN ZOOMED':[144],
       'SR-1 CHAMELEON ZOOMED':[170],
       'SRSA1 ZOOMED':[150],
+      'Z93 AMR ZOOMED':[140],
     },
     'T5XI TACTICAL': {
-      'BFG-50A':[95],
+      'BFG-50A':[190],
+      'BFG-50A LONG BARREL':[190],
       // L115A3:[],
       // M40A5:[],
+      'Z93 AMR':[250],
+      'Z93 AMR LONG BARREL':[250],
     },
     'DIGITAL': {
       'M4A1 LONG BARREL':[190],
