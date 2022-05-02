@@ -24,6 +24,7 @@ const silhouettes: { [gameName: string]: {[scopeName: string]: {[rifleName: stri
       'M110 MAWL-DA':[150],
       'M110 RANGE FINDER':[150],
       'RECON-A1':[240],
+      'RECON-A1 RANGE FINDER':[240],
       },
     'TARS101': {
       '416 SCOUT':[190,80],
