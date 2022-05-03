@@ -182,6 +182,8 @@ const styleTranslations: { [gameName: string]: {[scopeName: string]: string[]} }
     'top: 66.7%; right: 52%; transform: translate(0px, -1em);',
     'top: 73.8%; left: 52%; transform: translate(0px, -1em)',
     'top: 80.7%; right: 52%; transform: translate(0px, -1em);',
+    'top: 87.6%; left: 52%; transform: translate(0px, -1em)',
+
     ],
 
     'DUAL RANGE': ['display: none;',
@@ -634,17 +636,10 @@ function getStylePosition(index: number) {
           </div>
         </Transition>
         <Transition>
-          <!-- <div> -->
             <img
             v-show="selectedScopeName==='PKS-07' && gameName.game==='Wildlands'" src="/assets/WL-Scopes/WL-PKS-07.jpg"
             class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full"
             />
-            <!-- <img v-show="selectedScopeName==='PKS-07' && gameName.game === 'Wildlands' && silhScope.hasOwnProperty(selectedRifle)" src="/assets/soldier-silhouette.png" class="absolute h-[7.7%] top-[48.5%] right-[63%]"
-            />
-            <div v-if="selectedScopeName==='PKS-07' && gameName.game === 'Wildlands' && silhScope.hasOwnProperty(selectedRifle)" class="absolute top-[45%] right-[60%]">
-              {{silhRange[0]}}m
-            </div>
-          </div> -->
         </Transition>
         <Transition>
           <img

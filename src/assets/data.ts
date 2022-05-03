@@ -28,7 +28,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'M110 MAWL-DA':[100,250,375,525,660,808,],
       'M110 RANGE FINDER':[100,270,400,580,725,],
       'M4A1 SCOUT':[100,200,250,325,400,],
-      'M4A1 SCOUT MAWL-DA':[100,225,300,400,500,],
+      'M4A1 SCOUT MAWL-DA':[100,225,300,400,500,657,763,838,],
       'M4A1 SCOUT RANGE FINDER':[125,225,325,425,475,],
       'M82':[175,325,440,580,720,],
       'M82 CERBERUS':[],
