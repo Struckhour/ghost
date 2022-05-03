@@ -359,12 +359,15 @@ const styleTranslations: { [gameName: string]: {[scopeName: string]: string[]} }
         'G28': ['display: none;',
         'font-size: 0.7rem; top: 52.6%; left: 52%; transform: translate(0px, -1em)',
         'top: 55.8%; right: 51.5%; transform: translate(0px, -1em);',
-        'top: 58.7%; left: 52.5%; transform: translate(0px, -1em)',
-        'top: 61.7%; right: 51.5%; transform: translate(0px, -1em);',
+        'top: 58.6%; left: 52.5%; transform: translate(0px, -1em)',
+        'top: 61.6%; right: 51.5%; transform: translate(0px, -1em);',
         'top: 64.9%; left: 52.5%; transform: translate(0px, -1em)',
         'top: 67.8%; right: 51.5%; transform: translate(0px, -1em);',
         'top: 71.2%; left: 52.5%; transform: translate(0px, -1em)',
-        'top: 74.2%; right: 51.5%; transform: translate(0px, -1em)',
+        'top: 74.1%; right: 51.5%; transform: translate(0px, -1em)',
+        'top: 77.2%; left: 52.5%; transform: translate(0px, -1em)',
+        'top: 80%; right: 51.5%; transform: translate(0px, -1em)',
+
         ],
         'POSP':
       ['display: none;',
@@ -378,7 +381,7 @@ const styleTranslations: { [gameName: string]: {[scopeName: string]: string[]} }
       'display: none; top: 54%; right: 51%; transform: translate(0px, -1em);',
       'font-size: 0.8rem; top: 53.2%; right: 51%; transform: translate(0px, -1em);',
       'top: 56%; left: 52%; transform: translate(0px, -1em)',
-      'font-size: 0.7rem; top: 57.9%; right: 51%; transform: translate(0px, -1em);',
+      'font-size: 0.9rem; top: 57.9%; right: 51%; transform: translate(0px, -1em);',
       'top: 60%; left: 52%; transform: translate(0px, -1em)',
       ],
     }
@@ -631,10 +634,17 @@ function getStylePosition(index: number) {
           </div>
         </Transition>
         <Transition>
-          <img
-          v-show="selectedScopeName==='PKS-07' && gameName.game==='Wildlands'" src="/assets/WL-Scopes/WL-PKS-07.jpg"
-          class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full"
-          />
+          <!-- <div> -->
+            <img
+            v-show="selectedScopeName==='PKS-07' && gameName.game==='Wildlands'" src="/assets/WL-Scopes/WL-PKS-07.jpg"
+            class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full"
+            />
+            <!-- <img v-show="selectedScopeName==='PKS-07' && gameName.game === 'Wildlands' && silhScope.hasOwnProperty(selectedRifle)" src="/assets/soldier-silhouette.png" class="absolute h-[7.7%] top-[48.5%] right-[63%]"
+            />
+            <div v-if="selectedScopeName==='PKS-07' && gameName.game === 'Wildlands' && silhScope.hasOwnProperty(selectedRifle)" class="absolute top-[45%] right-[60%]">
+              {{silhRange[0]}}m
+            </div>
+          </div> -->
         </Transition>
         <Transition>
           <img

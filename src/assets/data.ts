@@ -428,6 +428,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'PSG-1':[125,175,225,325,450,575,],
     },
     'G28': {
+      'DRAGUNOV (SVD) RANGE FINDER':[125,188,250,300,338,400,463,525,588,638,688,],
       'FRF-2':[150,200,275,325,375,450,500,],
       'FRF-2 LONG BARREL':[175,250,325,375,450,550,],
       'G28':[175,200,250,275,325,375,450,500,550,],
@@ -452,6 +453,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
     'PKS-07': {
       'BFG-50A':[175,275,375,500,600,700,],
       'DRAGUNOV (SVD)':[175,225,275,325,400,450,],
+      'DRAGUNOV (SVD) RANGE FINDER':[175,250,300,350,413,475,],
       'DRAGUNOV (SVD) SHORT BARREL':[150,200,225,275,300,350,],
       'DRAGUNOV (SVD) SHORT BARREL RANGE FINDER ':[150,200,250,300,325,375,],
       'FRF-2':[150,200,250,300,350,400,],
