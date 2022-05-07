@@ -98,6 +98,8 @@ const silhouettes: { [gameName: string]: {[scopeName: string]: {[rifleName: stri
     },
     'G28': {
       'DRAGUNOV (SVD) RANGE FINDER':[240],
+      'HTI':[250],
+      'HTI LONG BARREL':[250],
       'MK14 LONG BARREL':[210],
       'SR25 LIBERATOR':[225],
 

@@ -1,7 +1,7 @@
 const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]: (number | string)[]}} } = {
   Breakpoint: {
     'T5XI': {
-      '416 SCOUT':[100,200,300,400,525,],
+      '416 SCOUT':[100,200,300,400,525,663,754,811,],
       '416 SCOUT MAWL-DA':[100,225,350,500,650,],
       '416 SCOUT RANGE FINDER':[100,250,375,550,700,],
       '553 SCOUT':[75,200,275,375,500,],
@@ -434,6 +434,8 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'G28':[175,200,250,275,325,375,450,500,550,],
       'G28 LONG BARREL':[175,225,275,325,400,475,550,650,],
       'G28 LONG BARREL RANGE FINDER':[200,250,300,350,425,500,575,650,],
+      'HTI':[175,238,300,350,400,488,575,650,713,750,800,],
+      'HTI LONG BARREL':[200,275,350,425,513,625,725,800,875,925,975,],      
       'L115A3':[],
       'M110':[150,200,275,350,425,525,650,],
       'M110 RANGE FINDER':[175,225,300,375,450,575,],
