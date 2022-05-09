@@ -407,7 +407,9 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       },
     'DIGITAL': {
       '556xi':[],
+      'ACR':[100,150,213,313,450,588,],
       'ACR LONG BARREL':[125,150,250,400,575,750,],
+      'ACR SHORT BARREL':[100,125,175,250,350,450,],
       'AK12 Zoomed':[],
       'AK12 LONG BARREL':[],
       'BFG-50A':[150,200,275,400,550,700,],
