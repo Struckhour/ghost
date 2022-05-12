@@ -92,7 +92,16 @@ const silhouettes: { [gameName: string]: {[scopeName: string]: {[rifleName: stri
       'M4A1 LONG BARREL':[190],
       'MDR':[225],
       'MDR LONG BARREL':[225],
+      'MK16':[190],
+      'MK16 LONG BARREL':[190],
+      'MK16 LONG BARREL RANGE FINDER':[190],
+      'MK16 RANGE FINDER':[190],
+      'MK16 SHORT BARREL':[190],
+      'MK16 SHORT BARREL RANGE FINDER':[190],
+      'MK17':[190],
       'MK17 LONG BARREL':[190],
+      'MK17 LONG BARREL RANGE FINDER':[190],
+      'MK17 SHORT BARREL':[190],
 
 
     },
