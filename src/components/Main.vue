@@ -261,11 +261,11 @@ const styleTranslations: { [gameName: string]: {[scopeName: string]: string[]} }
     'SLX5':
         ['display: none;',
       'display: none; top: 53.6%; right: 52%; transform: translate(0px, -1em);',
-      'top: 55.6%; right: 52%; transform: translate(0px, -1em);',
-      'top: 59%; left: 52.5%; transform: translate(0px, -1em)',
-      'top: 63%; right: 52%; transform: translate(0px, -1em);',
-      'top: 68.4%; left: 52.5%; transform: translate(0px, -1em)',
-      'top: 74.5%; right: 52%; transform: translate(0px, -1em);',
+      'top: 55.3%; right: 52%; transform: translate(0px, -1em);',
+      'top: 58.9%; left: 52.5%; transform: translate(0px, -1em)',
+      'top: 62.8%; right: 52%; transform: translate(0px, -1em);',
+      'top: 68.2%; left: 52.5%; transform: translate(0px, -1em)',
+      'top: 74.2%; right: 52%; transform: translate(0px, -1em);',
 
     ],
     'TA31H':
