@@ -201,6 +201,8 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'ZASTAVA M93':[],
       },
     'SLX5': {
+      '416SCOUT':[75,100,175,225,307,425,550,],
+      '416SCOUT MAWL-DA':[100,125,213,275,375,525,675,],
       '553 SCOUT MAWL-DA':[75,150,225,300,425,600,],
       '553 SCOUT':[75,100,200,250,350,500,],
       '805 BREN':[75,140,185,233,300,400,500,],
@@ -214,7 +216,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'M110':[100,175,225,280,360,475,590,],
       'M110 MAWL-DA':[100,190,255,325,435,585,720,],
       'M110 RANGE FINDER':[100,200,265,350,485,650,790,],
-      'M4A1 SCOUT':[],
+      'M4A1 SCOUT':[75,150,200,250,313,425,538,],
       'M4A1 SCOUT MAWL-DA':[75,150,225,288,388,525,663,],
       'M4A1 SCOUT RANGE FINDER':[75,163,233,300,425,575,725,],
       'MK14 MAWL-DA':[175,215,250,300,350,433,525,],
