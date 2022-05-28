@@ -5,6 +5,7 @@ import { ref, computed, setBlockTracking } from "vue";
 import GlitchedWriter from 'vue-glitched-writer';
 import fullData from '../assets/data';
 import silhouettes from '../assets/silhouettes';
+import sezzing from '../assets/sezzing';
 
 const showIntel = ref(false);
 const gameName = defineProps<{game: string}>()
@@ -687,6 +688,10 @@ function getStylePosition(index: number) {
           </div>
 
         </div> 
+        <!-- ENDORSEMENT SEZZING -->
+          <div v-if="sezzing[gameName.game][selectedScopeName].hasOwnProperty(selectedRifle)" class="absolute h-[15%] w-[30%] top-[29%] right-[10%] text-red-700 rotate-[-10deg] text-2xl" style="font-family: angel;">
+          {{sezzing[gameName.game][selectedScopeName][selectedRifle]}}
+          </div>
       <!-- RANGE LABELS -->
           <div class="absolute top-[55%] left-2/4 -translate-x-2/4 text-2xl">
             <glitched-writer v-if="ranges && ranges.length==0" :text="'Sorry, rifle not yet ranged with this scope'" appear preset="nier" :style="getRangeStyle()" />
