@@ -4,9 +4,7 @@ const sezzing: { [gameName: string]: {[scopeName: string]: {[rifleName: string]:
       '416 SCOUT':'easy numbers out to 525 meters',
       'G36C SCOUT':'TAKE THEIR LIVES AT SEVENTY-FIVES',
       'M4A1 SCOUT MAWL-DA':'easy numbers out to 500 meters',
-
-
-      // 'SR-1':[],
+      'SR-1':'LEAST BULLET DROP RIFLE. PERIOD.',
 
     },
     'DUAL RANGE': { 
@@ -20,7 +18,7 @@ const sezzing: { [gameName: string]: {[scopeName: string]: {[rifleName: string]:
       'G28 WILDERNESS':'ALIVE TANGO FIX: JUST ADD 66',
       L115A3:'+ 50 out to 400 meters',
       // 'M4A1 SCOUT':[180],
-      'M4A1 SCOUT MAWL-DA':'tango alive? just add 75',
+      'M4A1 SCOUT MAWL-DA':'tango alive? just add seventy-five',
       // 'M4A1 SCOUT RANGE FINDER':[180],
       // 'M82':[200],
       // 'MK17 SCOUT':[150],
@@ -39,6 +37,8 @@ const sezzing: { [gameName: string]: {[scopeName: string]: {[rifleName: string]:
       // L115A3:[],
       },
     'SLX5': {
+      'ARX200 MAWL-DA':'sniper range in an assault rifle',
+      // 'CTMMG':'AN LMG WITH GOOD RANGE',
 
     },
     'TA31H': {

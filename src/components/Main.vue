@@ -458,6 +458,8 @@ function getStylePosition(index: number) {
             :show2="showRifleMenu"
             :rifle-title="selectedRifle"
             :scopeMenu="showScopeMenu"
+            :selectedScope="selectedScopeName"
+            :gameName="gameName.game"
             @selected="(rifle) => (selectedRifle = rifle)"
             @rifle-menu-clicked="changeRifleMenu"
             @scope-menu="removeScopeMenu"

@@ -1,8 +1,9 @@
 <script setup lang="ts">
     import { ref, computed } from 'vue'
+    import sezzing from '../assets/sezzing';
 
 
-    const props = defineProps<{ rifles: string[], rifleTitle: string, show2: boolean, scopeMenu: boolean}>()
+    const props = defineProps<{ rifles: string[], rifleTitle: string, show2: boolean, scopeMenu: boolean, selectedScope:string, gameName:string}>()
 
     const emit = defineEmits(['selected', 'rifleMenuClicked', 'scopeMenu'])
 
@@ -64,10 +65,12 @@
       v-for="(rifle) in rifles" :key="rifle"
       class="right-0 py-0 mt-0 rounded-sm shadow-xl shadow-black bg-slate-900 bg-opacity-80"
       >
-        <div @click="changeRifle(rifle)" class="cursor-pointer px-4 md:py-0 py-2 md:my-0 my-1  z-40 md:text-[.85rem] text-base text-cyan-300 hover:bg-cyan-700 hover:text-indigo-100">
+        <div v-if="sezzing[gameName][selectedScope].hasOwnProperty(rifle)" @click="changeRifle(rifle)" class="cursor-pointer px-4 md:py-0 py-2 md:my-0 my-1  z-40 md:text-[.85rem] text-base text-yellow-400 font-bold hover:bg-yellow-400 hover:text-black">
           {{rifle}}
         </div>
-
+        <div v-else @click="changeRifle(rifle)" class="cursor-pointer px-4 md:py-0 py-2 md:my-0 my-1  z-40 md:text-[.85rem] text-base text-cyan-300 hover:bg-cyan-700 hover:text-indigo-100">
+          {{rifle}}
+        </div>
       </div>
   </div>
 
