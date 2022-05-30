@@ -101,7 +101,7 @@ const scopeLabelStyles: { [gameName: string]:{[scopeName: string]: string }} = {
     'TARS101': 'color: #e2b7bd; text-shadow: 0 0 5px #000, 0 0 0px #fff, 0 0 10px #e2b7bd44, 0 0 15px #e2b7bd;',
     'T5XI TACTICAL': 'color:black;',
     'DIGITAL': 'color: #e2b7bd;  text-shadow: 0 0 5px #000, 0 0 6px #ffffff11, 0 0 7px #e2b7bd86, 0 0 10px #e2b7bd86, 0 0 15px #e2b7bd;',
-    'G28': 'color: black;',
+    'G28': 'color: yellow;',
     'POSP': 'color: #e2b7bd;',
     'PKS-07': 'color: #f4c59e;',
   }
@@ -131,7 +131,7 @@ const rifleLabelStyles: { [gameName: string]: {[scopeName: string]: string} } = 
     'TARS101': 'color: #e2b7bd; text-shadow: 0 0 5px #000, 0 0 0px #fff, 0 0 10px #e2b7bd44, 0 0 15px #e2b7bd;',
     'T5XI TACTICAL': 'color:black;',
     'DIGITAL': 'color: #e2b7bd;  text-shadow: 0 0 5px #000, 0 0 6px #ffffff11, 0 0 7px #e2b7bd86, 0 0 10px #e2b7bd86, 0 0 15px #e2b7bd;',
-    'G28': 'color: black;',
+    'G28': 'color: yellow;',
     'POSP': 'color: #e2b7bd;',
     'PKS-07': 'color: #f4c59e;',
   }
@@ -162,7 +162,7 @@ const rangeStyles: { [gameName: string]: {[scopeName: string]: string }} = {
     'TARS101': 'color: #e2b7bd; text-shadow: 0 0 5px #000, 0 0 0px #fff, 0 0 10px #e2b7bd44, 0 0 15px #e2b7bd;',
     'T5XI TACTICAL': 'color: black;',
     'DIGITAL': 'color: #e2b7bd; text-shadow: 0 0 5px #000, 0 0 0px #fff, 0 0 10px #e2b7bd44, 0 0 15px #e2b7bd;',
-    'G28': 'color: black;',
+    'G28': 'color: yellow;',
     'POSP': 'color: #e2b7bd;',
     'PKS-07': 'color: #f4c59e;',
   }
@@ -370,6 +370,8 @@ const styleTranslations: { [gameName: string]: {[scopeName: string]: string[]} }
         'top: 74.1%; right: 51.5%; transform: translate(0px, -1em)',
         'top: 77.2%; left: 52.5%; transform: translate(0px, -1em)',
         'top: 80%; right: 51.5%; transform: translate(0px, -1em)',
+        'top: 83.2%; left: 52.5%; transform: translate(0px, -1em)',
+        'top: 86%; right: 51.5%; transform: translate(0px, -1em)',
 
         ],
         'POSP':
