@@ -31,6 +31,7 @@ const sezzing: { [gameName: string]: {[scopeName: string]: {[rifleName: string]:
 
         },
     'ACSS': {
+      'MK17 SCOUT':'sensible numbers',
      
       },
     'DIGITAL': {
