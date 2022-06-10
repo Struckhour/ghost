@@ -51,7 +51,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'TAC50 BROWN':[175,350,475,650,813,],
       'TAVOR SCOUT MAWL-DA':[75,188,263,375,488,],
       'VSK-50':[],
-      'ZASTAVA M93':[], 
+      'ZASTAVA M93':[163,325,450,600,725,], 
     },
     'DUAL RANGE': {
 
@@ -128,6 +128,8 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
         'TAC50':[100,250,380,550,],
         'TAC50 BROWN':[150,300,400,512,650,750,],
         'VSK-50':[150,250,300,366,425,475,540,595,633,666,700,725,750,],
+        'ZASTAVA M93':[163,263,350,450,550,638,725,788,850,888,925,950,975,1000,], 
+
       },
     'VC16': {
       'AK74':[88,163,188,238,275,338,450,500,],
@@ -221,6 +223,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'ARX200 MAWL-DA':[100,188,275,425,600,800,950],
       'CTMMG':[100,150,225,300,400,550,675,],
       'FRF2':[100,210,265,320,390,475,585,],
+      'G28 WILDERNESS':[100,188,250,325,438,575,713,],
       'G28 WILDERNESS RANGE FINDER':[100,200,300,400,585,],
       'G36C SCOUT':[75,125,188,250,350,488,625,],
       'G36C SCOUT MAWL-DA':[75,138,200,300,425,600,750],

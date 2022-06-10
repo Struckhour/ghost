@@ -24,6 +24,8 @@ const sezzing: { [gameName: string]: {[scopeName: string]: {[rifleName: string]:
       // 'MK17 SCOUT':[150],
       // 'SCORPIO SCOUT':[210],
       'SR-1':'LEAST BULLET DROP RIFLE. PERIOD.',
+      'ZASTAVA M93':'easy numbers to 550', 
+
       },
     'VC16': {
 
