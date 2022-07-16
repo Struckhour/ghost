@@ -280,6 +280,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'M4A1 TACTICAL RANGE FINDER':	[	88,	150,	200,	250,	300,	400,	525,	],
       'MK14 MAWL-DA':[150,225,250,285,325,400,485,],
       'MK17 MAWL-DA':[100,188,250,300,388,525,675],
+      'MK17 MAWL-DA +30 RANGE':[100,250,350,450,650,888,],
       'FRF2':[],
       'MK17 SCOUT':[],
       'G36C SCOUT':[],
