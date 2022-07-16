@@ -241,6 +241,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'MK17 SCOUT':[125,175,250,325,425,575,713,],
       'MK17 SCOUT RANGE FINDER':[100,200,300,425,600,788,932,],
       'MK48':[100,163,200,250,300,375,475,],
+      'STONER MAWL-DA':[100,175,238,325,438,563,663,],
       'SVD-63':[],
       'HTI':[],
       'HTI SURVIVAL':[],
