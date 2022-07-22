@@ -247,6 +247,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'MK17 SCOUT':[125,175,250,325,425,575,713,],
       'MK17 SCOUT RANGE FINDER':[100,200,300,425,600,788,932,],
       'MK48':[100,163,200,250,300,375,475,],
+      'MK48 SAW':[100,175,225,288,363,475,588,],
       'STONER MAWL-DA':[100,175,238,325,438,563,663,],
       'SVD-63':[],
       'HTI':[],
@@ -294,7 +295,8 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'MK17 SCOUT':[],
       'G36C SCOUT':[],
       'SILVER STAKE':[150,225,250,288,313,363,425,], 
-      'SILVER STAKE RANGE FINDER':[150,250,288,338,388,475,575,], 
+      'SILVER STAKE RANGE FINDER':[150,250,288,338,388,475,575,],
+      'STONER COMPACT MAWL-DA':[100,150,200,250,300,400,513,],
       'SVD-63':[],
     },
     'RU LONG-RANGE FOV': {

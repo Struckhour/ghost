@@ -41,12 +41,15 @@ const sezzing: { [gameName: string]: {[scopeName: string]: {[rifleName: string]:
       },
     'SLX5': {
       'ARX200 MAWL-DA':'sniper range in an assault rifle',
-      // 'CTMMG':'AN LMG WITH GOOD RANGE',
+      'CTMMG':'RANGE AND REASON',
+      'MK14 MAWL-DA':'CAPABLE CONSISTENCY',
+      MK48:'INTUITIVE',
 
     },
     'TA31H': {
 
-      'M4A1 TACTICAL RANGE FINDER':'NUMBERS THAT MAKE SENSE',
+      'M4A1 TACTICAL RANGE FINDER':'INTUITIVE',
+      'STONER COMPACT MAWL-DA':'ROCK SOLID'
 
     },
     'RU LONG-RANGE FOV': {
