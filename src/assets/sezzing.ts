@@ -38,6 +38,9 @@ const sezzing: { [gameName: string]: {[scopeName: string]: {[rifleName: string]:
       },
     'DIGITAL': {
       // L115A3:[],
+      'M4A1 TACTICAL MAWL-DA':'TACTICAL INDEED',
+      'M4A1 TACTICAL RANGE FINDER':'TACTICAL INDEED',
+
       },
     'SLX5': {
       'ARX200 MAWL-DA':'sniper range in an assault rifle',
@@ -48,7 +51,7 @@ const sezzing: { [gameName: string]: {[scopeName: string]: {[rifleName: string]:
     },
     'TA31H': {
 
-      'M4A1 TACTICAL RANGE FINDER':'INTUITIVE',
+      'M4A1 TACTICAL RANGE FINDER':'TACTICAL INDEED',
       'STONER COMPACT MAWL-DA':'ROCK SOLID'
 
     },
