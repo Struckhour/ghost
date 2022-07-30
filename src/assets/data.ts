@@ -182,7 +182,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       },
     'DIGITAL': {
       '416 ASSAULT SPECIAL':[75,113,163,225,275,363,],
-      '416 ASSAULT SPECIAL RANGE FINDER':[],
+      '416 ASSAULT SPECIAL RANGE FINDER':[75,125,200,275,375,500,],
       '516 SHORTY':[57,87,127,167,207,257,],
       '553 MAWL-DA':[0,0,200,275,375,500,],
       '805 BREN':[75,113,163,225,288,375,],
