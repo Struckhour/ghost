@@ -40,6 +40,8 @@ const sezzing: { [gameName: string]: {[scopeName: string]: {[rifleName: string]:
       // L115A3:[],
       'M4A1 TACTICAL MAWL-DA':'TACTICAL INDEED',
       'M4A1 TACTICAL RANGE FINDER':'TACTICAL INDEED',
+      'MK18 MAWL-DA':'COMPETENT',
+      'MK18 RANGE FINDER':'QUALIFIED',
 
       },
     'SLX5': {

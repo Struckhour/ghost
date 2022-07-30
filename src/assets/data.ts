@@ -222,6 +222,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'MK17 SHORTY MAWL-DA':[100,150,200,250,325,413,],
       'MK17 SHORTY MAWL-DA BALLISTIC ADV.':[125,200,338,575,850,],
       'MK18 MAWL-DA':[75,100,150,225,300,400,],
+      'MK18 RANGE FINDER':[75,113,175,250,350,450,],
       'HTI':[],
       'HTI SURVIVAL':[],
       'M82':[],
