@@ -182,6 +182,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'SVD-63':[150,215,255,300,345,420,500,],
       },
     'DIGITAL': {
+      '4-AC MAWL-DA':[88,125,200,300,425,550,],
       '416 ASSAULT SPECIAL':[75,113,163,225,275,363,],
       '416 ASSAULT SPECIAL RANGE FINDER':[75,125,200,275,375,500,],
       '516 SHORTY':[57,87,127,167,207,257,],
@@ -217,6 +218,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'MK14 MAWL-DA BALLISTIC ADV.':[150,263,425,650,950,],
       'MK14 ASSAULT BROWN MAWL-DA':[163,213,275,350,438,538,],
       'MK14 ASSAULT BROWN MAWL-DA BALLISTIC ADV.':[175,288,488,838,],
+      'MK17':[100,150,225,313,425,550,],
       'MK17 MAWL-DA':[100,163,250,363,513,663],
       'MK17 MAWL-DA +30 RANGE':[100,200,350,600,900],
       'MK17 ASSAULT MAWL-DA':[100,150,250,350,525,650,],

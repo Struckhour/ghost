@@ -693,7 +693,7 @@ function getStylePosition(index: number) {
 
         </div> 
         <!-- ENDORSEMENT SEZZING -->
-          <div v-if="sezzing[gameName.game][selectedScopeName].hasOwnProperty(selectedRifle)" class="absolute h-[15%] w-[30%] top-[29%] right-[10%] text-red-700 rotate-[-10deg] text-2xl" style="font-family: angel;">
+          <div v-if="sezzing[gameName.game][selectedScopeName].hasOwnProperty(selectedRifle)" class="absolute h-[15%] w-[30%] top-[29%] right-[10%] text-red-900 rotate-[-10deg] text-2xl" style="font-family: angel;">
           {{sezzing[gameName.game][selectedScopeName][selectedRifle]}}
           </div>
       <!-- RANGE LABELS -->

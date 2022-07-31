@@ -1,9 +1,9 @@
 const sezzing: { [gameName: string]: {[scopeName: string]: {[rifleName: string]: string}} } = {
   Breakpoint: {
     'T5XI': {
-      '416 SCOUT':'easy numbers out to 525 meters',
+      '416 SCOUT':'2,3,4 525',
       'G36C SCOUT':'TAKE THEIR LIVES AT SEVENTY-FIVES',
-      'M4A1 SCOUT MAWL-DA':'easy numbers out to 500 meters',
+      'M4A1 SCOUT MAWL-DA':'225, 3, 4, 5',
       'SR-1':'LEAST BULLET DROP RIFLE. PERIOD.',
 
     },
@@ -37,11 +37,16 @@ const sezzing: { [gameName: string]: {[scopeName: string]: {[rifleName: string]:
      
       },
     'DIGITAL': {
-      // L115A3:[],
+      '4-AC MAWL-DA':'4 EASY NUMBERS',
+      '416 ASSAULT SPECIAL RANGE FINDER':'SEVENTY-FIVE SANDWICH',
+      '553 MAWL-DA':'SEVENTY-FIVE SANDWICH',
       'M4A1 TACTICAL MAWL-DA':'TACTICAL INDEED',
       'M4A1 TACTICAL RANGE FINDER':'TACTICAL INDEED',
+      MK17:'25,13,25,50',
+      'MK17 ASSAULT MAWL-DA':'50,50,25,50',
       'MK18 MAWL-DA':'COMPETENT',
-      'MK18 RANGE FINDER':'QUALIFIED',
+      'MK18 RANGE FINDER':'QUALIFIED fifties',
+      'SILVER STAKE RANGE FINDER':'"THREE" SEVENTY-FIVES',
 
       },
     'SLX5': {
