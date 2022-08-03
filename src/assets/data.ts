@@ -79,7 +79,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
         L115A3: [150, 233, 325, 375, 450, 533],
         M110: [115, 175, 250, 305, 380, 465, 535],
         "M110 MAWL-DA": [150, 190, 295, 360, 470, 575],
-        'M110 MAW-DA +30 RANGE':[150,250,450,625,],
+        'M110 MAWL-DA +30 RANGE':[150,250,450,625,],
         "M110 RANGE FINDER": [100, 200, 300, 400, 500, 635, 720, 800],
         "M4A1 SCOUT MAWL-DA": [100, 175, 275, 350, 425, 545],
         "M4A1 SCOUT RANGE FINDER": [100, 200, 300, 375, 475, 600],
