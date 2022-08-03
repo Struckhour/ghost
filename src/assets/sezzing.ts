@@ -1,7 +1,7 @@
 const sezzing: { [gameName: string]: {[scopeName: string]: {[rifleName: string]: string}} } = {
   Breakpoint: {
     'T5XI': {
-      '416 SCOUT':'2,3,4 525',
+      '416 SCOUT':'2, 3, 4, 525',
       'G36C SCOUT':'TAKE THEIR LIVES AT SEVENTY-FIVES',
       'M4A1 SCOUT MAWL-DA':'225, 3, 4, 5',
       'SR-1':'LEAST BULLET DROP RIFLE. PERIOD.',
@@ -29,11 +29,13 @@ const sezzing: { [gameName: string]: {[scopeName: string]: {[rifleName: string]:
       },
     'VC16': {
 
-      'MK17 SCOUT':'COMMON SENSE NUMBERS',
+      'MK17 SCOUT':'FN SCAR: FEELS NICE. SOLID, CAPABLE, ACCURATE RIFLE',
 
         },
     'ACSS': {
-      'MK17 SCOUT':'sensible numbers',
+      'MK17 SCOUT':'FN SCAR: FEELS NICE. SOLID, CAPABLE, ACCURATE RIFLE',
+      'M4A1 SCOUT MAWL-DA':'A-1',
+
      
       },
     'DIGITAL': {
