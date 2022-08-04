@@ -250,6 +250,8 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'RECON-A1':[],
       'SR-1':[],
       'SCORPIO':[],
+      'SC-40K':[75,125,175,257,350,475],
+      'SC-40K MAWL-DA':[75,138,200,300,425,588,],
       'SILVER STAKE':[175,213,263,313,363,425,], 
       'SILVER STAKE RANGE FINDER':[175,238,300,375,475,575,],
       'TAC50':[],
