@@ -201,6 +201,8 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       '805 BREN':[75,113,163,225,288,375,],
       '805 BREN MAWL-DA':[75,125,188,257,350,457,],
       '805 BREN RANGE FINDER':[88,138,200,275,388,504,],
+      'A2 MAWL-DA':[100,150,207,275,350,450,],
+      'A2 RANGE FINDER':[100,150,213,288,375,500,],
       'ACR MAWL-DA':[63,113,188,275,388,525,],
       'ACR MAWL-DA BALLISTIC ADV.':[100,175,338,638,1025,],
       'ACR RANGE FINDER':[63,125,200,300,425,575,],
