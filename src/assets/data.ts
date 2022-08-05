@@ -224,6 +224,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'M4A1 MAWL-DA +30 RANGE':[100,150,263,425],
       'M4A1 ASSAULT MAWL-DA':[188,138,200,275,],
       'M4A1 CQC MAWL-DA':[75,100,138,188,225,300],
+      'M4A1 CQC MAWL-DA +30 RANGE':[75,125,200,275,375,500],
       'M4A1 TACTICAL':[88,125,175,238,300,388,],
       'M4A1 TACTICAL MAWL-DA':[88,138,200,275,375,475,],
       'M4A1 TACTICAL RANGE FINDER':[88,138,200,300,400,525,],
