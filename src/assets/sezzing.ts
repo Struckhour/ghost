@@ -51,6 +51,8 @@ const sezzing: { [gameName: string]: {[scopeName: string]: {[rifleName: string]:
       'MK18 MAWL-DA':'COMPETENT',
       'MK18 RANGE FINDER':'QUALIFIED fifties',
       'SILVER STAKE RANGE FINDER':'"THREE" SEVENTY-FIVES',
+      'SILVER STAKE TACTICAL RANGE FINDER':'"THREE" SEVENTY-FIVES',
+      
 
       },
     'SLX5': {
