@@ -199,6 +199,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'SR-1':[0,0,438,538,738,938,],
       'SVD-63':[150,215,255,300,345,420,500,],
       'VSK-50':[150,250,307,363,469,575,669],
+      'VSK-50 RANGE FINDER':[163,288,363,475,638,788,900],
       },
     'DIGITAL': {
       '4-AC MAWL-DA':[88,125,200,300,425,550,],
