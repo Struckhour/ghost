@@ -8,8 +8,8 @@ const sezzing: { [gameName: string]: {[scopeName: string]: {[rifleName: string]:
 
     },
     'DUAL RANGE': { 
-
-      'M110 RANGE FINDER':'easy numbers out to 500 meters',
+      'G28 SCOUT MAWL-DA':'precision in the sweet spot',
+      'M110 RANGE FINDER':'intuitive',
 
       },
     'TARS101': {
