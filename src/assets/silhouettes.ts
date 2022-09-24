@@ -66,6 +66,23 @@ const silhouettes: { [gameName: string]: {[scopeName: string]: {[rifleName: stri
      
       },
     'DIGITAL': {
+      ACR:[220],
+      'ACR BALLISTIC ADV.':[220],
+      'ACR MAWL-DA':[220],
+      'ACR MAWL-DA BALLISTIC ADV.':[220],
+      'ACR RANGE FINDER':[220],
+      'ACR ASSAULT':[220],
+      'ACR ASSAULT BALLISTIC ADV.':[220],
+      'ACR ASSAULT MAWL-DA':[220],
+      'ACR ASSAULT MAWL-DA BALLISTIC ADV.':[220],
+      'ACR ASSAULT RANGE FINDER':[220],
+      MK17:[200],
+      'MK17 MAWL-DA':[200],
+      'MK17 RANGE FINDER':[200],
+      'MK17 ASSAULT':[200],
+      'MK17 ASSAULT MAWL-DA':[200],
+      'MK17 ASSAULT RANGE FINDER':[200],
+
       // L115A3:[],
       },
     'SLX5': {

@@ -49,7 +49,7 @@ const sezzing: { [gameName: string]: {[scopeName: string]: {[rifleName: string]:
       'M4A1 TACTICAL MAWL-DA':'TACTICAL SEVENTY-FIVES',
       'M4A1 TACTICAL RANGE FINDER':'TACTICAL INDEED',
       MK17:'25,13,25,50',
-      'MK17 ASSAULT MAWL-DA':'50,50,25,50',
+      'MK17 ASSAULT':'25,13,25,50',
       'MK18 MAWL-DA':'COMPETENT',
       'MK18 RANGE FINDER':'QUALIFIED fifties',
       'SILVER STAKE RANGE FINDER':'"THREE" SEVENTY-FIVES',
