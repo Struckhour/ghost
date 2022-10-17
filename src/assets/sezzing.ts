@@ -46,6 +46,7 @@ const sezzing: { [gameName: string]: {[scopeName: string]: {[rifleName: string]:
       '516 MAWL-DA':'SHORT AND SWEET',
       '553 MAWL-DA':'SEVENTY-FIVE SANDWICH',
       'M4A1 CQC MAWL-DA +30 RANGE':'SEVENTY-FIVE SANDWICH',
+      'M4A1 TACTICAL BALLISTIC ADV.':'A GOOD START',
       'M4A1 TACTICAL MAWL-DA':'TACTICAL SEVENTY-FIVES',
       'M4A1 TACTICAL RANGE FINDER':'TACTICAL INDEED',
       MK17:'25,13,25,50',
@@ -68,6 +69,7 @@ const sezzing: { [gameName: string]: {[scopeName: string]: {[rifleName: string]:
 
       'M4A1 BALLISTIC ADV.':'THE STANDARD',
       'M4A1 ASSAULT BALLISTIC ADV.':'A-1',
+      'M4A1 TACTICAL BALLISTIC ADV.':'A GOOD START',
       'M4A1 TACTICAL RANGE FINDER':'TACTICAL INDEED',
       'STONER COMPACT MAWL-DA':'ROCK SOLID'
 
