@@ -557,6 +557,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'Z93 AMR LONG BARREL':[150,225,325,500,725,900,],			
       },
     'DIGITAL': {
+      '416':[163,188,238,313,425,538,],
       '556xi':[],
       'ACR':[100,150,213,313,450,588,],
       'ACR LONG BARREL':[125,150,250,400,575,750,],
