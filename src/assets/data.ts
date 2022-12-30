@@ -65,6 +65,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
     },
     'DUAL RANGE': {
 
+        '416 SCOUT MAWL-DA':[100,175,275,350,450,563],
         "553 SCOUT": [100, 138, 200, 250, 300, 363, 425, 500],
         "553 SCOUT MAWL-DA": [100, 150, 250, 300, 350, 450, 525, 625],
         "553 SCOUT RANGE FINDER": [100, 150, 250, 300, 400, 475, 575, 675],
