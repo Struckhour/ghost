@@ -68,6 +68,7 @@ const sezzing: { [gameName: string]: {[scopeName: string]: {[rifleName: string]:
     },
     'TA31H': {
 
+      'ACR ASSAULT MAWL-DA':'burst for the win',
       'M4A1 BALLISTIC ADV.':'THE STANDARD',
       'M4A1 ASSAULT BALLISTIC ADV.':'A-1',
       'M4A1 SCOUT MAWL-DA':'TACTICALLY SOUND',
