@@ -257,6 +257,7 @@ const styleTranslations: { [gameName: string]: {[scopeName: string]: string[]} }
       'top: 61.5%; left: 52%; transform: translate(0px, -1em)',
       'top: 67%; right: 51%; transform: translate(0px, -1em);',
       'top: 72.5%; left: 52%; transform: translate(0px, -1em)',
+      'top: 89%; right: 51%; transform: translate(0px, -1em);',
 
     ],
     'SLX5':

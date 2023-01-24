@@ -263,6 +263,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'M4A1 ASSAULT BALLISTIC ADV.':[100,175,300,525],
       'M4A1 ASSAULT MAWL-DA':[88,138,200,275,],
       'M4A1 ASSAULT RANGE FINDER':[88,138,213,300,],
+      'M4A1 CQC':[75,100,125,163,200,238,375],      
       'M4A1 CQC BALLISTIC ADV.':[75,125,213,313,450,625],      
       'M4A1 CQC MAWL-DA':[75,100,138,188,225,300],
       'M4A1 CQC MAWL-DA BALLISTIC ADV.':[75,150,250,375,563,750],      
