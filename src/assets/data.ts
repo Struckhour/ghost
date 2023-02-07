@@ -198,7 +198,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'M110 RANGE FINDER':[100,200,265,350,465,625,770,],
       "M4A1 SCOUT MAWL-DA": [100,175,225,275,350,450,575,],
       'M4A1 SCOUT RANGE FINDER':[100,175,225,288,375,475,538,],
-      'MK17 SCOUT':[125,200,250,300,400,500,638,],
+      'MK17 SCOUT':[125,200,250,313,400,513,638,],
       'MK17 SCOUT RANGE FINDER':[],
       'SR-1':[0,0,438,538,738,938,],
       'SVD-63':[150,215,255,300,345,420,500,],
