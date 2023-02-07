@@ -34,6 +34,7 @@ const sezzing: { [gameName: string]: {[scopeName: string]: {[rifleName: string]:
         },
     'ACSS': {
       'MK17 SCOUT':'FN SCAR: FEELS NICE. SOLID, CAPABLE, ACCURATE RIFLE',
+      'MK17 SCOUT RANGE FINDER':'FN SCAR: FEELS NICE. SOLID, CAPABLE, ACCURATE RIFLE',
       'M4A1 SCOUT MAWL-DA':'A-1',
 
      

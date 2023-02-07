@@ -242,7 +242,7 @@ const styleTranslations: { [gameName: string]: {[scopeName: string]: string[]} }
     ],
       'ACSS':
     ['display: none;',
-      'display: none;',
+      'font-size: 0.5rem; top: 52.25%; left: 48.68%; transform: translate(0px, -1em)',
       'top: 53.6%; right: 52%; transform: translate(0px, -1em);',
       'top: 55.7%; left: 52%; transform: translate(0px, -1em)',
       'top: 58.3%; right: 52%; transform: translate(0px, -1em);',
