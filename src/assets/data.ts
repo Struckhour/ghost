@@ -411,6 +411,8 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'MK17 MAWL-DA +30 RANGE':[100,250,350,450,650,888,],
       'MK17 SCOUT':[75,175,225,275,338,425,513],
       'MK17 SCOUT RANGE FINDER':[75,200,263,325,425,588,775],
+      'MK17 SCOUT BALLISTIC ADV.':[75,250,400,550,850],
+      'MK17 SCOUT RANGE FINDER BALLISTIC ADV.':[75,300,500,738,],
       'MK18 MAWL-DA':[75,100,150,200,250,300,425,],
       'FRF2':[],
       'G36C SCOUT':[],
