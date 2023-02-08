@@ -4,12 +4,15 @@ const sezzing: { [gameName: string]: {[scopeName: string]: {[rifleName: string]:
       '416 SCOUT':'2, 3, 4, 525',
       'G36C SCOUT':'TAKE THEIR LIVES AT SEVENTY-FIVES',
       'M4A1 SCOUT MAWL-DA':'225, 3, 4, 5',
+      'MK17 SCOUT BALLISTIC ADV.':'BALLISTICS ON A BUDGET',
       'SR-1':'LEAST BULLET DROP RIFLE. PERIOD.',
 
     },
     'DUAL RANGE': { 
       'G28 SCOUT MAWL-DA':'precision in the sweet spot',
       'M110 RANGE FINDER':'intuitive',
+      'MK17 SCOUT':'BALLISTICS ON A BUDGET',
+      'MK17 SCOUT BALLISTIC ADV.':'BALLISTICS ON A BUDGET',
 
       },
     'TARS101': {
@@ -35,6 +38,7 @@ const sezzing: { [gameName: string]: {[scopeName: string]: {[rifleName: string]:
     'ACSS': {
       'MK17 SCOUT':'FN SCAR: FEELS NICE. SOLID, CAPABLE, ACCURATE RIFLE',
       'MK17 SCOUT RANGE FINDER':'FN SCAR: FEELS NICE. SOLID, CAPABLE, ACCURATE RIFLE',
+      'MK17 SCOUT BALLISTIC ADV.':'BALLISTICS ON A BUDGET',
       'M4A1 SCOUT MAWL-DA':'A-1',
 
      

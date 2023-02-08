@@ -204,6 +204,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'M4A1 SCOUT RANGE FINDER':[100,175,225,288,375,475,538,],
       'MK17 SCOUT':[125,200,250,313,400,513,638,],
       'MK17 SCOUT RANGE FINDER':[150,225,300,400,525,700,838],
+      'MK17 SCOUT BALLISTIC ADV.':[150,350,500],
       'SR-1':[0,338,438,538,738,938,],
       'SVD-63':[150,215,255,300,345,420,500,],
       'VSK-50':[150,250,307,363,469,575,669],

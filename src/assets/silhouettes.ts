@@ -11,11 +11,13 @@ const silhouettes: { [gameName: string]: {[scopeName: string]: {[rifleName: stri
       'M4A1 SCOUT MAWL-DA':[260],
       'M4A1 SCOUT RANGE FINDER':[260],
       'M82':[250],
-      // 'MK17 SCOUT':[],
-      // 'MK17 SCOUT RANGE FINDER':[],
+      'MK17 SCOUT':[170],
+      'MK17 SCOUT RANGE FINDER':[170],
+      'MK17 SCOUT BALLISTIC ADV.':[170],
+      'MK17 SCOUT RANGE FINDER BALLISTIC ADV.':[170],
       'RECON-A1':[230],
       'RECON-A1 RANGE FINDER':[230],
-      // 'SR-1':[],
+      'SR-1':[225],
 
     },
     'DUAL RANGE': { 
@@ -38,6 +40,8 @@ const silhouettes: { [gameName: string]: {[scopeName: string]: {[rifleName: stri
       'MK17 SCOUT RANGE FINDER BALLISTIC ADV.':[200],
       'RECON-A1':[240],
       'RECON-A1 RANGE FINDER':[240],
+      'SR-1':[175],
+
       },
       
     'TARS101': {
@@ -61,7 +65,7 @@ const silhouettes: { [gameName: string]: {[scopeName: string]: {[rifleName: stri
       'M82':[200],
       'MK17 SCOUT':[150],
       'SCORPIO SCOUT':[210],
-      // 'SR-1':[],
+      'SR-1':[200],
       },
     'VC16': {
       
