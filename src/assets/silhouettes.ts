@@ -74,6 +74,16 @@ const silhouettes: { [gameName: string]: {[scopeName: string]: {[rifleName: stri
      
       },
     'DIGITAL': {
+      '516':[250],
+      '516 BALLISTIC ADV.':[250],
+      '516 MAWL-DA':[250],
+      '516 MAWL-DA BALLISTIC ADV.':[250],
+      '516 RANGE FINDER':[250],
+      '516 RANGE FINDER BALLISTIC ADV.':[250],
+      '516 SHORTY':[250],
+      '516 SHORTY BALLISTIC ADV.':[250],
+      '516 SHORTY RANGE FINDER':[250],
+      '516 SHORTY RANGE FINDER BALLISTIC ADV.':[250],
       ACR:[220],
       'ACR BALLISTIC ADV.':[220],
       'ACR MAWL-DA':[220],
