@@ -387,6 +387,8 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       '416 ASSAULT SPECIAL':[75,132,163,188,232,282,375],
       '416 ASSAULT SPECIAL RANGE FINDER':[75,138,188,232,288,363,500],     
       '805 BREN':[100,140,170,200,235,290,380,],
+      ACR:[63,125,163,200,250,325,438],
+      'ACR BALLISTIC ADV.':[75,200,300,425,588,850,'greater than 1000'],
       'ACR MAWL-DA':[63,138,188,225,288,388,525,],
       'ACR MAWL-DA BALLISTIC ADV.':	[	100,	262,	350,	463,	719,	1025],
       'ACR RANGE FINDER':[63,150,200,238,313,438,588,],
