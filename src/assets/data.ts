@@ -628,6 +628,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'P416 RANGE FINDER':[150,200,275,450,650,],
       'P416 SHORT BARREL':[125,150,200,325,475,600,],
       'PSG-1':[125,175,225,325,450,575,],
+      'R5 RGP LONG BARREL':[125,175,275,475,675,850],
     },
     'G28': {
       'DRAGUNOV (SVD) RANGE FINDER':[125,188,250,300,338,400,463,525,588,638,688,],
