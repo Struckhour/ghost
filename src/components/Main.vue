@@ -342,9 +342,9 @@ const styleTranslations: { [gameName: string]: {[scopeName: string]: string[]} }
         'T5XI TACTICAL':
           ['display: none;',
           'font-size: 0.9rem; top: 52.8%; right: 51%; transform: translate(0px, -1em)',
-        'top: 54.5%; left: 53%; transform: translate(0px, -1em)',
+        'top: 54.7%; left: 53%; transform: translate(0px, -1em)',
         'top: 59.3%; right: 55%; transform: translate(0px, -1em);',
-        'top: 63.5%; left: 53%; transform: translate(0px, -1em)',
+        'top: 63.6%; left: 53%; transform: translate(0px, -1em)',
         'top: 68%; right: 55%; transform: translate(0px, -1em);',
         'top: 72.1%; left: 53%; transform: translate(0px, -1em)',
         'top: 76.7%; right: 55%; transform: translate(0px, -1em);',

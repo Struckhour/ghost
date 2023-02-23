@@ -589,6 +589,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'MSR EAGLE SHOT':[200,250,350,575,],
       'MSR THERMITE':[],
       'PSG-1':[150,200,250,400,550,],
+      'PSG-1 LONG BARREL':[150,238,300,488,688],
       'SR-1':[],
       'SR25':[125,225,350,625,875,],
       'SR25 RANGE FINDER':[],
