@@ -602,6 +602,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
     'DIGITAL': {
       '416':[163,188,238,313,425,538,],
       '556xi':[],
+      '805 BREN LONG BARREL':[138,188,275,425,613,763],
       'ACR':[100,150,213,313,450,588,],
       'ACR LONG BARREL':[125,150,250,400,575,750,],
       'ACR SHORT BARREL':[100,125,175,250,350,450,],
@@ -609,6 +610,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'AK12 LONG BARREL':[],
       'AUG A3':[100,150,238,388,575,738,],
       'BFG-50A':[150,200,275,400,550,700,],
+      'G36C LONG BARREL':[138,175,250,400,550,700,],
       'LVOA':[125,175,275,425,625,800],
       'L115A3':[],
       'M4A1 LONG BARREL':[125,150,250,400,],
