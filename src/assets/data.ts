@@ -614,6 +614,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'G36C LONG BARREL':[138,175,250,400,550,700,],
       'LVOA':[125,175,275,425,625,800],
       'L115A3':[],
+      M4A1:[125,150,200,300],
       'M4A1 LONG BARREL':[138,175,250,400,],
       'MDR':[75,125,175,275,375,500,],
       'MDR LONG BARREL':[75,150,200,325,475,625,],
