@@ -156,6 +156,9 @@ const silhouettes: { [gameName: string]: {[scopeName: string]: {[rifleName: stri
       'Z93 AMR LONG BARREL':[250],
     },
     'DIGITAL': {
+      G36C:[190],
+      'G36C LONG BARREL':[190],
+      'M4A1':[190],
       'M4A1 LONG BARREL':[190],
       'MDR':[225],
       'MDR LONG BARREL':[225],
