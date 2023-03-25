@@ -328,6 +328,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'SILVER STAKE TACTICAL RANGE FINDER':[175,238,300,375,475,575,],
       'TAC50':[],
       'TAC50 BROWN':[],
+      TAVOR:[75,100,150,200,257,325,],
       VECTOR:[50,63,100,138,175,225],
       'VECTOR MAWL-DA':[50,63,113,163,213,275],
       'VECTOR BALLISTIC ADV.':[50,100,200,288,438,600],
@@ -451,6 +452,8 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'SILVER STAKE RANGE FINDER':[150,250,288,338,388,475,575,],
       'STONER COMPACT MAWL-DA':[100,150,200,250,300,400,513,],
       'SVD-63':[],
+      TAVOR:[75,125,150,175,207,250,325],
+
     },
     'RU LONG-RANGE FOV': {
       'FRF2':[150,	275,	333,	466,	613	],
