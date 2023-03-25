@@ -449,6 +449,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
     'RU LONG-RANGE FOV': {
       'FRF2':[150,	275,	333,	466,	613	],
       'L115A3':[175,	275,	333,	466,	620	],
+      'SC-20K MAWL-DA':[125,238,325,513,763],
       'SCORPIO SCOUT':[170,	250,	290,	335,	415	],
       'VSK-50':	[200,	250,	300,	388,	507	],
       'VSK-50 RANGE FINDER':[200,	288,	363,	507,	688	]
