@@ -113,6 +113,11 @@ const silhouettes: { [gameName: string]: {[scopeName: string]: {[rifleName: stri
       'MK17 ASSAULT BALLISTIC ADV.':[200],
       'MK17 ASSAULT MAWL-DA BALLISTIC ADV.':[200],
       'MK17 ASSAULT RANGE FINDER BALLISTIC ADV.':[200],
+      'SC-20K':[220],
+      'SC-20K MAWL-DA':[220],
+      TAVOR:[220],
+      VHSD2:[200],
+      'VHSD2 MAWL-DA':[200],
 
       // L115A3:[],
       },

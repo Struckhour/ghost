@@ -64,6 +64,7 @@ const sezzing: { [gameName: string]: {[scopeName: string]: {[rifleName: string]:
       'MK18 RANGE FINDER':'QUALIFIED fifties',
       'SILVER STAKE RANGE FINDER':'"THREE" SEVENTY-FIVES',
       'SILVER STAKE TACTICAL RANGE FINDER':'"THREE" SEVENTY-FIVES',
+      VHSD2:'RIGHT AND PROPER',
       
 
       },
@@ -83,7 +84,9 @@ const sezzing: { [gameName: string]: {[scopeName: string]: {[rifleName: string]:
       'M4A1 SCOUT MAWL-DA BALLISTIC ADV.':'300,400,550',
       'M4A1 TACTICAL BALLISTIC ADV.':'A GOOD START',
       'M4A1 TACTICAL RANGE FINDER':'TACTICAL INDEED',
-      'STONER COMPACT MAWL-DA':'ROCK SOLID'
+      'SC-20K MAWL-DA':'INTUITIVE',
+      'STONER COMPACT MAWL-DA':'ROCK SOLID',
+      VHSD2:'RIGHT AND PROPER',
 
     },
     'RU LONG-RANGE FOV': {
