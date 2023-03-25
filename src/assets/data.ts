@@ -315,6 +315,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'RECON-A1':[],
       'SR-1':[],
       'SCORPIO':[],
+      'SC-20K':[100,125,225,325,475,613],
       'SC-20K MAWL-DA':[100,150,250,400,575,750],
       'SC-40K':[75,125,175,257,350,475],
       'SC-40K MAWL-DA':[75,138,200,300,425,588,],
