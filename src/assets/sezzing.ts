@@ -53,6 +53,8 @@ const sezzing: { [gameName: string]: {[scopeName: string]: {[rifleName: string]:
       '516 MAWL-DA':'SHORT AND SWEET',
       '516 MAWL-DA BALLISTIC ADV.':'Headshots at 500 with no hud?',
       '553 MAWL-DA':'SEVENTY-FIVE SANDWICH',
+      'AK74':'COM-RAD',
+      'AK74 ASSAULT':'COM-RAD',
       'AK74 ASSAULT SURVIVAL':'COM-RAD',
       'M4A1 CQC RANGE FINDER':'SHORT AND SWEET',      
       'M4A1 CQC MAWL-DA +30 RANGE':'SEVENTY-FIVE SANDWICH',
@@ -79,6 +81,8 @@ const sezzing: { [gameName: string]: {[scopeName: string]: {[rifleName: string]:
     'TA31H': {
 
       'ACR ASSAULT MAWL-DA':'burst for the win',
+      'AK74':'COM-RAD',
+      'AK74 ASSAULT':'COM-RAD',
       'AK74 ASSAULT SURVIVAL':'COM-RAD',
       'M4A1 BALLISTIC ADV.':'THE STANDARD',
       'M4A1 ASSAULT BALLISTIC ADV.':'A-1',
