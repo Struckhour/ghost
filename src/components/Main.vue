@@ -526,10 +526,17 @@ function getStylePosition(index: number) {
           
         </Transition>
         <Transition>
-          <img
-          v-show="selectedScopeName==='TA31H'" src="/assets/BP-Scopes/BP-TA31H-Sight.jpg"
-          class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full"
-        />
+          <div>
+            <img
+            v-show="selectedScopeName==='TA31H'" src="/assets/BP-Scopes/BP-TA31H-Sight.jpg"
+            class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full"
+            />
+            <img v-show="selectedScopeName==='TA31H' && gameName.game === 'Breakpoint' && silhScope.hasOwnProperty(selectedRifle)" src="/assets/soldier-silhouette.png" class="absolute h-[8%] top-[46.5%] right-[30.3%]"
+            />
+            <div v-if="selectedScopeName==='TA31H' && gameName.game === 'Breakpoint' && silhScope.hasOwnProperty(selectedRifle)" class="absolute top-[48.5%] right-[33.5%]">
+                {{silhRange[0]}}m
+          </div>
+         </div>
         </Transition>
         <Transition>
           <img
@@ -694,7 +701,7 @@ function getStylePosition(index: number) {
 
         </div> 
         <!-- ENDORSEMENT SEZZING -->
-          <div v-if="sezzing[gameName.game][selectedScopeName].hasOwnProperty(selectedRifle)" class="absolute h-[15%] w-[30%] top-[29%] right-[10%] text-red-900 rotate-[-10deg] text-2xl" style="font-family: angel;">
+          <div v-if="sezzing[gameName.game][selectedScopeName].hasOwnProperty(selectedRifle)" class="absolute h-[15%] w-[30%] top-[26%] right-[10%] text-red-900 rotate-[-10deg] text-2xl" style="font-family: angel;">
           {{sezzing[gameName.game][selectedScopeName][selectedRifle]}}
           </div>
       <!-- RANGE LABELS -->
