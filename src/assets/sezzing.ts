@@ -36,8 +36,8 @@ const sezzing: { [gameName: string]: {[scopeName: string]: {[rifleName: string]:
 
         },
     'ACSS': {
-      'MK17 SCOUT':'FN SCAR: FEELS NICE. SOLID, CAPABLE, ACCURATE RIFLE',
-      'MK17 SCOUT RANGE FINDER':'FN SCAR: FEELS NICE. SOLID, CAPABLE, ACCURATE RIFLE',
+      'MK17 SCOUT':'gravis',
+      'MK17 SCOUT RANGE FINDER':'gravis',
       'MK17 SCOUT BALLISTIC ADV.':'BALLISTICS ON A BUDGET',
       'M4A1 SCOUT MAWL-DA':'A-1',
 
@@ -95,7 +95,7 @@ const sezzing: { [gameName: string]: {[scopeName: string]: {[rifleName: string]:
       'M4A1 SCOUT MAWL-DA BALLISTIC ADV.':'300,400,550',
       'M4A1 TACTICAL BALLISTIC ADV.':'A GOOD START',
       'M4A1 TACTICAL RANGE FINDER':'TACTICAL INDEED',
-      'MK17 ASSAULT MAWL-DA':'SOLID, CAPABLE, ACCURATE, RIFLE',
+      'MK17 ASSAULT MAWL-DA':'gravis',
       'SC-20K MAWL-DA':'INTUITIVE',
       'STONER COMPACT MAWL-DA':'ROCK SOLID',
       VHSD2:'RIGHT AND PROPER',
