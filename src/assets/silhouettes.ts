@@ -148,12 +148,25 @@ const silhouettes: { [gameName: string]: {[scopeName: string]: {[rifleName: stri
       MK17:[275],
       'MK17 BALLISTIC ADV.':[275],
       'MK17 MAWL-DA':[275],
+      'MK17 MAWL-DA +30 RANGE':[275],
       'MK17 MAWL-DA BALLISTIC ADV.':[275],
       'MK17 RANGE FINDER':[275],
+      'MK17 RANGE FINDER BALLISTIC ADV.':[275],
       'MK17 ASSAULT':[325],
       'MK17 ASSAULT BALLISTIC ADV.':[325],
       'MK17 ASSAULT MAWL-DA':[325],
+      'MK17 ASSAULT MAWL-DA BALLISTIC ADV.':[325],
       'MK17 ASSAULT RANGE FINDER':[325],
+      'MK17 ASSAULT RANGE FINDER BALLISTIC ADV.':[325],
+      'MK17 SCOUT':[300],
+      'MK17 SCOUT BALLISTIC ADV.':[300],
+      'MK17 SCOUT RANGE FINDER':[300],
+      'MK17 SCOUT RANGE FINDER BALLISTIC ADV.':[300],
+
+
+
+
+
 
     },
     'RU LONG-RANGE FOV': {
