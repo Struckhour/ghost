@@ -252,7 +252,7 @@ const styleTranslations: { [gameName: string]: {[scopeName: string]: string[]} }
     ],
     'DIGITAL':
         ['display: none;',
-      'font-size: 0.5rem; top: 52.25%; left: 50%; transform: translate(0px, -1em)',
+      'font-size: 0.9rem; top: 52.6%; left: 54%; transform: translate(0px, -1em)',
       'top: 55.8%; right: 51%; transform: translate(0px, -1em);',
       'top: 61.5%; left: 52%; transform: translate(0px, -1em)',
       'top: 67%; right: 51%; transform: translate(0px, -1em);',
