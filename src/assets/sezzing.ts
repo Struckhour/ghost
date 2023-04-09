@@ -83,14 +83,17 @@ const sezzing: { [gameName: string]: {[scopeName: string]: {[rifleName: string]:
     'TA31H': {
 
       '416 MAWL-DA':'SEMPER-FI',
+      '4-AC MAWL-DA':'4-acquirendum corpora',
+      '4-AC MAWL-DA +30 RANGE':'TACTICAL TWENTY-FIVES',
       '516 MAWL-DA':'FACTA NON VERBA',
       '516 RANGE FINDER':'FACTA NON VERBA',
+      'A2 MAWL-DA':'A2? MORE LIKE A1.',
       'ACR ASSAULT MAWL-DA':'burst for the win',
       'AK74':'COM-RAD',
       'AK74 ASSAULT':'COM-RAD',
       'AK74 ASSAULT SURVIVAL':'COM-RAD',
       'M4A1 BALLISTIC ADV.':'THE STANDARD',
-      'M4A1 ASSAULT BALLISTIC ADV.':'A-1',
+      'M4A1 ASSAULT BALLISTIC ADV.':'A1.',
       'M4A1 SCOUT MAWL-DA':'TACTICALLY SOUND',
       'M4A1 SCOUT MAWL-DA BALLISTIC ADV.':'300,400,550',
       'M4A1 TACTICAL BALLISTIC ADV.':'A GOOD START',
