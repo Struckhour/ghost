@@ -68,6 +68,7 @@ const sezzing: { [gameName: string]: {[scopeName: string]: {[rifleName: string]:
       'M4A1 TACTICAL BALLISTIC ADV.':'A GOOD START',
       'M4A1 TACTICAL MAWL-DA':'TACTICAL SEVENTY-FIVES',
       'M4A1 TACTICAL RANGE FINDER':'TACTICAL INDEED',
+      'MDR RANGE FINDER':'HEADSHOTS AT 225 WITH NO HUD',
       MK17:'25,13,25,50',
       'MK17 ASSAULT':'25,13,25,50',
       'MK18 MAWL-DA':'COMPETENT',
