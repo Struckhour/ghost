@@ -85,6 +85,7 @@ const sezzing: { [gameName: string]: {[scopeName: string]: {[rifleName: string]:
 
       },
     'SLX5': {
+      '805 BREN':'RANGE? CZECH.',
       'ARX200 MAWL-DA':'sniper range in an assault rifle',
       'CTMMG':'RANGE AND REASON',
       'MK14 MAWL-DA':'CAPABLE CONSISTENCY',
@@ -98,7 +99,7 @@ const sezzing: { [gameName: string]: {[scopeName: string]: {[rifleName: string]:
       '4-AC MAWL-DA +30 RANGE':'TACTICAL TWENTY-FIVES',
       '516 MAWL-DA':'FACTA NON VERBA',
       '516 RANGE FINDER':'FACTA NON VERBA',
-      'A2 MAWL-DA':'A2? MORE LIKE A1.',
+      'A2 MAWL-DA':'A2',
       'ACR ASSAULT MAWL-DA':'burst for the win',
       AK47:'SOVIET SEVENTY-FIVES',
       'AK47 RANGE FINDER':'COM-RAD',
