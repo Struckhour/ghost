@@ -18,6 +18,7 @@ const silhouettes: { [gameName: string]: {[scopeName: string]: {[rifleName: stri
       'RECON-A1':[230],
       'RECON-A1 RANGE FINDER':[230],
       'SR-1':[225],
+      'SR-1 +30 RANGE':[225],
 
     },
     'DUAL RANGE': { 

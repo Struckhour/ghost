@@ -6,11 +6,13 @@ const sezzing: { [gameName: string]: {[scopeName: string]: {[rifleName: string]:
       'M4A1 SCOUT MAWL-DA':'225, 3, 4, 5',
       'MK17 SCOUT BALLISTIC ADV.':'BALLISTICS ON A BUDGET',
       'SR-1':'LEAST BULLET DROP RIFLE. PERIOD.',
+      'SR-1 +30 RANGE':'POINT AND SHOOT',
 
     },
     'DUAL RANGE': { 
       'G28 SCOUT MAWL-DA':'precision in the sweet spot',
-      'M110 RANGE FINDER':'intuitive',
+      'M110 MAWL-DA':'200, 300 THEN SEVENTY-FIVES',
+      'M110 RANGE FINDER':'THE STANDARD',
       'MK17 SCOUT':'BALLISTICS ON A BUDGET',
       'MK17 SCOUT BALLISTIC ADV.':'BALLISTICS ON A BUDGET',
 

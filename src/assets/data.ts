@@ -57,6 +57,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'SCORPIO SCOUT QUIET':[175,263,325,388,450,],
       'SCORPIO SCOUT QUIET +30 RANGE':[200,350,475,638,788,],
       'SR-1':[175,440,650,900,],
+      'SR-1 +30 RANGE':[0,638],
       'TAC50':[150,313,525,762,1013,],
       'TAC50 +30 RANGE':[0,500,],
       'TAC50 BROWN':[175,350,475,650,813,],
@@ -86,7 +87,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
         "HTI SURVIVAL": [200, 275, 375, 420, 490],
         L115A3: [150, 233, 325, 375, 450, 533],
         M110: [115, 175, 250, 305, 380, 465, 535],
-        "M110 MAWL-DA": [150, 190, 295, 360, 470, 575],
+        "M110 MAWL-DA": [150, 200, 300, 375, 475, 575],
         'M110 MAWL-DA +30 RANGE':[150,250,450,625,],
         "M110 RANGE FINDER": [100, 200, 300, 400, 500, 635, 720, 800],
         "M4A1 SCOUT MAWL-DA": [100, 175, 275, 350, 425, 545],
@@ -188,7 +189,9 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'SCORPIO SCOUT':[170,225,250,280,315,360,430,460,],
       'SCORPIO SCOUT QUIET':[150,225,238,275,300,338,400,425,],
       'SR-1':[175,300,350,425,500,650,825,],
+
         },
+
     'ACSS': {
       '553 SCOUT':[75,150,200,275,375,500,650,],
       '553 SCOUT MAWL-DA':[75,150,225,325,450,625,775,],
@@ -196,6 +199,8 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       '805 BREN MAWL-DA':[80,145,185,225,275,350,450,],
       '805 BREN RANGE FINDER':[85,140,190,225,300,375,500,],
       'ARX200':[75,163,225,288,375,500,650],
+      'AUG SCOUT':[100,163,213,263,325,425,550],
+      'AUG SCOUT RANGE FINDER':[100,200,250,325,425,575,725],
       'FRF2':[160,240,290,350,425,535,630,],
       'G28':[125,200,275,350,475,615,733,],
       'G28 WILDERNESS RANGE FINDER':[120,250,335,450,640,],
@@ -514,11 +519,14 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'VSK-50 RANGE FINDER':[200,	288,	363,	507,	688	]
     },
     'RU LONG-RANGE': {
-      'FRF2':	[	150,	250,	300,	350,	400,	460	],
+      'AUG SCOUT RANGE FINDER':[125,225,300,350,425,525],
+      'FRF2':	[	150,	250,	325,	350,	425,	463	],
       'FRF2 BALLISTIC ADV.':	[	200,	450,	650	],
-      'M82':	[	175,	300,	375,	450,	550,	625	],
-      'SVD-63':	[	150,	250,	275,	325,	350,	400	],
-      'SVD-63 PATCHWORK':	[	150,	250,	275,	325,	366,	400	]
+      'M82':	[	175,	300,	400,	450,	575,	625	],
+      'SVD-63':	[	163,	250,	300,	325,	375,	425	],
+      'SVD-63 PATCHWORK':	[	163,	250,	300,	325,	375,	425	],
+      'SVD-63 PATCHWORK BALLISTIC ADV.': [188,	400,	600,	],
+      'TAC50 BROWN':[0,0,400,475,600]
 
     },
     'PALADIN OPTIC': {
