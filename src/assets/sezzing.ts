@@ -10,7 +10,8 @@ const sezzing: { [gameName: string]: {[scopeName: string]: {[rifleName: string]:
 
     },
     'DUAL RANGE': { 
-      'G28 SCOUT MAWL-DA':'precision in the sweet spot',
+      'G28 SCOUT':"33'S AND 25'S",
+      'G28 SCOUT MAWL-DA':"33'S AND 50'S",
       'M110 MAWL-DA':'200, 300 THEN SEVENTY-FIVES',
       'M110 RANGE FINDER':'THE STANDARD',
       'MK17 SCOUT':'BALLISTICS ON A BUDGET',
