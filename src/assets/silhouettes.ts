@@ -73,6 +73,8 @@ const silhouettes: { [gameName: string]: {[scopeName: string]: {[rifleName: stri
       'M4A1 SCOUT RANGE FINDER':[180],
       'M82':[200],
       'MK17 SCOUT':[150],
+      'RECON-A1':[180],
+      'RECON-A1 RANGE FINDER':[180],
       'SCORPIO SCOUT':[210],
       'SR-1':[200],
       },

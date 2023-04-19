@@ -206,8 +206,8 @@ const styleTranslations: { [gameName: string]: {[scopeName: string]: string[]} }
     ],
 
     'TARS101':
-    ['display: none;',
-      'display: none;',
+    [ 'font-size: 0.5rem; top: 50.9%; left: 50.5%; transform: translate(0px, -1em)',
+      'font-size: 0.5rem; top: 52.4%; right: 50.2%; transform: translate(0px, -1em)',
       'top: 54.5%; left: 53%; transform: translate(0px, -1em)',
       'top: 56.5%; right: 52%; transform: translate(0px, -1em);',
       'top: 58.5%; left: 53%; transform: translate(0px, -1em)',
