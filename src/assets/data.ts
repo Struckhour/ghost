@@ -67,7 +67,9 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
     },
     'DUAL RANGE': {
 
+        '416 SCOUT':[100,150,238,300,375,450,538],  
         '416 SCOUT MAWL-DA':[100,175,275,350,450,563],
+        '416 SCOUT RANGE FINDER':[100,200,300,375,500,625,713],  
         "553 SCOUT": [100, 138, 200, 250, 300, 363, 425, 500],
         "553 SCOUT MAWL-DA": [100, 150, 250, 300, 350, 450, 525, 625],
         "553 SCOUT RANGE FINDER": [100, 150, 250, 300, 400, 475, 575, 675],
@@ -200,6 +202,9 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
         },
 
     'ACSS': {
+      '416 SCOUT':[100,150,200,250,325,438,550],
+      '416 SCOUT MAWL-DA':[],
+      '416 SCOUT RANGE FINDER':[],
       '553 SCOUT':[75,150,200,275,375,500,650,],
       '553 SCOUT MAWL-DA':[75,150,225,325,450,625,775,],
       '805 BREN':[75,125,160,195,230,285,365,],

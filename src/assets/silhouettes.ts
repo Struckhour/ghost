@@ -23,6 +23,9 @@ const silhouettes: { [gameName: string]: {[scopeName: string]: {[rifleName: stri
     },
     'DUAL RANGE': { 
       // L115A3:[],
+      '416 SCOUT':[150],  
+      '416 SCOUT MAWL-DA':[150],
+      '416 SCOUT RANGE FINDER':[150],
       'G28':[150],
       'G28 MAWL-DA':[150],
       'G28 RANGE FINDER':[150],
