@@ -28,7 +28,9 @@ const sezzing: { [gameName: string]: {[scopeName: string]: {[rifleName: string]:
     'TARS101': {
 
       G28:'ALIVE TANGO FIX: JUST ADD 66',
+      'G28 MAWL-DA':'HEADSOHOTS AT 400 WITH NO HUD',
       'G28 WILDERNESS':'ALIVE TANGO FIX: JUST ADD 66',
+      'G28 WILDERNESS MAWL-DA':'HEADSOHOTS AT 400 WITH NO HUD',
       L115A3:'+ 50 out to 400 meters',
       // 'M4A1 SCOUT':[180],
       'M4A1 SCOUT MAWL-DA':'tango alive? just add seventy-five',
