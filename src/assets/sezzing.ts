@@ -14,6 +14,9 @@ const sezzing: { [gameName: string]: {[scopeName: string]: {[rifleName: string]:
       'G28 SCOUT MAWL-DA':"33'S AND 50'S",
       'M110 MAWL-DA':'200, 300 THEN SEVENTY-FIVES',
       'M110 RANGE FINDER':'THE STANDARD',
+      'M4A1 SCOUT':'headshots at 300 with no hud',
+      "M4A1 SCOUT MAWL-DA": 'seventy-fives and fifties',
+      "M4A1 SCOUT RANGE FINDER": 'headshots at 300 with no hud',
       'MK17 SCOUT':'BALLISTICS ON A BUDGET',
       'MK17 SCOUT BALLISTIC ADV.':'BALLISTICS ON A BUDGET',
 
@@ -117,7 +120,7 @@ const sezzing: { [gameName: string]: {[scopeName: string]: {[rifleName: string]:
       'G36C RANGE FINDER':'WUNDERBAR',
       'M4A1 BALLISTIC ADV.':'THE STANDARD',
       'M4A1 ASSAULT BALLISTIC ADV.':'A1.',
-      'M4A1 SCOUT MAWL-DA':'TACTICALLY SOUND',
+      'M4A1 SCOUT MAWL-DA':'TACTICAL twenty-fives',
       'M4A1 SCOUT MAWL-DA BALLISTIC ADV.':'300,400,550',
       'M4A1 TACTICAL BALLISTIC ADV.':'A GOOD START',
       'M4A1 TACTICAL RANGE FINDER':'TACTICAL INDEED',
