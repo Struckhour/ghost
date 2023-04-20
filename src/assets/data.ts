@@ -203,7 +203,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
 
     'ACSS': {
       '416 SCOUT':[100,150,200,250,325,438,550],
-      '416 SCOUT MAWL-DA':[],
+      '416 SCOUT MAWL-DA':[100,175,225,300,400,538,675],
       '416 SCOUT RANGE FINDER':[],
       '553 SCOUT':[75,150,200,275,375,500,650,],
       '553 SCOUT MAWL-DA':[75,150,225,325,450,625,775,],
@@ -437,6 +437,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       '416 RANGE FINDER':[100,150,200,238,300,375,500],     
       '416 ASSAULT SPECIAL':[100,138,175,200,238,300,375],
       '416 ASSAULT SPECIAL RANGE FINDER':[100,150,200,238,300,375,500],
+      '416 SCOUT MAWL-DA':[100,150,200,250,313,413,550],
       '4-AC MAWL-DA':[75,150,200,225,275,375,488],
       '4-AC MAWL-DA +30 RANGE':[88,188,250,325,425,625,825],
       516:[75,113,150,175,213,263,338],
