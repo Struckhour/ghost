@@ -24,6 +24,7 @@ const sezzing: { [gameName: string]: {[scopeName: string]: {[rifleName: string]:
       'M4A1 SCOUT':'headshots at 300 with no hud',
       "M4A1 SCOUT MAWL-DA": 'seventy-fives and fifties',
       "M4A1 SCOUT RANGE FINDER": 'headshots at 300 with no hud',
+      "MK14 MAWL-DA":'headshots at 200 AND 400 with no hud',
       'MK17 SCOUT':'BALLISTICS ON A BUDGET',
       'MK17 SCOUT BALLISTIC ADV.':'BALLISTICS ON A BUDGET',
 
