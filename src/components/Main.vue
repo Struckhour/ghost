@@ -381,6 +381,7 @@ const styleTranslations: { [gameName: string]: {[scopeName: string]: string[]} }
       'top: 53.5%; right: 51%; transform: translate(0px, -1em)',
       'top: 56.9%; left: 52%; transform: translate(0px, -1em)',
       'top: 61%; right: 51%; transform: translate(0px, -1em)',
+      'top: 70.5%; left: 52%; transform: translate(0px, -1em)',
       ],
         'PKS-07':
       ['display: none;',
