@@ -12,7 +12,10 @@ const sezzing: { [gameName: string]: {[scopeName: string]: {[rifleName: string]:
     'DUAL RANGE': { 
       '416 SCOUT':'HEADSHOTS AT 300 WITH NO HUD',  
       "416 SCOUT MAWL-DA": 'seventy-fives and fifties',
-      '416 SCOUT RANGE FINDER':'HEADSHOTS AT 300 WITH NO HUD',  
+      '416 SCOUT RANGE FINDER':'HEADSHOTS AT 300 WITH NO HUD', 
+      '553 SCOUT':'headshots at 200 with no hud',  
+      '553 SCOUT MAWL-DA':'blood on the tracks',
+      '553 SCOUT RANGE FINDER':'Headshots at 400 with no hud', 
       "G28":'headshots at 300 with no hud',
       "G28 MAWL-DA":'triple twenty-fives',
       'G28 SCOUT':"33'S AND 25'S",
