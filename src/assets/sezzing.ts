@@ -106,6 +106,7 @@ const sezzing: { [gameName: string]: {[scopeName: string]: {[rifleName: string]:
     'SLX5': {
       '805 BREN':'RANGE? CZECH.',
       'ARX200 MAWL-DA':'sniper range in an assault rifle',
+      'BULLPUP PDR':"66's AND 33's",
       'CTMMG':'RANGE AND REASON',
       'MK14 MAWL-DA':'CAPABLE CONSISTENCY',
       MK48:'INTUITIVE',

@@ -242,7 +242,7 @@ const styleTranslations: { [gameName: string]: {[scopeName: string]: string[]} }
     ],
       'ACSS':
     ['display: none;',
-      'font-size: 0.5rem; top: 52.25%; left: 48.68%; transform: translate(0px, -1em)',
+      'font-size: 0.5rem; top: 52.25%; left: 49%; transform: translate(0px, -1em)',
       'top: 53.5%; right: 52%; transform: translate(0px, -1em);',
       'top: 55.7%; left: 52%; transform: translate(0px, -1em)',
       'top: 58.3%; right: 52.5%; transform: translate(0px, -1em);',
@@ -261,8 +261,8 @@ const styleTranslations: { [gameName: string]: {[scopeName: string]: string[]} }
 
     ],
     'SLX5':
-        ['display: none;',
-      'display: none; top: 53.6%; right: 52%; transform: translate(0px, -1em);',
+        ['font-size: 0.4rem; top: 49.75%; left: 51.25%; transform: translate(0px, -1em);',
+      'font-size: 0.8rem; top: 53%; left: 49%; transform: translate(0px, -1em);',
       'top: 55.3%; right: 52%; transform: translate(0px, -1em);',
       'top: 58.9%; left: 52.5%; transform: translate(0px, -1em)',
       'top: 62.8%; right: 52%; transform: translate(0px, -1em);',
