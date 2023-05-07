@@ -109,6 +109,7 @@ const sezzing: { [gameName: string]: {[scopeName: string]: {[rifleName: string]:
       'BULLPUP PDR':"66's AND 33's",
       'CTMMG':'RANGE AND REASON',
       'MK14 MAWL-DA':'CAPABLE CONSISTENCY',
+      'MK14 ASSAULT BROWN':"50'S TO 350",
       MK48:'INTUITIVE',
 
     },
