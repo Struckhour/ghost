@@ -247,6 +247,7 @@ const silhouettes: { [gameName: string]: {[scopeName: string]: {[rifleName: stri
       MDR:[300],
       'MDR MAWL-DA':[300],
       'MDR RANGE FINDER':[300],
+      MG121:[250],
       MK17:[275],
       'MK17 BALLISTIC ADV.':[275],
       'MK17 MAWL-DA':[275],

@@ -140,6 +140,7 @@ const sezzing: { [gameName: string]: {[scopeName: string]: {[rifleName: string]:
       'M4A1 SCOUT MAWL-DA BALLISTIC ADV.':'300,400,550',
       'M4A1 TACTICAL BALLISTIC ADV.':'A GOOD START',
       'M4A1 TACTICAL RANGE FINDER':'TACTICAL INDEED',
+      MG121:'THIRTEENS',
       'MK17 MAWL-DA':'GRAVIS',
       'MK17 MAWL-DA +30 RANGE':'GRAVIS',
       'MK17 RANGE FINDER':'HEADSHOTS AT 275 WITH NO HUD',
