@@ -431,6 +431,8 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'MK48':[100,163,200,250,300,375,475,],
       'MK48 BALLISTIC ADV':[100,250,375,525],
       'MK48 SAW':[100,175,225,288,363,475,588,],
+      'SCORPION EVO3 CQC MAWL-DA':[50,107,144,182,238,325,413],
+      'SCORPION EVO3 CQC MAWL-DA BALLISTIC ADV.':[50,200,275,425,638,825,957],
       'STONER MAWL-DA':[100,175,238,325,438,563,663,],
       'SVD-63':[],
       'HTI':[],
