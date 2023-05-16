@@ -565,10 +565,22 @@ function getStylePosition(index: number) {
          </div>
         </Transition>
         <Transition>
-          <img
-          v-show="selectedScopeName==='SLX5'" src="/assets/BP-Scopes/BP-SLX5-Sight.jpg"
-          class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full"
-          />
+          <div>
+            <img
+            v-show="selectedScopeName==='SLX5'" src="/assets/BP-Scopes/BP-SLX5-Sight.jpg"
+            class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full"
+            />
+            <img v-show="selectedScopeName==='SLX5' && gameName.game === 'Breakpoint' && silhScope.hasOwnProperty(selectedRifle)" src="/assets/soldier-silhouette.png" class="absolute h-[6%] top-[49%] right-[38%]"
+            />
+            <div v-if="selectedScopeName==='SLX5' && gameName.game === 'Breakpoint' && silhScope.hasOwnProperty(selectedRifle)" class="absolute top-[50%] right-[32%]">
+                {{silhRange[0]}}m
+          </div>
+          <img v-show="selectedScopeName==='SLX5' && gameName.game === 'Breakpoint' && silhScope.hasOwnProperty(selectedRifle)" src="/assets/soldier-silhouette.png" class="absolute h-[12%] top-[62.5%] right-[37%]"
+            />
+            <div v-if="selectedScopeName==='SLX5' && gameName.game === 'Breakpoint' && silhScope.hasOwnProperty(selectedRifle)" class="absolute top-[66%] right-[32%]">
+                {{silhRange[1]}}m
+          </div>
+         </div>
         </Transition>
         <Transition>
           <img

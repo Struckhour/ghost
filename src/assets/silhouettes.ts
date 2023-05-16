@@ -188,6 +188,29 @@ const silhouettes: { [gameName: string]: {[scopeName: string]: {[rifleName: stri
       // L115A3:[],
       },
     'SLX5': {
+      '805 BREN':[325,163],
+      '805 BREN MAWL-DA':[325,163],
+      '805 BREN RANGE FINDER':[325,163],
+      'ARX200 MAWL-DA':[350,175],
+      'BULLPUP PDR':[300,150],
+      'CTMMG':[350,175],
+      'MG121':[325,163],
+      'MK14 MAWL-DA':[425,213],
+      'MK14 ASSAULT MAWL-DA':	[375,188],
+      'MK14 ASSAULT BROWN':	[375,188],
+      'MK14 ASSAULT BROWN MAWL-DA':	[375,188],
+      'MK14 ASSAULT BROWN RANGE FINDER':[375,188],
+      'MK48':[350,175],
+      'MK48 BALLISTIC ADV.':[350,175],
+      'MK48 SAW':[350,175],
+      'SCORPION EVO3 CQC':[300,150],
+      'SCORPION EVO3 CQC MAWL-DA':[300,150],
+      'SCORPION EVO3 CQC MAWL-DA BALLISTIC ADV.':[300,150],
+      'STONER':[250,125],
+      'STONER MAWL-DA':[250,125],
+      'STONER RANGE FINDER':[250,125],
+
+
 
     },
     'TA31H': {
@@ -269,11 +292,6 @@ const silhouettes: { [gameName: string]: {[scopeName: string]: {[rifleName: stri
       'MK17 SCOUT BALLISTIC ADV.':[300],
       'MK17 SCOUT RANGE FINDER':[300],
       'MK17 SCOUT RANGE FINDER BALLISTIC ADV.':[300],
-
-
-
-
-
 
     },
     'RU LONG-RANGE FOV': {
