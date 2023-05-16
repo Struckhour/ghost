@@ -152,7 +152,7 @@ const rangeStyles: { [gameName: string]: {[scopeName: string]: string }} = {
     'ACSS': 'color: #f4c59e;',
     'DIGITAL': 'color: #e2b7bd; text-shadow: 0 0 5px #000, 0 0 0px #fff, 0 0 10px #e2b7bd44, 0 0 15px #e2b7bd;',
     'SLX5': 'color: #fddebf;',
-    'TA31H': 'color: #fddebf;',
+    'TA31H': 'color: black;',
     'RU LONG-RANGE FOV': 'color: #f4c59e;',
     'RU LONG-RANGE': 'color: #f4c59e;',
     'PALADIN OPTIC': 'color: #f4c59e;',
@@ -272,9 +272,9 @@ const styleTranslations: { [gameName: string]: {[scopeName: string]: string[]} }
     ],
     'TA31H':
           ['display: none;',
-      'display: none; top: 53.6%; right: 51%; transform: translate(0px, -1em);',
+      'font-size: 0.9rem; top: 53.7%; left: 48.7%; transform: translate(0px, -1em);',
       'top: 55.6%; right: 51%; transform: translate(0px, -1em);',
-      'font-size: 0.8rem; top: 58.5%; left: 52%; transform: translate(0px, -1em)',
+      'top: 58.5%; left: 52%; transform: translate(0px, -1em)',
       'top: 62%; right: 51%; transform: translate(0px, -1em);',
       'top: 66.7%; left: 52%; transform: translate(0px, -1em)',
       'top: 72.5%; right: 51%; transform: translate(0px, -1em);',
@@ -534,7 +534,7 @@ function getStylePosition(index: number) {
             />
             <img v-show="selectedScopeName==='TA31H' && gameName.game === 'Breakpoint' && silhScope.hasOwnProperty(selectedRifle)" src="/assets/soldier-silhouette.png" class="absolute h-[8%] top-[46.5%] right-[30.3%]"
             />
-            <div v-if="selectedScopeName==='TA31H' && gameName.game === 'Breakpoint' && silhScope.hasOwnProperty(selectedRifle)" class="absolute top-[48.5%] right-[33.5%]">
+            <div v-if="selectedScopeName==='TA31H' && gameName.game === 'Breakpoint' && silhScope.hasOwnProperty(selectedRifle)" class="absolute top-[47.5%] right-[24.5%]">
                 {{silhRange[0]}}m
           </div>
          </div>
