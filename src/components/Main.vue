@@ -6,6 +6,8 @@ import GlitchedWriter from 'vue-glitched-writer';
 import fullData from '../assets/data';
 import silhouettes from '../assets/silhouettes';
 import sezzing from '../assets/sezzing';
+import { damage, GetRifleName, rifles } from '../assets/damage';
+
 
 const showIntel = ref(false);
 const gameName = defineProps<{game: string}>()
@@ -91,7 +93,7 @@ const scopeLabelStyles: { [gameName: string]:{[scopeName: string]: string }} = {
     'ACSS': 'color: #f4c59e;',
     'DIGITAL': 'color: #e2b7bd;  text-shadow: 0 0 5px #000, 0 0 6px #ffffff11, 0 0 7px #e2b7bd86, 0 0 10px #e2b7bd86, 0 0 15px #e2b7bd;',
     'SLX5': 'color: #fddebf;',
-    'TA31H': 'color: #fddebf;',
+    'TA31H': 'color: black;',
     'RU LONG-RANGE FOV': 'color: #f4c59e;',
     'RU LONG-RANGE': 'color: #f4c59e;',
     'PALADIN OPTIC': 'color: #f4c59e;',
@@ -121,7 +123,7 @@ const rifleLabelStyles: { [gameName: string]: {[scopeName: string]: string} } = 
     'ACSS': 'color: #f4c59e;',
     'DIGITAL': 'color: #e2b7bd;  text-shadow: 0 0 5px #000, 0 0 6px #ffffff11, 0 0 7px #e2b7bd86, 0 0 10px #e2b7bd86, 0 0 15px #e2b7bd;',
     'SLX5': 'color: #fddebf;',
-    'TA31H': 'color: #fddebf;',
+    'TA31H': 'color: black;',
     'RU LONG-RANGE FOV': 'color: #f4c59e;',
     'RU LONG-RANGE': 'color: #f4c59e;',
     'PALADIN OPTIC': 'color: #f4c59e;',
@@ -184,6 +186,9 @@ const styleTranslations: { [gameName: string]: {[scopeName: string]: string[]} }
     'top: 73.8%; left: 52%; transform: translate(0px, -1em)',
     'top: 80.7%; right: 52%; transform: translate(0px, -1em);',
     'top: 87.6%; left: 52%; transform: translate(0px, -1em)',
+    'top: 94.5%; right: 52%; transform: translate(0px, -1em);',
+    'top: 100.6%; left: 52%; transform: translate(0px, -1em)',
+
 
     ],
 
@@ -216,7 +221,7 @@ const styleTranslations: { [gameName: string]: {[scopeName: string]: string[]} }
       'top: 64.3%; right: 52%; transform: translate(0px, -1em);',
       'top: 66%; left: 53%; transform: translate(0px, -1em)',
       'top: 67.8%; right: 52%; transform: translate(0px, -1em);',
-      'top: 69.5%; left: 54.75%; transform: translate(0px, -1em)',
+      'top: 69.5%; left: 54%; transform: translate(0px, -1em)',
       'top: 71.5%; right: 52%; transform: translate(0px, -1em);',
       'top: 73.5%; left: 53%; transform: translate(0px, -1em)',
       'top: 75.2%; right: 52%; transform: translate(0px, -1em);',
@@ -492,9 +497,9 @@ function getStylePosition(index: number) {
               v-show="selectedScopeName==='T5XI'" src="/assets/BP-Scopes/BP-T5XISight.jpg"
               class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full"
             />
-            <img v-show="selectedScopeName==='T5XI' && gameName.game === 'Breakpoint' && silhScope.hasOwnProperty(selectedRifle)" src="/assets/soldier-silhouette.png" class="absolute h-[8.4%] top-[37.2%] right-[51%]"
+            <img v-show="selectedScopeName==='T5XI' && gameName.game === 'Breakpoint' && silhScope.hasOwnProperty(selectedRifle)" src="/assets/soldier-silhouette.png" class="absolute h-[8.4%] top-[37.2%] left-[51.3%]"
             />
-            <div v-if="selectedScopeName==='T5XI' && gameName.game === 'Breakpoint' && silhScope.hasOwnProperty(selectedRifle)" class="absolute top-[39%] right-[54%]">
+            <div v-if="selectedScopeName==='T5XI' && gameName.game === 'Breakpoint' && silhScope.hasOwnProperty(selectedRifle)" class="absolute top-[39%] left-[55%]">
               {{silhRange[0]}}m
             </div>
           </div>
@@ -505,9 +510,9 @@ function getStylePosition(index: number) {
               v-show="selectedScopeName==='DUAL RANGE'" src="/assets/BP-Scopes/BP-Dual-Range-Sight.jpg"
               class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full"
             />
-            <img v-show="selectedScopeName==='DUAL RANGE' && gameName.game === 'Breakpoint' && silhScope.hasOwnProperty(selectedRifle)" src="/assets/soldier-silhouette.png" class="absolute h-[12.8%] top-[28.2%] right-[51%]"
+            <img v-show="selectedScopeName==='DUAL RANGE' && gameName.game === 'Breakpoint' && silhScope.hasOwnProperty(selectedRifle)" src="/assets/soldier-silhouette.png" class="absolute h-[12.8%] top-[28.2%] right-[50.7%]"
             />
-            <div v-if="selectedScopeName==='DUAL RANGE' && gameName.game === 'Breakpoint' && silhScope.hasOwnProperty(selectedRifle)" class="absolute top-[32%] right-[56%]">
+            <div v-if="selectedScopeName==='DUAL RANGE' && gameName.game === 'Breakpoint' && silhScope.hasOwnProperty(selectedRifle)" class="absolute top-[32%] right-[55.5%]">
               {{silhRange[0]}}m
             </div>
           </div>
@@ -532,9 +537,9 @@ function getStylePosition(index: number) {
             v-show="selectedScopeName==='TA31H'" src="/assets/BP-Scopes/BP-TA31H-Sight.jpg"
             class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full"
             />
-            <img v-show="selectedScopeName==='TA31H' && gameName.game === 'Breakpoint' && silhScope.hasOwnProperty(selectedRifle)" src="/assets/soldier-silhouette.png" class="absolute h-[8%] top-[46.5%] right-[30.3%]"
+            <img v-show="selectedScopeName==='TA31H' && gameName.game === 'Breakpoint' && silhScope.hasOwnProperty(selectedRifle)" src="/assets/soldier-silhouette.png" class="absolute h-[8%] top-[46.5%] left-[31%]"
             />
-            <div v-if="selectedScopeName==='TA31H' && gameName.game === 'Breakpoint' && silhScope.hasOwnProperty(selectedRifle)" class="absolute top-[47.5%] right-[24.5%]">
+            <div v-if="selectedScopeName==='TA31H' && gameName.game === 'Breakpoint' && silhScope.hasOwnProperty(selectedRifle)" class="absolute top-[47.5%] left-[25%]">
                 {{silhRange[0]}}m
           </div>
          </div>
@@ -570,14 +575,14 @@ function getStylePosition(index: number) {
             v-show="selectedScopeName==='SLX5'" src="/assets/BP-Scopes/BP-SLX5-Sight.jpg"
             class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full"
             />
-            <img v-show="selectedScopeName==='SLX5' && gameName.game === 'Breakpoint' && silhScope.hasOwnProperty(selectedRifle)" src="/assets/soldier-silhouette.png" class="absolute h-[6%] top-[49%] right-[38%]"
+            <img v-show="selectedScopeName==='SLX5' && gameName.game === 'Breakpoint' && silhScope.hasOwnProperty(selectedRifle)" src="/assets/soldier-silhouette.png" class="absolute h-[6%] top-[49%] left-[38%]"
             />
-            <div v-if="selectedScopeName==='SLX5' && gameName.game === 'Breakpoint' && silhScope.hasOwnProperty(selectedRifle)" class="absolute top-[50%] right-[32%]">
+            <div v-if="selectedScopeName==='SLX5' && gameName.game === 'Breakpoint' && silhScope.hasOwnProperty(selectedRifle)" class="absolute top-[50%] left-[32%]">
                 {{silhRange[0]}}m
-          </div>
-          <img v-show="selectedScopeName==='SLX5' && gameName.game === 'Breakpoint' && silhScope.hasOwnProperty(selectedRifle)" src="/assets/soldier-silhouette.png" class="absolute h-[12%] top-[62.5%] right-[37%]"
+            </div>
+            <img v-show="selectedScopeName==='SLX5' && gameName.game === 'Breakpoint' && silhScope.hasOwnProperty(selectedRifle)" src="/assets/soldier-silhouette.png" class="absolute h-[12%] top-[62.5%] left-[37%]"
             />
-            <div v-if="selectedScopeName==='SLX5' && gameName.game === 'Breakpoint' && silhScope.hasOwnProperty(selectedRifle)" class="absolute top-[66%] right-[32%]">
+            <div v-if="selectedScopeName==='SLX5' && gameName.game === 'Breakpoint' && silhScope.hasOwnProperty(selectedRifle)" class="absolute top-[66%] left-[32%]">
                 {{silhRange[1]}}m
           </div>
          </div>
@@ -717,6 +722,22 @@ function getStylePosition(index: number) {
           <div v-if="sezzing[gameName.game][selectedScopeName].hasOwnProperty(selectedRifle)" class="absolute h-[15%] w-[30%] top-[27%] right-[10%] text-red-900 rotate-[-10deg] text-2xl" style="font-size: 1rem; font-family: angel;">
           {{sezzing[gameName.game][selectedScopeName][selectedRifle]}}
           </div>
+         <!-- DAMAGE STATS -->
+         <div v-if="damage[gameName.game].hasOwnProperty(GetRifleName(rifles, selectedRifle))" class="absolute h-[15%] w-[30%] top-[57.5%] right-[9%] text-white" style="font-size: 0.6rem; text-transform: uppercase; font-family: ;">
+          <span class="text-black" style="font-size: 0.7rem; text-transform: uppercase; font-family: ;"><u>ROUNDS TO KILL SENTINEL</u></span><br>
+          <span>STEALTHED SUPPRESSED: {{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][0] }}</span><br>
+          <span>STEALTHED LOUD: {{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][1] }}</span><br>
+          <span class="text-red-400">DETECTED SUPPRESSED: {{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][2] }}</span><br>
+          <span class="text-red-400">DETECTED LOUD: {{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][3] }}</span><br>
+          <span class="text-black" style="font-size: 0.7rem; text-transform: uppercase; font-family: ;"><u>ROUNDS TO KILL WOLVES</u></span><br>
+          <span>SUPPRESSED: {{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][4] }}</span>&nbsp;&nbsp;
+          <span class="text-red-400">LOUD: {{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][5] }}</span><br>
+          <!-- BONUS DAMAGE -->
+          <span v-if="damage[gameName.game][GetRifleName(rifles, selectedRifle)][6]" class=" text-green-400" style="font-size: 0.6rem; text-transform: uppercase; font-family: ZCOOL;"><b>BONUS DAMAGE ON 2ND KILL: +{{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][6] }}</b></span><br>
+<!-- SPECIAL NOTES -->
+          <span v-if="damage[gameName.game][GetRifleName(rifles, selectedRifle)][7]" class="absolute h-[15%] w-[160%] top-[-350%] right-[50%] text-white" style="font-size: 0.6rem; font-family: courier;"><b><i>SPECIAL NOTE: {{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][7] }}</i></b></span><br>
+
+          </div>  
       <!-- RANGE LABELS -->
           <div class="absolute top-[55%] left-2/4 -translate-x-2/4 text-2xl">
             <glitched-writer v-if="ranges && ranges.length==0" :text="'Sorry, rifle not yet ranged with this scope'" appear preset="nier" :style="getRangeStyle()" />
