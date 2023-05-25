@@ -102,8 +102,29 @@ export const rifles:string[]=[
     'OTS-03',
     'MK14 TERMINATION',
     'FRF2',
+    
+//SMG'S
+    'VECTOR SHORTY',
+    'VECTOR',
+    'UZI 9MM',
+    'UMP CQC',
+    'UMP',
+    'SN-9MM',
+    'SCORPION EVO3 TACTICAL',
+    'SCORPION EVO3 CQC',
+    'SCORPION EVO3',
+    'P90',
+    'MPX TACTICAL',
+    'MPX',
+    'MP7',
+    'MP5',
+    'HONEY BADGER BROWN',
+    'HONEY BADGER',
+    "FLYCATCHER'S P90",
+    'ECHELON SMG',
+    'BULLPUP PDR',
 
-    //SNR'S
+//SNR'S
     'ZASTAVA M93',
     'VSK-50',
     'TAC50 BROWN',
@@ -118,6 +139,19 @@ export const rifles:string[]=[
     'L115A3',
     'HTI SURVIVAL',
     'HTI',
+
+//LMG'S
+    'T95',
+    'STONER COMPACT',
+    'STONER',
+    'MK48 SAW',
+    'MK48 COMPACT',
+    'MK48',
+    'MG121',
+    'L86A1',
+    'CTMMG BAAL',
+    'CTMMG',
+    '6P41',        
         
 ]
 
@@ -228,9 +262,30 @@ export const damage: { [gameName: string]: {[rifleName: string]: (number | strin
         'MK14 TERMINATION':[	1,	1,	2,	2,	3,	3 ],
         'FRF2':[	1,	1,	2,	2,	2,	2, ],
 
+        //SMG'S
+        'VECTOR SHORTY':[	3,	2,	6,	5,	7,	6,	0, 'fires 2 instead of 3 round bursts'	],
+        'VECTOR':[	3,	2,	6,	5,	7,	6,	0, 'fires 2 instead of 3 round bursts'	],
+        'UZI 9MM':[	3,	2,	6,	5,	8,	6,		],
+        'UMP CQC':[	2,	2,	5,	4,	6,	5,	0, 'fires 2 instead of 3 round bursts'	],
+        'UMP':[	2,	2,	5,	4,	6,	5,	0, 'fires 2 instead of 3 round bursts'	],
+        'SN-9MM':[	2,	2,	5,	4,	6,	5,		],
+        'SCORPION EVO3 TACTICAL':[	3,	2,	6,	5,	8,	6,		],
+        'SCORPION EVO3 CQC':[	3,	2,	6,	5,	8,	6,		],
+        'SCORPION EVO3':[	3,	2,	6,	5,	8,	6,		],
+        'P90':[	2,	2,	5,	4,	6,	5,		],
+        'MPX TACTICAL':[	3,	2,	6,	5,	8,	6,		],
+        'MPX':[	3,	2,	6,	5,	8,	6,		],
+        'MP7':[	3,	2,	6,	5,	8,	6,		],
+        'MP5':[	2,	2,	5,	4,	6,	5,		],
+        'HONEY BADGER BROWN':[	2,	2,	5,	4,	6,	5,		],
+        'HONEY BADGER':[	2,	2,	5,	4,	6,	5,		],
+        "FLYCATCHER'S P90":[	2,	2,	5,	4,	6,	5,		],
+        'ECHELON SMG':[	3,	2,	6,	5,	8,	6,		],
+        'BULLPUP PDR':[	2,	2,	5,	4,	6,	5,		],
+
         //SNR'S
         'ZASTAVA M93':[	1,	1,	1,	1,	1,	1,		],
-        'VSK-50':[	1,	1,	1,	1,	2,	1,	+0,'will 1 shot wolves suppressed with rolling thunder'	],
+        'VSK-50':[	1,	1,	1,	1,	2,	1,	+0,'will 1 shot wolves suppressed with rolling thunder perk'	],
         'TAC50 BROWN':[	1,	1,	1,	1,	1,	1,		],
         'TAC50':[	1,	1,	1,	1,	1,	1,		],
         'SR-1':[	1,	1,	1,	1,	2,	1,		],
@@ -243,6 +298,19 @@ export const damage: { [gameName: string]: {[rifleName: string]: (number | strin
         'L115A3':[	1,	1,	1,	1,	2,	1,		],
         'HTI SURVIVAL':[	1,	1,	1,	1,	1,	1,		],
         'HTI':[	1,	1,	1,	1,	1,	1,		],
+
+        //LMG'S
+        'T95':[	'N/A',	2,	'N/A',	4,	'N/A',	4,		],
+        'STONER COMPACT':[	'N/A',	2,	'N/A',	3,	'N/A',	4,		],
+        'STONER':[	'N/A',	2,	'N/A',	3,	'N/A',	4,		],
+        'MK48 SAW':[	'N/A',	2,	'N/A',	3,	'N/A',	4,		],
+        'MK48 COMPACT':[	'N/A',	2,	'N/A',	3,	'N/A',	4,		],
+        'MK48':[	'N/A',	2,	'N/A',	3,	'N/A',	4,		],
+        'MG121':[	'N/A',	1,	'N/A',	3,	'N/A',	4,		],
+        'L86A1':[	'N/A',	2,	'N/A',	4,	'N/A',	4,		],
+        'CTMMG BAAL':[	'N/A',	2,	'N/A',	3,	'N/A',	4,		],
+        'CTMMG':[	'N/A',	2,	'N/A',	3,	'N/A',	4,		],
+        '6P41':[	'N/A',	1,	'N/A',	3,	'N/A',	4,		],
   
     },
     Wildlands: {

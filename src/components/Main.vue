@@ -437,6 +437,11 @@ function getStylePosition(index: number) {
         <div class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute left-[53%] rotate-[-2deg] translate-x-[25%] z-40 cursor-pointer" style="font-family: angel;">
           <a href="https://www.youtube.com/watch?v=HwlGfuORwAY" target="_blank">Feedback</a>
         </div>
+<!-- Shotguns -->
+        <!-- <div class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute right-[87%] rotate-[4deg] translate-x-[25%] z-40 cursor-pointer" style="font-family: angel;">
+          <a href="https://docs.google.com/spreadsheets/d/1MdLQojCcbQ4JhJ8auHxIRR3sPFUIUiKlFQPvMcFzhMQ/edit?usp=sharing" target="_blank">Breakpoint Shotguns</a>
+        </div> -->
+        <!-- End Shotguns -->
       </div>
 
       <div v-show="showIntel" @click="showIntel = false" class="absolute top-[100px] sm:top-[200px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg" style="font-family: courier;">
