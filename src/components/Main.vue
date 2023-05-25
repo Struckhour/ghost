@@ -10,6 +10,7 @@ import { damage, GetRifleName, rifles } from '../assets/damage';
 
 
 const showIntel = ref(false);
+const showShotguns = ref(false);
 const gameName = defineProps<{game: string}>()
 
 let showScopeMenu = ref(false);
@@ -424,24 +425,29 @@ function getStylePosition(index: number) {
       class="hidden sm:block w-96 h-20 m-auto rounded-md object-cover border-black border-2"
     />
 
-      <div class="text-2xl mt-1 h-10 relative" @click="removeScopeMenu(); removeRifleMenu();">
+      <div class="text-2xl mt-1 h-20 relative" @click="removeScopeMenu(); removeRifleMenu();">
         <router-link
           to="/"
-          class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute left-[53%] -rotate-[7deg] -translate-x-[155%] z-40"
+          class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute left-[53%] -rotate-[3deg] -translate-x-[155%] z-40"
           style="font-family: angel;"
           >Redeploy
         </router-link>
-        <div @click="showIntel = !showIntel" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute left-[53%] -rotate-[-3deg] -translate-x-[73%] z-40 cursor-pointer" style="font-family: angel;">
+        <div @click="showIntel = !showIntel; showShotguns = false" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute left-[53%] -rotate-[-3deg] -translate-x-[73%] z-40 cursor-pointer" style="font-family: angel;">
           Intel
         </div>
         <div class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute left-[53%] rotate-[-2deg] translate-x-[25%] z-40 cursor-pointer" style="font-family: angel;">
           <a href="https://www.youtube.com/watch?v=HwlGfuORwAY" target="_blank">Feedback</a>
         </div>
 <!-- Shotguns -->
-        <!-- <div class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute right-[87%] rotate-[4deg] translate-x-[25%] z-40 cursor-pointer" style="font-family: angel;">
-          <a href="https://docs.google.com/spreadsheets/d/1MdLQojCcbQ4JhJ8auHxIRR3sPFUIUiKlFQPvMcFzhMQ/edit?usp=sharing" target="_blank">Breakpoint Shotguns</a>
-        </div> -->
-        <!-- End Shotguns -->
+        <div v-if="gameName.game === 'Breakpoint'" @click="showShotguns = !showShotguns; showIntel = false" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[50%] right-[58%] rotate-[2deg] translate-x-[25%] z-40 cursor-pointer" style="font-family: angel;">
+          Shotguns 
+        </div>
+        <div v-show="showShotguns" @click="showShotguns = false" class="absolute top-[100px] sm:top-[200px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg" style="font-size: 0.9rem; font-family: courier;">
+          All shotguns will one-shot Sentinel targets while undetected. RTK = Rounds to kill.
+          <img src="/assets/ShotgunsBP.png">
+          <div @click="showShotguns = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer" style="font-family: courier;">x</div>
+        </div>
+<!-- End Shotguns -->
       </div>
 
       <div v-show="showIntel" @click="showIntel = false" class="absolute top-[100px] sm:top-[200px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg" style="font-family: courier;">
