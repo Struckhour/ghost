@@ -782,8 +782,8 @@ function getStylePosition(index: number) {
           {{sezzing[gameName.game][selectedScopeName][selectedRifle]}}
           </div>
           <!-- RTK BUTTON -->
-        <div v-if="gameName.game === 'Breakpoint'" @click="showRTK = !showRTK; showIntel = false; showShotguns = false; showHandguns = false" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[67%] left-[54%] rotate-[25deg] translate-x-[25%] z-40 cursor-pointer" style="font-family: angel;">
-          Rounds To Kill 
+        <div v-if="gameName.game === 'Breakpoint'" @click="showRTK = !showRTK; showIntel = false; showShotguns = false; showHandguns = false" class="active:text-red-700 px-2 border text-red-700 border-red-700 hover:text-red-600 rounded-lg shadow-black shadow-md font-sans absolute top-[67%] left-[58%] rotate-[25deg] translate-x-[25%] z-40 cursor-pointer" style="font-family: angel;">
+          Damage File 
         </div>
         <div v-if="damage[gameName.game].hasOwnProperty(GetRifleName(rifles, selectedRifle)) && showRTK" @click="showRTK = false" class="absolute top-[100px] sm:top-[200px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg" style="font-size: 1rem; font-family: courier;">
 
@@ -796,9 +796,9 @@ function getStylePosition(index: number) {
           <span>SUPPRESSED: {{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][4] }}</span>&nbsp;
           <span class="text-red-600"><b>LOUD: {{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][5] }}</b></span><br>
 <!-- BONUS DAMAGE -->
-          <span v-if="damage[gameName.game][GetRifleName(rifles, selectedRifle)][6]" class=" text-green-400" style="font-size: 0.8rem; text-transform: uppercase; font-family: ZCOOL;"><b>BONUS DAMAGE ON 2ND KILL: +{{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][6] }}</b></span><br>
+          <span v-if="damage[gameName.game][GetRifleName(rifles, selectedRifle)][6]" class=" text-green-700 font-bold" style="font-size: 1rem; text-transform: uppercase; font-family: courier;">+{{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][6] }} BONUS DAMAGE ON 2ND KILL within 10 sec</span><br>
 <!-- SPECIAL NOTES -->
-          <span v-if="damage[gameName.game][GetRifleName(rifles, selectedRifle)][7]" class="text-black" style="font-size: 0.7rem; text-transform: uppercase; font-family: courier;"><b>SPECIAL NOTE: {{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][7] }}</b></span><br>
+          <span v-if="damage[gameName.game][GetRifleName(rifles, selectedRifle)][7]" class="text-black" style="font-size: 0.9rem; text-transform: uppercase; font-family: courier;">SPECIAL NOTE: {{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][7] }}</span><br>
           <div @click="showRTK = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer" style="font-family: courier;">x</div>
         </div>
 <!-- End RTK BUTTON -->
