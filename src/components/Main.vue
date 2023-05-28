@@ -12,6 +12,7 @@ import { damage, GetRifleName, rifles } from '../assets/damage';
 const showIntel = ref(false);
 const showShotguns = ref(false);
 const showHandguns = ref(false);
+const showRTK = ref(false);
 const gameName = defineProps<{game: string}>()
 
 let showScopeMenu = ref(false);
@@ -777,25 +778,31 @@ function getStylePosition(index: number) {
 
         </div> 
         <!-- ENDORSEMENT SEZZING -->
-          <div v-if="sezzing[gameName.game][selectedScopeName].hasOwnProperty(selectedRifle)" class="absolute h-[15%] w-[30%] top-[30%] right-[10%] text-red-700 rotate-[-10deg] text-2xl" style="font-size: 1.1rem; font-family: angel;">
+          <div v-if="sezzing[gameName.game][selectedScopeName].hasOwnProperty(selectedRifle)" class="absolute h-[15%] w-[30%] top-[30%] right-[10%] text-red-700 rotate-[-10deg] text-2xl" style="font-size: 0.9rem; font-family: angel;">
           {{sezzing[gameName.game][selectedScopeName][selectedRifle]}}
           </div>
-         <!-- DAMAGE STATS -->
-         <div v-if="damage[gameName.game].hasOwnProperty(GetRifleName(rifles, selectedRifle))" class="absolute h-[15%] w-[30%] top-[58.2%] right-[9%] text-white" style="font-size: 0.7rem; text-transform: uppercase; font-family: ;">
-          <span class="text-black" style="font-size: 0.8rem; text-transform: uppercase; font-family: ;"><u>ROUNDS TO KILL SENTINEL</u></span><br>
+          <!-- RTK BUTTON -->
+        <div v-if="gameName.game === 'Breakpoint'" @click="showRTK = !showRTK; showIntel = false; showShotguns = false; showHandguns = false" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[67%] left-[54%] rotate-[25deg] translate-x-[25%] z-40 cursor-pointer" style="font-family: angel;">
+          Rounds To Kill 
+        </div>
+        <div v-if="damage[gameName.game].hasOwnProperty(GetRifleName(rifles, selectedRifle)) && showRTK" @click="showRTK = false" class="absolute top-[100px] sm:top-[200px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg" style="font-size: 1rem; font-family: courier;">
+
+          <span class="font-bold text-black" style="font-size: 1rem; text-transform: uppercase; font-family: ;"><u>ROUNDS TO KILL SENTINEL</u></span><br>
           <span>STEALTH SUPPRESSED: {{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][0] }}</span><br>
           <span>STEALTH LOUD: {{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][1] }}</span><br>
           <span class="text-red-600"><b>DETECTED SUPPRESSED: {{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][2] }}</b></span><br>
           <span class="text-red-600"><b>DETECTED LOUD: {{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][3] }}</b></span><br>
-          <span class="text-black" style="font-size: 0.8rem; text-transform: uppercase; font-family: ;"><u>ROUNDS TO KILL WOLVES</u></span><br>
-          <span>SUPPRESSED: {{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][4] }}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <span class="font-bold text-black" style="font-size: 1rem; text-transform: uppercase; font-family: ;"><u>ROUNDS TO KILL WOLVES</u></span><br>
+          <span>SUPPRESSED: {{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][4] }}</span>&nbsp;
           <span class="text-red-600"><b>LOUD: {{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][5] }}</b></span><br>
-          <!-- BONUS DAMAGE -->
+<!-- BONUS DAMAGE -->
           <span v-if="damage[gameName.game][GetRifleName(rifles, selectedRifle)][6]" class=" text-green-400" style="font-size: 0.8rem; text-transform: uppercase; font-family: ZCOOL;"><b>BONUS DAMAGE ON 2ND KILL: +{{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][6] }}</b></span><br>
 <!-- SPECIAL NOTES -->
-          <span v-if="damage[gameName.game][GetRifleName(rifles, selectedRifle)][7]" class="absolute h-[15%] w-[160%] top-[-350%] right-[55%] text-white" style="font-size: 0.7rem; font-family: courier;"><b><i>SPECIAL NOTE: {{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][7] }}</i></b></span><br>
+          <span v-if="damage[gameName.game][GetRifleName(rifles, selectedRifle)][7]" class="text-black" style="font-size: 0.7rem; text-transform: uppercase; font-family: courier;"><b>SPECIAL NOTE: {{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][7] }}</b></span><br>
+          <div @click="showRTK = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer" style="font-family: courier;">x</div>
+        </div>
+<!-- End RTK BUTTON -->
 
-          </div>  
       <!-- RANGE LABELS -->
           <div class="absolute top-[55%] left-2/4 -translate-x-2/4 text-2xl">
             <glitched-writer v-if="ranges && ranges.length==0" :text="'Sorry, rifle not yet ranged with this scope'" appear preset="nier" :style="getRangeStyle()" />
