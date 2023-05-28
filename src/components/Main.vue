@@ -778,12 +778,12 @@ function getStylePosition(index: number) {
 
         </div> 
         <!-- ENDORSEMENT SEZZING -->
-          <div v-if="sezzing[gameName.game][selectedScopeName].hasOwnProperty(selectedRifle)" class="absolute h-[15%] w-[30%] top-[30%] right-[10%] text-red-700 rotate-[-10deg] text-2xl" style="font-size: 0.9rem; font-family: angel;">
+          <div v-if="sezzing[gameName.game][selectedScopeName].hasOwnProperty(selectedRifle)" class="absolute h-[15%] w-[30%] top-[30%] right-[10%] text-red-800 rotate-[-10deg] text-2xl" style="font-size: 0.8rem; font-family: angel;">
           {{sezzing[gameName.game][selectedScopeName][selectedRifle]}}
           </div>
           <!-- RTK BUTTON -->
-        <div v-if="gameName.game === 'Breakpoint'" @click="showRTK = !showRTK; showIntel = false; showShotguns = false; showHandguns = false" class="active:text-red-700 px-2 border text-red-700 border-red-700 hover:text-red-600 rounded-lg shadow-black shadow-md font-sans absolute top-[67%] left-[58%] rotate-[25deg] translate-x-[25%] z-40 cursor-pointer" style="font-family: angel;">
-          Damage File 
+        <div v-if="gameName.game === 'Breakpoint'" @click="showRTK = !showRTK; showIntel = false; showShotguns = false; showHandguns = false" class="active:text-red-800 px-2 border text-red-800 border-red-800 hover:text-red-600 rounded-lg shadow-black shadow-md font-sans absolute top-[67%] left-[62%] rotate-[-35deg] translate-x-[25%] z-40 cursor-pointer" style="font-family: angel;">
+          Damage <br>File
         </div>
         <div v-if="damage[gameName.game].hasOwnProperty(GetRifleName(rifles, selectedRifle)) && showRTK" @click="showRTK = false" class="absolute top-[100px] sm:top-[200px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg" style="font-size: 1rem; font-family: courier;">
 
