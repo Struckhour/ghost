@@ -1,10 +1,10 @@
 const sezzing: { [gameName: string]: {[scopeName: string]: {[rifleName: string]: string}} } = {
   Breakpoint: {
     'T5XI': {
-      '416 SCOUT':'2, 3, 4, 525',
+      '416 SCOUT':'ALMOST HEAVEN',
       'G36C SCOUT':'TAKE THEIR LIVES AT SEVENTY-FIVES',
-      'M4A1 SCOUT MAWL-DA':'225, 3, 4, 5',
-      'MK17 SCOUT BALLISTIC ADV.':'BALLISTICS ON A BUDGET',
+      'M4A1 SCOUT MAWL-DA':'WEST VIRGINIA',
+      'MK17 SCOUT BALLISTIC ADVANTAGE':'BALLISTICS ON A BUDGET',
       'SR-1':'LEAST BULLET DROP RIFLE. PERIOD.',
       'SR-1 +30 RANGE':'POINT AND SHOOT',
 
@@ -24,13 +24,13 @@ const sezzing: { [gameName: string]: {[scopeName: string]: {[rifleName: string]:
       "G28 WILDERNESS":'headshots at 300 with no hud',
       "G28 WILDERNESS MAWL-DA":'triple twenty-fives',
       'M110 MAWL-DA':'200, 300 THEN SEVENTY-FIVES',
-      'M110 RANGE FINDER':'THE STANDARD',
+      'M110 RANGE FINDER':'outstanding',
       'M4A1 SCOUT':'headshots at 300 with no hud',
       "M4A1 SCOUT MAWL-DA": 'seventy-fives and fifties',
       "M4A1 SCOUT RANGE FINDER": 'headshots at 300 with no hud',
       "MK14 MAWL-DA":'headshots at 200 AND 400 with no hud',
       'MK17 SCOUT':'BALLISTICS ON A BUDGET',
-      'MK17 SCOUT BALLISTIC ADV.':'BALLISTICS ON A BUDGET',
+      'MK17 SCOUT BALLISTIC ADVANTAGE':'BALLISTICS ON A BUDGET',
 
       },
     'TARS101': {
@@ -52,13 +52,13 @@ const sezzing: { [gameName: string]: {[scopeName: string]: {[rifleName: string]:
       },
     'VC16': {
 
-      'MK17 SCOUT':'FN SCAR: FEELS NICE. SOLID, CAPABLE, ACCURATE RIFLE',
+      'MK17 SCOUT':'SOLID, CAPABLE, ACCURATE RIFLE',
 
         },
     'ACSS': {
       'MK17 SCOUT':'gravis',
       'MK17 SCOUT RANGE FINDER':'gravis',
-      'MK17 SCOUT BALLISTIC ADV.':'BALLISTICS ON A BUDGET',
+      'MK17 SCOUT BALLISTIC ADVANTAGE':'BALLISTICS ON A BUDGET',
       'M4A1 SCOUT MAWL-DA':'A-1',
 
      
@@ -69,12 +69,12 @@ const sezzing: { [gameName: string]: {[scopeName: string]: {[rifleName: string]:
       '416 RANGE FINDER':'SEVENTY-FIVE SANDWICH',
       '416 ASSAULT SPECIAL RANGE FINDER':'SEVENTY-FIVE SANDWICH',
       '416 SHORTY RANGE FINDER':'SHORT AND SWEET',
-      '416 SHORTY RANGE FINDER BALLISTIC ADV.':'HEADSHOTS AT 250 WITH NO HUD',
+      '416 SHORTY RANGE FINDER BALLISTIC ADVANTAGE':'HEADSHOTS AT 250 WITH NO HUD',
       '516':'headshots at 250 with no hud?',
-      '516 BALLISTIC ADV.':'headshots at 250 with no hud',
+      '516 BALLISTIC ADVANTAGE':'headshots at 250 with no hud',
       '516 MAWL-DA':'FACTA NON VERBA',
       '516 RANGE FINDER':'headshots at 250 with no hud',
-      '516 MAWL-DA BALLISTIC ADV.':'Headshots at 500 with no hud?',
+      '516 MAWL-DA BALLISTIC ADVANTAGE':'Headshots at 500 with no hud?',
       '553 MAWL-DA':'SEVENTY-FIVE SANDWICH',
       AK47:'SOVIET SEVENTY-FIVES',
       'AK47 RANGE FINDER':'AK...FORTY-SEVEN?',
@@ -89,7 +89,7 @@ const sezzing: { [gameName: string]: {[scopeName: string]: {[rifleName: string]:
       'G36C RANGE FINDER':'WUNDERBAR',
       'M4A1 CQC RANGE FINDER':'SHORT AND SWEET',      
       'M4A1 CQC MAWL-DA +30 RANGE':'SEVENTY-FIVE SANDWICH',
-      'M4A1 TACTICAL BALLISTIC ADV.':'A GOOD START',
+      'M4A1 TACTICAL BALLISTIC ADVANTAGE':'A GOOD START',
       'M4A1 TACTICAL MAWL-DA':'TACTICAL SEVENTY-FIVES',
       'M4A1 TACTICAL RANGE FINDER':'TACTICAL INDEED',
       'MDR RANGE FINDER':'HEADSHOTS AT 225 WITH NO HUD',
@@ -134,11 +134,11 @@ const sezzing: { [gameName: string]: {[scopeName: string]: {[rifleName: string]:
       G36C:'DAS IST GUT',
       'G36C MAWL-DA':'FUN FUN fünfundsiebzig!',
       'G36C RANGE FINDER':'WUNDERBAR',
-      'M4A1 BALLISTIC ADV.':'THE STANDARD',
-      'M4A1 ASSAULT BALLISTIC ADV.':'A1.',
+      'M4A1 BALLISTIC ADVANTAGE':'THE STANDARD',
+      'M4A1 ASSAULT BALLISTIC ADVANTAGE':'A1.',
       'M4A1 SCOUT MAWL-DA':'TACTICAL twenty-fives',
-      'M4A1 SCOUT MAWL-DA BALLISTIC ADV.':'300,400,550',
-      'M4A1 TACTICAL BALLISTIC ADV.':'A GOOD START',
+      'M4A1 SCOUT MAWL-DA BALLISTIC ADVANTAGE':'300,400,550',
+      'M4A1 TACTICAL BALLISTIC ADVANTAGE':'A GOOD START',
       'M4A1 TACTICAL RANGE FINDER':'TACTICAL INDEED',
       MG121:'THIRTEENS',
       'MK17 MAWL-DA':'GRAVIS',

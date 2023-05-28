@@ -11,6 +11,7 @@ import { damage, GetRifleName, rifles } from '../assets/damage';
 
 const showIntel = ref(false);
 const showShotguns = ref(false);
+const showHandguns = ref(false);
 const gameName = defineProps<{game: string}>()
 
 let showScopeMenu = ref(false);
@@ -432,27 +433,73 @@ function getStylePosition(index: number) {
           style="font-family: angel;"
           >Redeploy
         </router-link>
-        <div @click="showIntel = !showIntel; showShotguns = false" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute left-[53%] -rotate-[-3deg] -translate-x-[73%] z-40 cursor-pointer" style="font-family: angel;">
+        <div @click="showIntel = !showIntel; showShotguns = false; showHandguns = false" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute left-[53%] -rotate-[-3deg] -translate-x-[73%] z-40 cursor-pointer" style="font-family: angel;">
           Intel
         </div>
         <div class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute left-[53%] rotate-[-2deg] translate-x-[25%] z-40 cursor-pointer" style="font-family: angel;">
           <a href="https://www.youtube.com/watch?v=HwlGfuORwAY" target="_blank">Feedback</a>
         </div>
 <!-- Shotguns -->
-        <div v-if="gameName.game === 'Breakpoint'" @click="showShotguns = !showShotguns; showIntel = false" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[50%] right-[58%] rotate-[2deg] translate-x-[25%] z-40 cursor-pointer" style="font-family: angel;">
+        <div v-if="gameName.game === 'Breakpoint'" @click="showShotguns = !showShotguns; showIntel = false; showHandguns = false" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[50%] right-[58%] rotate-[2deg] translate-x-[25%] z-40 cursor-pointer" style="font-family: angel;">
           Shotguns 
         </div>
-        <div v-show="showShotguns" @click="showShotguns = false" class="absolute top-[100px] sm:top-[200px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg" style="font-size: 0.9rem; font-family: courier;">
-          All shotguns will one-shot Sentinel targets while undetected. RTK = Rounds to kill.
+        <div v-show="showShotguns" @click="showShotguns = false" class="absolute top-[100px] sm:top-[200px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg" style="font-size: 1rem; font-family: courier;">
+            All shotguns will one-shot Sentinel personnel targets center mass while undetected.<br> RTK = Rounds to kill.
           <img src="/assets/ShotgunsBP.png">
           <div @click="showShotguns = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer" style="font-family: courier;">x</div>
         </div>
 <!-- End Shotguns -->
+<!-- Pistols -->
+<div v-if="gameName.game === 'Breakpoint'" @click="showHandguns = !showHandguns; showIntel = false; showShotguns = false" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[50%] left-[46%] rotate-[-2deg] translate-x-[25%] z-40 cursor-pointer" style="font-family: angel;">
+          Handguns 
+        </div>
+        <div v-show="showHandguns" @click="showHandguns = false" class="absolute top-[100px] sm:top-[200px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg" style="font-size: 1rem; font-family: courier;">
+          <b><u>For those who give a damn</u>,</b><br>
+
+          All Handgun rounds start dropping off around 75m to 100m with the exception of Sharp Thunder which begins dropping at 175m. The Ballistic Advantage perk seems to add <i><b>approximately</b></i> 50% range. So headshots past 100m with handguns are guesswork in general, especially without Ballistic Advantage.<br><br>
+          
+          The 5.7 USG, both P227's, both Maxim 9's, and the SC-IS actually do +5 more damage than what their stats in menu show. This can be seen if you pause to loadout menu when close to an enemy before even firing. Kill tests confirm this damage is real.<br><br>
+          
+          The Bailiff 410, both Desert Eagles and Sharp Thunder do +5 damage only on their 2nd consecutive kill within ~5 seconds. This can be seen if you pause to loadout menu after a kill. And it's crazy, but these handguns also suffer -20% suppressor damage despite not having suppressors, with the exception of the Desert Eagle Survival which has a suppressor that can't be removed. The only way to get full damage on these handguns is as Panther or Echelon class. These 4 handguns also don't receive the Pistolero perk buff.<br><br>
+          
+          There are no handgun loadouts that will one-shot a Wolf target center mass.<br>
+          
+          <br><u><b>Noteable one-shot kill scenarios for Sentinel personnel targets center mass while UNDETECTED:</b></u><br>
+          <span style="font-size: 0.9rem;">
+          - The Bailiff 410, Sharp Thunder, both Desert Eagles<br>
+          - The SC-IS as Echelon class<br>
+          - The SC-IS as Panther class with the Pistolero perk<br>
+          - Any 31 damage handgun as Echelon class with the Pistolero perk<br>
+          - The 5.7 USG as Panther or Echelon class with the Pistolero perk<br>
+          - Both Maxim 9's as Echelon class with the Pistolero perk<br></span>
+
+          <br><u><b>Noteable one-shot kill scenarios for Sentinel personnel targets center mass while DETECTED:</b></u><br>
+          <span style="font-size: 0.9rem;">
+          - The Bailiff 410 as Panther or Echelon class<br>
+          - Sharp Thunder as Echelon class<br> 
+          - Sharp Thunder on 2nd consecutive kill as Panther class<br></span>
+
+
+          
+
+          
+          <div @click="showHandguns = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer" style="font-family: courier;">x</div>
+        </div>
+<!-- End Pistols -->
       </div>
 
-      <div v-show="showIntel" @click="showIntel = false" class="absolute top-[100px] sm:top-[200px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg" style="font-family: courier;">
+      <div v-show="showIntel" @click="showIntel = false;" class="absolute top-[100px] sm:top-[200px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg" style="font-size: 1rem;font-family: courier;">
+        <a href="https://www.youtube.com/watch?v=HwlGfuORwAY" target="_blank"><b><i><u>Click here for demo video and to make rifle/scope/attachment requests in the Youtube comments.</u></i></b></a>
+        <br><br>
         Data is organized by scope, <u>not by rifle.</u> Please select your scope first so that the rifle list will populate with rifles that have been ranged with your chosen scope.<br><br>
-        Rifles are named with (and without) attachments that affect bullet drop. So if, for example, you are using the P416 with the short barrel and the range finder attached, be sure to select "P416 SHORT BARREL RANGE FINDER" and not "P416" or "P416 SHORT BARREL" or "P416 RANGE FINDER". Certain combinations have unique bullet drop. <a href="https://www.youtube.com/watch?v=HwlGfuORwAY" target="_blank"><br><br><i><u>Click here for demo video and to make rifle/scope/attachment requests in the Youtube comments.</u></i></a>
+        Rifles are named with (and without) attachments that affect bullet drop. So if, for example, you are using the P416 with the short barrel and the range finder attached, be sure to select "P416 SHORT BARREL RANGE FINDER" and not "P416" or "P416 SHORT BARREL" or "P416 RANGE FINDER". Different attachment combinations have unique bullet drop.<br><br>
+
+        <b><u>Damage In Breakpoint</u></b><br>
+          Unalerted Sentinel personnel have 39hp. Alerted Sentinel personnel have 100hp. Wolves always have 130hp. So a rifle that does 39 damage such as the MK17 Scout when unsuppressed will one-shot an unalerted Sentinel Breacher/Commander/Drone Operator/Radio Operator/Rifleman/Sniper center mass. Once they're alerted you need more rounds to exceed their increased 100hp so 39 damage times 3 rounds will exceed 100hp. With the MK17 Scout 4 rounds at 39 damage is required to exceed a Wolf's 130hp. Damage per round, rounds down when the 20% suppressor reduction is applied so 39 minus 20% damage becomes 31 damage, not 31.2. Be advised that there are a few weapons that have incorrect damage stats. In most cases these discrepancies appear to be unintended suppressor debuffs mostly occurring in the heavier handguns that can't even have suppressors(see Handguns button above). The only non handgun damage reduction I've encountered thus far is the underbarrel shotgun which claims 102 damage but fails to kill alerted Sentinel personnel at 100hp with one round center mass. There are a few DMR's that do not appear to suffer the 20% suppressor damage reduction with suppressors on. They are noted in the compendium. Finally, there are some hanguns that do +5 more damage than indicated(see Handguns button above) and some hidden momentum-type damage bonuses applied to certain ASR's and DMR's after a kill. These rifles are also noted in the compendium. <br><br> 
+
+        <b><u>Damage In Wildlands</u></b><br>
+          Unalerted sicarios can be one-shot killed by any weapon. <a href="https://docs.google.com/spreadsheets/d/1w0KRBZSdb3SFBZVAncBGit3ixPSsSMWpEiOkDSlqrZw/edit#gid=1681802407" target="_blank"><b><i><u>Here is an external resource created by others with more details on damage to alerted enemies in Wildlands.</u></i></b></a>
+        
         <div @click="showIntel = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer" style="font-family: courier;">x</div>
       </div>
 
@@ -730,23 +777,23 @@ function getStylePosition(index: number) {
 
         </div> 
         <!-- ENDORSEMENT SEZZING -->
-          <div v-if="sezzing[gameName.game][selectedScopeName].hasOwnProperty(selectedRifle)" class="absolute h-[15%] w-[30%] top-[27%] right-[10%] text-red-900 rotate-[-10deg] text-2xl" style="font-size: 1rem; font-family: angel;">
+          <div v-if="sezzing[gameName.game][selectedScopeName].hasOwnProperty(selectedRifle)" class="absolute h-[15%] w-[30%] top-[30%] right-[10%] text-red-700 rotate-[-10deg] text-2xl" style="font-size: 1.1rem; font-family: angel;">
           {{sezzing[gameName.game][selectedScopeName][selectedRifle]}}
           </div>
          <!-- DAMAGE STATS -->
-         <div v-if="damage[gameName.game].hasOwnProperty(GetRifleName(rifles, selectedRifle))" class="absolute h-[15%] w-[30%] top-[57.5%] right-[9%] text-white" style="font-size: 0.6rem; text-transform: uppercase; font-family: ;">
-          <span class="text-black" style="font-size: 0.7rem; text-transform: uppercase; font-family: ;"><u>ROUNDS TO KILL SENTINEL</u></span><br>
-          <span>STEALTHED SUPPRESSED: {{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][0] }}</span><br>
-          <span>STEALTHED LOUD: {{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][1] }}</span><br>
-          <span class="text-red-400">DETECTED SUPPRESSED: {{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][2] }}</span><br>
-          <span class="text-red-400">DETECTED LOUD: {{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][3] }}</span><br>
-          <span class="text-black" style="font-size: 0.7rem; text-transform: uppercase; font-family: ;"><u>ROUNDS TO KILL WOLVES</u></span><br>
-          <span>SUPPRESSED: {{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][4] }}</span>&nbsp;&nbsp;
-          <span class="text-red-400">LOUD: {{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][5] }}</span><br>
+         <div v-if="damage[gameName.game].hasOwnProperty(GetRifleName(rifles, selectedRifle))" class="absolute h-[15%] w-[30%] top-[58.2%] right-[9%] text-white" style="font-size: 0.7rem; text-transform: uppercase; font-family: ;">
+          <span class="text-black" style="font-size: 0.8rem; text-transform: uppercase; font-family: ;"><u>ROUNDS TO KILL SENTINEL</u></span><br>
+          <span>STEALTH SUPPRESSED: {{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][0] }}</span><br>
+          <span>STEALTH LOUD: {{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][1] }}</span><br>
+          <span class="text-red-600"><b>DETECTED SUPPRESSED: {{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][2] }}</b></span><br>
+          <span class="text-red-600"><b>DETECTED LOUD: {{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][3] }}</b></span><br>
+          <span class="text-black" style="font-size: 0.8rem; text-transform: uppercase; font-family: ;"><u>ROUNDS TO KILL WOLVES</u></span><br>
+          <span>SUPPRESSED: {{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][4] }}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <span class="text-red-600"><b>LOUD: {{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][5] }}</b></span><br>
           <!-- BONUS DAMAGE -->
-          <span v-if="damage[gameName.game][GetRifleName(rifles, selectedRifle)][6]" class=" text-green-400" style="font-size: 0.6rem; text-transform: uppercase; font-family: ZCOOL;"><b>BONUS DAMAGE ON 2ND KILL: +{{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][6] }}</b></span><br>
+          <span v-if="damage[gameName.game][GetRifleName(rifles, selectedRifle)][6]" class=" text-green-400" style="font-size: 0.8rem; text-transform: uppercase; font-family: ZCOOL;"><b>BONUS DAMAGE ON 2ND KILL: +{{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][6] }}</b></span><br>
 <!-- SPECIAL NOTES -->
-          <span v-if="damage[gameName.game][GetRifleName(rifles, selectedRifle)][7]" class="absolute h-[15%] w-[160%] top-[-350%] right-[50%] text-white" style="font-size: 0.6rem; font-family: courier;"><b><i>SPECIAL NOTE: {{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][7] }}</i></b></span><br>
+          <span v-if="damage[gameName.game][GetRifleName(rifles, selectedRifle)][7]" class="absolute h-[15%] w-[160%] top-[-350%] right-[55%] text-white" style="font-size: 0.7rem; font-family: courier;"><b><i>SPECIAL NOTE: {{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][7] }}</i></b></span><br>
 
           </div>  
       <!-- RANGE LABELS -->

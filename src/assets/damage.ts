@@ -183,12 +183,12 @@ export const damage: { [gameName: string]: {[rifleName: string]: (number | strin
         'MK18':[	3,	2,	6,	5,	8,	6],
         'MK17 SHORTY GARGOYLE':[	2,	2,	4,	3,	5,	4],
         'MK17 SHORTY':[	2,	2,	4,	3,	5,	4],
-        'MK17 ASSAULT':[	2,	1,	3,	3,	4,	4],
-        'MK17':[	2,	2,	4,	3,	5,	4,0],
+        'MK17 ASSAULT':[	2,	1,	4,	3,	4,	4,	],
+        'MK17':[	2,	2,	4,	3,	5,	4,],
 
         'MDR':[	2,	2,	4,	3,	5,	4,	+5,	'fires 2 instead of 3 round bursts'	],
 
-        'M4A1 TACTICAL':[	2,	'n/a',	5,	'n/a',	7,	'n/a', 0, 'integrally suppressed'],
+        'M4A1 TACTICAL':[	2,	'n/a',	5,	'n/a',	7,	'n/a', 0, 'integrally suppressed. ALWAYS MINUS 20% DAMAGE.'],
 
         'M4A1 CQC':[	2,	2,	5,	4,	7,	5],
         'M4A1 ASSAULT':[	2,	2,	4,	4,	6,	5],
@@ -257,7 +257,7 @@ export const damage: { [gameName: string]: {[rifleName: string]: (number | strin
         'SVD-63 PATCHWORK':[	1,	1,	2,	2,	3,	3, +10],
         'SVD-63':[	1,	1,	2,	2,	3,	3, +10],
         'SCORPIO SCOUT QUIET':[	1,	1,	2,	1,	2,	2, +10,'bug - fires innacurately directly after drone deployment. always switch to sidearm and back after drone deployment to avoid innaccurate shots.'],
-        'SCORPIO SCOUT':[	1,	1,	1,	1,	2,	2, +10, 'will one shot wolves after 1st kill loud. bug - fires innacurately directly after drone deployment. always switch to sidearm and back after drone deployment to avoid innaccurate shots.'],
+        'SCORPIO SCOUT':[	1,	1,	1,	1,	2,	2, +10, 'will one shot wolves after 1st kill loud within ~10 seconds. bug - fires innacurately directly after drone deployment. always switch to sidearm and back after drone deployment to avoid innaccurate shots.'],
         'OTS-03':[	1,	1,	2,	2,	3,	3, +10],
         'MK14 TERMINATION':[	1,	1,	2,	2,	3,	3 ],
         'FRF2':[	1,	1,	2,	2,	2,	2, ],
