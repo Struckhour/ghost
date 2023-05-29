@@ -180,7 +180,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
     'VC16': {
       '416 SCOUT':[],
       '416 SCOUT MAWL-DA':[75,150,175,213,263,325,438,488],
-      '416 SCOUT RANGE FINDER':[],
+      '416 SCOUT RANGE FINDER':[75,150,188,225,288,350,475,538],
       '553 SCOUT MAWL-DA':[75,138,175,225,275,363,500,563,],
       'AK74':[88,163,188,238,275,338,450,500,],
       'FRF2':[150,215,240,270,305,350,410,450,],
