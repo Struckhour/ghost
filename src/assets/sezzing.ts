@@ -51,8 +51,10 @@ const sezzing: { [gameName: string]: {[scopeName: string]: {[rifleName: string]:
 
       },
     'VC16': {
-
+      '416 SCOUT':'semper fi',
       'MK17 SCOUT':'SOLID, CAPABLE, ACCURATE RIFLE',
+      'SC-20K':'IRONSIDE',
+      'SC-20K MAWL-DA':"SAM FISHIN' A BARREL",
 
         },
     'ACSS': {
