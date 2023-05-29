@@ -178,6 +178,9 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
 
       },
     'VC16': {
+      '416 SCOUT':[],
+      '416 SCOUT MAWL-DA':[75,150,175,213,263,325,438,488],
+      '416 SCOUT RANGE FINDER':[],
       '553 SCOUT MAWL-DA':[75,138,175,225,275,363,500,563,],
       'AK74':[88,163,188,238,275,338,450,500,],
       'FRF2':[150,215,240,270,305,350,410,450,],
@@ -187,7 +190,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'G28 WILDERNESS':[125,175,230,260,310,380,480,533,],
       'G28 WILDERNESS MAWL-DA':[125,200,250,300,355,460,600,],
       'G28 WILDERNESS RANGE FINDER':[125,200,260,310,390,500,670,],
-      'G36C Scout':[75,125,150,175,225,275,350,400,],
+      'G36C SCOUT':[75,125,150,175,225,275,350,400,],
       'HTI':[200,266,300,333,366,420,500,],
       'HTI SURVIVAL':[200,266,300,333,366,420,500,],
       'L115A3':[150,213,240,275,300,350,412,440,],
@@ -300,11 +303,11 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'FAL BALLISTIC ADVANTAGE':[100,175,275,450,675,863],
       'FAL RANGE FINDER':[88,138,188,263,350,450,],
       'FAL +30 RANGE':[88,150,213,313,438,575,],
-
       'G2':[75,125,188,263,350,463,],
       'G2 RANGE FINDER':[75,150,225,338,475,625],
       'G28':[120,175,250,340,450,575,],
-      'G28 MAWL-DA':[120,185,275,400,550,],
+      'G28 MAWL-DA':[125,188,275,400,550,],
+      'G28 WILDERNESS MAWL-DA':[125,175,250,350,450,588],
       'G28 WILDERNESS RANGE FINDER':[125,190,290,425,600,780,],
       G36C:[75,100,175,238,300,400],
       'G36C MAWL-DA':[75,125,188,275,375,500],
