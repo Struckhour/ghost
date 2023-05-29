@@ -13,6 +13,9 @@ const showIntel = ref(false);
 const showShotguns = ref(false);
 const showHandguns = ref(false);
 const showRTK = ref(false);
+const showTrig = ref(false);
+const range = ref(0);
+const altitude = ref(0);
 const gameName = defineProps<{game: string}>()
 
 let showScopeMenu = ref(false);
@@ -440,8 +443,9 @@ function getStylePosition(index: number) {
         <div class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute left-[53%] rotate-[-2deg] translate-x-[25%] z-40 cursor-pointer" style="font-family: angel;">
           <a href="https://www.youtube.com/watch?v=HwlGfuORwAY" target="_blank">Feedback</a>
         </div>
+
 <!-- Shotguns -->
-        <div v-if="gameName.game === 'Breakpoint'" @click="showShotguns = !showShotguns; showIntel = false; showHandguns = false" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[50%] right-[58%] rotate-[2deg] translate-x-[25%] z-40 cursor-pointer" style="font-family: angel;">
+        <div v-if="gameName.game === 'Breakpoint'" @click="showShotguns = !showShotguns; showIntel = false; showHandguns = false" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[50%] right-[61%] rotate-[-4deg] translate-x-[25%] z-40 cursor-pointer" style="font-family: angel;">
           Shotguns 
         </div>
         <div v-show="showShotguns" @click="showShotguns = false" class="absolute top-[100px] sm:top-[200px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg" style="font-size: 1rem; font-family: courier;">
@@ -450,8 +454,9 @@ function getStylePosition(index: number) {
           <div @click="showShotguns = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer" style="font-family: courier;">x</div>
         </div>
 <!-- End Shotguns -->
+
 <!-- Pistols -->
-<div v-if="gameName.game === 'Breakpoint'" @click="showHandguns = !showHandguns; showIntel = false; showShotguns = false" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[50%] left-[46%] rotate-[-2deg] translate-x-[25%] z-40 cursor-pointer" style="font-family: angel;">
+<div v-if="gameName.game === 'Breakpoint'" @click="showHandguns = !showHandguns; showIntel = false; showShotguns = false" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[50%] left-[52%] rotate-[-3deg] translate-x-[25%] z-40 cursor-pointer" style="font-family: angel;">
           Handguns 
         </div>
         <div v-show="showHandguns" @click="showHandguns = false" class="absolute top-[100px] sm:top-[200px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg" style="font-size: 1rem; font-family: courier;">
@@ -487,6 +492,24 @@ function getStylePosition(index: number) {
           <div @click="showHandguns = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer" style="font-family: courier;">x</div>
         </div>
 <!-- End Pistols -->
+<!-- TRIG BUTTON -->
+      <div v-if="gameName.game === 'Breakpoint'" @click="showTrig = !showTrig; showIntel = false; showShotguns = false; showHandguns = false; showRTK =false" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[50%] left-[42%] rotate-[5deg] translate-x-[25%] z-40 cursor-pointer" style="font-family: angel;">
+        Trig.
+      </div>
+      <div v-show="showTrig" class="absolute top-[100px] sm:top-[200px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg" style="font-size: 1rem; font-family: courier;">
+      <b><u>Calculate downhill(or uphill) shots below:</u></b>
+        <img src="/assets/triangle.png">
+        <div class="absolute top-[30%] left-[29%] rotate-[31deg] font-bold">Input Range To Target <input size="3" class="font-bold" v-model="range">m
+        </div>
+        <br>
+        <div class="absolute top-[41%] left-[12%] font-bold">  <input size="3" class="font-bold" v-model="altitude">m<br>Input Altitude To Target
+        </div>
+        <div class="absolute top-[86%] left-[9%] font-bold text-red-700">True Ballistic Range:{{ Math.round((range**2-altitude**2)**0.5) }}m
+        </div>        
+        <div @click="showTrig = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer" style="font-family: courier;">x
+        </div>
+      </div>
+<!-- END TRIG BUTTON -->
       </div>
 
       <div v-show="showIntel" @click="showIntel = false;" class="absolute top-[100px] sm:top-[200px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg" style="font-size: 1rem;font-family: courier;">
