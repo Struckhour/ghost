@@ -493,13 +493,14 @@ function getStylePosition(index: number) {
 
       <div v-show="showTrig" class="absolute top-[100px] sm:top-[200px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg" style="font-family: courier;">
         <u>Calculate down(or up)hill shots below:</u>
+        <br><br><br>
         <img src="/assets/triangle.png">
-        <div class="absolute top-[33%] left-[12%] rotate-[31deg] font-bold">Input Range To Target <input size="3" class="font-bold" v-model="range">m
+        <div class="absolute top-[40%] left-[12%] rotate-[31deg] font-bold">Input Range To Target: <input size="3" class="font-bold" v-model="range">m
       </div>
         <br>
-        <div class="absolute top-[41%] left-[11.5%] font-bold">  <input size="3" class="font-bold" v-model="altitude">m<br>Input Altitude <br>To Target
+        <div class="absolute top-[50%] left-[11.5%] font-bold">Input Altitude<br>To Target:<br>  <input size="3" class="font-bold" v-model="altitude">m
         </div>
-        <div class="absolute top-[75%] left-[9%] font-bold text-red-700">True Ballistic Range:{{ Math.round((range**2-altitude**2)**0.5) }}m
+        <div class="absolute top-[88%] left-[15%] font-bold text-red-700">True Ballistic Range:{{ Math.round((range**2-altitude**2)**0.5) }}m
         </div>        
         <div @click="showTrig = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer" style="font-family: courier;">x
         </div>
