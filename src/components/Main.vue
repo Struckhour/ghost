@@ -491,16 +491,17 @@ function getStylePosition(index: number) {
       <div v-if="gameName.game === 'Breakpoint'" @click="showTrig = !showTrig; showIntel = false; showShotguns = false; showHandguns = false; showRTK =false" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[50%] left-[53%] rotate-[-4deg] translate-x-[110%] z-40 cursor-pointer" style="font-family: angel;">Trig.
       </div>
 
-      <div v-show="showTrig" class="absolute top-[100px] sm:top-[200px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg" style="font-family: courier;">
+      <div v-show="showTrig" class="absolute top-[100px] sm:top-[200px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg" style="font-size: 0.9rem; font-family: courier;">
         <u>Calculate down(or up)hill shots below:</u>
         <br><br><br>
         <img src="/assets/triangle.png">
-        <div class="absolute top-[40%] left-[12%] rotate-[31deg] font-bold">Input Range To Target: <input size="3" class="font-bold" v-model="range">m
-      </div>
-        <br>
-        <div class="absolute top-[50%] left-[11.5%] font-bold">Input Altitude<br>To Target:<br>  <input size="3" class="font-bold" v-model="altitude">m
+        <div class="absolute top-[46%] left-[27%] rotate-[31deg] font-bold">Range To Target:<input size="3" class="border border-black rounded-lg font-bold" v-model="range">m
         </div>
-        <div class="absolute top-[88%] left-[15%] font-bold text-red-700">True Ballistic Range:{{ Math.round((range**2-altitude**2)**0.5) }}m
+        <br>
+        <div class="absolute top-[52%] left-[12%] font-bold">Altitude<br>To Target:<br><input size="3" class="border border-black rounded-lg font-bold" v-model="altitude">m
+        </div>
+        <div class="absolute top-[78%] left-[18%] font-bold text-red-700">True Ballistic Range:
+          {{ Math.round((range**2-altitude**2)**0.5) }}m
         </div>        
         <div @click="showTrig = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer" style="font-family: courier;">x
         </div>
