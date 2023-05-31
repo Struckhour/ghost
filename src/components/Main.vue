@@ -475,7 +475,8 @@ function getStylePosition(index: number) {
           - The SC-IS as Echelon class<br>
           - The SC-IS as Panther class with the Pistolero perk<br>
           - Any 31 damage handgun as Echelon class with the Pistolero perk<br>
-          - The 5.7 USG as Panther or Echelon class with the Pistolero perk<br>
+          - The 5.7 USG as Echelon class<br>
+          - The 5.7 USG as Panther class with the Pistolero perk<br>
           - Both Maxim 9's as Echelon class with the Pistolero perk<br></span>
 
           <br><u><b>Noteable one-shot kill scenarios for Sentinel personnel targets center mass while DETECTED:</b></u><br>
@@ -593,6 +594,11 @@ function getStylePosition(index: number) {
             <div v-if="selectedScopeName==='DUAL RANGE' && gameName.game === 'Breakpoint' && silhScope.hasOwnProperty(selectedRifle)" class="absolute top-[32%] right-[55.5%]">
               {{silhRange[0]}}m
             </div>
+            <!-- <img v-show="selectedScopeName==='DUAL RANGE' && gameName.game === 'Breakpoint' && silhScope.hasOwnProperty(selectedRifle)" src="/assets/soldier-silhouette.png" class="absolute h-[10%] top-[65.7%] left-[20%]"
+            />
+            <div v-if="selectedScopeName==='DUAL RANGE' && gameName.game === 'Breakpoint' && silhScope.hasOwnProperty(selectedRifle)" class="absolute top-[68%] right-[80.5%]">
+              {{silhRange[0]}}m
+            </div> -->
           </div>
         </Transition>
         <Transition>
