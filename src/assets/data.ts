@@ -446,22 +446,11 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'SCORPION EVO3 CQC MAWL-DA':[50,107,144,182,238,325,413],
       'SCORPION EVO3 CQC MAWL-DA BALLISTIC ADVANTAGE':[50,200,275,425,638,825,957],
       'STONER MAWL-DA':[100,175,238,325,438,563,663,],
-      'SVD-63':[],
-      'HTI':[],
-      'HTI SURVIVAL':[],
-      'L115A3':[],
-      'M82':[],
-      'M82 CERBERUS':[],
-      'MSR':[],
-      'PALADIN 9 SNR':[],
-      'PALADIN 9 SNR SURVIVAL':[],
-      'RECON-A1':[],
-      'SR-1':[],
-      'SCORPIO':[],
-      'TAC50':[],
-      'TAC50 BROWN':[],
-      'VSK-50':[],
-      'ZASTAVA M93':[],
+      // UMP:[75,125,175,238,300,400,538], THIS SMG SEEMS BUGGED. 2 RANGES??? DOES MP5 DO THIS?
+      UMP:[75,100,150,200,250,313,400],
+      'UMP CQC':[75,150,200,250,325,425,538],
+
+     
     },
     'TA31H': {
       416:[100,138,175,200,238,300,375],
