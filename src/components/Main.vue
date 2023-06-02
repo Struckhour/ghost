@@ -818,26 +818,26 @@ function getStylePosition(index: number) {
         <div v-if="gameName.game === 'Breakpoint'" @click="showRTK = !showRTK; showIntel = false; showShotguns = false; showHandguns = false" class="active:text-red-800 px-2 border text-red-800 border-red-800 hover:text-red-600 rounded-lg shadow-black shadow-md font-sans absolute top-[67%] left-[62%] rotate-[-35deg] translate-x-[25%] z-40 cursor-pointer" style="font-family: angel;">
           Damage <br>File
         </div>
-        <div v-if="SmartDamage[gameName.game].hasOwnProperty(GetSmartRifleName(SmartRifles, selectedRifle)) && showRTK" @click="showRTK = false" class="absolute top-[10px] sm:top-[20px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg" style="font-size: 0.8rem; font-family: courier;">
-          <div class="absolute right-[3%]" style="font-size: 0.8rem;">*TTK=TIME TO KILL</div>
+        <div v-if="SmartDamage[gameName.game].hasOwnProperty(GetSmartRifleName(SmartRifles, selectedRifle)) && showRTK" @click="showRTK = false" class="absolute top-[10px] sm:top-[20px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg font-bold" style="font-size: 0.8rem; font-family: courier;">
+          <div class="absolute right-[3%]" style="font-size: 0.5rem;">*TTK: APPROX. TIME TO KILL</div>
           <br>
-          <span class="font-bold text-black underline" style="font-size: 1rem; text-transform: uppercase; font-family: ;">ROUNDS TO KILL SENTINEL</span>
+          <span class="font-bold text-gray-600 underline" style="font-size: 1rem; text-transform: uppercase; font-family: ;">ROUNDS TO KILL SENTINEL</span>
           <br>
-          <span class="font-bold text-black underline" style="font-size: 0.9rem; text-transform: uppercase; font-family: ;">STEALTHED:</span>
+          <span class="font-bold text-black underline" style="font-size: 0.95rem; text-transform: uppercase; font-family: ;">STEALTHED:</span>
           <br>
           <span> SUPPRESSED:{{ Math.ceil(39/Math.floor(SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)]*0.8))}}</span>
 <!-- TTK -->
-          <span class="absolute right-[3%] text-black"> &nbsp;&nbsp;TTK:{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(39/(SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)]*0.8))).toFixed(3) }}sec</span>
+          <span class="absolute right-[3%] text-black"> &nbsp;&nbsp;TTK:{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(39/Math.floor(SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)]*0.8))).toFixed(3) }}sec</span>
           <br>
           <span> LOUD:{{ Math.ceil(39/SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)]) }}</span>
 <!-- TTK -->
           <span class="absolute right-[3%] text-black"> &nbsp;&nbsp;TTK:{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(39/SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)])).toFixed(3) }}sec</span>
           <br>
-          <span class="font-bold text-red-600 underline" style="font-size: 0.9rem; text-transform: uppercase; font-family: ;">DETECTED:</span>
+          <span class="font-bold text-red-600 underline" style="font-size: 0.95rem; text-transform: uppercase; font-family: ;">DETECTED:</span>
           <br>
           <span class="text-red-600 font-bold"> SUPPRESSED:{{ Math.ceil(100/Math.floor(SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)]*0.8)) }}</span>
 <!-- TTK -->
-          <span class="absolute right-[3%] text-red-600 font-bold"> &nbsp;&nbsp;TTK:{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(100/(SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)]*0.8))).toFixed(3) }}sec</span>
+          <span class="absolute right-[3%] text-red-600 font-bold"> &nbsp;&nbsp;TTK:{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(100/Math.floor(SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)]*0.8))).toFixed(3) }}sec</span>
           <br>
           <span class="text-red-600 font-bold"> LOUD:{{ Math.ceil(100/SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)]) }}</span> 
 <!-- TTK -->
@@ -852,12 +852,12 @@ function getStylePosition(index: number) {
           <span class="text-red-600 font-bold">LOUD:{{ Math.ceil(130/SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)]) }}</span>
 <!-- TTK -->
           <span class="absolute right-[3%] text-red-600 font-bold"> &nbsp;&nbsp;TTK:{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(130/SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)])).toFixed(3) }}sec</span>
-          <br>
+          <br><br>
 <!-- BONUS DAMAGE -->
-          <span v-if="BonusDamage[gameName.game][GetBonusRifleName(BonusRifles, selectedRifle)]" class=" text-green-700 font-bold" style="font-size: 1rem; text-transform: uppercase; font-family: courier;">+{{ BonusDamage[gameName.game][GetBonusRifleName(BonusRifles, selectedRifle)] }} BONUS DAMAGE ON 2ND KILL within 10 sec</span><br><br>
+          <span v-if="BonusDamage[gameName.game][GetBonusRifleName(BonusRifles, selectedRifle)]" class=" text-green-700 font-bold" style="font-size: 1rem; text-transform: uppercase; font-family: courier;">+{{ BonusDamage[gameName.game][GetBonusRifleName(BonusRifles, selectedRifle)] }} BONUS DAMAGE ON 2ND KILL within 10 sec</span><br>
 <!-- SPECIAL NOTES -->
           <span v-if="SpecialNote[gameName.game][GetSpecialRifleName(SpecialRifles, selectedRifle)]" class="text-black" style="font-size: 0.9rem; text-transform: uppercase; font-family: courier;"><b>SPECIAL NOTE:</b> {{ SpecialNote[gameName.game][GetSpecialRifleName(SpecialRifles, selectedRifle)] }}</span><br>
-          <div @click="showRTK = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer" style="font-family: courier;">x</div>
+          <div @click="showRTK = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer font-light" style="font-family: courier;">x</div>
         </div>
 <!-- End DAMAGE FILE BUTTON -->
 
