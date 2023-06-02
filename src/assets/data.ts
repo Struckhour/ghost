@@ -380,7 +380,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'PALADIN 9 SNR':[],
       'PALADIN 9 SNR SURVIVAL':[],
       'RECON-A1':[],
-      'SR3M RANGE FINDER':[90, 120, 150, 200, 250, 330],
+      'SR-3M RANGE FINDER':[90, 120, 150, 200, 250, 330],
       'SR-1':[],
       'SCORPIO':[],
       'SC-20K':[100,125,225,325,475,613],

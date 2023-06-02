@@ -6,7 +6,15 @@ import GlitchedWriter from 'vue-glitched-writer';
 import fullData from '../assets/data';
 import silhouettes from '../assets/silhouettes';
 import sezzing from '../assets/sezzing';
-import { damage, GetRifleName, rifles } from '../assets/damage';
+// import { damage, GetRifleName, rifles } from '../assets/damage';
+import { SmartDamage, GetSmartRifleName, SmartRifles } from '../assets/SmartDamage';
+import { BonusDamage, GetBonusRifleName, BonusRifles } from '../assets/BonusDamage';
+import { SpecialNote, GetSpecialRifleName, SpecialRifles } from '../assets/SpecialNote';
+import { RPM, GetRPMRifleName, RPMRifles } from '../assets/RPM';
+import shotguns from '../assets/shotguns';
+
+
+
 
 
 const showIntel = ref(false);
@@ -436,7 +444,7 @@ function getStylePosition(index: number) {
           class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute left-[53%] -rotate-[3deg] -translate-x-[155%] z-40" style="font-family: angel;">
           Redeploy
         </router-link>
-        <div @click="showIntel = !showIntel; showShotguns = false; showHandguns = false" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute left-[53%] -rotate-[-3deg] -translate-x-[73%] z-40 cursor-pointer" style="font-family: angel;">
+        <div @click="showIntel = !showIntel; showShotguns = false; showHandguns = false; showRTK = false; showTrig = false;" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute left-[53%] -rotate-[-3deg] -translate-x-[73%] z-40 cursor-pointer" style="font-family: angel;">
           Intel
         </div>
         <div class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute left-[53%] rotate-[-2deg] translate-x-[25%] z-40 cursor-pointer" style="font-family: angel;">
@@ -444,18 +452,17 @@ function getStylePosition(index: number) {
         </div>
 
 <!-- Shotguns -->
-        <div v-if="gameName.game === 'Breakpoint'" @click="showShotguns = !showShotguns; showIntel = false; showHandguns = false" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[50%] left-[53%] rotate-[-1deg] translate-x-[-155%] z-40 cursor-pointer" style="font-family: angel;">
+        <div v-if="gameName.game === 'Breakpoint'" @click="showShotguns = !showShotguns; showIntel = false; showHandguns = false; showRTK = false; showTrig = false;" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[50%] left-[53%] rotate-[-1deg] translate-x-[-155%] z-40 cursor-pointer" style="font-family: angel;">
           Shotguns 
         </div>
         <div v-show="showShotguns" @click="showShotguns = false" class="absolute top-[100px] sm:top-[200px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg" style="font-size: 1rem; font-family: courier;">
-            All shotguns will one-shot Sentinel personnel targets center mass while undetected.<br> RTK = Rounds to kill.
           <img src="/assets/ShotgunsBP.png">
           <div @click="showShotguns = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer" style="font-family: courier;">x</div>
         </div>
 <!-- End Shotguns -->
 
 <!-- Pistols -->
-        <div v-if="gameName.game === 'Breakpoint'" @click="showHandguns = !showHandguns; showIntel = false; showShotguns = false" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[50%] left-[53%] rotate-[2deg] translate-x-[-46%] z-40 cursor-pointer" style="font-family: angel;">
+        <div v-if="gameName.game === 'Breakpoint'" @click="showHandguns = !showHandguns; showIntel = false; showShotguns = false; showRTK = false; showTrig = false;" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[50%] left-[53%] rotate-[2deg] translate-x-[-46%] z-40 cursor-pointer" style="font-family: angel;">
           Handguns 
         </div>
         <div v-show="showHandguns" @click="showHandguns = false" class="absolute top-[100px] sm:top-[200px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg" style="font-size: 1rem; font-family: courier;">
@@ -501,7 +508,7 @@ function getStylePosition(index: number) {
         <br>
         <div class="absolute top-[52%] left-[12%] font-bold">Altitude<br>To Target:<br><input size="3" class="border border-black rounded-lg font-bold" v-model="altitude">m
         </div>
-        <div class="absolute top-[78%] left-[18%] font-bold text-red-700">True Ballistic Range:
+        <div class="absolute top-[78%] left-[18%] font-bold text-red-600">True Ballistic Range:
           {{ Math.round((range**2-altitude**2)**0.5) }}m
         </div>        
         <div @click="showTrig = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer" style="font-family: courier;">x
@@ -594,11 +601,11 @@ function getStylePosition(index: number) {
             <div v-if="selectedScopeName==='DUAL RANGE' && gameName.game === 'Breakpoint' && silhScope.hasOwnProperty(selectedRifle)" class="absolute top-[32%] right-[55.5%]">
               {{silhRange[0]}}m
             </div>
-            <!-- <img v-show="selectedScopeName==='DUAL RANGE' && gameName.game === 'Breakpoint' && silhScope.hasOwnProperty(selectedRifle)" src="/assets/soldier-silhouette.png" class="absolute h-[10%] top-[65.7%] left-[20%]"
+            <img v-show="selectedScopeName==='DUAL RANGE' && gameName.game === 'Breakpoint' && silhScope.hasOwnProperty(selectedRifle)" src="/assets/soldier-silhouette.png" class="absolute h-[10%] top-[65.7%] left-[20%]"
             />
             <div v-if="selectedScopeName==='DUAL RANGE' && gameName.game === 'Breakpoint' && silhScope.hasOwnProperty(selectedRifle)" class="absolute top-[68%] right-[80.5%]">
-              {{silhRange[0]}}m
-            </div> -->
+              {{Math.round(silhRange[0]*1.33)}}m
+            </div>
           </div>
         </Transition>
         <Transition>
@@ -667,7 +674,7 @@ function getStylePosition(index: number) {
             <img v-show="selectedScopeName==='SLX5' && gameName.game === 'Breakpoint' && silhScope.hasOwnProperty(selectedRifle)" src="/assets/soldier-silhouette.png" class="absolute h-[12%] top-[62.5%] left-[27%]"
             />
             <div v-if="selectedScopeName==='SLX5' && gameName.game === 'Breakpoint' && silhScope.hasOwnProperty(selectedRifle)" class="absolute top-[66%] left-[32%]">
-                {{silhRange[1]}}m
+                {{Math.round(silhRange[0]*0.5)}}m
           </div>
          </div>
         </Transition>
@@ -802,12 +809,58 @@ function getStylePosition(index: number) {
           </div>
 
         </div> 
-        <!-- ENDORSEMENT SEZZING -->
+<!-- ENDORSEMENT SEZZING -->
           <div v-if="sezzing[gameName.game][selectedScopeName].hasOwnProperty(selectedRifle)" class="absolute h-[15%] w-[30%] top-[30%] right-[10%] text-red-800 rotate-[-10deg] text-2xl" style="font-size: 0.8rem; font-family: angel;">
           {{sezzing[gameName.game][selectedScopeName][selectedRifle]}}
           </div>
-          <!-- RTK BUTTON -->
+
+<!-- DAMAGE FILE BUTTON -->
         <div v-if="gameName.game === 'Breakpoint'" @click="showRTK = !showRTK; showIntel = false; showShotguns = false; showHandguns = false" class="active:text-red-800 px-2 border text-red-800 border-red-800 hover:text-red-600 rounded-lg shadow-black shadow-md font-sans absolute top-[67%] left-[62%] rotate-[-35deg] translate-x-[25%] z-40 cursor-pointer" style="font-family: angel;">
+          Damage <br>File
+        </div>
+        <div v-if="SmartDamage[gameName.game].hasOwnProperty(GetSmartRifleName(SmartRifles, selectedRifle)) && showRTK" @click="showRTK = false" class="absolute top-[10px] sm:top-[20px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg" style="font-size: 1rem; font-family: courier;">
+          <div class="absolute right-[3%]" style="font-size: 0.6rem;">*TTK=TIME TO KILL</div>
+
+          <span class="font-bold text-black underline" style="font-size: 1rem; text-transform: uppercase; font-family: ;">ROUNDS TO KILL SENTINEL</span>
+          <br>
+          <span>STEALTH SUPPRESSED:{{ Math.ceil(39/(SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)]*0.8))}}</span>
+<!-- TTK -->
+          <span class="absolute right-[3%] text-black"> &nbsp;&nbsp;TTK:{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(39/(SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)]*0.8))).toFixed(3) }}sec</span>
+          <br>
+          <span>STEALTH LOUD:{{ Math.ceil(39/SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)]) }}</span>
+<!-- TTK -->
+          <span class="absolute right-[3%] text-black"> &nbsp;&nbsp;TTK:{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(39/SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)])).toFixed(3) }}sec</span>
+          <br>
+          <span class="text-red-600 font-bold">DETECTED SUPPRESSED:{{ Math.ceil(100/(SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)]*0.8)) }}</span>
+<!-- TTK -->
+          <span class="absolute right-[3%] text-red-600 font-bold"> &nbsp;&nbsp;TTK:{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(100/(SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)]*0.8))).toFixed(3) }}sec</span>
+          <br>
+          <span class="text-red-600 font-bold">DETECTED LOUD:{{ Math.ceil(100/SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)]) }}</span> 
+<!-- TTK -->
+          <span class="absolute right-[3%] text-red-600 font-bold"> &nbsp;&nbsp;TTK:{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(100/SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)])).toFixed(3) }}sec</span>
+          <br>
+          <br>
+          <span class="font-bold text-black underline" style="font-size: 1rem; text-transform: uppercase; font-family: ;">ROUNDS TO KILL WOLVES</span><br>
+          <span>SUPPRESSED:{{ Math.ceil(130/(SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)]*0.8)) }}</span>
+          
+          <span class="absolute right-[3%] text-black"> &nbsp;&nbsp;TTK:{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(130/(SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)]*0.8))).toFixed(3) }}sec</span>
+          <br>
+          <span class="text-red-600 font-bold">LOUD:{{ Math.ceil(130/SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)]) }}</span>
+<!-- TTK -->
+          <span class="absolute right-[3%] text-red-600 font-bold"> &nbsp;&nbsp;TTK:{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(130/SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)])).toFixed(3) }}sec</span>
+          <br>
+<!-- BONUS DAMAGE -->
+          <span v-if="BonusDamage[gameName.game][GetBonusRifleName(BonusRifles, selectedRifle)]" class=" text-green-700 font-bold" style="font-size: 1rem; text-transform: uppercase; font-family: courier;">+{{ BonusDamage[gameName.game][GetBonusRifleName(BonusRifles, selectedRifle)] }} BONUS DAMAGE ON 2ND KILL within 10 sec</span><br><br>
+<!-- SPECIAL NOTES -->
+          <span v-if="SpecialNote[gameName.game][GetSpecialRifleName(SpecialRifles, selectedRifle)]" class="text-black" style="font-size: 0.9rem; text-transform: uppercase; font-family: courier;"><b>SPECIAL NOTE:</b> {{ SpecialNote[gameName.game][GetSpecialRifleName(SpecialRifles, selectedRifle)] }}</span><br>
+          <div @click="showRTK = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer" style="font-family: courier;">x</div>
+        </div>
+<!-- End DAMAGE FILE BUTTON -->
+
+
+
+<!-- RTK BUTTON
+<div v-if="gameName.game === 'Breakpoint'" @click="showRTK = !showRTK; showIntel = false; showShotguns = false; showHandguns = false" class="active:text-red-800 px-2 border text-red-800 border-red-800 hover:text-red-600 rounded-lg shadow-black shadow-md font-sans absolute top-[67%] left-[62%] rotate-[-35deg] translate-x-[25%] z-40 cursor-pointer" style="font-family: angel;">
           Damage <br>File
         </div>
         <div v-if="damage[gameName.game].hasOwnProperty(GetRifleName(rifles, selectedRifle)) && showRTK" @click="showRTK = false" class="absolute top-[100px] sm:top-[200px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg" style="font-size: 1rem; font-family: courier;">
@@ -820,13 +873,15 @@ function getStylePosition(index: number) {
           <span class="font-bold text-black" style="font-size: 1rem; text-transform: uppercase; font-family: ;"><u>ROUNDS TO KILL WOLVES</u></span><br>
           <span>SUPPRESSED: {{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][4] }}</span>&nbsp;
           <span class="text-red-600"><b>LOUD: {{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][5] }}</b></span><br>
-<!-- BONUS DAMAGE -->
+
           <span v-if="damage[gameName.game][GetRifleName(rifles, selectedRifle)][6]" class=" text-green-700 font-bold" style="font-size: 1rem; text-transform: uppercase; font-family: courier;">+{{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][6] }} BONUS DAMAGE ON 2ND KILL within 10 sec</span><br>
-<!-- SPECIAL NOTES -->
+
           <span v-if="damage[gameName.game][GetRifleName(rifles, selectedRifle)][7]" class="text-black" style="font-size: 0.9rem; text-transform: uppercase; font-family: courier;">SPECIAL NOTE: {{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][7] }}</span><br>
           <div @click="showRTK = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer" style="font-family: courier;">x</div>
         </div>
-<!-- End RTK BUTTON -->
+ End RTK BUTTON -->
+
+
 
       <!-- RANGE LABELS -->
           <div class="absolute top-[55%] left-2/4 -translate-x-2/4 text-2xl">
