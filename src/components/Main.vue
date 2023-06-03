@@ -818,43 +818,69 @@ function getStylePosition(index: number) {
         <div v-if="gameName.game === 'Breakpoint'" @click="showRTK = !showRTK; showIntel = false; showShotguns = false; showHandguns = false" class="active:text-red-800 px-2 border text-red-800 border-red-800 hover:text-red-600 rounded-lg shadow-black shadow-md font-sans absolute top-[67%] left-[62%] rotate-[-35deg] translate-x-[25%] z-40 cursor-pointer" style="font-family: angel;">
           Damage <br>File
         </div>
-        <div v-if="SmartDamage[gameName.game].hasOwnProperty(GetSmartRifleName(SmartRifles, selectedRifle)) && showRTK" @click="showRTK = false" class="absolute top-[10px] sm:top-[20px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg font-bold" style="font-size: 0.8rem; font-family: courier;">
-          <div class="absolute right-[3%]" style="font-size: 0.5rem;">*TTK: APPROX. TIME TO KILL</div>
+        <div v-if="SmartDamage[gameName.game].hasOwnProperty(GetSmartRifleName(SmartRifles, selectedRifle)) && showRTK" class="absolute top-[10px] sm:top-[20px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg font-bold" style="font-size: 0.8rem; font-family: courier;">
+          
+          <div class="text-center font-bold text-black underline" style="font-size:1rem; font-family: angel;">{{ selectedRifle }}</div>
+
+          <span class="font-bold text-black underline" style="font-size:0.8rem; font-family: ;">ROUNDS TO KILL</span>
+          <span class="absolute right-[3%] font-bold text-black underline" style="font-size:0.8rem; font-family: ;">TIME TO KILL</span>
           <br>
-          <span class="font-bold text-gray-600 underline" style="font-size: 1rem; text-transform: uppercase; font-family: ;">ROUNDS TO KILL SENTINEL</span>
-          <br>
-          <span class="font-bold text-black underline" style="font-size: 0.95rem; text-transform: uppercase; font-family: ;">STEALTHED:</span>
-          <br>
-          <span> SUPPRESSED:{{ Math.ceil(39/Math.floor(SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)]*0.8))}}</span>
+          <div class="text-center font-bold text-black underline" style="font-size: 1rem; font-family: ;">SENTINEL PERSONNEL</div>
+
+          <div class="text-center font-bold text-black underline" style="font-size: 0.8rem;">STEALTHED:</div>
+
+          <span> SUPPRESSED:{{ Math.ceil(39/Math.floor(SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)]*0.8)) }}</span>
+<!-- BONUS STEALTHED SUPPRESSED -->
+          <span v-if= "BonusDamage[gameName.game][GetBonusRifleName(BonusRifles, selectedRifle)] && Math.ceil(39/Math.floor(SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)]*0.8)) > Math.ceil(39/Math.floor((SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)] + BonusDamage[gameName.game][GetBonusRifleName(BonusRifles, selectedRifle)])*0.8 ))" class="text-green-700 font-bold" style="font-size: 0.7rem;">&nbsp;&nbsp;W/BONUS:{{ Math.ceil(39/Math.floor((SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)] + BonusDamage[gameName.game][GetBonusRifleName(BonusRifles, selectedRifle)])*0.8 )) }}</span>
+
 <!-- TTK -->
-          <span class="absolute right-[3%] text-black"> &nbsp;&nbsp;TTK:{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(39/Math.floor(SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)]*0.8))).toFixed(3) }}sec</span>
+          <span v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" class="absolute right-[3%] text-black"> &nbsp;&nbsp;{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(39/Math.floor(SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)]*0.8))).toFixed(3) }}sec</span>
           <br>
           <span> LOUD:{{ Math.ceil(39/SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)]) }}</span>
+<!-- BONUS STEALTHED LOUD -->
+          <span v-if= "BonusDamage[gameName.game][GetBonusRifleName(BonusRifles, selectedRifle)] && Math.ceil(39/SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)]) > Math.ceil(39/(SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)] + BonusDamage[gameName.game][GetBonusRifleName(BonusRifles, selectedRifle)]))" class="text-green-700 font-bold" style="font-size: 0.7rem;">&nbsp;&nbsp;W/BONUS:{{ Math.ceil(39/(SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)] + BonusDamage[gameName.game][GetBonusRifleName(BonusRifles, selectedRifle)])) }}</span>
+
 <!-- TTK -->
-          <span class="absolute right-[3%] text-black"> &nbsp;&nbsp;TTK:{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(39/SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)])).toFixed(3) }}sec</span>
-          <br>
-          <span class="font-bold text-red-600 underline" style="font-size: 0.95rem; text-transform: uppercase; font-family: ;">DETECTED:</span>
-          <br>
+          <span v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" class="absolute right-[3%] text-black"> &nbsp;&nbsp;{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(39/SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)])).toFixed(3) }}sec</span>
+          
+          <div class="text-center font-bold text-red-600 underline" style="font-size: 0.8rem;">DETECTED:</div>
+          
           <span class="text-red-600 font-bold"> SUPPRESSED:{{ Math.ceil(100/Math.floor(SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)]*0.8)) }}</span>
+<!-- BONUS SENTINEL SUPPRESSED -->
+          <span v-if= "BonusDamage[gameName.game][GetBonusRifleName(BonusRifles, selectedRifle)] && Math.ceil(100/Math.floor(SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)]*0.8)) > Math.ceil(100/Math.floor((SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)] + BonusDamage[gameName.game][GetBonusRifleName(BonusRifles, selectedRifle)])*0.8 ))" class="text-green-700 font-bold" style="font-size: 0.7rem;">&nbsp;&nbsp;W/BONUS:{{ Math.ceil(100/Math.floor((SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)] + BonusDamage[gameName.game][GetBonusRifleName(BonusRifles, selectedRifle)])*0.8 )) }}</span>
 <!-- TTK -->
-          <span class="absolute right-[3%] text-red-600 font-bold"> &nbsp;&nbsp;TTK:{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(100/Math.floor(SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)]*0.8))).toFixed(3) }}sec</span>
+          <span v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" class="absolute right-[3%] text-red-600 font-bold"> &nbsp;&nbsp;{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(100/Math.floor(SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)]*0.8))).toFixed(3) }}sec</span>
           <br>
           <span class="text-red-600 font-bold"> LOUD:{{ Math.ceil(100/SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)]) }}</span> 
+<!-- BONUS SENTINEL LOUD IF -->
+          <span v-if= "BonusDamage[gameName.game][GetBonusRifleName(BonusRifles, selectedRifle)] && Math.ceil(100/SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)]) > Math.ceil(100/(SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)] + BonusDamage[gameName.game][GetBonusRifleName(BonusRifles, selectedRifle)]))" class="text-green-700 font-bold" style="font-size: 0.7rem;">&nbsp;&nbsp;W/BONUS:{{ Math.ceil(100/(SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)] + BonusDamage[gameName.game][GetBonusRifleName(BonusRifles, selectedRifle)])) }}</span>
+
 <!-- TTK -->
-          <span class="absolute right-[3%] text-red-600 font-bold"> &nbsp;&nbsp;TTK:{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(100/SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)])).toFixed(3) }}sec</span>
-          <br>
-          <br>
-          <span class="font-bold text-black underline" style="font-size: 1rem; text-transform: uppercase; font-family: ;">ROUNDS TO KILL WOLVES</span><br>
-          <span>SUPPRESSED:{{ Math.ceil(130/(SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)]*0.8)) }}</span>
+          <span v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" class="absolute right-[3%] text-red-600 font-bold"> &nbsp;&nbsp;{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(100/SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)])).toFixed(3) }}sec</span>
           
-          <span class="absolute right-[3%] text-black"> &nbsp;&nbsp;TTK:{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(130/(SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)]*0.8))).toFixed(3) }}sec</span>
+          <div class="text-center font-bold text-black underline" style="font-size: 1rem; font-family: ;">WOLF PERSONNEL</div>
+          
+          <span>SUPPRESSED:{{ Math.ceil(130/Math.floor(SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)]*0.8)) }}</span>
+<!-- BONUS WOLF SUPPRESSED IF -->
+          <span v-if= "BonusDamage[gameName.game][GetBonusRifleName(BonusRifles, selectedRifle)] && Math.ceil(130/Math.floor(SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)]*0.8)) > Math.ceil(130/Math.floor((SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)] + BonusDamage[gameName.game][GetBonusRifleName(BonusRifles, selectedRifle)])*0.8 )) " class="text-green-700 font-bold" style="font-size: 0.7rem;">&nbsp;&nbsp;W/BONUS:{{ Math.ceil(130/Math.floor((SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)] + BonusDamage[gameName.game][GetBonusRifleName(BonusRifles, selectedRifle)])*0.8 )) }}</span>
+          
+<!-- TTK -->
+          <span v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" class="absolute right-[3%] text-black"> &nbsp;&nbsp;{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(130/(SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)]*0.8))).toFixed(3) }}sec</span>
           <br>
           <span class="text-red-600 font-bold">LOUD:{{ Math.ceil(130/SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)]) }}</span>
+<!-- BONUS WOLF LOUD IF -->
+          <span v-if= "BonusDamage[gameName.game][GetBonusRifleName(BonusRifles, selectedRifle)] && Math.ceil(130/SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)]) > Math.ceil(130/(SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)] + BonusDamage[gameName.game][GetBonusRifleName(BonusRifles, selectedRifle)])) " class=" text-green-700 font-bold" style="font-size: 0.7rem;">&nbsp;&nbsp;W/BONUS:{{ Math.ceil(130/(SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)] + BonusDamage[gameName.game][GetBonusRifleName(BonusRifles, selectedRifle)])) }}</span>
+
 <!-- TTK -->
-          <span class="absolute right-[3%] text-red-600 font-bold"> &nbsp;&nbsp;TTK:{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(130/SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)])).toFixed(3) }}sec</span>
-          <br><br>
+          <span v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" class="absolute right-[3%] text-red-600 font-bold"> &nbsp;&nbsp;{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(130/SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)])).toFixed(3) }}sec</span>
+          <br>
+<!-- FASTEST TTK @click="selectedScopeName='DIGITAL';selectedRifle='VECTOR'" -->
+          <span class="absolute translate-y-[-145%] right-[3%] text-red-600 font-light" style="font-size: 0.5rem;">FASTEST RIFLE:{{((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, 'VECTOR')])*Math.ceil(130/SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, 'VECTOR')])).toFixed(3) }}sec</span>
+          <br>
+<!-- SLOWEST TTK @click="selectedScopeName='RU LONG-RANGE'; selectedRifle='SVD-63'" -->
+          <span class="absolute translate-y-[-155%] right-[3%] text-red-600 font-light" style="font-size: 0.5rem;">SLOWEST RIFLE:{{((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, 'SVD-63')])*Math.ceil(130/SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, 'SVD-63')])).toFixed(3) }}sec</span>
 <!-- BONUS DAMAGE -->
-          <span v-if="BonusDamage[gameName.game][GetBonusRifleName(BonusRifles, selectedRifle)]" class=" text-green-700 font-bold" style="font-size: 1rem; text-transform: uppercase; font-family: courier;">+{{ BonusDamage[gameName.game][GetBonusRifleName(BonusRifles, selectedRifle)] }} BONUS DAMAGE ON 2ND KILL within 10 sec</span><br>
+          <span v-if="BonusDamage[gameName.game][GetBonusRifleName(BonusRifles, selectedRifle)]" class=" text-green-700 font-bold" style="font-size: 1rem; font-family: courier;">+{{ BonusDamage[gameName.game][GetBonusRifleName(BonusRifles, selectedRifle)] }} BONUS DAMAGE ON KILLS CHAINED WITHIN 10sec</span><br>
 <!-- SPECIAL NOTES -->
           <span v-if="SpecialNote[gameName.game][GetSpecialRifleName(SpecialRifles, selectedRifle)]" class="text-black" style="font-size: 0.9rem; text-transform: uppercase; font-family: courier;"><b>SPECIAL NOTE:</b> {{ SpecialNote[gameName.game][GetSpecialRifleName(SpecialRifles, selectedRifle)] }}</span><br>
           <div @click="showRTK = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer font-light" style="font-family: courier;">x</div>
