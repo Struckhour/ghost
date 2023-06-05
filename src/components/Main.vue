@@ -845,7 +845,7 @@ function getStylePosition(index: number) {
 
           <span> SUPPRESSED:{{ Math.ceil(39/Math.floor(rifleDamageValue*0.8)) }}</span>
 <!-- BONUS STEALTHED SUPPRESSED -->
-          <span v-if= "bonusRifleValue && Math.ceil(39/Math.floor(rifleDamageValue*0.8)) > Math.ceil(39/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 ))" class="text-purple-700 font-bold" style="font-size: 0.7rem;">&nbsp;&nbsp;W/BONUS:{{ Math.ceil(39/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 )) }}</span>
+          <span v-if= "bonusRifleValue && Math.ceil(39/Math.floor(rifleDamageValue*0.8)) > Math.ceil(39/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 ))" class="text-purple-700 font-bold" style="font-size: 0.7rem;">&nbsp;W/BONUS:{{ Math.ceil(39/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 )) }}</span>
 
 <!-- TTK -->
           <span v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" class="absolute right-[3%] text-black">
@@ -856,7 +856,7 @@ function getStylePosition(index: number) {
           <br>
           <span> LOUD:{{ Math.ceil(39/rifleDamageValue) }}</span>
 <!-- BONUS STEALTHED LOUD -->
-          <span v-if= "bonusRifleValue && Math.ceil(39/rifleDamageValue) > Math.ceil(39/(rifleDamageValue + bonusRifleValue))" class="text-purple-700 font-bold" style="font-size: 0.7rem;">&nbsp;&nbsp;W/BONUS:{{ Math.ceil(39/(rifleDamageValue + bonusRifleValue)) }}</span>
+          <span v-if= "bonusRifleValue && Math.ceil(39/rifleDamageValue) > Math.ceil(39/(rifleDamageValue + bonusRifleValue))" class="text-purple-700 font-bold" style="font-size: 0.7rem;">&nbsp;W/BONUS:{{ Math.ceil(39/(rifleDamageValue + bonusRifleValue)) }}</span>
 
 <!-- TTK -->
           <span v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" class="absolute right-[3%] text-black">
@@ -869,7 +869,7 @@ function getStylePosition(index: number) {
           
           <span class="text-red-600 font-bold"> SUPPRESSED:{{ Math.ceil(100/Math.floor(rifleDamageValue*0.8)) }}</span>
 <!-- BONUS SENTINEL SUPPRESSED -->
-          <span v-if= "bonusRifleValue && Math.ceil(100/Math.floor(rifleDamageValue*0.8)) > Math.ceil(100/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 ))" class="text-purple-700 font-bold" style="font-size: 0.7rem;">&nbsp;&nbsp;W/BONUS:{{ Math.ceil(100/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 )) }}</span>
+          <span v-if= "bonusRifleValue && Math.ceil(100/Math.floor(rifleDamageValue*0.8)) > Math.ceil(100/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 ))" class="text-purple-700 font-bold" style="font-size: 0.7rem;">&nbsp;W/BONUS:{{ Math.ceil(100/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 )) }}</span>
 <!-- TTK -->
           <span v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" class="absolute right-[3%] text-red-600 font-bold"> 
 <!-- BONUS TTK SUPPRESSED             -->
@@ -879,7 +879,7 @@ function getStylePosition(index: number) {
           <br>
           <span class="text-red-600 font-bold"> LOUD:{{ Math.ceil(100/rifleDamageValue) }}</span> 
 <!-- BONUS SENTINEL LOUD IF -->
-          <span v-if= "bonusRifleValue && Math.ceil(100/rifleDamageValue) > Math.ceil(100/(rifleDamageValue + bonusRifleValue))" class="text-purple-700 font-bold" style="font-size: 0.7rem;">&nbsp;&nbsp;W/BONUS:{{ Math.ceil(100/(rifleDamageValue + bonusRifleValue)) }}</span>
+          <span v-if= "bonusRifleValue && Math.ceil(100/rifleDamageValue) > Math.ceil(100/(rifleDamageValue + bonusRifleValue))" class="text-purple-700 font-bold" style="font-size: 0.7rem;">&nbsp;W/BONUS:{{ Math.ceil(100/(rifleDamageValue + bonusRifleValue)) }}</span>
 
 <!-- TTK -->
           <span v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" class="absolute right-[3%] text-red-600 font-bold"> 
@@ -891,7 +891,7 @@ function getStylePosition(index: number) {
           
           <span>SUPPRESSED:{{ Math.ceil(130/Math.floor(rifleDamageValue*0.8)) }}</span>
 <!-- BONUS WOLF SUPPRESSED IF -->
-          <span v-if= "bonusRifleValue && Math.ceil(130/Math.floor(rifleDamageValue*0.8)) > Math.ceil(130/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 )) " class="text-purple-700 font-bold" style="font-size: 0.7rem;">&nbsp;&nbsp;W/BONUS:{{ Math.ceil(130/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 )) }}</span>
+          <span v-if= "bonusRifleValue && Math.ceil(130/Math.floor(rifleDamageValue*0.8)) > Math.ceil(130/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 )) " class="text-purple-700 font-bold" style="font-size: 0.7rem;">&nbsp;W/BONUS:{{ Math.ceil(130/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 )) }}</span>
           
 <!-- TTK -->
           <span v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" class="absolute right-[3%] text-black">
@@ -902,7 +902,7 @@ function getStylePosition(index: number) {
           <br>
           <span class="text-red-600 font-bold">LOUD:{{ Math.ceil(130/rifleDamageValue) }}</span>
 <!-- BONUS WOLF LOUD IF -->
-          <span v-if= "bonusRifleValue && Math.ceil(130/rifleDamageValue) > Math.ceil(130/(rifleDamageValue + bonusRifleValue)) " class=" text-purple-700 font-bold" style="font-size: 0.7rem;">&nbsp;&nbsp;W/BONUS:{{ Math.ceil(130/(rifleDamageValue + bonusRifleValue)) }}</span>
+          <span v-if= "bonusRifleValue && Math.ceil(130/rifleDamageValue) > Math.ceil(130/(rifleDamageValue + bonusRifleValue)) " class=" text-purple-700 font-bold" style="font-size: 0.7rem;">&nbsp;W/BONUS:{{ Math.ceil(130/(rifleDamageValue + bonusRifleValue)) }}</span>
 
 <!-- TTK -->
           <span v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" class="absolute right-[3%] text-red-600 font-bold"> 
