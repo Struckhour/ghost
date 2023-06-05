@@ -515,6 +515,7 @@ function getStylePosition(index: number) {
         </div>
       </div>
       </div>
+      
 <!-- END TRIG BUTTON -->
 
       <div v-show="showIntel" @click="showIntel = false;" class="absolute top-[100px] sm:top-[200px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg" style="font-size: 1rem;font-family: courier;">
@@ -823,7 +824,7 @@ function getStylePosition(index: number) {
           <div class="text-center font-bold text-black underline" style="font-size:1rem; font-family: angel;">{{ selectedRifle }}</div>
 
           <span class="font-bold text-black underline" style="font-size:0.8rem; font-family: ;">ROUNDS TO KILL</span>
-          <span class="absolute right-[3%] font-bold text-black underline" style="font-size:0.8rem; font-family: ;">TIME TO KILL</span>
+          <span v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" class="absolute right-[3%] font-bold text-black underline" style="font-size:0.8rem; font-family: ;">TIME TO KILL</span>
           <br>
           <div class="text-center font-bold text-black underline" style="font-size: 1rem; font-family: ;">SENTINEL PERSONNEL</div>
 
@@ -875,10 +876,10 @@ function getStylePosition(index: number) {
           <span v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" class="absolute right-[3%] text-red-600 font-bold"> &nbsp;&nbsp;{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(130/SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)])).toFixed(3) }}sec</span>
           <br>
 <!-- FASTEST TTK @click="selectedScopeName='DIGITAL';selectedRifle='VECTOR'" -->
-          <span class="absolute translate-y-[-145%] right-[3%] text-red-600 font-light" style="font-size: 0.5rem;">FASTEST RIFLE:{{((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, 'VECTOR')])*Math.ceil(130/SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, 'VECTOR')])).toFixed(3) }}sec</span>
+          <span v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" class="absolute translate-y-[-145%] right-[3%] text-red-600 font-light" style="font-size: 0.5rem;">FASTEST RIFLE:{{((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, 'VECTOR')])*Math.ceil(130/SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, 'VECTOR')])).toFixed(3) }}sec</span>
           <br>
 <!-- SLOWEST TTK @click="selectedScopeName='RU LONG-RANGE'; selectedRifle='SVD-63'" -->
-          <span class="absolute translate-y-[-155%] right-[3%] text-red-600 font-light" style="font-size: 0.5rem;">SLOWEST RIFLE:{{((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, 'SVD-63')])*Math.ceil(130/SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, 'SVD-63')])).toFixed(3) }}sec</span>
+          <span v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" class="absolute translate-y-[-155%] right-[3%] text-red-600 font-light" style="font-size: 0.5rem;">SLOWEST RIFLE:{{((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, 'SVD-63')])*Math.ceil(130/SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, 'SVD-63')])).toFixed(3) }}sec</span>
 <!-- BONUS DAMAGE -->
           <span v-if="BonusDamage[gameName.game][GetBonusRifleName(BonusRifles, selectedRifle)]" class=" text-green-700 font-bold" style="font-size: 1rem; font-family: courier;">+{{ BonusDamage[gameName.game][GetBonusRifleName(BonusRifles, selectedRifle)] }} BONUS DAMAGE ON KILLS CHAINED WITHIN 10sec</span><br>
 <!-- SPECIAL NOTES -->
