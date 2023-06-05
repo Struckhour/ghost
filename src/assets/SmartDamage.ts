@@ -27,12 +27,15 @@ export const SmartRifles:string[]=[
 
     'MDR',
     'M4A1 TACTICAL',
+    'M4A1 SCOUT',
+
     'M4A1 CQC',
     'M4A1 ASSAULT',
     'M4A1',
     'L85-C',
     'KOBLIN',
     'K1A',
+    'G36C SCOUT',
     'G36C',
 
     'FAL',
@@ -69,8 +72,7 @@ export const SmartRifles:string[]=[
 //ASR DMR'S
     
     
-    'M4A1 SCOUT',
-    'G36C SCOUT',
+    
     
     
     '553 SCOUT SENTINEL',

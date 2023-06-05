@@ -821,14 +821,20 @@ function getStylePosition(index: number) {
         </div>
         <div v-if="SmartDamage[gameName.game].hasOwnProperty(GetSmartRifleName(SmartRifles, selectedRifle)) && showRTK" class="absolute top-[10px] sm:top-[20px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg font-bold" style="font-size: 0.8rem; font-family: courier;">
           
-          <div class="text-center font-bold text-black underline" style="font-size:1rem; font-family: angel;">{{ selectedRifle }}</div>
-
+          <div class="text-center font-bold text-black opacity-80 rotate-[2deg]" style="font-size:1rem; font-family: angel;">{{ selectedRifle }} 
+          </div>
+           <div class="text-center font-bold text-black translate-y-[-0%]" style="font-size: 0.7rem; font-family: courier;">DAMAGE:{{ SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)] }} <span v-if="BonusDamage[gameName.game][GetBonusRifleName(BonusRifles, selectedRifle)]" class="text-green-700 font-bold">- {{ SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)] + (BonusDamage[gameName.game][GetBonusRifleName(BonusRifles, selectedRifle)]) }} </span> 
+          </div>
+          <div class="text-center font-bold text-black translate-y-[-0%]" style="font-size: 0.7rem; font-family: courier;">SUPPRESSED:{{ Math.floor(SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)]*0.8) }} <span v-if="BonusDamage[gameName.game][GetBonusRifleName(BonusRifles, selectedRifle)]" class="text-green-700 font-bold">- {{ Math.floor(((SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)]) + (BonusDamage[gameName.game][GetBonusRifleName(BonusRifles, selectedRifle)]))*0.8) }} </span> 
+          </div>
+          <!-- BONUS DAMAGE -->
+          <div v-if="BonusDamage[gameName.game][GetBonusRifleName(BonusRifles, selectedRifle)]" class="text-center text-green-700 font-bold translate-y-[-0%]" style="font-size: 0.7rem; font-family: courier;">+{{ BonusDamage[gameName.game][GetBonusRifleName(BonusRifles, selectedRifle)] }} BONUS DAMAGE ON KILLS CHAINED WITHIN 10sec</div>
           <span class="font-bold text-black underline" style="font-size:0.8rem; font-family: ;">ROUNDS TO KILL</span>
           <span v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" class="absolute right-[3%] font-bold text-black underline" style="font-size:0.8rem; font-family: ;">TIME TO KILL</span>
           <br>
           <div class="text-center font-bold text-black underline" style="font-size: 1rem; font-family: ;">SENTINEL PERSONNEL</div>
 
-          <div class="text-center font-bold text-black underline" style="font-size: 0.8rem;">STEALTHED:</div>
+          <div class="text-center font-bold text-black underline" style="font-size: 0.8rem;">STEALTHED:39HP</div>
 
           <span> SUPPRESSED:{{ Math.ceil(39/Math.floor(SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)]*0.8)) }}</span>
 <!-- BONUS STEALTHED SUPPRESSED -->
@@ -844,7 +850,7 @@ function getStylePosition(index: number) {
 <!-- TTK -->
           <span v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" class="absolute right-[3%] text-black"> &nbsp;&nbsp;{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(39/SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)])).toFixed(3) }}sec</span>
           
-          <div class="text-center font-bold text-red-600 underline" style="font-size: 0.8rem;">DETECTED:</div>
+          <div class="text-center font-bold text-red-600 underline" style="font-size: 0.8rem;">DETECTED:100HP</div>
           
           <span class="text-red-600 font-bold"> SUPPRESSED:{{ Math.ceil(100/Math.floor(SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)]*0.8)) }}</span>
 <!-- BONUS SENTINEL SUPPRESSED -->
@@ -859,7 +865,7 @@ function getStylePosition(index: number) {
 <!-- TTK -->
           <span v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" class="absolute right-[3%] text-red-600 font-bold"> &nbsp;&nbsp;{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(100/SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)])).toFixed(3) }}sec</span>
           
-          <div class="text-center font-bold text-black underline" style="font-size: 1rem; font-family: ;">WOLF PERSONNEL</div>
+          <div class="text-center font-bold text-black underline" style="font-size: 1rem; font-family: ;">WOLF PERSONNEL:130HP</div>
           
           <span>SUPPRESSED:{{ Math.ceil(130/Math.floor(SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, selectedRifle)]*0.8)) }}</span>
 <!-- BONUS WOLF SUPPRESSED IF -->
@@ -880,10 +886,8 @@ function getStylePosition(index: number) {
           <br>
 <!-- SLOWEST TTK @click="selectedScopeName='RU LONG-RANGE'; selectedRifle='SVD-63'" -->
           <span v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" class="absolute translate-y-[-155%] right-[3%] text-red-600 font-light" style="font-size: 0.5rem;">SLOWEST RIFLE:{{((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, 'SVD-63')])*Math.ceil(130/SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, 'SVD-63')])).toFixed(3) }}sec</span>
-<!-- BONUS DAMAGE -->
-          <span v-if="BonusDamage[gameName.game][GetBonusRifleName(BonusRifles, selectedRifle)]" class=" text-green-700 font-bold" style="font-size: 1rem; font-family: courier;">+{{ BonusDamage[gameName.game][GetBonusRifleName(BonusRifles, selectedRifle)] }} BONUS DAMAGE ON KILLS CHAINED WITHIN 10sec</span><br>
 <!-- SPECIAL NOTES -->
-          <span v-if="SpecialNote[gameName.game][GetSpecialRifleName(SpecialRifles, selectedRifle)]" class="text-black" style="font-size: 0.9rem; text-transform: uppercase; font-family: courier;"><b>SPECIAL NOTE:</b> {{ SpecialNote[gameName.game][GetSpecialRifleName(SpecialRifles, selectedRifle)] }}</span><br>
+          <div v-if="SpecialNote[gameName.game][GetSpecialRifleName(SpecialRifles, selectedRifle)]" class="text-black font-bold" style="font-size: 0.7rem; text-transform: uppercase; font-family: courier;">SPECIAL NOTE: <span class="font-thin italic">{{ SpecialNote[gameName.game][GetSpecialRifleName(SpecialRifles, selectedRifle)] }}</span></div>
           <div @click="showRTK = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer font-light" style="font-family: courier;">x</div>
         </div>
 <!-- End DAMAGE FILE BUTTON -->
