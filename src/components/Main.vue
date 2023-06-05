@@ -819,7 +819,7 @@ function getStylePosition(index: number) {
         <div v-if="gameName.game === 'Breakpoint'" @click="showRTK = !showRTK; showIntel = false; showShotguns = false; showHandguns = false" class="active:text-red-800 px-2 border text-red-800 border-red-800 hover:text-red-600 rounded-lg shadow-black shadow-md font-sans absolute top-[67%] left-[62%] rotate-[-35deg] translate-x-[25%] z-40 cursor-pointer" style="font-family: angel;">
           Damage <br>File
         </div>
-        <div v-if="SmartDamage[gameName.game].hasOwnProperty(GetSmartRifleName(SmartRifles, selectedRifle)) && showRTK" class="absolute top-[10px] sm:top-[20px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg font-bold" style="font-size: 0.8rem; font-family: courier;">
+        <div v-if="SmartDamage[gameName.game].hasOwnProperty(GetSmartRifleName(SmartRifles, selectedRifle)) && showRTK" @click="showRTK = false;" class="absolute top-[10px] sm:top-[20px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg font-bold" style="font-size: 0.8rem; font-family: courier;">
           
           <div class="text-center font-bold text-black opacity-80 rotate-[2deg]" style="font-size:1rem; font-family: angel;">{{ selectedRifle }} 
           </div>
