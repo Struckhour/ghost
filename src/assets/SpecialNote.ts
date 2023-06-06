@@ -168,10 +168,11 @@ export const SpecialNote: { [gameName: string]: {[rifleName: string]: string}} =
     Breakpoint: {
         
 //ASR'S 
+        'SILVER STAKE TACTICAL':'integrally suppressed, but suppressor can be exchanged for other muzzle attachments in the loadout menu. No full auto.',
         
         'MDR':'fires 2 instead of 3 round bursts'	,
 
-        'M4A1 TACTICAL':'integrally suppressed. Only suppressed rounds to kill apply. No full auto.',
+        'M4A1 TACTICAL':'integrally suppressed. Only suppressed damage applies. No full auto.',
         
         'G36C':'fires 2 instead of 3 round bursts' ,
         
@@ -200,9 +201,14 @@ export const SpecialNote: { [gameName: string]: {[rifleName: string]: string}} =
 
         'VECTOR':'fires 2 instead of 3 round bursts'	,
     
-        'UMP CQC': 'fires 2 instead of 3 round bursts'	,
+        'UMP CQC': 'fires 2 instead of 3 round bursts. integrally suppressed. Only suppressed damage applies.'	,
 
         'UMP':'fires 2 instead of 3 round bursts'	,
+
+        'SCORPION EVO3 TACTICAL':'integrally suppressed. Only suppressed damage applies. No full auto.',
+
+        'MPX TACTICAL':'integrally suppressed. Only suppressed damage applies. No full auto.',
+
        
 
 //SNR'S
