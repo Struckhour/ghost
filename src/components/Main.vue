@@ -914,10 +914,10 @@ function getStylePosition(index: number) {
           </span>
           <br>
 <!-- FASTEST TTK @click="selectedScopeName='DIGITAL';selectedRifle='VECTOR'" -->
-          <span v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" class="absolute translate-y-[-145%] right-[3%] text-red-600 font-light" style="font-size: 0.5rem;">FASTEST KILL RIFLE:{{((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, 'VECTOR')])*Math.ceil(130/SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, 'VECTOR')])).toFixed(3) }}sec</span>
+          <span v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" class="absolute translate-y-[-145%] right-[3%] text-red-600 font-bold" style="font-size: 0.5rem;">FASTEST KILL RIFLE: {{((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, 'VECTOR')])*Math.ceil(130/SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, 'VECTOR')])).toFixed(3) }}sec</span>
           <br>
 <!-- SLOWEST TTK @click="selectedScopeName='RU LONG-RANGE'; selectedRifle='SVD-63'" -->
-          <span v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" class="absolute translate-y-[-155%] right-[3%] text-red-600 font-light" style="font-size: 0.5rem;">SLOWEST KILL RIFLE:{{((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, 'SVD-63')])*Math.ceil(130/SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, 'SVD-63')])).toFixed(3) }}sec</span>
+          <span v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" class="absolute translate-y-[-155%] right-[3%] text-red-600 font-bold" style="font-size: 0.5rem;">SLOWEST KILL RIFLE: {{((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, 'SVD-63')])*Math.ceil(130/SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, 'SVD-63')])).toFixed(3) }}sec</span>
 <!-- SPECIAL NOTES -->
           <div v-if="SpecialNote[gameName.game][GetSpecialRifleName(SpecialRifles, selectedRifle)]" class="text-black font-bold" style="font-size: 0.7rem; text-transform: uppercase; font-family: courier;">SPECIAL NOTE: <span class="font-thin italic">{{ SpecialNote[gameName.game][GetSpecialRifleName(SpecialRifles, selectedRifle)] }}</span></div>
           <div @click="showRTK = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer font-light" style="font-family: courier;">x</div>
