@@ -246,9 +246,9 @@ export const RPM: { [gameName: string]: {[rifleName: string]: number}} = {
 
 // BR DMR'S
 
-    'MK14 ASSAULT BROWN':	400,
-    'MK14 ASSAULT':	400,
-    'MK14':	400,
+    'MK14 ASSAULT BROWN':	725,
+    'MK14 ASSAULT':	725,
+    'MK14':	725,
     'M110':	400,
     'G28 WILDERNESS':	400,
     'G28 SCOUT WOLVES':	400,

@@ -197,15 +197,17 @@ export const SpecialNote: { [gameName: string]: {[rifleName: string]: string}} =
         'SCORPIO SCOUT':'will one shot wolves after 1st kill loud within ~10 seconds. bug! - fires innacurately directly after drone deployment. always switch to sidearm and back after drone deployment to avoid innaccurate shots.',
 
 //SMG'S
-        'VECTOR SHORTY':'fires 2 instead of 3 round bursts'	,
+        'VECTOR SHORTY':'fires 2 instead of 3 round bursts. integrally suppressed. Only suppressed damage applies.'	,
 
-        'VECTOR':'fires 2 instead of 3 round bursts'	,
+        'VECTOR':'fires 2 instead of 3 round bursts. '	,
     
         'UMP CQC': 'fires 2 instead of 3 round bursts. integrally suppressed. Only suppressed damage applies.'	,
 
         'UMP':'fires 2 instead of 3 round bursts'	,
 
         'SCORPION EVO3 TACTICAL':'integrally suppressed. Only suppressed damage applies. No full auto.',
+
+        'SCORPION EVO3 CQC':'WITH THE MAWL-DA 140M IS THE BOTTOM OF THE CIRCLE WITH EXPS3(LARGE SETTING), MH-1, AND PANORAMIC SIGHT.', 
 
         'MPX TACTICAL':'integrally suppressed. Only suppressed damage applies. No full auto.',
 

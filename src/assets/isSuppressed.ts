@@ -7,6 +7,7 @@ export const suppressedGuns: { [gameName: string]: string [] } = {
 'UMP CQC',
 'SCORPION EVO3 TACTICAL',
 'MPX TACTICAL',
+'VECTOR SHORTY',
 
 
     ],
