@@ -566,7 +566,8 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'SC-20K MAWL-DA':[125,238,325,513,763],
       'SCORPIO SCOUT':[170,	250,	290,	335,	415	],
       'VSK-50':	[200,	250,	300,	388,	507	],
-      'VSK-50 RANGE FINDER':[200,	288,	363,	507,	688	]
+      'VSK-50 RANGE FINDER':[200,	288,	363,	507,	688	],
+      'ZASTAVA M93':[200,288,363,500,700],
     },
     'RU LONG-RANGE': {
       'AUG SCOUT RANGE FINDER':[125,225,300,350,425,525],

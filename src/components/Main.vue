@@ -26,6 +26,11 @@ const showTrig = ref(false);
 const range = ref(0);
 const altitude = ref(0);
 const gameName = defineProps<{game: string}>()
+// const TTK: {[gameName: string]: {[rifleName: string]: number}}={} 
+
+// for (const property in RPM['Breakpoint']) {
+// TTK['Breakpoint'][property]=((60/RPM['Breakpoint'][property])*Math.ceil(130/Math.floor((SmartDamage['Breakpoint'][property]))))
+// }
 
 let showScopeMenu = ref(false);
 let showRifleMenu = ref(false);
