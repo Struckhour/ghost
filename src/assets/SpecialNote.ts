@@ -80,7 +80,7 @@ export const SpecialRifles:string[]=[
     
     '416 SHORTY',
     '416 ASSAULT SPECIAL',
-    '416',
+    ' 416',
 
 //BR DMR'S
     'MK14 ASSAULT BROWN',

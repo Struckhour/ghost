@@ -63,7 +63,7 @@ export const RPMRifles:string[]=[
     
     '4-AC',
     
-    '516',
+    ' 516',
                
 
 //ASR DMR'S
@@ -75,12 +75,13 @@ export const RPMRifles:string[]=[
     
     '553 SCOUT SENTINEL',
     '553 SCOUT',
-    '553',
+    ' 553',
+    
+    '416 ASSAULT SPECIAL',
+    '416 SHORTY',
     '416 SCOUT',
     
-    '416 SHORTY',
-    '416 ASSAULT SPECIAL',
-    '416',
+    ' 416',
 
 //BR DMR'S
     'MK14 ASSAULT BROWN',
@@ -223,12 +224,14 @@ export const RPM: { [gameName: string]: {[rifleName: string]: number}} = {
     'A2 SHORTY':	720,
     '805 BREN':	760,
 
-    '553':	700,
-    '516':	800,
+    ' 553':	700,
+    ' 516':	800,
     '516 SHORTY':	800,
-    '416':	700,
-    '416 SHORTY':	700,
+
     '416 ASSAULT SPECIAL':	700,
+    '416 SHORTY':	700,
+    ' 416':	700,
+
     '4-AC':	860,
 
 // ASR DMR'S

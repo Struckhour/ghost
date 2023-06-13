@@ -66,7 +66,7 @@ export const SmartRifles:string[]=[
     
     '4-AC',
     
-    '516',
+    ' 516',
                
 
 //ASR DMR'S
@@ -77,12 +77,13 @@ export const SmartRifles:string[]=[
     
     '553 SCOUT SENTINEL',
     '553 SCOUT',
-    '553',
+    ' 553',
+
+    '416 ASSAULT SPECIAL',
+    '416 SHORTY',
     '416 SCOUT',
     
-    '416 SHORTY',
-    '416 ASSAULT SPECIAL',
-    '416',
+    ' 416',
 
 //BR DMR'S
     'MK14 ASSAULT BROWN',
@@ -223,12 +224,15 @@ export const SmartDamage: { [gameName: string]: {[rifleName: string]: number}} =
         'A2 SHORTY':	27,
         '805 BREN':	27,
 
-        '553':	27,
-        '516':	22,
+        ' 553':	27,
+        ' 516':	22,
         '516 SHORTY':	22,
-        '416':	27,
-        '416 SHORTY':	27,
+
         '416 ASSAULT SPECIAL':	32,
+        '416 SHORTY':	27,
+        ' 416':	27,
+        
+        
         '4-AC':	27,
 
 // ASR DMR'S
