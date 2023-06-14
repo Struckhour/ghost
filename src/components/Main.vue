@@ -880,15 +880,15 @@ function getStylePosition(index: number) {
           <div class="text-center font-bold text-black opacity-80 rotate-[2deg]" style="font-size:1rem; font-family: angel;">{{ selectedRifle }} 
           </div>
           
-          <div v-if="!IsSuppressedGun(suppressedGuns[gameName.game],selectedRifle)" class="text-center font-bold text-black translate-y-[-0%]" style="font-size: 0.7rem; font-family: ZCOOL;">DAMAGE: {{ rifleDamageValue }} <span v-if="bonusRifleValue" class="text-blue-400 font-bold italic">to {{ rifleDamageValue + bonusRifleValue }} </span> 
+          <div v-if="!IsSuppressedGun(suppressedGuns[gameName.game],selectedRifle)" class="leading-tight text-center font-bold text-black translate-y-[-0%]" style="font-size: 0.7rem; font-family: ZCOOL;">DAMAGE: {{ rifleDamageValue }} <span v-if="bonusRifleValue" class="text-blue-400 font-bold italic">to {{ rifleDamageValue + bonusRifleValue }} </span> 
           </div>
           <div v-if="!IsLoudGun(loudGuns[gameName.game],selectedRifle)" class="text-center font-bold text-black translate-y-[-0%]" style="font-size: 0.7rem; font-family: ZCOOL;">SUPPRESSED DAMAGE: {{ Math.floor(rifleDamageValue*0.8) }} 
             <span v-if="bonusRifleValue" class="text-blue-400 font-bold italic">to {{ Math.floor(((rifleDamageValue) + bonusRifleValue)*0.8) }} 
             </span> 
           </div>
 <!-- SPECIAL NOTES -->
-          <div v-if="SpecialNote[gameName.game][GetSpecialRifleName(SpecialRifles, selectedRifle)]" class="text-black font-bold" style="font-size: 0.7rem; text-transform: uppercase; font-family: courier;">SPECIAL NOTE: 
-            <span class="font-thin italic">{{ SpecialNote[gameName.game][GetSpecialRifleName(SpecialRifles, selectedRifle)] }}
+          <div v-if="SpecialNote[gameName.game][GetSpecialRifleName(SpecialRifles, selectedRifle)]" class="leading-tight text-black font-bold" style="font-size: 0.7rem; text-transform: uppercase; font-family: courier;">SPECIAL NOTE: 
+            <span class="leading-tight font-thin italic" style="font-size: 0.5rem; text-transform: uppercase; font-family: courier;">{{ SpecialNote[gameName.game][GetSpecialRifleName(SpecialRifles, selectedRifle)] }}
             </span>
           </div>
 <!-- BONUS DAMAGE -->
@@ -901,11 +901,11 @@ function getStylePosition(index: number) {
           <span v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" @click="showTTKlist = !showTTKlist;" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute right-[2%] rotate-[1deg] translate-x-[0%] z-40 cursor-pointer" style="font-size: 0.6rem; font-family: angel;">TIME TO KILL
           </span>
           <br>
-          <div class="text-center font-light text-black rotate-[-1deg] opacity-90" style="font-size: 0.8rem; font-family: angel;">SENTINEL PERSONNEL:
+          <div class="leading-tight text-center font-light text-black rotate-[-1deg] opacity-90" style="font-size: 0.8rem; font-family: angel;">SENTINEL PERSONNEL:
           </div>
 
-          <div class="text-center font-bold text-black" style="font-size: 0.7rem;">STEALTHED: 
-            <span class="text-red-600">39HP
+          <div class="leading-tight text-center font-bold text-black" style="font-size: 0.7rem;">STEALTHED: 
+            <span class="leading-tight text-red-600">39HP
             </span>
           </div>
 
@@ -939,7 +939,7 @@ function getStylePosition(index: number) {
             </span>
           </span>
           
-          <div class="text-center font-bold text-red-600" style="font-size: 0.7rem;">DETECTED: 100HP</div>
+          <div class="leading-tight text-center font-bold text-red-600" style="font-size: 0.7rem;">DETECTED: 100HP</div>
           
           <span v-if="!IsLoudGun(loudGuns[gameName.game],selectedRifle)" class="text-red-600 font-bold"> SUPPRESSED: {{ Math.ceil(100/Math.floor(rifleDamageValue*0.8)) }}
           </span>
@@ -969,8 +969,8 @@ function getStylePosition(index: number) {
             <span class="text-blue-400 font-bold italic" v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number' && Math.ceil(100/Math.floor(rifleDamageValue)) > Math.ceil(100/Math.floor(rifleDamageValue + bonusRifleValue))"> &nbsp;{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(100/Math.floor((rifleDamageValue + bonusRifleValue)))).toFixed(3) }}s
             </span>
           </span>          
-          <div class="text-center font-light text-black rotate-[1deg] opacity-90" style="font-size: 0.8rem; font-family: angel;">WOLF PERSONNEL: 
-            <div class="text-red-600 font-bold rotate-[-1deg] opacity-120" style="font-size: 0.7rem; font-family: ZCOOL;">130HP
+          <div class="leading-tight text-center font-light text-black rotate-[1deg] opacity-90" style="font-size: 0.8rem; font-family: angel;">WOLF PERSONNEL: 
+            <div class="leading-tight text-red-600 font-bold rotate-[-1deg] opacity-120" style="font-size: 0.7rem; font-family: ZCOOL;">130HP
             </div>
           </div>
           
@@ -1021,9 +1021,11 @@ function getStylePosition(index: number) {
         <div v-show="showBonuslist" class="absolute top-[10px] sm:top-[20px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg font-bold" >
           <div class="text-blue-400 text-center rotate-[-0deg] opacity-100 italic" style="font-size: 1rem; font-family: ZCOOL;">BONUS DAMAGE RIFLES
           </div>
-          <div class="text-center font-thin italic" style="font-size: 0.7rem; font-family: courier;">SOME RIFLES RECEIVE 'HIDDEN' BONUS DAMAGE AFTER A KILL. YOU CAN OBSERVE THIS DAMAGE BONUS IN THE LOADOUT MENU IF YOU PAUSE TO LOADOUT MENU AFTER A KILL. YOU'LL SEE THAT THE DAMAGE NUMBER FOR YOUR RIFLE IS 5 OR 10 POINTS HIGHER THAN NORMAL. FOR EXAMPLE, THE MDR NORMALLY HAS 37 DAMAGE BUT AFTER A KILL IT HAS 42 DAMAGE TEMPORARILY. BONUS DAMAGE SEEMS TO LAST FOR 10s AFTER A KILL OR UNTIL YOU PAUSE TO MENU(YOU'LL SEE IT IN MENU, BUT IT RESETS TO NORMAL WHEN YOU UNPAUSE). EQUIPPING/REMOVING YOUR SUPPRESSOR OR SWITCHING WEAPONS ALSO RESETS THE DAMAGE.
+
+          <div class="leading-tight text-center font-thin italic" style="font-size: 0.5rem; font-family: courier;">SOME RIFLES RECEIVE 'HIDDEN' BONUS DAMAGE AFTER A KILL. YOU CAN OBSERVE THIS DAMAGE BONUS IN THE LOADOUT MENU IF YOU PAUSE TO LOADOUT MENU AFTER A KILL. YOU'LL SEE THAT THE DAMAGE NUMBER FOR YOUR RIFLE IS 5 OR 10 POINTS HIGHER THAN NORMAL. FOR EXAMPLE, THE MDR NORMALLY HAS 37 DAMAGE BUT AFTER A KILL IT HAS 42 DAMAGE TEMPORARILY. BONUS DAMAGE SEEMS TO LAST FOR 10s AFTER A KILL OR UNTIL YOU PAUSE TO MENU(YOU'LL SEE IT IN MENU, BUT IT RESETS TO NORMAL WHEN YOU UNPAUSE). EQUIPPING/REMOVING YOUR SUPPRESSOR OR SWITCHING WEAPONS ALSO RESETS THE DAMAGE.
           </div>
-          <div class="translate-x-[10%] font-bold" style="font-size: 0.7rem; font-family: courier;" v-for="rifleBonus in sortedBonus" >
+
+          <div class="leading-tight translate-x-[10%] font-bold" style="font-size: 0.7rem; font-family: courier;" v-for="rifleBonus in sortedBonus" >
             {{rifleBonus.rifleName}}:<span class="text-bold italic text-blue-400" style="font-size: 0.7rem; font-family: ZCOOL;">+{{ rifleBonus.rifleValue }}</span>
           </div>
           <div @click="showBonuslist = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer font-light" style="font-family: courier;">x</div>
@@ -1031,16 +1033,22 @@ function getStylePosition(index: number) {
 
 <!-- RTK LIST BUTTON -->
         <div v-show="showRTKlist" class="absolute top-[10px] sm:top-[20px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg font-bold" >
-          <div class="text-red-700 text-center rotate-[-1deg] opacity-80" style="font-size: 1rem; font-family: angel;">ROUNDS TO KILL WOLVES LOUD
-          </div>
           <div class="flex justify-center">
             <img class="object-fill h-48 w-96" src="/assets/9-bullets.gif">
           </div>
-          <div class="text-right translate-x-[-10%]" style="font-size: 0.7rem; font-family: courier;" v-for="(value,property) in sortedRTK" >
+          <div class="leading-tight font-thin italic" style="font-size: 0.6rem; font-family: courier;">
+            <br>
+            - Some integrally suppressed rifles may not achieve the RTK values listed for them below because they can't fire loud. Their individual Damage Files have more accurate info.
+            <br>
+            <br>
+            - Be mindful of burst fire. Some rifles actually fire 2 rounds instead of 3 when set to burst fire mode. 
+          </div>
+          <div class="text-red-700 text-center rotate-[-1deg] opacity-80" style="font-size: 1rem; font-family: angel;">ROUNDS TO KILL WOLVES LOUD
+          </div>
+          <div class="leading-tight text-right translate-x-[-16%]" style="font-size: 0.7rem; font-family: courier;" v-for="(value,property) in sortedRTK" >
             {{property}}: {{ value }}
           </div>
-          <div class="font-thin italic" style="font-size: 0.7rem; font-family: courier;">*BE MINDFUL OF BURST FIRE. SOME RIFLES ACTUALLY FIRE 2 INSTEAD OF 3 ROUNDS WHEN SET TO BURST FIRE.
-          </div>
+          
           <!-- {{ RPM.Breakpoint }} -->
           <div @click="showRTKlist = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer font-light" style="font-family: courier;">x</div>
         </div>
@@ -1048,16 +1056,25 @@ function getStylePosition(index: number) {
 <!-- TTK LIST BUTTON -->
         <div v-show="showTTKlist" class="absolute top-[10px] sm:top-[20px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg font-bold" >
           
-          <div class="text-red-700 text-center rotate-[1deg] opacity-80" style="font-size: 1rem; font-family: angel;">TIME TO KILL WOLVES LOUD</div>
           <div class="flex justify-center">
           <img class="object-fill h-48 w-96" src="/assets/yes-they-deserved-to-die.gif">
+          
           </div>
-          <br>
-          <div class="text-right translate-x-[-10%]" style="font-size: 0.7rem; font-family: courier;" v-for="(value,property) in sortedTTK" >
+          <div class="leading-tight font-thin italic" style="font-size: 0.6rem; font-family: courier;">
+            <br>
+            - Sniper rifles are not included here as they don't have RPM values listed in game. 
+            <br>
+            <br>
+
+            - Burst fire rifles that lack full auto may have TTK values that are actually longer due to added time between trigger pulls.
+            <br>
+            <br>
+
+            - Some integrally suppressed rifles will not achieve the TTK values listed for them below because they can't fire loud. Their individual Damage Files have more accurate info.
+          </div>
+          <div class="text-red-700 text-center rotate-[-1deg] opacity-80" style="font-size: 1rem; font-family: angel;">TIME TO KILL WOLVES LOUD</div>
+          <div class="leading-tight text-right translate-x-[-10%]" style="font-size: 0.7rem; font-family: courier;" v-for="(value,property) in sortedTTK" >
             {{property}}: {{ value.toFixed(3) }}s
-          </div>
-          <br>
-          <div class="font-thin italic" style="font-size: 0.7rem; font-family: courier;">*SNIPER RIFLES NOT INCLUDED AS THEY DO NOT HAVE A LISTED RPM VALUE IN GAME. ALSO BE ADVISED THAT ASSAULT RIFLE CONVERSION DMR's LIKE THE 416 SCOUT HAVE AN RPM VALUE BUT THEY DON'T HAVE FULL AUTO SO THEIR TTK VALUES CAN BE AFFECTED BY HOW MANY BURSTS REQUIRED TO KILL.
           </div>
           <div @click="showTTKlist = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer font-light" style="font-family: courier;">x</div>
         </div>
