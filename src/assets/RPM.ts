@@ -303,6 +303,21 @@ export const RPM: { [gameName: string]: {[rifleName: string]: number}} = {
     'CTMMG BAAL':	720,
     'CTMMG':	600,
     '6P41':	650,
+
+// SHOTGUNS
+    'ACS12':	300,
+    'KSG12':	130,
+    'M4':	420,
+    'M4 ASSAULT':	420,
+    'M4 SHORTY':	420,
+    'M590A1':	310,
+    'M590A1 SURVIVAL':	310,
+    'RU12SG':	300,
+    'RU12SG ASSAULT':	300,
+    'SASG12':	300,
+    "SILVERBACK'S KSG12":	130,
+    'SPAS-12':	300,
+    'UNDERBARREL SHOTGUN':	120,
   
     },
     Wildlands: {

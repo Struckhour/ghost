@@ -19,6 +19,12 @@ export const loudGuns: { [gameName: string]: string [] } = {
 // DMR'S
 'SVD-63 PATCHWORK',
 
+// SHOTGUNS
+'ACS12',
+'KSG12',
+'SPAS-12',
+'UNDERBARREL SHOTGUN',
+
     ],
 Wildlands: [
 

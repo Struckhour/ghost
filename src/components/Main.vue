@@ -50,28 +50,51 @@ const sortedBonus = Object.keys(BonusDamage['Breakpoint']).sort().reduce(
     [] as RifleObject[]
 );
 
-// RTK RIFLE list Math.ceil(130/rifleDamageValue)
+// RTK WOLF SUPPRESSED RIFLE list
 
-const RTK: {[gameName: string]: {[rifleName: string]: number}}={'Breakpoint':{}} 
+const suppRTK: {[gameName: string]: {[rifleName: string]: number}}={'Breakpoint':{}} 
 
 for (const property in SmartDamage['Breakpoint']) {
-  if (SmartDamage['Breakpoint'].hasOwnProperty(property)){
-RTK['Breakpoint'][property]=(Math.ceil(130/SmartDamage['Breakpoint'][property]))
+  if (!loudGuns['Breakpoint'].includes(property)){
+suppRTK['Breakpoint'][property]=(Math.ceil(130/(SmartDamage['Breakpoint'][property]*0.8)))
 }}
-const sortedRTK = Object.fromEntries(
-    Object.entries(RTK['Breakpoint']).sort((a,b) => a[1]-b[1])
+const sortedSuppRTK = Object.fromEntries(
+    Object.entries(suppRTK['Breakpoint']).sort((a,b) => a[1]-b[1])
 );
 
-// TTK RIFLE list
+// RTK WOLF LOUD RIFLE list
+const loudRTK: {[gameName: string]: {[rifleName: string]: number}}={'Breakpoint':{}} 
 
-const TTK: {[gameName: string]: {[rifleName: string]: number}}={'Breakpoint':{}} 
+for (const property in SmartDamage['Breakpoint']) {
+  if (!suppressedGuns['Breakpoint'].includes(property)){
+loudRTK['Breakpoint'][property]=(Math.ceil(130/SmartDamage['Breakpoint'][property]))
+}}
+const sortedLoudRTK = Object.fromEntries(
+    Object.entries(loudRTK['Breakpoint']).sort((a,b) => a[1]-b[1])
+);
+
+// TTK WOLF SUPPRESSED RIFLE list
+
+const suppTTK: {[gameName: string]: {[rifleName: string]: number}}={'Breakpoint':{}} 
 
 for (const property in RPM['Breakpoint']) {
-  if (SmartDamage['Breakpoint'].hasOwnProperty(property)){
-TTK['Breakpoint'][property]=((60/RPM['Breakpoint'][property])*Math.ceil(130/Math.floor((SmartDamage['Breakpoint'][property]))))
+  if (SmartDamage['Breakpoint'].hasOwnProperty(property) && !loudGuns['Breakpoint'].includes(property)){
+suppTTK['Breakpoint'][property]=((60/RPM['Breakpoint'][property])*Math.ceil(130/Math.floor(((SmartDamage['Breakpoint'][property]*0.8)))))
 }}
-const sortedTTK = Object.fromEntries(
-    Object.entries(TTK['Breakpoint']).sort((a,b) => a[1]-b[1])
+const sortedSuppTTK = Object.fromEntries(
+    Object.entries(suppTTK['Breakpoint']).sort((a,b) => a[1]-b[1])
+);
+
+// TTK WOLF LOUD RIFLE list
+
+const loudTTK: {[gameName: string]: {[rifleName: string]: number}}={'Breakpoint':{}} 
+
+for (const property in RPM['Breakpoint']) {
+  if (SmartDamage['Breakpoint'].hasOwnProperty(property) && !suppressedGuns['Breakpoint'].includes(property)){
+loudTTK['Breakpoint'][property]=((60/RPM['Breakpoint'][property])*Math.ceil(130/Math.floor((SmartDamage['Breakpoint'][property]))))
+}}
+const sortedLoudTTK = Object.fromEntries(
+    Object.entries(loudTTK['Breakpoint']).sort((a,b) => a[1]-b[1])
 );
 // END TTK RIFLE LIST
 
@@ -1021,10 +1044,10 @@ function getStylePosition(index: number) {
         <div v-show="showBonuslist" class="absolute top-[10px] sm:top-[20px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg font-bold" >
           <div class="text-blue-400 text-center rotate-[-0deg] opacity-100 italic" style="font-size: 1rem; font-family: ZCOOL;">BONUS DAMAGE RIFLES
           </div>
-
-          <div class="leading-tight text-center font-thin italic" style="font-size: 0.5rem; font-family: courier;">SOME RIFLES RECEIVE 'HIDDEN' BONUS DAMAGE AFTER A KILL. YOU CAN OBSERVE THIS DAMAGE BONUS IN THE LOADOUT MENU IF YOU PAUSE TO LOADOUT MENU AFTER A KILL. YOU'LL SEE THAT THE DAMAGE NUMBER FOR YOUR RIFLE IS 5 OR 10 POINTS HIGHER THAN NORMAL. FOR EXAMPLE, THE MDR NORMALLY HAS 37 DAMAGE BUT AFTER A KILL IT HAS 42 DAMAGE TEMPORARILY. BONUS DAMAGE SEEMS TO LAST FOR 10s AFTER A KILL OR UNTIL YOU PAUSE TO MENU(YOU'LL SEE IT IN MENU, BUT IT RESETS TO NORMAL WHEN YOU UNPAUSE). EQUIPPING/REMOVING YOUR SUPPRESSOR OR SWITCHING WEAPONS ALSO RESETS THE DAMAGE.
+          <br>
+          <div class="leading-tight text-center font-thin italic" style="font-size: 0.5rem; font-family: ZCOOL;">- SOME RIFLES RECEIVE 'HIDDEN' BONUS DAMAGE AFTER A KILL. YOU CAN OBSERVE THIS DAMAGE BONUS IN THE LOADOUT MENU IF YOU PAUSE TO LOADOUT MENU AFTER A KILL. YOU'LL SEE THAT THE DAMAGE NUMBER FOR YOUR RIFLE IS 5 OR 10 POINTS HIGHER THAN NORMAL. FOR EXAMPLE, THE MDR NORMALLY HAS 37 DAMAGE BUT AFTER A KILL IT HAS 42 DAMAGE TEMPORARILY. BONUS DAMAGE SEEMS TO LAST FOR 10s AFTER A KILL OR UNTIL YOU PAUSE TO MENU(YOU'LL SEE IT IN MENU, BUT IT RESETS TO NORMAL WHEN YOU UNPAUSE). EQUIPPING/REMOVING YOUR SUPPRESSOR OR SWITCHING WEAPONS ALSO RESETS THE DAMAGE.
           </div>
-
+          <br>
           <div class="leading-tight translate-x-[10%] font-bold" style="font-size: 0.7rem; font-family: courier;" v-for="rifleBonus in sortedBonus" >
             {{rifleBonus.rifleName}}:<span class="text-bold italic text-blue-400" style="font-size: 0.7rem; font-family: ZCOOL;">+{{ rifleBonus.rifleValue }}</span>
           </div>
@@ -1036,44 +1059,54 @@ function getStylePosition(index: number) {
           <div class="flex justify-center">
             <img class="object-fill h-48 w-96" src="/assets/9-bullets.gif">
           </div>
-          <div class="leading-tight font-thin italic" style="font-size: 0.6rem; font-family: courier;">
-            <br>
-            - Some integrally suppressed rifles may not achieve the RTK values listed for them below because they can't fire loud. Their individual Damage Files have more accurate info.
-            <br>
+          <div class="leading-tight font-thin italic" style="font-size: 0.7rem; font-family: ZCOOL;">
             <br>
             - Be mindful of burst fire. Some rifles actually fire 2 rounds instead of 3 when set to burst fire mode. 
           </div>
-          <div class="text-red-700 text-center rotate-[-1deg] opacity-80" style="font-size: 1rem; font-family: angel;">ROUNDS TO KILL WOLVES LOUD
+          <br>
+          <div class="text-black text-center rotate-[-1deg] opacity-80" style="font-size: 1rem; font-family: angel;">ROUNDS TO KILL WOLVES SUPPRESSED
           </div>
-          <div class="leading-tight text-right translate-x-[-16%]" style="font-size: 0.7rem; font-family: courier;" v-for="(value,property) in sortedRTK" >
+          <div class="leading-tight text-right translate-x-[-16%]" style="font-size: 0.7rem; font-family: courier;" v-for="(value,property) in sortedSuppRTK" >
             {{property}}: {{ value }}
           </div>
-          
+          <br>
+          <div class="text-red-700 text-center rotate-[-1deg] opacity-80" style="font-size: 1rem; font-family: angel;">ROUNDS TO KILL WOLVES LOUD
+          </div>
+          <div class="leading-tight text-right translate-x-[-16%]" style="font-size: 0.7rem; font-family: courier;" v-for="(value,property) in sortedLoudRTK" >
+            {{property}}: {{ value }}
+          </div>
           <!-- {{ RPM.Breakpoint }} -->
           <div @click="showRTKlist = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer font-light" style="font-family: courier;">x</div>
         </div>
 
 <!-- TTK LIST BUTTON -->
         <div v-show="showTTKlist" class="absolute top-[10px] sm:top-[20px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg font-bold" >
-          
           <div class="flex justify-center">
           <img class="object-fill h-48 w-96" src="/assets/yes-they-deserved-to-die.gif">
-          
           </div>
-          <div class="leading-tight font-thin italic" style="font-size: 0.6rem; font-family: courier;">
+          <div class="leading-tight font-thin italic" style="font-size: 0.7rem; font-family: ZCOOL;">
             <br>
-            - Sniper rifles are not included here as they don't have RPM values listed in game. 
+            - Time to kill values are calculated using the rounds per minute and damage values listed in game. They are somewhat helpful for comparison between rifles here but are probably only approximate as they can't account for differences in bullet travel time. 
             <br>
             <br>
-
+            - Sniper rifles are not included here as they don't have rounds per minute values listed in game. 
+            <br>
+            <br>
             - Burst fire rifles that lack full auto may have TTK values that are actually longer due to added time between trigger pulls.
             <br>
             <br>
-
-            - Some integrally suppressed rifles will not achieve the TTK values listed for them below because they can't fire loud. Their individual Damage Files have more accurate info.
           </div>
-          <div class="text-red-700 text-center rotate-[-1deg] opacity-80" style="font-size: 1rem; font-family: angel;">TIME TO KILL WOLVES LOUD</div>
-          <div class="leading-tight text-right translate-x-[-10%]" style="font-size: 0.7rem; font-family: courier;" v-for="(value,property) in sortedTTK" >
+          <div class="text-black text-center rotate-[-1deg] opacity-80" style="font-size: 1rem; font-family: angel;">
+            TIME TO KILL WOLVES SUPPRESSED
+          </div>
+          <div class="leading-tight text-right translate-x-[-10%]" style="font-size: 0.7rem; font-family: courier;" v-for="(value,property) in sortedSuppTTK" >
+            {{property}}: {{ value.toFixed(3) }}s
+          </div>
+          <br>
+          <div class="text-red-700 text-center rotate-[-1deg] opacity-80" style="font-size: 1rem; font-family: angel;">
+            TIME TO KILL WOLVES LOUD
+          </div>
+          <div class="leading-tight text-right translate-x-[-10%]" style="font-size: 0.7rem; font-family: courier;" v-for="(value,property) in sortedLoudTTK" >
             {{property}}: {{ value.toFixed(3) }}s
           </div>
           <div @click="showTTKlist = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer font-light" style="font-family: courier;">x</div>
