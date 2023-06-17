@@ -583,6 +583,21 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
     },
     'PALADIN OPTIC': {
       'PALADIN 9':[70,200,275,350,450,560,],
+
+// SHOTGUNS
+      // 'ACS12':	[100],
+      // 'KSG12':	[100],
+      // 'M4':	[100],
+      // 'M4 ASSAULT':	[100],
+      // 'M4 SHORTY':	[100],
+      // 'M590A1':	[100],
+      // 'M590A1 SURVIVAL':	[100],
+      // 'RU12SG':	[100],
+      // 'RU12SG ASSAULT':	[100],
+      // 'SASG12':	[100],
+      // "SILVERBACK'S KSG12":	[100],
+      // 'SPAS-12':	[100],
+      // 'UNDERBARREL SHOTGUN':	[100],
     }
   },
   Wildlands: {

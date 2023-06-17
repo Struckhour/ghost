@@ -10,11 +10,9 @@ import { SmartDamage, GetSmartRifleName, SmartRifles } from '../assets/SmartDama
 import { BonusDamage, GetBonusRifleName, BonusRifles } from '../assets/BonusDamage';
 import { SpecialNote, GetSpecialRifleName, SpecialRifles } from '../assets/SpecialNote';
 import { RPM, GetRPMRifleName, RPMRifles } from '../assets/RPM';
-// import shotguns from '../assets/shotguns';
+import shotguns from '../assets/shotguns';
 import { loudGuns, IsLoudGun } from '../assets/isLoud';
 import { suppressedGuns, IsSuppressedGun } from '../assets/isSuppressed';
-
-
 
 
 
@@ -25,6 +23,7 @@ const showRTK = ref(false);
 const showTrig = ref(false);
 const range = ref(0);
 const altitude = ref(0);
+const showRando = ref(false);
 const gameName = defineProps<{game: string}>()
 const showBonuslist = ref(false);
 const showRTKlist = ref(false);
@@ -96,7 +95,29 @@ loudTTK['Breakpoint'][property]=((60/RPM['Breakpoint'][property])*Math.ceil(130/
 const sortedLoudTTK = Object.fromEntries(
     Object.entries(loudTTK['Breakpoint']).sort((a,b) => a[1]-b[1])
 );
+
 // END TTK RIFLE LIST
+
+// const randoRifle = Math.floor(Math.random() * SmartRifles.length);
+
+// function getRandomRifle(SmartRifles: string[]): string {
+//   const randoRifle = Math.floor(Math.random() * SmartRifles.length);
+//   return SmartRifles[randoRifle];
+// }
+
+// const randomRifle = getRandomRifle(SmartRifles);
+// console.log(randomRifle);
+
+const rifleNameArray = SmartRifles;
+
+function getRandomRifle() {
+  const randoRifle = Math.floor(Math.random() * rifleNameArray.length);
+  return rifleNameArray[randoRifle];
+}
+
+// Example usage
+// console.log(getRandomRifle()); // Returns a random rifle from the SmartRifles array
+// console.log(getRandomRifle()); // Returns a different random rifle
 
 let showScopeMenu = ref(false);
 let showRifleMenu = ref(false);
@@ -520,83 +541,27 @@ function getStylePosition(index: number) {
       <div class="text-2xl mt-1 h-20 relative" @click="removeScopeMenu(); removeRifleMenu();">
         <router-link
           to="/"
-          class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute left-[53%] -rotate-[3deg] -translate-x-[155%] z-40" style="font-family: angel;">
+          class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute left-[53%] -rotate-[3deg] -translate-x-[152%] z-40" style="font-family: angel;">
           Redeploy
         </router-link>
-        <div @click="showIntel = !showIntel; showShotguns = false; showHandguns = false; showRTK = false; showTrig = false;" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute left-[53%] -rotate-[-3deg] -translate-x-[73%] z-40 cursor-pointer" style="font-family: angel;">
+        <div @click="showIntel = !showIntel; showShotguns = false; showHandguns = false; showRTK = false; showTrig = false; showRando = false;" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute left-[53%] -rotate-[-3deg] -translate-x-[73%] z-40 cursor-pointer" style="font-family: angel;">
           Intel
         </div>
-        <div class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute left-[53%] rotate-[-2deg] translate-x-[25%] z-40 cursor-pointer" style="font-family: angel;">
+        <div class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute left-[53%] rotate-[-2deg] translate-x-[22%] z-40 cursor-pointer" style="font-family: angel;">
           <a href="https://www.youtube.com/watch?v=HwlGfuORwAY" target="_blank">Feedback</a>
         </div>
 
-<!-- Shotguns -->
-        <div v-if="gameName.game === 'Breakpoint'" @click="showShotguns = !showShotguns; showIntel = false; showHandguns = false; showRTK = false; showTrig = false;" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[50%] left-[53%] rotate-[-1deg] translate-x-[-155%] z-40 cursor-pointer" style="font-family: angel;">
-          Shotguns 
-        </div>
-        <div v-show="showShotguns" @click="showShotguns = false" class="absolute top-[100px] sm:top-[200px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg" style="font-size: 1rem; font-family: courier;">
-          <img src="/assets/ShotgunsBP.png">
-          <div @click="showShotguns = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer" style="font-family: courier;">x</div>
-        </div>
-<!-- End Shotguns -->
-
-<!-- Pistols -->
-        <div v-if="gameName.game === 'Breakpoint'" @click="showHandguns = !showHandguns; showIntel = false; showShotguns = false; showRTK = false; showTrig = false;" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[50%] left-[53%] rotate-[2deg] translate-x-[-46%] z-40 cursor-pointer" style="font-family: angel;">
-          Handguns 
-        </div>
-        <div v-show="showHandguns" @click="showHandguns = false" class="absolute top-[100px] sm:top-[200px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg" style="font-size: 1rem; font-family: courier;">
-          <b><u>For those who give a damn</u>,</b><br>
-
-          All Handgun rounds start dropping off around 75m to 100m with the exception of Sharp Thunder which begins dropping at 175m. The Ballistic Advantage perk seems to add <i><b>approximately</b></i> 50% range. So headshots past 100m with handguns are guesswork in general, especially without Ballistic Advantage.<br><br>
-          
-          The 5.7 USG, both P227's, both Maxim 9's, and the SC-IS actually do +5 more damage than what their stats in menu show. This can be seen if you pause to loadout menu when close to an enemy before even firing. Kill tests confirm this damage is real.<br><br>
-          
-          The Bailiff 410, both Desert Eagles and Sharp Thunder do +5 damage only on their 2nd consecutive kill within ~5 seconds. This can be seen if you pause to loadout menu after a kill. And it's crazy, but these handguns also suffer -20% suppressor damage despite not having suppressors, with the exception of the Desert Eagle Survival which has a suppressor that can't be removed. The only way to get full damage on these handguns is as Panther or Echelon class. These 4 handguns also don't receive the Pistolero perk buff.<br><br>
-          
-          There are no handgun loadouts that will one-shot a Wolf target center mass.<br>
-          
-          <br><u><b>Noteable one-shot kill scenarios for Sentinel personnel targets center mass while UNDETECTED:</b></u><br>
-          <span style="font-size: 0.9rem;">
-          - The Bailiff 410, Sharp Thunder, both Desert Eagles<br>
-          - The SC-IS as Echelon class<br>
-          - The SC-IS as Panther class with the Pistolero perk<br>
-          - Any 31 damage handgun as Echelon class with the Pistolero perk<br>
-          - The 5.7 USG as Echelon class<br>
-          - The 5.7 USG as Panther class with the Pistolero perk<br>
-          - Both Maxim 9's as Echelon class with the Pistolero perk<br></span>
-
-          <br><u><b>Noteable one-shot kill scenarios for Sentinel personnel targets center mass while DETECTED:</b></u><br>
-          <span style="font-size: 0.9rem;">
-          - The Bailiff 410 as Panther or Echelon class<br>
-          - Sharp Thunder as Echelon class<br> 
-          - Sharp Thunder on 2nd consecutive kill as Panther class<br></span>
-          
-          <div @click="showHandguns = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer" style="font-family: courier;">x</div>
-        </div>
-<!-- End Pistols -->
 <!-- TRIG BUTTON -->
-      <div v-if="gameName.game === 'Breakpoint'" @click="showTrig = !showTrig; showIntel = false; showShotguns = false; showHandguns = false; showRTK =false" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[50%] left-[53%] rotate-[-4deg] translate-x-[110%] z-40 cursor-pointer" style="font-family: angel;">Trig.
-      </div>
+        <div v-if="gameName.game === 'Breakpoint'" @click="showTrig = !showTrig; showIntel = false; showShotguns = false; showHandguns = false; showRTK =false; showRando = false;" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[50%] left-[53%] rotate-[-1deg] translate-x-[-92%] z-40 cursor-pointer" style="font-family: angel;">Triggernometry
+        </div>
 
-      <div v-show="showTrig" class="absolute top-[100px] sm:top-[200px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg" style="font-size: 0.9rem; font-family: courier;">
-        <u>Calculate down(or up)hill shots below:</u>
-        <br><br><br>
-        <img src="/assets/triangle.png">
-        <div class="absolute top-[46%] left-[27%] rotate-[31deg] font-bold">Range To Target:<input size="3" class="border border-black rounded-lg font-bold" v-model="range">m
+<!-- RANDOM BUTTON -->
+
+        <div v-if="gameName.game === 'Breakpoint'" @click="showRando =!showRando; showRTK = false; selectedRifle=(getRandomRifle()); showTrig = false; showIntel = false; showShotguns = false; showHandguns = false; " class="active:text-[#571111] px-2 border-dotted border-2 text-green-600 border-green-600 hover:text-purple-400 hover:border-purple-700 rounded-lg shadow-black shadow-md font-sans absolute top-[50%] left-[50%] rotate-[1deg] translate-x-[37%] z-40 cursor-pointer" style="font-size: 01.5rem; font-family: angel;">RANDOM?
         </div>
-        <br>
-        <div class="absolute top-[52%] left-[12%] font-bold">Altitude<br>To Target:<br><input size="3" class="border border-black rounded-lg font-bold" v-model="altitude">m
-        </div>
-        <div class="absolute top-[78%] left-[18%] font-bold text-red-600">True Ballistic Range:
-          {{ Math.round((range**2-altitude**2)**0.5) }}m
-        </div>        
-        <div @click="showTrig = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer" style="font-family: courier;">x
-        </div>
-      </div>
+
       </div>
       
-<!-- END TRIG BUTTON -->
-
       <div v-show="showIntel" @click="showIntel = false;" class="absolute top-[100px] sm:top-[200px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg" style="font-size: 1rem;font-family: courier;">
         <a href="https://www.youtube.com/watch?v=HwlGfuORwAY" target="_blank"><b><i><u>Click here for demo video and to make rifle/scope/attachment requests in the Youtube comments.</u></i></b></a>
         <br><br>
@@ -894,28 +859,132 @@ function getStylePosition(index: number) {
           {{sezzing[gameName.game][selectedScopeName][selectedRifle]}}
           </div>
 
+<!-- TRIG CARD -->
+          <div v-show="showTrig" class="absolute top-[100px] sm:top-[10px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg shadow-black shadow-md text-center leading-tight" >
+            <div class="font-bold opacity-90 rotate-[2deg]" style="font-size: 1rem; font-family: angel;">
+              Calculate downhill <br>shots below:
+            </div>
+            <div class="font-light" style="font-size: 0.7rem; font-family: courier;">(This also works for uphill shots.)</div>
+            <br>
+            <div class="text-center rotate-[0deg] font-bold" style="font-size: 1rem; font-family: courier;">c = Range To Target:<input size="3" class="border border-black rounded font-bold" v-model="range">m
+            </div>
+            <br>
+            <div class="text-center font-bold" style="font-size: 1rem; font-family: courier;">a = Altitude To Target:<input size="3" class="border border-black rounded font-bold" v-model="altitude">m
+            </div>
+            <img class="h-[100%] w-[100%]" src="/assets/triangle.png">
+            <div class="font-bold" style="font-size: 1rem; font-family: courier;">b = True Ballistic Range:
+              <div class="text-red-700 opacity-80 rotate-[-4deg]" style="font-size: 1.3rem; font-family: angel;">{{ Math.round((range**2-altitude**2)**0.5) }}<span class="" style="font-size: ; font-family: courier;">m</span>
+              </div>
+            </div>        
+          <div @click="showTrig = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer" style="font-family: courier;">x</div>
+        </div>
+<!-- END TRIG card -->
+
+<!-- RANDOM CARD -->
+      
+        <div v-show="showRando" class="absolute top-[100px] sm:top-[10px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg shadow-black shadow-md rotate-[-0deg]" style="font-size: 1rem; font-family: angel;">
+          
+          <div>
+            <img class="h-20 w-20 rotate-[-10deg] rounded-2xl" src="/assets/camo_dice2.png">
+          </div>
+          <div class="absolute right-[3%] translate-y-[-90%]">
+            <img class="h-20 w-20 rounded-2xl rotate-[10deg]" src="/assets/camo_dice.png">
+          </div>
+          <div class="text-center text-purple-700 translate-y-[-220%] rotate-[-1deg]" style="font-size: 1.3rem; font-family: angel;">
+            {{ selectedRifle }}
+          </div>
+          <div class="text-center text-black" style="font-size: 0.9rem; font-family:courier;"><b>Be sure to select a compatible scope for this rifle!</b> You may also wish to select a version of this rifle with the MAWL-DA, RANGEFINDER OR BALLISTIC ADVANTAGE when applicable from the dropdown menu above.
+            <br>
+            <br>
+            <b>Shotguns are included in the random list too!</b> <br>If you rolled a shotgun, you obviously won't have any range values on the scopes, but you can still open the 
+            <button @click="showRTK = !showRTK; showIntel = false; showShotguns = false; showHandguns = false; showRando = false;" class="font-bold underline text-red-700 translate-x-[0%] z-40 cursor-pointer">
+            Damage File
+            </button> and see how many Rounds To Kill and Time To Kill for your shotgun. 
+            <br>
+            <div class="text-center">
+            <button v-if="gameName.game === 'Breakpoint'" @click="showRTK = !showRTK; showIntel = false; showShotguns = false; showHandguns = false; showRando = false;" class="active:text-red-800 px-2 border text-red-800 border-red-800 hover:text-red-600 rounded-lg shadow-black shadow-md font-sans rotate-[1deg] translate-x-[0%] z-40 cursor-pointer" style="font-family: angel;">
+            Damage File
+            </button>
+          </div>
+            And please let us know of any un-ranged rifle set-ups! We have completed most rifle/scope combinations but there is still work to be done. Click <a class="text-red-700 underline font-bold" href="https://www.youtube.com/watch?v=HwlGfuORwAY">Feedback</a> to give us a friendly reminder on something we've missed.
+          </div>
+          
+          <div @click="showRando = false;" class="absolute top-[-5px] right-2 text-5xl cursor-pointer" style="font-family: courier;">x
+          </div>
+      </div>
+
 <!-- DAMAGE FILE BUTTON -->
-        <div v-if="gameName.game === 'Breakpoint'" @click="showRTK = !showRTK; showIntel = false; showShotguns = false; showHandguns = false" class="active:text-red-800 px-2 border text-red-800 border-red-800 hover:text-red-600 rounded-lg shadow-black shadow-md font-sans absolute top-[67%] left-[62%] rotate-[-35deg] translate-x-[25%] z-40 cursor-pointer" style="font-family: angel;">
+        <div v-if="gameName.game === 'Breakpoint'" @click="showRTK = !showRTK; showIntel = false; showShotguns = false; showHandguns = false; showRando = false;" class="active:text-red-800 px-2 border text-red-800 border-red-800 hover:text-red-600 rounded-lg shadow-black shadow-md font-sans absolute top-[67%] left-[62%] rotate-[-35deg] translate-x-[25%] z-40 cursor-pointer" style="font-family: angel;">
           Damage <br>File
         </div>
-        <div v-if="SmartDamage[gameName.game].hasOwnProperty(GetSmartRifleName(SmartRifles, selectedRifle)) && showRTK" class="absolute top-[10px] sm:top-[20px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg font-bold" style="font-size: 0.6rem; font-family: ZCOOL;">
+        <div v-if="SmartDamage[gameName.game].hasOwnProperty(GetSmartRifleName(SmartRifles, selectedRifle)) && showRTK" class="absolute top-[10px] sm:top-[14px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg shadow-black shadow-md font-bold rotate-[0.5deg]" style="font-size: 0.6rem; font-family: ZCOOL;">
           
-          <div class="text-center font-bold text-black opacity-80 rotate-[2deg]" style="font-size:1rem; font-family: angel;">{{ selectedRifle }} 
+          <!-- Shotguns -->
+        <div v-if="gameName.game === 'Breakpoint'" @click="showShotguns = !showShotguns; showIntel = false; showHandguns = false; showTrig = false; showRando = false;" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[0%] left-[1%] rotate-[-1deg] translate-x-[-0%] z-40 cursor-pointer" style="font-size: 0.6rem; font-family: angel;">
+          Shotguns 
+        </div>
+        <div v-show="showShotguns" @click="showShotguns = false" class="absolute top-[100px] sm:top-[15px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-[100%] max-w-xl left-2/4 -translate-x-[50%] p-4 pt-8 rounded-lg shadow-black shadow-md rotate-[-3deg]" style="font-size: 1rem; font-family: ZCOOL;">
+          <br>
+          <!-- {{ shotguns.Breakpoint }} -->
+          <div class=""> 
+          <img class="rounded-xl" src="/assets/ShotgunsBP.png"> 
+          </div>
+          <br>
+          <div @click="showShotguns = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer font-light" style="font-family: courier;">x</div>
+        </div>
+<!-- End Shotguns -->
+
+<!-- Pistols -->
+        <div v-if="gameName.game === 'Breakpoint'" @click="showHandguns = !showHandguns; showIntel = false; showShotguns = false; showTrig = false; showRando = false;" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[0%] right-[16%] rotate-[1deg] translate-x-[-0%] z-40 cursor-pointer" style="font-size: 0.6rem; font-family: angel;">
+          Handguns 
+        </div>
+        <div v-show="showHandguns" @click="showHandguns = false" class="absolute top-[100px] sm:top-[10px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-[100%] max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg shadow-black shadow-md rotate-[-1deg]" style="font-size: 0.8rem; font-family: courier;">
+          <b><u>For those interested</u>,</b><br>
+
+          All Handgun rounds start dropping off around 75m to 100m with the exception of Sharp Thunder which begins dropping at 175m. The Ballistic Advantage perk seems to add <i><b>approximately</b></i> 50% range. So headshots past 100m with handguns are guesswork in general, especially without Ballistic Advantage.<br><br>
+          
+          The 5.7 USG, both P227's, both Maxim 9's, and the SC-IS actually do +5 more damage than what their stats in menu show. This can be seen if you pause to loadout menu when close to an enemy before even firing. Kill tests confirm this damage is real.<br><br>
+          
+          The Bailiff 410, both Desert Eagles and Sharp Thunder do +5 damage only on their 2nd consecutive kill within ~5 seconds. This can be seen if you pause to loadout menu after a kill. And it's crazy, but these handguns also suffer -20% suppressor damage despite not having suppressors, with the exception of the Desert Eagle Survival which has a suppressor that can't be removed. The only way to get full damage on these handguns is as Panther or Echelon class. These 4 handguns also don't receive the Pistolero perk buff.<br><br>
+          
+          There are no handgun loadouts that will one-shot a Wolf target center mass.<br>
+          
+          <br><u><b>Noteable one-shot kill scenarios for Sentinel personnel targets center mass while UNDETECTED:</b></u><br>
+          <span style="font-size: 0.9rem;">
+          - The Bailiff 410, Sharp Thunder, both Desert Eagles<br>
+          - The SC-IS as Echelon class<br>
+          - The SC-IS as Panther class with the Pistolero perk<br>
+          - Any 31 damage handgun as Echelon class with the Pistolero perk<br>
+          - The 5.7 USG as Echelon class<br>
+          - The 5.7 USG as Panther class with the Pistolero perk<br>
+          - Both Maxim 9's as Echelon class with the Pistolero perk<br></span>
+
+          <br><u><b>Noteable one-shot kill scenarios for Sentinel personnel targets center mass while DETECTED:</b></u><br>
+          <span style="font-size: 0.9rem;">
+          - The Bailiff 410 as Panther or Echelon class<br>
+          - Sharp Thunder as Echelon class<br> 
+          - Sharp Thunder on 2nd consecutive kill as Panther class<br></span>
+          
+          <div @click="showHandguns = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer font-light" style="font-family: courier;">x</div>
+        </div>
+<!-- End Pistols -->
+
+          <div class="text-center font-bold text-black opacity-80 rotate-[2deg]" style="font-size: 1.5rem; font-family: angel;">{{ selectedRifle }} 
           </div>
           
-          <div v-if="!IsSuppressedGun(suppressedGuns[gameName.game],selectedRifle)" class="leading-tight text-center font-bold text-black translate-y-[-0%]" style="font-size: 0.7rem; font-family: ZCOOL;">DAMAGE: {{ rifleDamageValue }} <span v-if="bonusRifleValue" class="text-blue-400 font-bold italic">to {{ rifleDamageValue + bonusRifleValue }} </span> 
+          <div v-if="!IsSuppressedGun(suppressedGuns[gameName.game],selectedRifle)" class="leading-tight text-center font-bold text-black translate-y-[-0%]" style="font-size: 0.7rem; font-family: ZCOOL;">DAMAGE: {{ rifleDamageValue }} <span v-if="bonusRifleValue" class="text-blue-500 font-bold italic">to {{ rifleDamageValue + bonusRifleValue }} </span> 
           </div>
           <div v-if="!IsLoudGun(loudGuns[gameName.game],selectedRifle)" class="text-center font-bold text-black translate-y-[-0%]" style="font-size: 0.7rem; font-family: ZCOOL;">SUPPRESSED DAMAGE: {{ Math.floor(rifleDamageValue*0.8) }} 
-            <span v-if="bonusRifleValue" class="text-blue-400 font-bold italic">to {{ Math.floor(((rifleDamageValue) + bonusRifleValue)*0.8) }} 
+            <span v-if="bonusRifleValue" class="text-blue-500 font-bold italic">to {{ Math.floor(((rifleDamageValue) + bonusRifleValue)*0.8) }} 
             </span> 
           </div>
 <!-- SPECIAL NOTES -->
           <div v-if="SpecialNote[gameName.game][GetSpecialRifleName(SpecialRifles, selectedRifle)]" class="leading-tight text-black font-bold" style="font-size: 0.7rem; text-transform: uppercase; font-family: courier;">SPECIAL NOTE: 
-            <span class="leading-tight font-thin italic" style="font-size: 0.5rem; text-transform: uppercase; font-family: courier;">{{ SpecialNote[gameName.game][GetSpecialRifleName(SpecialRifles, selectedRifle)] }}
+            <span class="leading-tight font-thin" style="font-size: 0.6rem; text-transform: uppercase; font-family: courier;">{{ SpecialNote[gameName.game][GetSpecialRifleName(SpecialRifles, selectedRifle)] }}
             </span>
           </div>
 <!-- BONUS DAMAGE -->
-          <div v-if="bonusRifleValue" @click="showBonuslist = !showBonuslist;" class="text-center text-blue-400 font-bold italic hover:text-blue-500 no-underline hover:underline cursor-pointer translate-y-[-0%]" style="font-size: 0.7rem; font-family: ZCOOL;">+{{ bonusRifleValue }} BONUS DAMAGE ON KILLS CHAINED WITHIN 10s
+          <div v-if="bonusRifleValue" @click="showBonuslist = !showBonuslist;" class="text-center text-blue-500 font-bold italic hover:text-blue-500 no-underline hover:underline cursor-pointer translate-y-[-0%]" style="font-size: 0.7rem; font-family: ZCOOL;">+{{ bonusRifleValue }} BONUS DAMAGE ON KILLS CHAINED WITHIN 10s
           </div>
 <!-- RTK LIST -->
           <span @click="showRTKlist = !showRTKlist;" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute left-[2%] rotate-[-1deg] translate-x-[0%] z-40 cursor-pointer" style="font-size: 0.6rem; font-family: angel;">ROUNDS TO KILL
@@ -935,7 +1004,7 @@ function getStylePosition(index: number) {
           <span v-if="!IsLoudGun(loudGuns[gameName.game],selectedRifle)" > SUPPRESSED: {{ Math.ceil(39/Math.floor(rifleDamageValue*0.8)) }}
           </span>
 <!-- BONUS STEALTHED SUPPRESSED -->
-          <span v-if= "bonusRifleValue && Math.ceil(39/Math.floor(rifleDamageValue*0.8)) > Math.ceil(39/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 ))" class="text-blue-400 font-bold italic"> &nbsp; W/BONUS: {{ Math.ceil(39/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 )) }}
+          <span v-if= "bonusRifleValue && Math.ceil(39/Math.floor(rifleDamageValue*0.8)) > Math.ceil(39/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 ))" class="text-blue-500 font-bold italic"> &nbsp; W/BONUS: {{ Math.ceil(39/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 )) }}
           </span>
 
 <!-- TTK -->
@@ -943,14 +1012,14 @@ function getStylePosition(index: number) {
 <!-- BONUS TTK SUPPRESSED             -->    
             <span>{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(39/Math.floor(rifleDamageValue*0.8))).toFixed(3) }}s
             </span>
-            <span class="text-blue-400 font-bold italic" style="font-family: ZCOOL;" v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number' && Math.ceil(39/Math.floor(rifleDamageValue*0.8)) > Math.ceil(39/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 ))"> &nbsp;{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(39/Math.floor((rifleDamageValue + bonusRifleValue)*0.8))).toFixed(3) }}s
+            <span class="text-blue-500 font-bold italic" style="font-family: ZCOOL;" v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number' && Math.ceil(39/Math.floor(rifleDamageValue*0.8)) > Math.ceil(39/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 ))"> &nbsp;{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(39/Math.floor((rifleDamageValue + bonusRifleValue)*0.8))).toFixed(3) }}s
             </span>
           </span>
           <br>
           <span v-if="!IsSuppressedGun(suppressedGuns[gameName.game],selectedRifle)" > LOUD: {{ Math.ceil(39/rifleDamageValue) }}
           </span>
 <!-- BONUS STEALTHED LOUD -->
-          <span v-if="bonusRifleValue && Math.ceil(39/rifleDamageValue) > Math.ceil(39/(rifleDamageValue + bonusRifleValue))" class="text-blue-400 font-bold italic"> &nbsp; W/BONUS: {{ Math.ceil(39/(rifleDamageValue + bonusRifleValue)) }}
+          <span v-if="bonusRifleValue && Math.ceil(39/rifleDamageValue) > Math.ceil(39/(rifleDamageValue + bonusRifleValue))" class="text-blue-500 font-bold italic"> &nbsp; W/BONUS: {{ Math.ceil(39/(rifleDamageValue + bonusRifleValue)) }}
           </span>
 
 <!-- TTK -->
@@ -958,7 +1027,7 @@ function getStylePosition(index: number) {
 <!-- BONUS TTK LOUD             -->
             <span>{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(39/rifleDamageValue)).toFixed(3) }}s
             </span>
-            <span class="text-blue-400 font-bold italic" v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number' && Math.ceil(39/Math.floor(rifleDamageValue)) > Math.ceil(39/Math.floor((rifleDamageValue + bonusRifleValue) ))"> &nbsp;{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(39/Math.floor((rifleDamageValue + bonusRifleValue)))).toFixed(3) }}s
+            <span class="text-blue-500 font-bold italic" v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number' && Math.ceil(39/Math.floor(rifleDamageValue)) > Math.ceil(39/Math.floor((rifleDamageValue + bonusRifleValue) ))"> &nbsp;{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(39/Math.floor((rifleDamageValue + bonusRifleValue)))).toFixed(3) }}s
             </span>
           </span>
           
@@ -967,21 +1036,21 @@ function getStylePosition(index: number) {
           <span v-if="!IsLoudGun(loudGuns[gameName.game],selectedRifle)" class="text-red-600 font-bold"> SUPPRESSED: {{ Math.ceil(100/Math.floor(rifleDamageValue*0.8)) }}
           </span>
 <!-- BONUS SENTINEL SUPPRESSED -->
-          <span v-if= "bonusRifleValue && Math.ceil(100/Math.floor(rifleDamageValue*0.8)) > Math.ceil(100/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 ))" class="text-blue-400 font-bold italic"> &nbsp; W/BONUS: {{ Math.ceil(100/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 )) }}
+          <span v-if= "bonusRifleValue && Math.ceil(100/Math.floor(rifleDamageValue*0.8)) > Math.ceil(100/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 ))" class="text-blue-500 font-bold italic"> &nbsp; W/BONUS: {{ Math.ceil(100/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 )) }}
           </span>
 <!-- TTK -->
           <span v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" class="absolute right-[3%] text-red-600 font-bold"> 
 <!-- BONUS TTK SUPPRESSED             -->
             <span v-if="!IsLoudGun(loudGuns[gameName.game],selectedRifle)" >{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(100/Math.floor(rifleDamageValue*0.8))).toFixed(3) }}s
             </span>
-            <span class="text-blue-400 font-bold italic" v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number' && Math.ceil(100/Math.floor(rifleDamageValue*0.8)) > Math.ceil(100/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 ))"> &nbsp;{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(100/Math.floor((rifleDamageValue + bonusRifleValue)*0.8))).toFixed(3) }}s
+            <span class="text-blue-500 font-bold italic" v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number' && Math.ceil(100/Math.floor(rifleDamageValue*0.8)) > Math.ceil(100/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 ))"> &nbsp;{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(100/Math.floor((rifleDamageValue + bonusRifleValue)*0.8))).toFixed(3) }}s
             </span>
           </span>
           <br>
           <span v-if="!IsSuppressedGun(suppressedGuns[gameName.game],selectedRifle)" class="text-red-600 font-bold"> LOUD: {{ Math.ceil(100/rifleDamageValue) }}
           </span> 
 <!-- BONUS SENTINEL LOUD IF -->
-          <span v-if= "bonusRifleValue && Math.ceil(100/rifleDamageValue) > Math.ceil(100/(rifleDamageValue + bonusRifleValue))" class="text-blue-400 font-bold italic"> &nbsp; W/BONUS: {{ Math.ceil(100/(rifleDamageValue + bonusRifleValue)) }}
+          <span v-if= "bonusRifleValue && Math.ceil(100/rifleDamageValue) > Math.ceil(100/(rifleDamageValue + bonusRifleValue))" class="text-blue-500 font-bold italic"> &nbsp; W/BONUS: {{ Math.ceil(100/(rifleDamageValue + bonusRifleValue)) }}
           </span>
 
 <!-- TTK -->
@@ -989,7 +1058,7 @@ function getStylePosition(index: number) {
             
             <span>{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(100/Math.floor(rifleDamageValue))).toFixed(3) }}s
             </span>
-            <span class="text-blue-400 font-bold italic" v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number' && Math.ceil(100/Math.floor(rifleDamageValue)) > Math.ceil(100/Math.floor(rifleDamageValue + bonusRifleValue))"> &nbsp;{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(100/Math.floor((rifleDamageValue + bonusRifleValue)))).toFixed(3) }}s
+            <span class="text-blue-500 font-bold italic" v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number' && Math.ceil(100/Math.floor(rifleDamageValue)) > Math.ceil(100/Math.floor(rifleDamageValue + bonusRifleValue))"> &nbsp;{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(100/Math.floor((rifleDamageValue + bonusRifleValue)))).toFixed(3) }}s
             </span>
           </span>          
           <div class="leading-tight text-center font-light text-black rotate-[1deg] opacity-90" style="font-size: 0.8rem; font-family: angel;">WOLF PERSONNEL: 
@@ -1000,7 +1069,7 @@ function getStylePosition(index: number) {
           <span v-if="!IsLoudGun(loudGuns[gameName.game],selectedRifle)" >SUPPRESSED: {{ Math.ceil(130/Math.floor(rifleDamageValue*0.8)) }}
           </span>
 <!-- BONUS WOLF SUPPRESSED IF -->
-          <span v-if= "bonusRifleValue && Math.ceil(130/Math.floor(rifleDamageValue*0.8)) > Math.ceil(130/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 )) " class="text-blue-400 font-bold italic"> &nbsp; W/BONUS: {{ Math.ceil(130/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 )) }}
+          <span v-if= "bonusRifleValue && Math.ceil(130/Math.floor(rifleDamageValue*0.8)) > Math.ceil(130/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 )) " class="text-blue-500 font-bold italic"> &nbsp; W/BONUS: {{ Math.ceil(130/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 )) }}
           </span>
           
 <!-- TTK -->
@@ -1008,21 +1077,21 @@ function getStylePosition(index: number) {
 <!-- BONUS TTK SUPPRESSED             -->
             <span v-if="!IsLoudGun(loudGuns[gameName.game],selectedRifle)" >{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(130/Math.floor(rifleDamageValue*0.8))).toFixed(3) }}s
             </span>
-            <span class="text-blue-400 font-bold italic" v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number' && Math.ceil(130/Math.floor(rifleDamageValue*0.8)) > Math.ceil(130/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 ))"> &nbsp;{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(130/Math.floor((rifleDamageValue + bonusRifleValue)*0.8))).toFixed(3) }}s
+            <span class="text-blue-500 font-bold italic" v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number' && Math.ceil(130/Math.floor(rifleDamageValue*0.8)) > Math.ceil(130/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 ))"> &nbsp;{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(130/Math.floor((rifleDamageValue + bonusRifleValue)*0.8))).toFixed(3) }}s
             </span>
           </span>
           <br>
           <span v-if="!IsSuppressedGun(suppressedGuns[gameName.game],selectedRifle)" class="text-red-600 font-bold">LOUD: {{ Math.ceil(130/rifleDamageValue) }}
           </span>
 <!-- BONUS WOLF LOUD IF -->
-          <span v-if= "bonusRifleValue && Math.ceil(130/rifleDamageValue) > Math.ceil(130/(rifleDamageValue + bonusRifleValue)) " class=" text-blue-400 font-bold italic"> &nbsp; W/BONUS: {{ Math.ceil(130/(rifleDamageValue + bonusRifleValue)) }}
+          <span v-if= "bonusRifleValue && Math.ceil(130/rifleDamageValue) > Math.ceil(130/(rifleDamageValue + bonusRifleValue)) " class=" text-blue-500 font-bold italic"> &nbsp; W/BONUS: {{ Math.ceil(130/(rifleDamageValue + bonusRifleValue)) }}
           </span>
 
 <!-- TTK -->
           <span v-if="!IsSuppressedGun(suppressedGuns[gameName.game],selectedRifle) && typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" class="absolute right-[3%] text-red-600 font-bold"> 
             
             <span>{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(130/Math.floor(rifleDamageValue))).toFixed(3) }}s</span>
-            <span class="text-blue-400 font-bold italic" v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number' && Math.ceil(130/Math.floor(rifleDamageValue)) > Math.ceil(130/Math.floor(rifleDamageValue + bonusRifleValue))"> &nbsp;{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(130/Math.floor((rifleDamageValue + bonusRifleValue)))).toFixed(3) }}s</span>
+            <span class="text-blue-500 font-bold italic" v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number' && Math.ceil(130/Math.floor(rifleDamageValue)) > Math.ceil(130/Math.floor(rifleDamageValue + bonusRifleValue))"> &nbsp;{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(130/Math.floor((rifleDamageValue + bonusRifleValue)))).toFixed(3) }}s</span>
           </span>
           
 <!-- FASTEST TTK @click="selectedScopeName='DIGITAL';selectedRifle='MK14 ASSAULT'" -->
@@ -1036,29 +1105,36 @@ function getStylePosition(index: number) {
           <!-- <div v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" class="absolute translate-y-[-40%] right-[3%] text-red-600 font-bold" style="font-size: 0.5rem;">SLOWEST KILL RIFLE: {{((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, 'SVD-63')])*Math.ceil(130/SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, 'SVD-63')])).toFixed(3) }}s
           </div> -->
 
+
+
+          <!-- <div v-if="gameName.game === 'Breakpoint'" @click="showRando =!showRando; showRTK = false; selectedRifle=(SmartRifles[randoRifle]); showTrig = false; showIntel = false; showShotguns = false; showHandguns = false; " class="active:text-[#571111] px-2 border-dotted border-4 text-green-600 border-green-600 hover:text-purple-400 hover:border-purple-700 rounded-lg shadow-black shadow-md font-sans absolute top-[88%] left-[50%] rotate-[-2deg] translate-x-[-50%] z-40 cursor-pointer" style="font-size: 0.9rem; font-family: angel;">RANDOM RIFLE??
+          </div> -->
+
+
+          
           <div @click="showRTK = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer font-light" style="font-family: courier;">x
           </div>
         </div>
-<!-- End DAMAGE FILE BUTTON -->
-<!-- BONUS LIST BUTTON -->
+<!-- End DAMAGE FILE -->
+
+<!-- BONUS LIST -->
         <div v-show="showBonuslist" class="absolute top-[10px] sm:top-[20px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg font-bold" >
-          <div class="text-blue-400 text-center rotate-[-0deg] opacity-100 italic" style="font-size: 1rem; font-family: ZCOOL;">BONUS DAMAGE RIFLES
+          <div class="text-blue-500 text-center rotate-[-0deg] opacity-100 italic" style="font-size: 1rem; font-family: ZCOOL;">BONUS DAMAGE RIFLES
           </div>
           <br>
           <div class="leading-tight text-center font-thin italic" style="font-size: 0.5rem; font-family: ZCOOL;">- SOME RIFLES RECEIVE 'HIDDEN' BONUS DAMAGE AFTER A KILL. YOU CAN OBSERVE THIS DAMAGE BONUS IN THE LOADOUT MENU IF YOU PAUSE TO LOADOUT MENU AFTER A KILL. YOU'LL SEE THAT THE DAMAGE NUMBER FOR YOUR RIFLE IS 5 OR 10 POINTS HIGHER THAN NORMAL. FOR EXAMPLE, THE MDR NORMALLY HAS 37 DAMAGE BUT AFTER A KILL IT HAS 42 DAMAGE TEMPORARILY. BONUS DAMAGE SEEMS TO LAST FOR 10s AFTER A KILL OR UNTIL YOU PAUSE TO MENU(YOU'LL SEE IT IN MENU, BUT IT RESETS TO NORMAL WHEN YOU UNPAUSE). EQUIPPING/REMOVING YOUR SUPPRESSOR OR SWITCHING WEAPONS ALSO RESETS THE DAMAGE.
           </div>
           <br>
           <div class="leading-tight translate-x-[10%] font-bold" style="font-size: 0.7rem; font-family: courier;" v-for="rifleBonus in sortedBonus" >
-            {{rifleBonus.rifleName}}:<span class="text-bold italic text-blue-400" style="font-size: 0.7rem; font-family: ZCOOL;">+{{ rifleBonus.rifleValue }}</span>
+            {{rifleBonus.rifleName}}:<span class="text-bold italic text-blue-500" style="font-size: 0.7rem; font-family: ZCOOL;">+{{ rifleBonus.rifleValue }}</span>
           </div>
+          <!-- <img src="/assets/HeavyHawk_AI_Logo.jpg"> -->
           <div @click="showBonuslist = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer font-light" style="font-family: courier;">x</div>
         </div>
 
-<!-- RTK LIST BUTTON -->
-        <div v-show="showRTKlist" class="absolute top-[10px] sm:top-[20px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg font-bold" >
-          <div class="flex justify-center">
-            <img class="object-fill h-48 w-96" src="/assets/9-bullets.gif">
-          </div>
+<!-- RTK LIST -->
+        <div v-show="showRTKlist" class="absolute top-[10px] sm:top-[20px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg shadow-black shadow-md font-bold rotate-[0deg]" >
+          
           <div class="leading-tight font-thin italic" style="font-size: 0.7rem; font-family: ZCOOL;">
             <br>
             - Be mindful of burst fire. Some rifles actually fire 2 rounds instead of 3 when set to burst fire mode. 
@@ -1075,15 +1151,15 @@ function getStylePosition(index: number) {
           <div class="leading-tight text-right translate-x-[-16%]" style="font-size: 0.7rem; font-family: courier;" v-for="(value,property) in sortedLoudRTK" >
             {{property}}: {{ value }}
           </div>
-          <!-- {{ RPM.Breakpoint }} -->
+          <div class="flex justify-center">
+            <img class="object-fill h-48 w-96" src="/assets/9-bullets.gif">
+          </div>
           <div @click="showRTKlist = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer font-light" style="font-family: courier;">x</div>
         </div>
 
-<!-- TTK LIST BUTTON -->
-        <div v-show="showTTKlist" class="absolute top-[10px] sm:top-[20px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg font-bold" >
-          <div class="flex justify-center">
-          <img class="object-fill h-48 w-96" src="/assets/yes-they-deserved-to-die.gif">
-          </div>
+<!-- TTK LIST -->
+        <div v-show="showTTKlist" class="absolute top-[10px] sm:top-[20px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg shadow-black shadow-md font-bold rotate-[0deg]" >
+          
           <div class="leading-tight font-thin italic" style="font-size: 0.7rem; font-family: ZCOOL;">
             <br>
             - Time to kill values are calculated using the rounds per minute and damage values listed in game. They are somewhat helpful for comparison between rifles here but are probably only approximate as they can't account for differences in bullet travel time. 
@@ -1109,6 +1185,9 @@ function getStylePosition(index: number) {
           <div class="leading-tight text-right translate-x-[-10%]" style="font-size: 0.7rem; font-family: courier;" v-for="(value,property) in sortedLoudTTK" >
             {{property}}: {{ value.toFixed(3) }}s
           </div>
+          <div class="flex justify-center">
+          <img class="object-fill h-48 w-96" src="/assets/yes-they-deserved-to-die.gif">
+          </div>
           <div @click="showTTKlist = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer font-light" style="font-family: courier;">x</div>
         </div>
 
@@ -1128,7 +1207,7 @@ function getStylePosition(index: number) {
           <span>SUPPRESSED: {{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][4] }}</span>&nbsp;
           <span class="text-red-600"><b>LOUD: {{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][5] }}</b></span><br>
 
-          <span v-if="damage[gameName.game][GetRifleName(rifles, selectedRifle)][6]" class=" text-blue-400 font-bold" style="font-size: 1rem; text-transform: uppercase; font-family: courier;">+{{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][6] }} BONUS DAMAGE ON 2ND KILL within 10 s</span><br>
+          <span v-if="damage[gameName.game][GetRifleName(rifles, selectedRifle)][6]" class=" text-blue-500 font-bold" style="font-size: 1rem; text-transform: uppercase; font-family: courier;">+{{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][6] }} BONUS DAMAGE ON 2ND KILL within 10 s</span><br>
 
           <span v-if="damage[gameName.game][GetRifleName(rifles, selectedRifle)][7]" class="text-black" style="font-size: 0.9rem; text-transform: uppercase; font-family: courier;">SPECIAL NOTE: {{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][7] }}</span><br>
           <div @click="showRTK = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer" style="font-family: courier;">x</div>

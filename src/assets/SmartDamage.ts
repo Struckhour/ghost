@@ -155,7 +155,21 @@ export const SmartRifles:string[]=[
     'CTMMG BAAL',
     'CTMMG',
     '6P41',        
-        
+     
+// SHOTGUNS
+    'ACS12',
+    "SILVERBACK'S KSG12",
+    'KSG12',
+    'M4 ASSAULT',
+    'M4 SHORTY',
+    'M4',
+    'M590A1 SURVIVAL',
+    'M590A1',
+    'RU12SG ASSAULT',
+    'RU12SG',
+    'SASG12',
+    'SPAS-12',
+    'UNDERBARREL SHOTGUN',
 ]
 
 
