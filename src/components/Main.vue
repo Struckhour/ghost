@@ -883,17 +883,13 @@ function getStylePosition(index: number) {
 <!-- RANDOM CARD -->
       
         <div v-show="showRando" class="absolute top-[100px] sm:top-[10px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg shadow-black shadow-md rotate-[-0deg]" style="font-size: 1rem; font-family: angel;">
-          
           <div>
-            <img class="h-20 w-20 rotate-[-10deg] rounded-2xl" src="/assets/camo_dice2.png">
+            <img class="translate-x-[50%] h-[15%] w-[15%] rotate-[-10deg] rounded-md" src="/assets/camo_dice2.png">
           </div>
-          <div class="absolute right-[3%] translate-y-[-90%]">
-            <img class="h-20 w-20 rounded-2xl rotate-[10deg]" src="/assets/camo_dice.png">
-          </div>
-          <div class="text-center text-purple-700 translate-y-[-220%] rotate-[-1deg]" style="font-size: 1.3rem; font-family: angel;">
+          <div class="text-center text-purple-700 rotate-[-1deg]" style="font-size: 1.3rem; font-family: angel;">
             {{ selectedRifle }}
           </div>
-          <div class="text-center text-black" style="font-size: 0.9rem; font-family:courier;"><b>Be sure to select a compatible scope for this rifle!</b> You may also wish to select a version of this rifle with the MAWL-DA, RANGEFINDER OR BALLISTIC ADVANTAGE when applicable from the dropdown menu above.
+          <div class="text-center text-black" style="font-size: 0.8rem; font-family:courier;"><b>Be sure to select a compatible scope for this rifle!</b> You may also wish to select a version of this rifle with the MAWL-DA, RANGEFINDER OR BALLISTIC ADVANTAGE when applicable from the dropdown menu above.
             <br>
             <br>
             <b>Shotguns are included in the random list too!</b> <br>If you rolled a shotgun, you obviously won't have any range values on the scopes, but you can still open the 
