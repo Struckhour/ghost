@@ -861,21 +861,23 @@ function getStylePosition(index: number) {
 
 <!-- TRIG CARD -->
           <div v-show="showTrig" class="absolute top-[100px] sm:top-[10px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg shadow-black shadow-md text-center leading-tight" >
-            <div class="font-bold opacity-90 rotate-[2deg]" style="font-size: 1rem; font-family: angel;">
+            <div class="font-bold opacity-90 rotate-[1deg]" style="font-size: 1rem; font-family: angel;">
               Calculate downhill <br>shots below:
             </div>
-            <div class="font-light" style="font-size: 0.7rem; font-family: courier;">(This also works for uphill shots.)</div>
-            <br>
+            <div class="font-light" style="font-size: 0.7rem; font-family: courier;">(This also works for uphill shots.)
+            </div>           
             <div class="text-center rotate-[0deg] font-bold" style="font-size: 1rem; font-family: courier;">c = Range To Target:<input size="3" class="border border-black rounded font-bold" v-model="range">m
             </div>
             <br>
             <div class="text-center font-bold" style="font-size: 1rem; font-family: courier;">a = Altitude To Target:<input size="3" class="border border-black rounded font-bold" v-model="altitude">m
             </div>
-            <img class="h-[100%] w-[100%]" src="/assets/triangle.png">
-            <div class="font-bold" style="font-size: 1rem; font-family: courier;">b = True Ballistic Range:
-              <div class="text-red-700 opacity-80 rotate-[-4deg]" style="font-size: 1.3rem; font-family: angel;">{{ Math.round((range**2-altitude**2)**0.5) }}<span class="" style="font-size: ; font-family: courier;">m</span>
-              </div>
+            <br>
+            <div class="text-red-700 font-bold" style="font-size: 1rem; font-family: courier;">b = True Ballistic Range:</div><div class="font-light text-red-700" style="font-size: 0.7rem; font-family: courier;">(Aim as though you're this range from target.)
             </div>        
+            <div class="text-red-700 font-bold rotate-[-1deg]" style="font-size: 1.5rem; font-family: angel;">{{ Math.round((range**2-altitude**2)**0.5) }}<span class="" style="font-size: ; font-family: courier;">m</span>
+              </div>
+              
+            <img class="h-[100%] w-[100%]" src="/assets/triangle.png">  
           <div @click="showTrig = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer" style="font-family: courier;">x</div>
         </div>
 <!-- END TRIG card -->
