@@ -161,6 +161,9 @@ const sezzing: { [gameName: string]: {[scopeName: string]: {[rifleName: string]:
     },
     'PALADIN OPTIC': {
 
+    },
+    'EXPS3': {
+
     }
   },
   Wildlands: {

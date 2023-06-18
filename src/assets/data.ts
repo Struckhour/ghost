@@ -583,21 +583,24 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
     },
     'PALADIN OPTIC': {
       'PALADIN 9':[70,200,275,350,450,560,],
+    },
 
+    'EXPS3': {
+      'MK48 COMPACT BALLISTIC ADV.':[100,250,400],
 // SHOTGUNS
-      // 'ACS12':	[100],
-      // 'KSG12':	[100],
-      // 'M4':	[100],
-      // 'M4 ASSAULT':	[100],
-      // 'M4 SHORTY':	[100],
-      // 'M590A1':	[100],
-      // 'M590A1 SURVIVAL':	[100],
-      // 'RU12SG':	[100],
-      // 'RU12SG ASSAULT':	[100],
-      // 'SASG12':	[100],
-      // "SILVERBACK'S KSG12":	[100],
-      // 'SPAS-12':	[100],
-      // 'UNDERBARREL SHOTGUN':	[100],
+      'ACS12':	[50,65,75],
+      'KSG12':	[50,65,75],
+      'M4':	[60,80,110],
+      'M4 ASSAULT':	[60,80,110],
+      'M4 SHORTY':	[60,80,110],
+      'M590A1':	[70,90,110],
+      'M590A1 SURVIVAL':	[70,90,110],
+      'RU12SG':	[40,60,70],
+      'RU12SG ASSAULT':	[40,60,70],
+      'SASG12':	[50,63,75],
+      "SILVERBACK'S KSG12":	[50,65,75],
+      'SPAS-12':	[60,70,80],
+      'UNDERBARREL SHOTGUN':	[60,80,100],
     }
   },
   Wildlands: {

@@ -211,6 +211,7 @@ const scopeLabelStyles: { [gameName: string]:{[scopeName: string]: string }} = {
     'RU LONG-RANGE FOV': 'color: #f4c59e;',
     'RU LONG-RANGE': 'color: #f4c59e;',
     'PALADIN OPTIC': 'color: #f4c59e;',
+    'EXPS3': 'color: #ffb5a6;',
   },
   Wildlands: {
     'TA31H': 'color: black;',
@@ -241,6 +242,7 @@ const rifleLabelStyles: { [gameName: string]: {[scopeName: string]: string} } = 
     'RU LONG-RANGE FOV': 'color: #f4c59e;',
     'RU LONG-RANGE': 'color: #f4c59e;',
     'PALADIN OPTIC': 'color: #f4c59e;',
+    'EXPS3': 'color: #ffb5a6;',
   },
   Wildlands: {
     'TA31H': 'color: black;',
@@ -272,6 +274,7 @@ const rangeStyles: { [gameName: string]: {[scopeName: string]: string }} = {
     'RU LONG-RANGE FOV': 'color: #f4c59e;',
     'RU LONG-RANGE': 'color: #f4c59e;',
     'PALADIN OPTIC': 'color: #f4c59e;',
+    'EXPS3': 'color: #ffb5a6;',
     },
   Wildlands: {
     'TA31H': 'color: black;',
@@ -422,6 +425,12 @@ const styleTranslations: { [gameName: string]: {[scopeName: string]: string[]} }
       'font-size: 0.7rem; top: 59.4%; right: 51%; transform: translate(0px, -1em);',
       'top: 61.7%; left: 52.5%; transform: translate(0px, -1em)',
       ],
+      'EXPS3':
+      ['font-size: 1rem; top: 53.7%; left: 51.95%; transform: translate(0px, -1em);',
+      'font-size: 1rem; top: 57.6%; right: 50.10%; transform: translate(0px, -1em);',
+      'font-size: 1rem; top: 67.5%; left: 51.95%; transform: translate(0px, -1em);',
+      ],
+
     },
     Wildlands: {
       'TA31H':
@@ -741,6 +750,12 @@ function getStylePosition(index: number) {
           class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full border-4 border-black"
           />
         </Transition>
+        <Transition>
+          <img
+          v-show="selectedScopeName==='EXPS3'" src="/assets/BP-Scopes/BP-EXPS3.png"
+          class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full border-4 border-black"
+          />
+        </Transition>
 
         <!-- WILDLANDS SCOPE IMAGES -->
 
@@ -894,10 +909,7 @@ function getStylePosition(index: number) {
           <div class="text-center text-black" style="font-size: 0.8rem; font-family:courier;"><b>Be sure to select a compatible scope for this rifle!</b> You may also wish to select a version of this rifle with the MAWL-DA, RANGEFINDER OR BALLISTIC ADVANTAGE when applicable from the dropdown menu above.
             <br>
             <br>
-            <b>Shotguns are included in the random list too!</b> <br>If you rolled a shotgun, you obviously won't have any range values on the scopes, but you can still open the 
-            <button @click="showRTK = !showRTK; showIntel = false; showShotguns = false; showHandguns = false; showRando = false;" class="font-bold underline text-red-700 translate-x-[0%] z-40 cursor-pointer">
-            Damage File
-            </button> and see how many Rounds To Kill and Time To Kill for your shotgun. 
+            <b>Shotguns are included in the random list too!</b> <br>If you rolled a shotgun, you'll need to shoose the EXPS3 sight form the Scope Menu.
             <br>
             <div class="text-center">
             <button v-if="gameName.game === 'Breakpoint'" @click="showRTK = !showRTK; showIntel = false; showShotguns = false; showHandguns = false; showRando = false;" class="active:text-red-800 px-2 border text-red-800 border-red-800 hover:text-red-600 rounded-lg shadow-black shadow-md font-sans rotate-[1deg] translate-x-[0%] z-40 cursor-pointer" style="font-family: angel;">
