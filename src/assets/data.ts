@@ -429,6 +429,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'G36C SCOUT RANGE FINDER':[75,125,225,325,475,663,813,],
       'HONEY BADGER':[100,150,200,250,320,410,505],
       'HONEY BADGER MAWL-DA':[100,163,225,275,375,500,625,],
+      K1A:[100,150,200,250,300,400,500],
       'M110':[100,175,225,280,360,475,590,],
       'M110 MAWL-DA':[100,190,255,325,435,585,720,],
       'M110 RANGE FINDER':[100,200,265,350,485,650,790,],
