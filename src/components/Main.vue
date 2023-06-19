@@ -566,7 +566,7 @@ function getStylePosition(index: number) {
 
 <!-- RANDOM BUTTON -->
 
-        <div v-if="gameName.game === 'Breakpoint'" @click="showRando =!showRando; showRTK = false; selectedRifle=(getRandomRifle()); showTrig = false; showIntel = false; showShotguns = false; showHandguns = false; " class="active:text-[#571111] px-2 border-dotted border-2 text-green-600 border-green-600 hover:text-purple-400 hover:border-purple-700 rounded-lg shadow-black shadow-md font-sans absolute top-[50%] left-[50%] rotate-[2deg] translate-x-[37%] z-40 cursor-pointer" style="font-size: 01.5rem; font-family: angel;">RANDOM?
+        <div v-if="gameName.game === 'Breakpoint'" @click="showRando =!showRando; showRTK = false; selectedRifle=(getRandomRifle()); showTrig = false; showIntel = false; showShotguns = false; showHandguns = false; " class="active:text-[#571111] px-2 border-dotted border-2 text-green-600 border-green-600 hover:text-purple-400 hover:border-purple-700 rounded-lg shadow-black shadow-md font-sans absolute top-[50%] left-[53%] rotate-[2deg] translate-x-[27%] z-40 cursor-pointer" style="font-size: 01.5rem; font-family: angel;">RANDOM?
         </div>
 
       </div>
