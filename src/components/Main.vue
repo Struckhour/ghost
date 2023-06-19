@@ -909,7 +909,7 @@ function getStylePosition(index: number) {
           <div class="text-center text-black" style="font-size: 0.8rem; font-family:courier;"><b>Be sure to select a compatible scope for this rifle!</b> You may also wish to select a version of this rifle with the MAWL-DA, RANGEFINDER OR BALLISTIC ADVANTAGE when applicable from the dropdown menu above.
             <br>
             <br>
-            <b>Shotguns are included in the random list too!</b> <br>If you rolled a shotgun, you'll need to choose the EXPS3 sight form the Scope Menu.
+            <b>Shotguns are included in the random list too!</b> <br>If you rolled a shotgun, you'll need to choose the EXPS3 sight from the Scope Menu.
             <br>
             <div class="text-center">
             <button v-if="gameName.game === 'Breakpoint'" @click="showRTK = !showRTK; showIntel = false; showShotguns = false; showHandguns = false; showRando = false;" class="active:text-red-800 px-2 border text-red-800 border-red-800 hover:text-red-600 rounded-lg shadow-black shadow-md font-sans rotate-[1deg] translate-x-[0%] z-40 cursor-pointer" style="font-family: angel;">
