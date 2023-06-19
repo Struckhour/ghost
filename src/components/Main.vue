@@ -1107,12 +1107,12 @@ function getStylePosition(index: number) {
           </span>
           
 <!-- FASTEST TTK @click="selectedScopeName='DIGITAL';selectedRifle='MK14 ASSAULT'" -->
-          <div @click="showTTKlist = !showTTKlist;" v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" class="text-right text-red-600 italic translate-x-[0%] translate-y-[-135%] hover:text-purple-500 no-underline hover:underline cursor-pointer" style="font-size: 0.5rem;">FASTEST KILL RIFLE: 0.248s
+          <div @click="showTTKlist = !showTTKlist;" v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" class="text-right text-red-600 italic translate-x-[0%] translate-y-[-145%] hover:text-purple-500 no-underline hover:underline cursor-pointer" style="font-size: 0.7rem;">FASTEST TTK: 0.194s
           </div>
           <!-- <div v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" class="absolute translate-y-[-70%] right-[3%] text-red-600 font-bold" style="font-size: 0.5rem;">FASTEST KILL RIFLE: {{((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, 'MK14 ASSAULT')])*Math.ceil(130/SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, 'MK14 ASSAULT')])).toFixed(3) }}s
           </div> -->
 <!-- SLOWEST TTK @click="selectedScopeName='RU LONG-RANGE'; selectedRifle='SVD-63'" -->
-          <div @click="showTTKlist = !showTTKlist;" v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" class="text-right text-red-600 italic translate-x-[0%] translate-y-[-165%] hover:text-purple-500 no-underline hover:underline cursor-pointer" style="font-size: 0.5rem;">SLOWEST KILL RIFLE: 2.000s
+          <div @click="showTTKlist = !showTTKlist;" v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" class="text-right text-red-600 italic translate-x-[0%] translate-y-[-155%] hover:text-purple-500 no-underline hover:underline cursor-pointer" style="font-size: 0.7rem;">SLOWEST TTK: 2.000s
           </div>
           <!-- <div v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" class="absolute translate-y-[-40%] right-[3%] text-red-600 font-bold" style="font-size: 0.5rem;">SLOWEST KILL RIFLE: {{((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, 'SVD-63')])*Math.ceil(130/SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, 'SVD-63')])).toFixed(3) }}s
           </div> -->
