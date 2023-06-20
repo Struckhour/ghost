@@ -10,7 +10,7 @@ import { SmartDamage, GetSmartRifleName, SmartRifles } from '../assets/SmartDama
 import { BonusDamage, GetBonusRifleName, BonusRifles } from '../assets/BonusDamage';
 import { SpecialNote, GetSpecialRifleName, SpecialRifles } from '../assets/SpecialNote';
 import { RPM, GetRPMRifleName, RPMRifles } from '../assets/RPM';
-import shotguns from '../assets/shotguns';
+// import shotguns from '../assets/shotguns';
 import { loudGuns, IsLoudGun } from '../assets/isLoud';
 import { suppressedGuns, IsSuppressedGun } from '../assets/isSuppressed';
 
