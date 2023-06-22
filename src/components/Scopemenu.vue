@@ -2,7 +2,7 @@
     import { ref, computed } from 'vue'
 
 
-    const props = defineProps<{ scopes: string[]; show: boolean; rifleMenu: boolean }>()
+    const props = defineProps<{ scopes: string[]; show: boolean; rifleMenu: boolean; selectedScopeName: string }>()
 
     const emit = defineEmits(['chosenScope', 'menuClicked', 'rifleMenu'])
 
@@ -16,8 +16,10 @@
       emit('rifleMenu', rifleMenu.value);
     };
 
-    const scopeName= ref('Choose a scope');
-
+    const scopeName= ref(props.selectedScopeName);
+    // let scopeName = computed(() => {
+    //   return ref(props.selectedScopeName);
+    // })
     const changeScope = (scope: string) => {
         scopeName.value = scope;
         shower.value = !shower.value;
@@ -33,7 +35,7 @@
         @click="isOpen"
         class="flex justify-end p-1 text-cyan-300 hover:text-cyan-200 hover:bg-opacity-[90%] bg-slate-900 bg-opacity-75 rounded-md hover:cursor-pointer z-50 border-slate-600 border"
         >
-        <span class="mr-2">{{scopeName}}</span>
+        <span class="mr-2">{{selectedScopeName}}</span>
         <svg
         class="w-5 h-5 text-cyan-300"
         xmlns="http://www.w3.org/2000/svg"

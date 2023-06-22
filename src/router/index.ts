@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '/src/components/Home.vue'
 import Main from '/src/components/Main.vue'
+// import ryorBP from '/src/components/ryorBP.vue'
+
 
 const routes = [
     {
@@ -20,6 +22,12 @@ const routes = [
         component: Main,
         props: true,
     },
+    // {
+    //     path: '/app/:ryorBP',
+    //     name: 'BreakpointRYOR',
+    //     component: ryorBP,
+    //     props: true,
+    // }
 ]
 const router = createRouter({
     history: createWebHistory(),

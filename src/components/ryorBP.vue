@@ -44,7 +44,6 @@ const ryor10 = ref();
 const ryorT5XI = ref(false);
 const ryorDR = ref(false);
 const ryorDigital = ref(false);
-const ryorTA31H = ref(false);
 
 const gameName = defineProps<{game: string}>()
 const showBonuslist = ref(false);
@@ -117,20 +116,12 @@ loudTTK['Breakpoint'][property]=((60/RPM['Breakpoint'][property])*Math.ceil(130/
 const sortedLoudTTK = Object.fromEntries(
     Object.entries(loudTTK['Breakpoint']).sort((a,b) => a[1]-b[1])
 );
-// const reverseRifleNames = computed( () => {
-//   const tempRifleNames = Object.keys(fullData[gameName.game][randoScope]).slice()
-//   return tempRifleNames.sort().reverse();
-// })
+
+const rifleNameArray = SmartRifles;
 
 function getRandomRifle() {
-  const randoScopeIndex = Math.floor(Math.random() * Object.keys(fullData[gameName.game]).length);
-  const randoScope = Object.keys(fullData[gameName.game])[randoScopeIndex]
-  selectedScopeName.value = randoScope
-
-  const tempRifleNames = Object.keys(fullData[gameName.game][randoScope])
-
-  const randoRifleIndex = Math.floor(Math.random() * tempRifleNames.length);
-  selectedRifle.value = tempRifleNames[randoRifleIndex];
+  const randoRifle = Math.floor(Math.random() * rifleNameArray.length);
+  return rifleNameArray[randoRifle];
 }
 
 let showScopeMenu = ref(false);
@@ -575,13 +566,13 @@ function getStylePosition(index: number) {
         </div>
 
 <!-- TRIG BUTTON -->
-        <div v-if="gameName.game === 'Breakpoint'" @click="showTrig = !showTrig; showIntel = false; showShotguns = false; showHandguns = false; showRTK =false; showRando = false; showRYOR = false; ryorT5XI = false; ryorDR = false; ryorDigital = false; ryorTA31H = false;" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[50%] left-[53%] rotate-[-1deg] translate-x-[-86%] z-40 cursor-pointer" style="font-family: angel;">Triggernometry
+        <div v-if="gameName.game === 'Breakpoint'" @click="showTrig = !showTrig; showIntel = false; showShotguns = false; showHandguns = false; showRTK =false; showRando = false;" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[50%] left-[53%] rotate-[-1deg] translate-x-[-86%] z-40 cursor-pointer" style="font-family: angel;">Triggernometry
         </div>
 
 <!-- RANDOM BUTTON -->
 
-        <div v-if="gameName.game === 'Breakpoint'" @click="showRando = true; showRTK = false; getRandomRifle(); showTrig = false; showIntel = false; showShotguns = false; showHandguns = false; " class="active:text-[#571111] px-2 border-dotted border-2 text-green-600 border-green-600 hover:text-purple-400 hover:border-purple-700 rounded-lg shadow-black shadow-md font-sans absolute top-[50%] left-[53%] rotate-[2deg] translate-x-[27%] z-40 cursor-pointer" style="font-size: 1.5rem; font-family: angel;">RANDOM?
-        </div>
+        <!-- <div v-if="gameName.game === 'Breakpoint'" @click="showRando = true; showRTK = false; selectedRifle=(getRandomRifle()); showTrig = false; showIntel = false; showShotguns = false; showHandguns = false; " class="active:text-[#571111] px-2 border-dotted border-2 text-green-600 border-green-600 hover:text-purple-400 hover:border-purple-700 rounded-lg shadow-black shadow-md font-sans absolute top-[50%] left-[53%] rotate-[2deg] translate-x-[27%] z-40 cursor-pointer" style="font-size: 1.5rem; font-family: angel;">RANDOM?
+        </div> -->
 
       </div>
       
@@ -609,7 +600,6 @@ function getStylePosition(index: number) {
             :scopes="scopeNames"
             :show="showScopeMenu"
             :rifleMenu="showRifleMenu"
-            :selectedScopeName="selectedScopeName"
             @chosenScope="changeScope"
             @menu-clicked="changeScopeMenu"
             @rifle-menu="removeRifleMenu"
@@ -892,13 +882,8 @@ function getStylePosition(index: number) {
 <!-- TRIG CARD -->
           <div v-show="showTrig" class="absolute top-[10px] sm:top-[10px] bg-[#eae4aa] bg-opacity-75 text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg shadow-black shadow-md text-center leading-tight" >
       <!-- RYOR BUTTON -->
-
             <div v-if="gameName.game === 'Breakpoint'" @click="showRYOR = !showRYOR; showRTK = false; showTrig = false; showIntel = false; showShotguns = false; showHandguns = false; " class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[1%] rotate-[-2deg] translate-x-[0%] z-40 cursor-pointer" style="font-size: 0.7rem; font-family: angel;">Range your<br> own rifle
             </div>
-
-            <!-- <router-link to="/app/ryorBP" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[1%] left-[20%] rotate-[-2deg] translate-x-[0%] z-40 cursor-pointer" style="font-size: 0.7rem; font-family: angel;">Range your<br> own rifle
-            </router-link> -->
-
             <div class="font-bold opacity-90 rotate-[1deg]" style="font-size: 1rem; font-family: angel;">
               Calculate downhill <br>shots below:
             </div>
@@ -921,19 +906,16 @@ function getStylePosition(index: number) {
 <!-- END TRIG card -->
 <!-- RYOR CARD -->
         <div v-show="showRYOR" class="absolute top-[10px] sm:top-[10px] bg-[#eae4aa] bg-opacity-75 text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg shadow-black shadow-md text-center leading-tight" style="font-size: ; font-family: ZCOOL;">
-          <div v-if="gameName.game === 'Breakpoint'" @click="ryorT5XI = !ryorT5XI; ryorDR = false; ryorDigital = false; ryorTA31H = false; showRTK = false; showTrig = false; showIntel = false; showShotguns = false; showHandguns = false; " class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[1%] rotate-[-2deg] translate-x-[-25%] z-40 cursor-pointer" style="font-size: 1rem; font-family: angel;">
+          <div v-if="gameName.game === 'Breakpoint'" @click="ryorT5XI = !ryorT5XI; ryorDR = false; ryorDigital = false; showRTK = false; showTrig = false; showIntel = false; showShotguns = false; showHandguns = false; " class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[1%] rotate-[-2deg] translate-x-[-25%] z-40 cursor-pointer" style="font-size: 1rem; font-family: angel;">
             T5XI
           </div>
-          <div v-if="gameName.game === 'Breakpoint'" @click="ryorDR = !ryorDR; ryorT5XI = false; ryorDigital = false; ryorTA31H = false; showRTK = false; showTrig = false; showIntel = false; showShotguns = false; showHandguns = false; " class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[1%] rotate-[1deg] translate-x-[35%] z-40 cursor-pointer" style="font-size: 1rem; font-family: angel;">
+          <div v-if="gameName.game === 'Breakpoint'" @click="ryorDR = !ryorDR; ryorT5XI = false; ryorDigital = false; showRTK = false; showTrig = false; showIntel = false; showShotguns = false; showHandguns = false; " class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[1%] rotate-[1deg] translate-x-[35%] z-40 cursor-pointer" style="font-size: 1rem; font-family: angel;">
             Dual Range
           </div>
+        <div @click="showRYOR = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer" style="font-family: courier;">x</div>
 
-          <div v-if="gameName.game === 'Breakpoint'" @click="ryorDigital = !ryorDigital; ryorT5XI = false; ryorDR = false; ryorTA31H = false; showRTK = false; showTrig = false; showIntel = false; showShotguns = false; showHandguns = false; " class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[1%] rotate-[-1deg] translate-x-[206%] z-40 cursor-pointer" style="font-size: 1rem; font-family: angel;">
+        <div v-if="gameName.game === 'Breakpoint'" @click="ryorDigital = !ryorDigital; ryorT5XI = false; ryorDR = false; showRTK = false; showTrig = false; showIntel = false; showShotguns = false; showHandguns = false; " class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[1%] rotate-[-1deg] translate-x-[206%] z-40 cursor-pointer" style="font-size: 1rem; font-family: angel;">
             Digital
-          </div>
-
-          <div v-if="gameName.game === 'Breakpoint'" @click="ryorTA31H = !ryorTA31H; ryorT5XI = false; ryorDR = false; ryorDigital = false; showRTK = false; showTrig = false; showIntel = false; showShotguns = false; showHandguns = false; " class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[1%] rotate-[1deg] translate-x-[379%] z-40 cursor-pointer" style="font-size: 1rem; font-family: angel;">
-            TA31H
           </div>
         <div @click="showRYOR = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer" style="font-family: courier;">x</div>
         </div>
@@ -953,10 +935,11 @@ function getStylePosition(index: number) {
               </select>
             </div>
             <div class="absolute top-[39%] left-[52%]">
-              BALLISTIC ADVANTAGE:
-              <label class="absolute top-[3%] left-[100%]">
-                <input type="checkbox" v-model="ryorBA">
-              </label>
+              BALLISTIC ADVANTAGE:<br>
+                <select type="checkbox" class="text-center bg-white bg-opacity-50 border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryorBA">
+                <option value="">NO</option>
+                <option value=" BALLISTIC ADVANTAGE">BALLISTIC ADVANTAGE</option>
+                </select>
             </div>
             <!-- line 0 -->
             <div class="absolute top-[50%] right-[51%]">
@@ -980,7 +963,7 @@ function getStylePosition(index: number) {
             </div>
             <div class="absolute top-[10%] left-[5%] w-[85%] bg-black rounded">Copy and paste the white text below into our Youtube comments and we'll add your work to the compendium!</div>
             
-            <div class="absolute top-[19%] left-[7%] border bg-black rounded text-white uppercase w-[85%]" style="font-size: 0.7rem; font-family: ;">'{{ ryorName }}{{ ryorRail }}{{ ryorBA?' BALLISTIC ADVANTAGE':'' }}':[{{ ryor0 }},{{ ryor1 }},{{ ryor2 }},{{ ryor3 }},{{ ryor4 }}], T5XI
+            <div class="absolute top-[19%] left-[7%] border bg-black rounded text-white uppercase w-[85%]" style="font-size: 0.7rem; font-family: ;">'{{ ryorName }}{{ ryorRail }}{{ ryorBA }}':[{{ ryor0 }},{{ ryor1 }},{{ ryor2 }},{{ ryor3 }},{{ ryor4 }}], T5XI
            </div>
           </div>
         <div @click="ryorT5XI = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer" style="font-family: courier;">x</div>
@@ -1001,10 +984,11 @@ function getStylePosition(index: number) {
               </select>
             </div>
             <div class="absolute top-[39%] left-[52%]">
-              BALLISTIC ADVANTAGE:
-              <label class="absolute top-[3%] left-[100%]">
-                <input type="checkbox" v-model="ryorBA">
-              </label>
+              BALLISTIC ADVANTAGE:<br>
+                <select type="checkbox" class="text-center bg-white bg-opacity-50 border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryorBA">
+                <option value="">NO</option>
+                <option value=" BALLISTIC ADVANTAGE">BALLISTIC ADVANTAGE</option>
+                </select>
             </div>
             <!-- line 0 -->
             <div class="absolute top-[50%] right-[51%]">
@@ -1052,13 +1036,13 @@ function getStylePosition(index: number) {
             </div>
             <div class="absolute top-[10%] left-[5%] w-[85%] bg-black rounded">Copy and paste the white text below into our Youtube comments and we'll add your work to the compendium!
             </div>
-            <div class="absolute top-[19%] left-[7%] border bg-black rounded text-white uppercase w-[85%]" style="font-size: 0.7rem; font-family: ;">'{{ ryorName }}{{ ryorRail }}{{ ryorBA?' BALLISTIC ADVANTAGE':'' }}':[{{ ryor0 }},{{ ryor1 }},{{ ryor2 }},{{ ryor3 }},{{ ryor4 }},{{ ryor5 }},{{ ryor6 }},{{ ryor7 }},{{ ryor8 }},{{ ryor9 }},{{ ryor10 }}], Dual Range
+            <div class="absolute top-[19%] left-[7%] border bg-black rounded text-white uppercase w-[85%]" style="font-size: 0.7rem; font-family: ;">'{{ ryorName }}{{ ryorRail }}{{ ryorBA }}':[{{ ryor0 }},{{ ryor1 }},{{ ryor2 }},{{ ryor3 }},{{ ryor4 }},{{ ryor5 }},{{ ryor6 }},{{ ryor7 }},{{ ryor8 }},{{ ryor9 }},{{ ryor10 }}], Dual Range
            </div>
           </div>
         <div @click="ryorDR = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer" style="font-family: courier;">x</div>
         </div>
 <!-- RYOR DIGITAL CARD -->
-        <div v-show="ryorDigital" class="absolute top-[10%] sm:top-[10%] bg-[#eae4aa] bg-opacity-100 text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg shadow-black shadow-md leading-normal" style="font-size: 1rem; font-family: courier;">
+<div v-show="ryorDigital" class="absolute top-[10%] sm:top-[10%] bg-[#eae4aa] bg-opacity-100 text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg shadow-black shadow-md leading-normal" style="font-size: 1rem; font-family: courier;">
           <img class="rounded" src="/assets/BP-Scopes/BP-Digital-Sight.jpg">
           <div class="text-[#e2b7bd]" style="font-size: 0.7rem; font-family: ZCOOL;">
             <div class="absolute top-[28%] right-[52%]" >
@@ -1073,10 +1057,11 @@ function getStylePosition(index: number) {
               </select>
             </div>
             <div class="absolute top-[39%] left-[52%]">
-              BALLISTIC ADVANTAGE:
-              <label class="absolute top-[3%] left-[100%]">
-                <input type="checkbox" v-model="ryorBA">
-              </label>
+              BALLISTIC ADVANTAGE:<br>
+                <select type="checkbox" class="text-center bg-white bg-opacity-50 border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryorBA">
+                <option value="">NO</option>
+                <option value=" BALLISTIC ADVANTAGE">BALLISTIC ADVANTAGE</option>
+                </select>
             </div>
             <!-- line 0 -->
             <div class="absolute top-[50%] right-[50%]">
@@ -1108,93 +1093,33 @@ function getStylePosition(index: number) {
             </div>
             <div class="absolute top-[10%] left-[5%] w-[85%] bg-black rounded">Copy and paste the white text below into our Youtube comments and we'll add your work to the compendium!
             </div>
-            <div class="absolute top-[19%] left-[7%] border bg-black rounded text-white uppercase w-[85%]" style="font-size: 0.7rem; font-family: ;">'{{ ryorName }}{{ ryorRail }}{{ ryorBA?' BALLISTIC ADVANTAGE':'' }}':[{{ ryor0 }},{{ ryor1 }},{{ ryor2 }},{{ ryor3 }},{{ ryor4 }},{{ ryor5 }},{{ ryor6 }}], Digital
+            <div class="absolute top-[19%] left-[7%] border bg-black rounded text-white uppercase w-[85%]" style="font-size: 0.7rem; font-family: ;">'{{ ryorName }}{{ ryorRail }}{{ ryorBA }}':[{{ ryor0 }},{{ ryor1 }},{{ ryor2 }},{{ ryor3 }},{{ ryor4 }},{{ ryor5 }},{{ ryor6 }}], Digital
            </div>
           </div>
         <div @click="ryorDigital = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer" style="font-family: courier;">x</div>
         </div>
-<!-- RYOR TA31H CARD -->
-<div v-show="ryorTA31H" class="absolute top-[10%] sm:top-[10%] bg-[#eae4aa] bg-opacity-100 text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg shadow-black shadow-md leading-normal" style="font-size: 1rem; font-family: courier;">
-          <img class="rounded" src="/assets/BP-Scopes/BP-TA31H-Sight.jpg">
-          <div class="text-black" style="font-size: 0.7rem; font-family: ZCOOL;">
-            <div class="absolute top-[28%] right-[52%]" >
-            RIFLE NAME:<br><input size="18" class="text-center bg-white bg-opacity-50 border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryorName">
-            </div>
-            <div class="absolute top-[28%] left-[52%]">
-              RAIL:<br>
-              <select class="text-center bg-white bg-opacity-50 border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryorRail">
-                <option value="">none/other</option>
-                <option value=" MAWL-DA">MAWL-DA</option>
-                <option value=" RANGEFINDER">RANGEFINDER</option>
-              </select>
-            </div>
-            <div class="absolute top-[39%] left-[52%]">
-              BALLISTIC ADVANTAGE:
-              <label class="absolute top-[3%] left-[100%]">
-                <input type="checkbox" v-model="ryorBA">
-              </label>
-            </div>
-            <!-- line 0 -->
-            <div class="absolute top-[49.7%] right-[50%]">
-            <input size="3" class="text-center bg-white bg-opacity-50 border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor0">m
-            </div>
-            <!-- line 1 -->
-            <div class="absolute top-[52.0%] left-[51%]" >
-            <input size="3" class="text-center bg-white bg-opacity-50  border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor1">m
-            </div>
-            <!-- line 2 -->
-            <div class="absolute top-[54.2%] right-[50%]" >
-            <input size="3" class="text-center bg-white bg-opacity-50  border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor2">m
-            </div>
-            <!-- line 3 -->
-            <div class="absolute top-[56.7%] left-[51%]" >
-            <input size="3" class="text-center bg-white bg-opacity-50  border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor3">m
-            </div>
-            <!-- line 4 -->
-            <div class="absolute bottom-[35.8%] right-[50%]" >
-            <input size="3" class="text-center bg-white bg-opacity-50  border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor4">m
-            </div>
-            <!-- line 5 -->
-            <div class="absolute bottom-[31.7%] left-[51%]" >
-            <input size="3" class="text-center bg-white bg-opacity-50  border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor5">m
-            </div>
-             <!-- line 6 -->
-             <div class="absolute bottom-[26.4%] right-[50%]" >
-            <input size="3" class="text-center bg-white bg-opacity-50  border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor6">m
-            </div>
-            <div class="absolute top-[10%] left-[5%] w-[85%] bg-black rounded">Copy and paste the white text below into our Youtube comments and we'll add your work to the compendium!
-            </div>
-            <div class="absolute top-[19%] left-[7%] border bg-black rounded text-white uppercase w-[85%]" style="font-size: 0.7rem; font-family: ;">'{{ ryorName }}{{ ryorRail }}{{ ryorBA?' BALLISTIC ADVANTAGE':'' }}':[{{ ryor0 }},{{ ryor1 }},{{ ryor2 }},{{ ryor3 }},{{ ryor4 }},{{ ryor5 }},{{ ryor6 }}], TA31H
-           </div>
-          </div>
-        <div @click="ryorTA31H = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer" style="font-family: courier;">x</div>
-        </div>
+
 <!-- RANDOM CARD -->
       
-        <div v-show="showRando" class="absolute top-[10px] sm:top-[10px] bg-[#eae4aa] bg-opacity-80 text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg shadow-black shadow-md rotate-[-0deg]" style="font-size: 1rem; font-family: angel;"><div class="text-center">
-            <button v-if="gameName.game === 'Breakpoint'" @click="showRando = true; showRTK = false; getRandomRifle(); showTrig = false; showIntel = false; showShotguns = false; showHandguns = false;" class="active:text-[#571111] px-2 border-dotted border-2 text-green-600 border-green-600 hover:text-purple-600 hover:border-purple-700 rounded-lg shadow-black shadow-md font-sans rotate-[-1deg] z-40 cursor-pointer" style="font-size: 1rem; font-family: angel;">Re-roll?
-            </button>
-            </div>
+        <div v-show="showRando" class="absolute top-[10px] sm:top-[10px] bg-[#eae4aa] bg-opacity-80 text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg shadow-black shadow-md rotate-[-0deg]" style="font-size: 1rem; font-family: angel;">
           <div>
-            <img class="translate-x-[550%] h-[15%] w-[15%] rotate-[-10deg] rounded-md" src="/assets/camo_dice2.png">
+            <img class="translate-x-[50%] h-[15%] w-[15%] rotate-[-10deg] rounded-md" src="/assets/camo_dice2.png">
           </div>
           <div class="text-center text-purple-700 rotate-[-1deg]" style="font-size: 1.3rem; font-family: angel;">
             {{ selectedRifle }}
           </div>
-          <br>
-          <div class="text-center">
+          <div class="text-center text-black" style="font-size: 0.8rem; font-family:courier;"><b>Be sure to select a compatible scope for this rifle!</b> You may also wish to select a version of this rifle with the MAWL-DA, RANGEFINDER OR BALLISTIC ADVANTAGE when applicable from the dropdown menu above.
+            <br>
+            <br>
+            <b>Shotguns are included in the random list too!</b> <br>If you rolled a shotgun, you'll need to choose the EXPS3 sight from the Scope Menu.
+            <br>
+            <div class="text-center">
             <button v-if="gameName.game === 'Breakpoint'" @click="showRTK = !showRTK; showIntel = false; showShotguns = false; showHandguns = false; showRando = false;" class="active:text-red-800 px-2 border text-red-800 border-red-800 hover:text-red-600 rounded-lg shadow-black shadow-md font-sans rotate-[1deg] translate-x-[0%] z-40 cursor-pointer" style="font-family: angel;">
             Damage File
             </button>
           </div>
-          <div class="text-center text-black" style="font-size: 0.8rem; font-family:courier;">
-            <br>
-            <b>Good Hunting!</b>
-            <br>
-            
-            And please let us know of any un-ranged rifle set-ups you notice! We have completed most rifle/scope combinations but there is still some work to be done. Click <a class="text-red-700 underline font-bold" href="https://www.youtube.com/watch?v=HwlGfuORwAY">Feedback</a> to give us a friendly reminder on something we've missed.
+            And please let us know of any un-ranged rifle set-ups! We have completed most rifle/scope combinations but there is still work to be done. Click <a class="text-red-700 underline font-bold" href="https://www.youtube.com/watch?v=HwlGfuORwAY">Feedback</a> to give us a friendly reminder on something we've missed.
           </div>
-            
           
           <div @click="showRando = false;" class="absolute top-[-5px] right-2 text-5xl cursor-pointer" style="font-family: courier;">x
           </div>
@@ -1386,20 +1311,10 @@ function getStylePosition(index: number) {
 <!-- FASTEST TTK @click="selectedScopeName='DIGITAL';selectedRifle='MK14 ASSAULT'" -->
           <div @click="showTTKlist = !showTTKlist;" v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" class="text-right text-red-600 italic translate-x-[0%] translate-y-[-145%] hover:text-purple-500 no-underline hover:underline cursor-pointer" style="font-size: 0.7rem;">FASTEST TTK: 0.194s
           </div>
-          <!-- <div v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" class="absolute translate-y-[-70%] right-[3%] text-red-600 font-bold" style="font-size: 0.5rem;">FASTEST KILL RIFLE: {{((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, 'MK14 ASSAULT')])*Math.ceil(130/SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, 'MK14 ASSAULT')])).toFixed(3) }}s
-          </div> -->
+         
 <!-- SLOWEST TTK @click="selectedScopeName='RU LONG-RANGE'; selectedRifle='SVD-63'" -->
           <div @click="showTTKlist = !showTTKlist;" v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" class="text-right text-red-600 italic translate-x-[0%] translate-y-[-155%] hover:text-purple-500 no-underline hover:underline cursor-pointer" style="font-size: 0.7rem;">SLOWEST TTK: 2.000s
           </div>
-          <!-- <div v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" class="absolute translate-y-[-40%] right-[3%] text-red-600 font-bold" style="font-size: 0.5rem;">SLOWEST KILL RIFLE: {{((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, 'SVD-63')])*Math.ceil(130/SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, 'SVD-63')])).toFixed(3) }}s
-          </div> -->
-
-
-
-          <!-- <div v-if="gameName.game === 'Breakpoint'" @click="showRando =!showRando; showRTK = false; selectedRifle=(SmartRifles[randoRifle]); showTrig = false; showIntel = false; showShotguns = false; showHandguns = false; " class="active:text-[#571111] px-2 border-dotted border-4 text-green-600 border-green-600 hover:text-purple-400 hover:border-purple-700 rounded-lg shadow-black shadow-md font-sans absolute top-[88%] left-[50%] rotate-[-2deg] translate-x-[-50%] z-40 cursor-pointer" style="font-size: 0.9rem; font-family: angel;">RANDOM RIFLE??
-          </div> -->
-
-
           
           <div @click="showRTK = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer font-light" style="font-family: courier;">x
           </div>
@@ -1480,28 +1395,6 @@ function getStylePosition(index: number) {
           <div @click="showTTKlist = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer font-light" style="font-family: courier;">x</div>
         </div>
 
-
-<!-- RTK BUTTON
-<div v-if="gameName.game === 'Breakpoint'" @click="showRTK = !showRTK; showIntel = false; showShotguns = false; showHandguns = false" class="active:text-red-800 px-2 border text-red-800 border-red-800 hover:text-red-600 rounded-lg shadow-black shadow-md font-sans absolute top-[67%] left-[62%] rotate-[-35deg] translate-x-[25%] z-40 cursor-pointer" style="font-family: angel;">
-          Damage <br>File
-        </div>
-        <div v-if="damage[gameName.game].hasOwnProperty(GetRifleName(rifles, selectedRifle)) && showRTK" @click="showRTK = false" class="absolute top-[100px] sm:top-[200px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg" style="font-size: 1rem; font-family: courier;">
-
-          <span class="font-bold text-black" style="font-size: 1rem; text-transform: uppercase; font-family: ;"><u>ROUNDS TO KILL SENTINEL</u></span><br>
-          <span>STEALTH SUPPRESSED: {{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][0] }}</span><br>
-          <span>STEALTH LOUD: {{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][1] }}</span><br>
-          <span class="text-red-600"><b>DETECTED SUPPRESSED: {{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][2] }}</b></span><br>
-          <span class="text-red-600"><b>DETECTED LOUD: {{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][3] }}</b></span><br>
-          <span class="font-bold text-black" style="font-size: 1rem; text-transform: uppercase; font-family: ;"><u>ROUNDS TO KILL WOLVES</u></span><br>
-          <span>SUPPRESSED: {{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][4] }}</span>&nbsp;
-          <span class="text-red-600"><b>LOUD: {{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][5] }}</b></span><br>
-
-          <span v-if="damage[gameName.game][GetRifleName(rifles, selectedRifle)][6]" class=" text-blue-500 font-bold" style="font-size: 1rem; text-transform: uppercase; font-family: courier;">+{{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][6] }} BONUS DAMAGE ON 2ND KILL within 10 s</span><br>
-
-          <span v-if="damage[gameName.game][GetRifleName(rifles, selectedRifle)][7]" class="text-black" style="font-size: 0.9rem; text-transform: uppercase; font-family: courier;">SPECIAL NOTE: {{ damage[gameName.game][GetRifleName(rifles, selectedRifle)][7] }}</span><br>
-          <div @click="showRTK = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer" style="font-family: courier;">x</div>
-        </div>
- End RTK BUTTON -->
 
 
 
