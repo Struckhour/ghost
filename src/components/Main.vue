@@ -582,7 +582,7 @@ function getStylePosition(index: number) {
 
         <div v-if="gameName.game === 'Breakpoint'" @click="showRando = true; showRTK = false; getRandomRifle(); showTrig = false; showIntel = false; showShotguns = false; showHandguns = false; " class="active:text-[#571111] px-2 border-dotted border-2 text-green-600 border-green-600 hover:text-purple-400 hover:border-purple-700 rounded-lg shadow-black shadow-md font-sans absolute top-[50%] left-[53%] rotate-[2deg] translate-x-[27%] z-40 cursor-pointer" style="font-size: 1.5rem; font-family: angel;">RANDOM?
         </div>
-
+        
       </div>
       
       <div v-show="showIntel" @click="showIntel = false;" class="absolute top-[100px] sm:top-[200px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg" style="font-size: 1rem;font-family: courier;">
@@ -772,6 +772,26 @@ function getStylePosition(index: number) {
           />
         </Transition>
 
+        
+<!-- RAIL ATTACHMENTS BREAKPOINT --> 
+<!-- <div id="dropdown" class="absolute top-[31%] right-[57%] text-center" :style='getScopeLabelStyle()'> -->
+              <!-- RAIL:<br> -->
+              <!-- <select class="text-center bg-black bg-opacity-10 border border-black rounded hover:bg-black" value="">
+                <option :style='getScopeLabelStyle()' value="">Rail Cover</option>
+                <option :style='getScopeLabelStyle()' value="">PEQ-15</option>
+                <option :style='getScopeLabelStyle()' value="">ATPIALx3</option>
+                <option :style='getScopeLabelStyle()' value=" MAWL-DA">MAWL-DA</option>
+                <option :style='getScopeLabelStyle()' value=" RANGEFINDER">Range Finder</option>
+              </select>
+            </div> -->
+<!-- BALLISTIC ADVANTAGE BREAKPOINT -->
+            <!-- <div class="absolute top-[31%] left-[58%] text-center" :style='getScopeLabelStyle()'>
+              BALLISTIC<br>ADVANTAGE:
+              <label class="absolute top-[15%] left-[100%]">
+                <input type="checkbox" class="h-7 w-7 accent-current" value="">
+              </label>
+            </div>       -->
+
         <!-- WILDLANDS SCOPE IMAGES -->
 
         <Transition>
@@ -883,7 +903,7 @@ function getStylePosition(index: number) {
             <glitched-writer :text="selectedRifle" appear preset="nier" />
           </div>
 
-        </div> 
+        </div>   
 <!-- ENDORSEMENT SEZZING -->
           <div v-if="sezzing[gameName.game][selectedScopeName].hasOwnProperty(selectedRifle)" class="absolute h-[15%] w-[30%] top-[30%] right-[10%] text-red-800 rotate-[-10deg] text-2xl" style="font-size: 0.8rem; font-family: angel;">
           {{sezzing[gameName.game][selectedScopeName][selectedRifle]}}
@@ -947,7 +967,9 @@ function getStylePosition(index: number) {
             <div class="absolute top-[28%] left-[52%]">
               RAIL:<br>
               <select class="text-center bg-white bg-opacity-50 border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryorRail">
-                <option value="">none/other</option>
+                <option value="">Rail Cover</option>
+                <option value="">PEQ-15</option>
+                <option value="">ATPIALx3</option>
                 <option value=" MAWL-DA">MAWL-DA</option>
                 <option value=" RANGEFINDER">RANGEFINDER</option>
               </select>
@@ -995,7 +1017,9 @@ function getStylePosition(index: number) {
             <div class="absolute top-[28%] left-[52%]">
               RAIL:<br>
               <select class="text-center bg-white bg-opacity-50 border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryorRail">
-                <option value="">none/other</option>
+                <option value="">Rail Cover</option>
+                <option value="">PEQ-15</option>
+                <option value="">ATPIALx3</option>
                 <option value=" MAWL-DA">MAWL-DA</option>
                 <option value=" RANGEFINDER">RANGEFINDER</option>
               </select>
@@ -1067,7 +1091,9 @@ function getStylePosition(index: number) {
             <div class="absolute top-[28%] left-[52%]">
               RAIL:<br>
               <select class="text-center bg-white bg-opacity-50 border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryorRail">
-                <option value="">none/other</option>
+                <option value="">Rail Cover</option>
+                <option value="">PEQ-15</option>
+                <option value="">ATPIALx3</option>
                 <option value=" MAWL-DA">MAWL-DA</option>
                 <option value=" RANGEFINDER">RANGEFINDER</option>
               </select>
@@ -1123,7 +1149,9 @@ function getStylePosition(index: number) {
             <div class="absolute top-[28%] left-[52%]">
               RAIL:<br>
               <select class="text-center bg-white bg-opacity-50 border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryorRail">
-                <option value="">none/other</option>
+                <option value="">Rail Cover</option>
+                <option value="">PEQ-15</option>
+                <option value="">ATPIALx3</option>
                 <option value=" MAWL-DA">MAWL-DA</option>
                 <option value=" RANGEFINDER">RANGEFINDER</option>
               </select>
