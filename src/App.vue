@@ -59,6 +59,12 @@ const selectedGame = ref('Breakpoint')
 }
 
 
+@font-face {
+  font-family: "dolen";
+  src: local("dolen"),
+   url(./assets/fonts/Dolen Taith.ttf) format("truetype");
+}
+
 
 
 html {

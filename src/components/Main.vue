@@ -221,7 +221,7 @@ const scopeLabelStyles: { [gameName: string]:{[scopeName: string]: string }} = {
     'ACSS': 'color: #f4c59e;',
     'DIGITAL': 'color: #e2b7bd;  text-shadow: 0 0 5px #000, 0 0 6px #ffffff11, 0 0 7px #e2b7bd86, 0 0 10px #e2b7bd86, 0 0 15px #e2b7bd;',
     'SLX5': 'color: #fddebf;',
-    'TA31H': 'color: black;',
+    'TA31H': 'color: #fddebf;',
     'RU LONG-RANGE FOV': 'color: #f4c59e;',
     'RU LONG-RANGE': 'color: #f4c59e;',
     'PALADIN OPTIC': 'color: #f4c59e;',
@@ -252,7 +252,7 @@ const rifleLabelStyles: { [gameName: string]: {[scopeName: string]: string} } = 
     'ACSS': 'color: #f4c59e;',
     'DIGITAL': 'color: #e2b7bd;  text-shadow: 0 0 5px #000, 0 0 6px #ffffff11, 0 0 7px #e2b7bd86, 0 0 10px #e2b7bd86, 0 0 15px #e2b7bd;',
     'SLX5': 'color: #fddebf;',
-    'TA31H': 'color: black;',
+    'TA31H': 'color: #fddebf;',
     'RU LONG-RANGE FOV': 'color: #f4c59e;',
     'RU LONG-RANGE': 'color: #f4c59e;',
     'PALADIN OPTIC': 'color: #f4c59e;',
@@ -770,27 +770,7 @@ function getStylePosition(index: number) {
           v-show="selectedScopeName==='EXPS3'" src="/assets/BP-Scopes/BP-EXPS3.png"
           class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full border-4 border-black"
           />
-        </Transition>
-
-        
-<!-- RAIL ATTACHMENTS BREAKPOINT --> 
-<!-- <div id="dropdown" class="absolute top-[31%] right-[57%] text-center" :style='getScopeLabelStyle()'> -->
-              <!-- RAIL:<br> -->
-              <!-- <select class="text-center bg-black bg-opacity-10 border border-black rounded hover:bg-black" value="">
-                <option :style='getScopeLabelStyle()' value="">Rail Cover</option>
-                <option :style='getScopeLabelStyle()' value="">PEQ-15</option>
-                <option :style='getScopeLabelStyle()' value="">ATPIALx3</option>
-                <option :style='getScopeLabelStyle()' value=" MAWL-DA">MAWL-DA</option>
-                <option :style='getScopeLabelStyle()' value=" RANGEFINDER">Range Finder</option>
-              </select>
-            </div> -->
-<!-- BALLISTIC ADVANTAGE BREAKPOINT -->
-            <!-- <div class="absolute top-[31%] left-[58%] text-center" :style='getScopeLabelStyle()'>
-              BALLISTIC<br>ADVANTAGE:
-              <label class="absolute top-[15%] left-[100%]">
-                <input type="checkbox" class="h-7 w-7 accent-current" value="">
-              </label>
-            </div>       -->
+        </Transition>   
 
         <!-- WILDLANDS SCOPE IMAGES -->
 
@@ -873,7 +853,7 @@ function getStylePosition(index: number) {
             text-center
             w-[32%]
             sm:w-[25%]
-            top-[20%]
+            top-[10%]
             right-[52%]
 
           "
@@ -891,7 +871,7 @@ function getStylePosition(index: number) {
             text-center
             w-[32%]
             sm:w-[25%]
-            top-[20%]
+            top-[10%]
             left-[52%]
 
 
@@ -1542,6 +1522,29 @@ function getStylePosition(index: number) {
               <glitched-writer :text="range + 'm'" appear preset="nier" />
             </div>
           </div>
+<!-- RAIL ATTACHMENTS BREAKPOINT --> 
+            <div id="dropdown" class="absolute top-[25%] right-[55%] text-center" :style='getScopeLabelStyle()'>
+              <!-- RAIL:<br> -->
+              <div>
+              <select class="text-center border-4 border-black border-opacity-30 bg-transparent rounded-xl hover:bg-transparent hover:bg-opacity-[100%]" style="font-size: ;" value="">
+                <option value="">RAIL COVER</option>
+                <option value="">PEQ-15</option>
+                <option value="">ATPIALx3</option>
+                <option value=" MAWL-DA">MAWL-DA</option>
+                <option value=" RANGEFINDER">RANGE FINDER</option>
+              </select>
+              </div>
+            </div>
+<!-- BALLISTIC ADVANTAGE BREAKPOINT -->
+            <div class="absolute top-[25%] left-[55%] text-center" :style='getScopeLabelStyle()' style="font-size: ;">
+              <glitched-writer :text="'BALLISTIC'" appear preset="nier" />
+              <br>
+              <glitched-writer :text="'ADVANTAGE:'" appear preset="nier" />
+
+              <label class="absolute top-[5%] left-[102%]">
+                <input type="checkbox" class="shadow-black shadow-sm h-9 w-9 accent-current" value="">
+              </label>
+            </div>   
 
       </div>
 
