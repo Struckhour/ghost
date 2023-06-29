@@ -767,9 +767,9 @@ function getStylePosition(index: number) {
               v-show="selectedScopeName==='DUAL RANGE'" src="/assets/BP-Scopes/BP-Dual-Range-Sight.jpg"
               class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full"
             />
-            <img v-show="selectedScopeName==='DUAL RANGE' && gameName.game === 'Breakpoint' && silhScope.hasOwnProperty(selectedRifle)" src="/assets/soldier-silhouette.png" class="absolute h-[12.8%] top-[28.4%] right-[43.7%]"
+            <img v-show="selectedScopeName==='DUAL RANGE' && gameName.game === 'Breakpoint' && silhScope.hasOwnProperty(selectedRifle)" src="/assets/soldier-silhouette.png" class="absolute h-[12.8%] top-[28.4%] left-[44%]"
             />
-            <div v-if="selectedScopeName==='DUAL RANGE' && gameName.game === 'Breakpoint' && silhScope.hasOwnProperty(selectedRifle)" class="absolute top-[35.9%] left-[55.7%] translate-x-[0%]">
+            <div v-if="selectedScopeName==='DUAL RANGE' && gameName.game === 'Breakpoint' && silhScope.hasOwnProperty(selectedRifle)" class="absolute top-[35.6%] left-[51.1%] translate-x-[0%]">
               {{silhRange[0]}}m
             </div>
             <img v-show="selectedScopeName==='DUAL RANGE' && gameName.game === 'Breakpoint' && silhScope.hasOwnProperty(selectedRifle)" src="/assets/soldier-silhouette.png" class="absolute h-[10%] top-[65.7%] left-[20%]"
@@ -1634,7 +1634,7 @@ function getStylePosition(index: number) {
             </div>
           </div>
 <!-- RAIL ATTACHMENTS BREAKPOINT --> 
-          <div v-if="gameName.game === 'Breakpoint'" id="dropdown" class="absolute top-[25%] right-[55%] text-center leading-tight" :style='getScopeLabelStyle()'>
+          <div v-if="gameName.game === 'Breakpoint'" id="dropdown" class="absolute top-[25%] right-[56%] text-center leading-tight" :style='getScopeLabelStyle()'>
               RAIL:<br>
             <div class="leading-tight" style="font-size: 1rem;" @click="BA=false">
               <select class="text-center border-4 border-black border-opacity-30 bg-transparent rounded-xl p-0 hover:bg-black hover:bg-opacity-[10%] cursor-pointer" v-model=rail>
