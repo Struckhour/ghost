@@ -1,8 +1,9 @@
 <script setup lang="ts">
     import { ref, computed } from 'vue'
+    import fullData from '../assets/data';
+ 
 
-
-    const props = defineProps<{ scopes: string[]; show: boolean; rifleMenu: boolean; selectedScopeName: string }>()
+    const props = defineProps<{ scopes: string[]; show: boolean; rifleMenu: boolean; selectedScopeName: string; selectedRifle: string; gameName: string  }>()
 
     const emit = defineEmits(['chosenScope', 'menuClicked', 'rifleMenu'])
 
@@ -27,13 +28,23 @@
         emit('chosenScope', scopeName.value);
 
     }
-
+    const greyScopes = computed(() => {
+        let tempArray = []
+        for (let scope of props.scopes){
+          if (fullData[props.gameName][scope].hasOwnProperty(props.selectedRifle)){
+            tempArray.push(true)
+          } else{
+            tempArray.push(false)
+          }
+        }
+        return tempArray
+    })
 </script>
 
 <template>
     <div
         @click="isOpen"
-        class="flex justify-end p-1 text-cyan-300 hover:text-cyan-200 hover:bg-opacity-[90%] bg-slate-900 bg-opacity-75 rounded-md hover:cursor-pointer z-50 border-slate-600 border"
+        class="flex justify-start px-1 text-cyan-300 hover:text-cyan-200 hover:bg-opacity-[90%] bg-slate-900 bg-opacity-75 rounded-md hover:cursor-pointer z-50 border-slate-600 border"
         >
         <span class="mr-2">{{selectedScopeName}}</span>
         <svg
@@ -54,11 +65,13 @@
     <div class="grid grid-cols-1 md:w-[15rem] w-[15rem] bg-black bg-opacity-0 z-50 absolute right-2/5">
         <div
         v-show="props.show"
-        v-for="(scope) in scopes" :key="scope"
+        v-for="(scope,index) in scopes" :key="scope"
         class="right-0 py-0 mt-0 rounded-sm shadow-xl shadow-black"
         >
-        <div @click="changeScope(scope)" class="cursor-pointer px-4 md:py-0 py-2 my-0 bg-slate-900 opacity-80 md:text-[.85rem] text-base text-cyan-300 z-50 hover:bg-cyan-700 hover:text-indigo-100">{{scope}}</div>
-
+        <div v-if="greyScopes[index]" @click="changeScope(scope)" class="cursor-pointer px-4 md:py-0 py-2 my-0 bg-slate-900 opacity-80 md:text-[.85rem] text-base text-cyan-300 z-50 hover:bg-cyan-700 hover:text-indigo-100">{{scope}}
+        </div>
+        <div v-else class="cursor-pointer px-4 md:py-0 py-2 my-0 bg-slate-700 opacity-80 md:text-[.85rem] text-base text-gray-500 z-50 font-light italic">{{scope}}
+        </div>
         </div>
     </div>
 </template>

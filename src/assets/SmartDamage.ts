@@ -71,10 +71,6 @@ export const SmartRifles:string[]=[
 
 //ASR DMR'S
     
-    
-    
-    
-    
     '553 SCOUT SENTINEL',
     '553 SCOUT',
     ' 553',
@@ -138,6 +134,7 @@ export const SmartRifles:string[]=[
     'PALADIN 9 SNR SURVIVAL',
     'PALADIN 9 SNR',
     'MSR',
+    'M82 CERBERUS',
     'M82',
     'L115A3',
     'HTI SURVIVAL',
@@ -158,6 +155,7 @@ export const SmartRifles:string[]=[
      
 // SHOTGUNS
     'ACS12',
+    'BOSG12',
     "SILVERBACK'S KSG12",
     'KSG12',
     'M4 ASSAULT',
@@ -313,6 +311,7 @@ export const SmartDamage: { [gameName: string]: {[rifleName: string]: number}} =
         'PALADIN 9 SNR SURVIVAL':	132,
         'PALADIN 9 SNR':	132,
         'MSR':	132,
+        'M82 CERBERUS': 187,
         'M82':	167,
         'L115A3':	132,
         'HTI SURVIVAL':	167,
@@ -333,6 +332,7 @@ export const SmartDamage: { [gameName: string]: {[rifleName: string]: number}} =
 
 // SHOTGUNS
         'ACS12':	84,
+        'BOSG12': 129,
         'KSG12':	124,
         'M4':	144,
         'M4 ASSAULT':	144,

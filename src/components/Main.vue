@@ -17,6 +17,7 @@ import { suppressedGuns, IsSuppressedGun } from '../assets/isSuppressed';
 
 
 const showIntel = ref(false);
+const showWLIntel = ref(false);
 const showShotguns = ref(false);
 const showHandguns = ref(false);
 const showRTK = ref(false);
@@ -25,6 +26,16 @@ const range = ref(0);
 const altitude = ref(0);
 const showRando = ref(false);
 
+// BREAKPOINT RAILS, BA
+const rail = ref('nil0');
+const BA = ref(false);
+
+// WILDLANDS BARREL, ZOOM, RAIL
+const barrel = ref('nil0');
+const zoom = ref(false);
+const wlRF = ref('nil0');
+
+// RANGE YOUR OWN RIFLE
 const showRYOR = ref(false);
 const ryorName = ref();
 const ryorRail = ref();
@@ -47,16 +58,80 @@ const ryorDigital = ref(false);
 const ryorTA31H = ref(false);
 
 const gameName = defineProps<{game: string}>()
+// const scopeList = Object.keys(fullData[gameName.game]);
 const showBonuslist = ref(false);
 const showRTKlist = ref(false);
 const showTTKlist = ref(false);
+// const alphaRifles = SmartRifles.slice().sort();
 
-// Bonus Rifle List
+function AlphaRiflesFunc() {
+  if (gameName.game === 'Breakpoint'){
+    let rifleArray:string[] = [];
+    for (const scope of Object.keys(fullData[gameName.game])){
+      rifleArray = rifleArray.concat(Object.keys(fullData[gameName.game][scope]))
+    }
+    const uniqueRifles:string[] = Array.from(new Set(rifleArray))
+
+    return uniqueRifles.filter((key) => !key.includes('MAWL-DA') && !key.includes('RANGE FINDER') && !key.includes('BALLISTIC ADVANTAGE') && !key.includes('+30 RANGE')).sort();
+  } else {
+    let rifleArray:string[] = [];
+    for (const scope of Object.keys(fullData[gameName.game])){
+      rifleArray = rifleArray.concat(Object.keys(fullData[gameName.game][scope]))
+    }
+    const uniqueRifles:string[] = Array.from(new Set(rifleArray))
+
+    return uniqueRifles.filter((key) => !key.includes('BARREL') && !key.includes('RANGE FINDER') && !key.includes('ZOOMED')).sort();
+  } 
+}
+const alphaRifles:string[] = AlphaRiflesFunc();
 
 interface RifleObject {
     rifleName: string;
     rifleValue: number;
 };
+
+function getViableScope(rifle: string) {
+  selectedRifle.value = rifle
+  const viableScopes = []
+  for (let scope of scopeNames){
+    if (fullData[gameName.game][scope].hasOwnProperty(selectedRifle.value)){
+      viableScopes.push(scope)
+    }
+  }
+  if (viableScopes.includes(selectedScopeName.value)){
+  } else {
+    selectedScopeName.value = viableScopes[0]
+  }  
+}
+
+const rangeAtts = computed(() => {
+  let rangeString = '';
+    if (rail.value === ' MAWL-DA'){
+      rangeString = ' MAWL-DA';
+    }else if (rail.value === ' RANGE FINDER'){
+      rangeString = ' RANGE FINDER';
+    }
+    if (BA.value){
+      rangeString += ' BALLISTIC ADVANTAGE';
+    }
+  return rangeString
+})
+
+const rangeAttsWL = computed(() => {
+  let rangeString = '';
+    if (barrel.value === ' SHORT BARREL'){
+      rangeString = ' SHORT BARREL';
+    }else if (barrel.value === ' LONG BARREL'){
+      rangeString = ' LONG BARREL';
+    }
+    if (wlRF.value === ' RANGE FINDER'){
+    rangeString += ' RANGE FINDER';
+    }
+    if (zoom.value){
+      rangeString += ' ZOOMED';
+    }
+  return rangeString
+})
 
 const sortedBonus = Object.keys(BonusDamage['Breakpoint']).sort().reduce(
     (acc, key) => {
@@ -127,8 +202,9 @@ function getRandomRifle() {
   const randoScope = Object.keys(fullData[gameName.game])[randoScopeIndex]
   selectedScopeName.value = randoScope
 
-  const tempRifleNames = Object.keys(fullData[gameName.game][randoScope])
-
+  const tempRifleNames = Object.keys(fullData[gameName.game][randoScope]).
+  filter((key) => !key.includes('MAWL-DA') && !key.includes('RANGE FINDER') && !key.includes('BALLISTIC ADVANTAGE') && !key.includes('+30 RANGE') && !key.includes('BARREL') && !key.includes('ZOOMED'));
+ 
   const randoRifleIndex = Math.floor(Math.random() * tempRifleNames.length);
   selectedRifle.value = tempRifleNames[randoRifleIndex];
 }
@@ -160,7 +236,7 @@ const rifleNames = computed(() => {
   });
 });
 
-const scopeNames = ref(Object.keys(fullData[gameName.game]));
+const scopeNames = Object.keys(fullData[gameName.game]);
 
 function changeScope(scope: string) {
   if (Object.keys(fullData[gameName.game][scope]).includes(selectedRifle.value)) {
@@ -193,7 +269,7 @@ function changeRifleMenu() {
 }
 
 const ranges = computed(() => {
-  return fullData[gameName.game][selectedScopeName.value][selectedRifle.value]
+  return fullData[gameName.game][selectedScopeName.value][selectedRifle.value + rangeAtts.value + rangeAttsWL.value]
 })
 
 const silhRange = computed(() => {
@@ -228,9 +304,9 @@ const scopeLabelStyles: { [gameName: string]:{[scopeName: string]: string }} = {
     'EXPS3': 'color: #ffb5a6;',
   },
   Wildlands: {
-    'TA31H': 'color: black;',
+    'TA31H': 'color: #e2b7bd;',
     'TARS101': 'color: #e2b7bd; text-shadow: 0 0 5px #000, 0 0 0px #fff, 0 0 10px #e2b7bd44, 0 0 15px #e2b7bd;',
-    'T5XI TACTICAL': 'color:black;',
+    'T5XI TACTICAL': 'color:#f4c59e;',
     'DIGITAL': 'color: #e2b7bd;  text-shadow: 0 0 5px #000, 0 0 6px #ffffff11, 0 0 7px #e2b7bd86, 0 0 10px #e2b7bd86, 0 0 15px #e2b7bd;',
     'G28': 'color: yellow;',
     'POSP': 'color: #e2b7bd;',
@@ -259,9 +335,9 @@ const rifleLabelStyles: { [gameName: string]: {[scopeName: string]: string} } = 
     'EXPS3': 'color: #ffb5a6;',
   },
   Wildlands: {
-    'TA31H': 'color: black;',
+    'TA31H': 'color: #e2b7bd;',
     'TARS101': 'color: #e2b7bd; text-shadow: 0 0 5px #000, 0 0 0px #fff, 0 0 10px #e2b7bd44, 0 0 15px #e2b7bd;',
-    'T5XI TACTICAL': 'color:black;',
+    'T5XI TACTICAL': 'color:#f4c59e;',
     'DIGITAL': 'color: #e2b7bd;  text-shadow: 0 0 5px #000, 0 0 6px #ffffff11, 0 0 7px #e2b7bd86, 0 0 10px #e2b7bd86, 0 0 15px #e2b7bd;',
     'G28': 'color: yellow;',
     'POSP': 'color: #e2b7bd;',
@@ -564,71 +640,97 @@ function getStylePosition(index: number) {
       <div class="text-2xl mt-1 h-20 relative" @click="removeScopeMenu(); removeRifleMenu();">
         <router-link
           to="/"
-          class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute left-[53%] -rotate-[3deg] -translate-x-[148%] z-40" style="font-family: angel;">
+          class="active:text-[#571111] px-2 border-dashed border text-[#af3b3b] border-[#af3b3b] hover:bg-lime-900 hover:text-black hover:border-black rounded-lg shadow-black shadow-md font-sans absolute left-[53%] -rotate-[3deg] -translate-x-[146%] z-40 uppercase" style="font-size: ; font-family: aust;">
           Redeploy
         </router-link>
-        <div @click="showIntel = !showIntel; showShotguns = false; showHandguns = false; showRTK = false; showTrig = false; showRando = false;" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute left-[53%] -rotate-[-3deg] -translate-x-[70%] z-40 cursor-pointer" style="font-family: angel;">
+        <div v-if="gameName.game === 'Breakpoint'" @click="showIntel = !showIntel; showShotguns = false; showHandguns = false; showRTK = false; showTrig = false; showRando = false;" class="active:text-[#571111] px-2 border-dashed border text-[#af3b3b] border-[#af3b3b] hover:bg-lime-900 hover:text-black hover:border-black rounded-lg shadow-black shadow-md font-sans absolute left-[53%] -rotate-[-3deg] -translate-x-[70%] z-40 cursor-pointer uppercase" style="font-size: ; font-family: aust;">
           Intel
         </div>
-        <div class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute left-[53%] rotate-[-2deg] translate-x-[22%] z-40 cursor-pointer" style="font-family: angel;">
+        <div v-if="gameName.game === 'Wildlands'" @click="showWLIntel = !showWLIntel; showShotguns = false; showHandguns = false; showRTK = false; showTrig = false; showRando = false;" class="active:text-[#571111] px-2 border-dashed border text-[#af3b3b] border-[#af3b3b] hover:bg-lime-900 hover:text-black hover:border-black rounded-lg shadow-black shadow-md font-sans absolute left-[53%] -rotate-[-3deg] -translate-x-[70%] z-40 cursor-pointer uppercase" style="font-size: ; font-family: aust;">
+          Intel
+        </div>
+        <div class="active:text-[#571111] px-2 border-dashed border text-[#af3b3b] border-[#af3b3b] hover:text-white hover:bg-red-700 rounded-lg shadow-black shadow-md font-sans absolute left-[53%] rotate-[-2deg] translate-x-[22%] z-40 cursor-pointer uppercase" style="font-size: ; font-family: aust;">
           <a href="https://www.youtube.com/watch?v=HwlGfuORwAY" target="_blank">Feedback</a>
         </div>
 
 <!-- TRIG BUTTON -->
-        <div v-if="gameName.game === 'Breakpoint'" @click="showTrig = !showTrig; showIntel = false; showShotguns = false; showHandguns = false; showRTK =false; showRando = false; showRYOR = false; ryorT5XI = false; ryorDR = false; ryorDigital = false; ryorTA31H = false;" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[50%] left-[53%] rotate-[-1deg] translate-x-[-86%] z-40 cursor-pointer" style="font-family: angel;">Triggernometry
+        <div @click="showTrig = !showTrig; showIntel = false; showWLIntel = false; showShotguns = false; showHandguns = false; showRTK =false; showRando = false; showRYOR = false; ryorT5XI = false; ryorDR = false; ryorDigital = false; ryorTA31H = false;" class="active:text-[#571111] px-2 border-dashed border text-[#af3b3b] border-[#af3b3b] hover:bg-lime-900 hover:text-black hover:border-black rounded-lg shadow-black shadow-md font-sans absolute top-[50%] left-[53%] rotate-[-1deg] translate-x-[-86%] z-40 cursor-pointer uppercase" style="font-size: ; font-family: aust;">Triggernometry
         </div>
 
 <!-- RANDOM BUTTON -->
 
-        <div v-if="gameName.game === 'Breakpoint'" @click="showRando = true; showRTK = false; getRandomRifle(); showTrig = false; showIntel = false; showShotguns = false; showHandguns = false; " class="active:text-[#571111] px-2 border-dotted border-2 text-green-600 border-green-600 hover:text-purple-400 hover:border-purple-700 rounded-lg shadow-black shadow-md font-sans absolute top-[50%] left-[53%] rotate-[2deg] translate-x-[27%] z-40 cursor-pointer" style="font-size: 1.5rem; font-family: angel;">RANDOM?
+        <div @click="showRando = true; showRTK = false; getRandomRifle(); showTrig = false; showIntel = false; showWLIntel = false; showShotguns = false; showHandguns = false; rail='nil0'; BA=false; barrel='nil0'; wlRF='nil0'; zoom=false" class="active:text-[#571111] px-2 border-dashed border text-green-600 border-green-600 hover:text-purple-700 hover:bg-green-600 hover:border-purple-700 rounded-lg shadow-black shadow-md font-sans absolute top-[50%] left-[53%] rotate-[2deg] translate-x-[27%] z-40 cursor-pointer uppercase" style="font-size: ; font-family: aust;">RANDOM?
         </div>
         
       </div>
-      
-      <div v-show="showIntel" @click="showIntel = false;" class="absolute top-[100px] sm:top-[200px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg" style="font-size: 1rem;font-family: courier;">
-        <a href="https://www.youtube.com/watch?v=HwlGfuORwAY" target="_blank"><b><i><u>Click here for demo video and to make rifle/scope/attachment requests in the Youtube comments.</u></i></b></a>
-        <br><br>
-        Data is organized by scope, <u>not by rifle.</u> Please select your scope first so that the rifle list will populate with rifles that have been ranged with your chosen scope.<br><br>
-        Rifles are named with (and without) attachments that affect bullet drop. So if, for example, you are using the P416 with the short barrel and the range finder attached, be sure to select "P416 SHORT BARREL RANGE FINDER" and not "P416" or "P416 SHORT BARREL" or "P416 RANGE FINDER". Different attachment combinations have unique bullet drop.<br><br>
+<!-- INTEL CARDS -->
+      <div v-show="showIntel" @click="showIntel = false;" class="absolute top-[100px] sm:top-[200px] bg-[#eae4aa] z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg opacity-90" style="font-size: 1rem; font-family: capt;">
+        <div class="text-center leading-tight" style="font-size: 0.9rem;font-family: capt;">Select a rifle, then a scope, then add other range affecting attachments/perks etc. Not everything is ranged yet. Click 
+        <a class="text-red-700 uppercase underline font-bold" href="https://www.youtube.com/watch?v=HwlGfuORwAY" target="_blank">Feedback</a>
+          to make rifle/scope/attachment requests in our Youtube comments. And please let us know if you want to help range rifles.
+        </div>
+        <div class="text-center text-red-600" style="font-family: capt;">Once you've selected your rifle, click the "dog tags" for detailed damage intel, and more, on your rifle.
+        </div>
+        <div class="text-center text-2xl rotate-[-2deg] opacity-70" style="font-family: tops;">Damage In Breakpoint
+        </div>
 
-        <b><u>Damage In Breakpoint</u></b><br>
-          Unalerted Sentinel personnel have 39hp. Alerted Sentinel personnel have 100hp. Wolves always have 130hp. So a rifle that does 39 damage such as the MK17 Scout when unsuppressed will one-shot an unalerted Sentinel Breacher/Commander/Drone Operator/Radio Operator/Rifleman/Sniper center mass. Once they're alerted you need more rounds to exceed their increased 100hp so 39 damage times 3 rounds will exceed 100hp. With the MK17 Scout 4 rounds at 39 damage is required to exceed a Wolf's 130hp. Damage per round, rounds down when the 20% suppressor reduction is applied so 39 minus 20% damage becomes 31 damage, not 31.2. Be advised that there are a few weapons that have incorrect damage stats. In most cases these discrepancies appear to be unintended suppressor debuffs mostly occurring in the heavier handguns that can't even have suppressors(see Handguns button above). The only non handgun damage reduction I've encountered thus far is the underbarrel shotgun which claims 102 damage but fails to kill alerted Sentinel personnel at 100hp with one round center mass. There are a few DMR's that do not appear to suffer the 20% suppressor damage reduction with suppressors on. They are noted in the compendium. Finally, there are some hanguns that do +5 more damage than indicated(see Handguns button above) and some hidden momentum-type damage bonuses applied to certain ASR's and DMR's after a kill. These rifles are also noted in the compendium. <br><br> 
-
-        <b><u>Damage In Wildlands</u></b><br>
-          Unalerted sicarios can be one-shot killed by any weapon. <a href="https://docs.google.com/spreadsheets/d/1w0KRBZSdb3SFBZVAncBGit3ixPSsSMWpEiOkDSlqrZw/edit#gid=1681802407" target="_blank"><b><i><u>Here is an external resource created by others with more details on damage to alerted enemies in Wildlands.</u></i></b></a>
+        <div class="text-center text-xs" style="font-family: courier;">
+          Unalerted Sentinel personnel have 39hp.<br>
+          Alerted Sentinel personnel have 100hp.<br>
+          So a rifle that does 39 damage such as the MK17 Scout when unsuppressed will one-shot an unalerted Sentinel Breacher/Commander/Drone Operator/Radio Operator/Rifleman/Sniper center mass. Once they're alerted you need more rounds to exceed their increased 100hp so 39 damage times 3 rounds will exceed 100hp.<br><br>
+          Wolves always have 130hp.<br>
+          With the MK17 Scout 4 rounds at 39 damage is required to exceed a Wolf's 130hp. <br><br>
+          Damage per round, rounds down when the 20% suppressor reduction is applied so 39 minus 20% damage becomes 31 damage, not 31.2. Be advised that there are a few weapons that have incorrect damage stats. In most cases these discrepancies appear to be unintended suppressor debuffs mostly occurring in the heavier handguns that can't even have suppressors(see Handguns button above). The only non handgun damage reduction I've encountered thus far is the underbarrel shotgun which claims 102 damage but fails to kill alerted Sentinel personnel at 100hp with one round center mass. There are a few DMR's that do not appear to suffer the 20% suppressor damage reduction with suppressors on. They are noted in the compendium. Finally, there are some hanguns that do +5 more damage than indicated(see Handguns button on the Damage File sheet for any rifle) and there are some hidden momentum-type damage bonuses applied to certain ASR's and DMR's after a kill. These rifles are also noted in the compendium on their Damage File sheets.
+        </div>
         
         <div @click="showIntel = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer" style="font-family: courier;">x</div>
       </div>
-
+<!-- WILDLANDS INTEL -->
+      <div v-show="showWLIntel" @click="showWLIntel = false;" class="absolute top-[100px] sm:top-[200px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg opacity-90" style="font-size: 1rem;font-family: courier;">
+        <div class="text-center leading-tight" style="font-size: 0.8rem;font-family: capt;">Select a rifle, then a scope, then add other range affecting attachments/perks etc. Not everything is ranged yet. Click 
+        <a class="text-red-700 uppercase underline font-bold" href="https://www.youtube.com/watch?v=HwlGfuORwAY" target="_blank">Feedback</a>
+          to make rifle/scope/attachment requests in our Youtube comments. And please let us know if you want to help range rifles.
+        </div>
+        <div class="text-center text-2xl rotate-[-2deg] opacity-70" style="font-family: tops;">Damage In Wildlands
+        </div>
+        <div class="text-center text-xs" style="font-family: courier;">
+        Unalerted sicarios can be one-shot killed by any weapon.<br>
+          <a class="text-blue-700 hover:text-purple-700 text-lg font-bold underline" style="font-family: ZCOOL;" href="https://docs.google.com/spreadsheets/d/1w0KRBZSdb3SFBZVAncBGit3ixPSsSMWpEiOkDSlqrZw/edit#gid=1681802407" target="_blank">Here is an external resource created by others with more details on damage to alerted Unidad enemies in Wildlands.</a>
+        </div>
+        <div @click="showWLIntel = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer" style="font-family: courier;">x</div>
+      </div>
   <!-- Scope and Rifle Menus -->
 
       <div class="grid grid-cols-2">
+        
+        <div @click="rail='nil0'; BA=false; barrel='nil0'; wlRF='nil0'; zoom=false" class="z-40 font-sans tracking-normal justify-self-end mr-2">
+          <Riflemenu
+            :rifles="alphaRifles"
+            :show2="showRifleMenu"
+            :rifle-title="selectedRifle"
+            :scopeMenu="showScopeMenu"
+            :selectedScope="selectedScopeName"
+            :gameName="gameName.game"
+            @selected="(rifle) => getViableScope(rifle)" 
+            @rifle-menu-clicked="changeRifleMenu"
+            @scope-menu="removeScopeMenu"
+          />
+        </div>
 
-        <div class="z-30 font-sans tracking-normal justify-self-end mr-4">
+        <div @click="rail='nil0'; BA=false; barrel='nil0'; wlRF='nil0'; zoom=false" class="z-30 font-sans tracking-normal justify-self-start ml-2">
           <Scopemenu
             :scopes="scopeNames"
             :show="showScopeMenu"
             :rifleMenu="showRifleMenu"
             :selectedScopeName="selectedScopeName"
+            :selectedRifle="selectedRifle"
+            :gameName="gameName.game"
             @chosenScope="changeScope"
             @menu-clicked="changeScopeMenu"
             @rifle-menu="removeRifleMenu"
           />
         </div>
 
-        <div class="z-40 font-sans tracking-normal ml-2 ">
-          <Riflemenu
-            :rifles="rifleNames"
-            :show2="showRifleMenu"
-            :rifle-title="selectedRifle"
-            :scopeMenu="showScopeMenu"
-            :selectedScope="selectedScopeName"
-            :gameName="gameName.game"
-            @selected="(rifle:string) => (selectedRifle = rifle)"
-            @rifle-menu-clicked="changeRifleMenu"
-            @scope-menu="removeScopeMenu"
-          />
-        </div>
       </div>
 
         <!-- SCOPE IMAGES -->
@@ -880,59 +982,56 @@ function getStylePosition(index: number) {
         >
           <div>
             <u>Rifle:</u><br />
-            <glitched-writer :text="selectedRifle" appear preset="nier" />
+            <glitched-writer :text="selectedRifle" appear preset="nier" />  
           </div>
 
         </div>   
 <!-- ENDORSEMENT SEZZING -->
-          <div v-if="sezzing[gameName.game][selectedScopeName].hasOwnProperty(selectedRifle)" class="absolute h-[15%] w-[30%] top-[30%] right-[10%] text-red-800 rotate-[-10deg] text-2xl" style="font-size: 0.8rem; font-family: angel;">
-          {{sezzing[gameName.game][selectedScopeName][selectedRifle]}}
-          </div>
+        <div v-if="sezzing[gameName.game][selectedScopeName].hasOwnProperty(selectedRifle)" class="absolute h-[15%] w-[30%] top-[30%] right-[10%] text-red-800 rotate-[-10deg] text-2xl" style="font-size: 0.8rem; font-family: arma;">
+        {{sezzing[gameName.game][selectedScopeName][selectedRifle]}}
+        </div>
 
 <!-- TRIG CARD -->
-          <div v-show="showTrig" class="absolute top-[10px] sm:top-[10px] bg-[#eae4aa] bg-opacity-75 text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg shadow-black shadow-md text-center leading-tight" >
+        <div v-show="showTrig" class="absolute top-[10px] sm:top-[10px] bg-[#eae4aa] bg-opacity-75 text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg shadow-black shadow-md text-center leading-tight" >
       <!-- RYOR BUTTON -->
 
-            <div v-if="gameName.game === 'Breakpoint'" @click="showRYOR = !showRYOR; showRTK = false; showTrig = false; showIntel = false; showShotguns = false; showHandguns = false; " class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[1%] rotate-[-2deg] translate-x-[0%] z-40 cursor-pointer" style="font-size: 0.7rem; font-family: angel;">Range your<br> own rifle
+            <div v-if="gameName.game === 'Breakpoint'" @click="showRYOR = !showRYOR; showRTK = false; showTrig = false; showIntel = false; showShotguns = false; showHandguns = false; " class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[1%] rotate-[-2deg] translate-x-[0%] z-40 cursor-pointer" style="font-size: 0.7rem; font-family: arma;">Range your<br> own rifle
             </div>
 
-            <!-- <router-link to="/app/ryorBP" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[1%] left-[20%] rotate-[-2deg] translate-x-[0%] z-40 cursor-pointer" style="font-size: 0.7rem; font-family: angel;">Range your<br> own rifle
+            <!-- <router-link to="/app/ryorBP" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[1%] left-[20%] rotate-[-2deg] translate-x-[0%] z-40 cursor-pointer" style="font-size: 0.7rem; font-family: arma;">Range your<br> own rifle
             </router-link> -->
 
-            <div class="font-bold opacity-90 rotate-[1deg]" style="font-size: 1rem; font-family: angel;">
+            <div class="font-bold opacity-90 rotate-[0deg]" style="font-size: 1rem; font-family: capt;">
               Calculate downhill <br>shots below:
             </div>
             <div class="font-light" style="font-size: 0.7rem; font-family: courier;">(This also works for uphill shots.)
             </div>           
-            <div class="text-center rotate-[0deg] font-bold" style="font-size: 1rem; font-family: courier;">c = Range To Target:<input size="3" class="border border-black rounded font-bold" v-model="range">m
+            <div class="text-center rotate-[0deg] font-bold" style="font-size: 1rem; font-family: courier;">c = Range To Target:<input size="3" class="border-2 border-black font-bold pl-1" v-model="range">m
             </div>
-            <br>
-            <div class="text-center font-bold" style="font-size: 1rem; font-family: courier;">a = Altitude To Target:<input size="3" class="border border-black rounded font-bold" v-model="altitude">m
+            <div class="text-center font-bold translate-y-[20%]" style="font-size: 1rem; font-family: courier;">a = Altitude To Target:<input size="3" class="border-2 border-black font-bold pl-1" v-model="altitude">m
             </div>
-            <br>
-            <div class="text-red-700 font-bold" style="font-size: 1rem; font-family: courier;">b = True Ballistic Range:</div><div class="font-light text-red-700" style="font-size: 0.7rem; font-family: courier;">(Aim as though you're this range from target.)
-            </div>        
-            <div class="text-red-700 font-bold rotate-[-1deg]" style="font-size: 1.5rem; font-family: angel;">{{ Math.round((range**2-altitude**2)**0.5) }}<span class="" style="font-size: ; font-family: courier;">m</span>
+            <div class="text-red-700 font-bold rotate-[2deg]" style="font-size: 1.5rem; font-family: tops;">[{{ Math.round((range**2-altitude**2)**0.5) }}]<span class="" style="font-size: ; font-family: courier;">m</span>
               </div>
-              
+            <div class="text-red-700 font-bold" style="font-size: 1rem; font-family: courier;">b = True Ballistic Range:</div><div class="font-light text-red-700" style="font-size: 0.7rem; font-family: courier;">(Aim as though you are this range from target.)
+            </div>          
             <img class="h-[100%] w-[100%]" src="/assets/triangle.png">  
           <div @click="showTrig = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer" style="font-family: courier;">x</div>
         </div>
 <!-- END TRIG card -->
 <!-- RYOR CARD -->
         <div v-show="showRYOR" class="absolute top-[10px] sm:top-[10px] bg-[#eae4aa] bg-opacity-75 text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg shadow-black shadow-md text-center leading-tight" style="font-size: ; font-family: ZCOOL;">
-          <div v-if="gameName.game === 'Breakpoint'" @click="ryorT5XI = !ryorT5XI; ryorDR = false; ryorDigital = false; ryorTA31H = false; showRTK = false; showTrig = false; showIntel = false; showShotguns = false; showHandguns = false; " class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[1%] rotate-[-2deg] translate-x-[-25%] z-40 cursor-pointer" style="font-size: 1rem; font-family: angel;">
+          <div v-if="gameName.game === 'Breakpoint'" @click="ryorT5XI = !ryorT5XI; ryorDR = false; ryorDigital = false; ryorTA31H = false; showRTK = false; showTrig = false; showIntel = false; showShotguns = false; showHandguns = false; " class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[1%] rotate-[-2deg] translate-x-[-25%] z-40 cursor-pointer" style="font-size: 1rem; font-family: arma;">
             T5XI
           </div>
-          <div v-if="gameName.game === 'Breakpoint'" @click="ryorDR = !ryorDR; ryorT5XI = false; ryorDigital = false; ryorTA31H = false; showRTK = false; showTrig = false; showIntel = false; showShotguns = false; showHandguns = false; " class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[1%] rotate-[1deg] translate-x-[35%] z-40 cursor-pointer" style="font-size: 1rem; font-family: angel;">
+          <div v-if="gameName.game === 'Breakpoint'" @click="ryorDR = !ryorDR; ryorT5XI = false; ryorDigital = false; ryorTA31H = false; showRTK = false; showTrig = false; showIntel = false; showShotguns = false; showHandguns = false; " class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[1%] rotate-[1deg] translate-x-[35%] z-40 cursor-pointer" style="font-size: 1rem; font-family: arma;">
             Dual Range
           </div>
 
-          <div v-if="gameName.game === 'Breakpoint'" @click="ryorDigital = !ryorDigital; ryorT5XI = false; ryorDR = false; ryorTA31H = false; showRTK = false; showTrig = false; showIntel = false; showShotguns = false; showHandguns = false; " class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[1%] rotate-[-1deg] translate-x-[206%] z-40 cursor-pointer" style="font-size: 1rem; font-family: angel;">
+          <div v-if="gameName.game === 'Breakpoint'" @click="ryorDigital = !ryorDigital; ryorT5XI = false; ryorDR = false; ryorTA31H = false; showRTK = false; showTrig = false; showIntel = false; showShotguns = false; showHandguns = false; " class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[1%] rotate-[-1deg] translate-x-[194%] z-40 cursor-pointer" style="font-size: 1rem; font-family: arma;">
             Digital
           </div>
 
-          <div v-if="gameName.game === 'Breakpoint'" @click="ryorTA31H = !ryorTA31H; ryorT5XI = false; ryorDR = false; ryorDigital = false; showRTK = false; showTrig = false; showIntel = false; showShotguns = false; showHandguns = false; " class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[1%] rotate-[1deg] translate-x-[379%] z-40 cursor-pointer" style="font-size: 1rem; font-family: angel;">
+          <div v-if="gameName.game === 'Breakpoint'" @click="ryorTA31H = !ryorTA31H; ryorT5XI = false; ryorDR = false; ryorDigital = false; showRTK = false; showTrig = false; showIntel = false; showShotguns = false; showHandguns = false; " class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[1%] rotate-[1deg] translate-x-[375%] z-40 cursor-pointer" style="font-size: 1rem; font-family: arma;">
             TA31H
           </div>
         <div @click="showRYOR = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer" style="font-family: courier;">x</div>
@@ -951,7 +1050,7 @@ function getStylePosition(index: number) {
                 <option value="">PEQ-15</option>
                 <option value="">ATPIALx3</option>
                 <option value=" MAWL-DA">MAWL-DA</option>
-                <option value=" RANGEFINDER">RANGEFINDER</option>
+                <option value=" RANGE FINDER">RANGE FINDER</option>
               </select>
             </div>
             <div class="absolute top-[39%] left-[52%]">
@@ -1001,7 +1100,7 @@ function getStylePosition(index: number) {
                 <option value="">PEQ-15</option>
                 <option value="">ATPIALx3</option>
                 <option value=" MAWL-DA">MAWL-DA</option>
-                <option value=" RANGEFINDER">RANGEFINDER</option>
+                <option value=" RANGE FINDER">RANGE FINDER</option>
               </select>
             </div>
             <div class="absolute top-[39%] left-[52%]">
@@ -1075,7 +1174,7 @@ function getStylePosition(index: number) {
                 <option value="">PEQ-15</option>
                 <option value="">ATPIALx3</option>
                 <option value=" MAWL-DA">MAWL-DA</option>
-                <option value=" RANGEFINDER">RANGEFINDER</option>
+                <option value=" RANGE FINDER">RANGE FINDER</option>
               </select>
             </div>
             <div class="absolute top-[39%] left-[52%]">
@@ -1133,7 +1232,7 @@ function getStylePosition(index: number) {
                 <option value="">PEQ-15</option>
                 <option value="">ATPIALx3</option>
                 <option value=" MAWL-DA">MAWL-DA</option>
-                <option value=" RANGEFINDER">RANGEFINDER</option>
+                <option value=" RANGE FINDER">RANGE FINDER</option>
               </select>
             </div>
             <div class="absolute top-[39%] left-[52%]">
@@ -1179,19 +1278,20 @@ function getStylePosition(index: number) {
         </div>
 <!-- RANDOM CARD -->
       
-        <div v-show="showRando" class="absolute top-[10px] sm:top-[10px] bg-[#eae4aa] bg-opacity-80 text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg shadow-black shadow-md rotate-[-0deg]" style="font-size: 1rem; font-family: angel;"><div class="text-center">
-            <button v-if="gameName.game === 'Breakpoint'" @click="showRando = true; showRTK = false; getRandomRifle(); showTrig = false; showIntel = false; showShotguns = false; showHandguns = false;" class="active:text-[#571111] px-2 border-dotted border-2 text-green-600 border-green-600 hover:text-purple-600 hover:border-purple-700 rounded-lg shadow-black shadow-md font-sans rotate-[-1deg] z-40 cursor-pointer" style="font-size: 1rem; font-family: angel;">Re-roll?
+        <!-- <div v-show="showRando" class="absolute top-[10px] sm:top-[10px] bg-[#eae4aa] bg-opacity-80 text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg shadow-black shadow-md rotate-[-0deg]" style="font-size: 1rem; font-family: arma;">
+          <div class="text-center">
+            <button v-if="gameName.game === 'Breakpoint'" @click="showRando = true; showRTK = false; getRandomRifle(); showTrig = false; showIntel = false; showShotguns = false; showHandguns = false;" class="active:text-[#571111] px-1 border-dotted border-2 text-green-600 border-green-600 hover:text-purple-600 hover:border-purple-700 rounded-lg shadow-black shadow-md font-sans rotate-[-1deg] z-40 cursor-pointer" style="font-size: 1rem; font-family: arma;">Re-roll?
             </button>
-            </div>
+          </div>
           <div>
             <img class="translate-x-[550%] h-[15%] w-[15%] rotate-[-10deg] rounded-md" src="/assets/camo_dice2.png">
           </div>
-          <div class="text-center text-purple-700 rotate-[-1deg]" style="font-size: 1.3rem; font-family: angel;">
+          <div class="text-center text-lime-900 rotate-[-1deg]" style="font-size: 1.5rem; font-family: tops;">
             {{ selectedRifle }}
           </div>
           <br>
           <div class="text-center">
-            <button v-if="gameName.game === 'Breakpoint'" @click="showRTK = !showRTK; showIntel = false; showShotguns = false; showHandguns = false; showRando = false;" class="active:text-red-800 px-2 border text-red-800 border-red-800 hover:text-red-600 rounded-lg shadow-black shadow-md font-sans rotate-[1deg] translate-x-[0%] z-40 cursor-pointer" style="font-family: angel;">
+            <button v-if="gameName.game === 'Breakpoint'" @click="showRTK = !showRTK; showIntel = false; showShotguns = false; showHandguns = false; showRando = false;" class="active:text-red-800 px-2 border text-red-800 border-red-800 hover:text-red-600 rounded-lg shadow-black shadow-md font-sans rotate-[1deg] translate-x-[0%] z-40 cursor-pointer" style="font-family: arma;">
             Damage File
             </button>
           </div>
@@ -1206,18 +1306,28 @@ function getStylePosition(index: number) {
           
           <div @click="showRando = false;" class="absolute top-[-5px] right-2 text-5xl cursor-pointer" style="font-family: courier;">x
           </div>
-      </div>
+      </div> -->
 
 <!-- DAMAGE FILE BUTTON -->
-        <div v-if="gameName.game === 'Breakpoint'" @click="showRTK = !showRTK; showIntel = false; showShotguns = false; showHandguns = false; showRando = false;" class="active:text-red-800 px-2 border text-red-800 border-red-800 hover:text-red-600 rounded-lg shadow-black shadow-md font-sans absolute top-[67%] left-[62%] rotate-[-35deg] translate-x-[25%] z-40 cursor-pointer" style="font-family: angel;">
-          Damage <br>File
+          <!-- <div v-if="gameName.game === 'Breakpoint'" class="active:text-black px-2 border-4 border-double text-gray-700 border-black hover:bg-gradient-to-l from-gray-500 to-gray-400 rounded-lg shadow-black shadow-md font-sans absolute top-[66%] left-[58%] rotate-[-70deg] translate-x-[25%] z-40 cursor-pointer bg-gradient-to-l from-gray-500 to-gray-400 leading-tight font-bold" style="font-size: 0.7rem; font-family: courier;">
+          DAMAGE,<br>FILE<br>100 - 42 - 019<br>O NEG 
+        </div> -->
+        <!-- <div v-if="gameName.game === 'Breakpoint'" @click="showRTK = !showRTK; showIntel = false; showShotguns = false; showHandguns = false; showRando = false;" class="active:text-black px-2 border-4 border-double text-gray-700 border-black hover:text-black hover:bg-gradient-to-l from-gray-500 to-gray-400 rounded-lg shadow-black shadow-md font-sans absolute top-[65%] left-[56%] rotate-[-58deg] translate-x-[25%] z-40 cursor-pointer bg-gradient-to-r from-gray-500 to-gray-400 leading-tight font-bold" style="font-size: 0.7rem; font-family: courier;">
+          DAMAGE,<br>FILE<br>100 - 42 - 019<br>O NEG 
+        </div> -->
+        <button v-if="gameName.game === 'Breakpoint'" @click="showRTK = !showRTK; showIntel = false; showShotguns = false; showHandguns = false; showRando = false;" class="absolute top-[59.3%] right-[21.4%] rotate-[-50deg] translate-x-[0%] z-40 cursor-pointer h-[18.1%] w-[10.4%] border-4 border-dotted border-transparent rounded-3xl hover:bg-white hover:bg-opacity-10 hover:border-black hover:border-opacity-70">
+        </button> 
+        <button v-if="gameName.game === 'Breakpoint'" @click="showRTK = !showRTK; showIntel = false; showShotguns = false; showHandguns = false; showRando = false;" class="absolute top-[57.25%] right-[19.15%] rotate-[-31deg] translate-x-[0%] z-40 cursor-pointer h-[18.4%] w-[10.4%] border-4 border-dotted border-transparent rounded-3xl hover:bg-white hover:bg-opacity-10 hover:border-black hover:border-opacity-70">
+        </button>        
+        <div >
+          <img v-if="gameName.game === 'Breakpoint'" class="absolute top-[60.5%] left-[64%] rotate-[36deg] object-fit h-[%] w-[30%]" src="/assets/dogtags.png">
         </div>
 <!-- DAMAGE FILE CARD -->
 
         <div v-if="SmartDamage[gameName.game].hasOwnProperty(GetSmartRifleName(SmartRifles, selectedRifle)) && showRTK" class="absolute top-[10px] sm:top-[10px] bg-[#eae4aa] bg-opacity-75 text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg shadow-black shadow-md font-bold rotate-[0.5deg]" style="font-size: 0.8rem; font-family: ZCOOL;">
           
           <!-- Shotguns -->
-        <div v-if="gameName.game === 'Breakpoint'" @click="showShotguns = !showShotguns; showIntel = false; showHandguns = false; showTrig = false; showRando = false;" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[0%] left-[1%] rotate-[-1deg] translate-x-[-0%] z-40 cursor-pointer" style="font-size: 0.7rem; font-family: angel;">
+        <div v-if="gameName.game === 'Breakpoint'" @click="showShotguns = !showShotguns; showIntel = false; showHandguns = false; showTrig = false; showRando = false;" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[0%] left-[1%] rotate-[-1deg] translate-x-[-0%] z-40 cursor-pointer" style="font-size: 0.7rem; font-family: arma;">
           Shotguns 
         </div>
         <div v-show="showShotguns" @click="showShotguns = false" class="absolute top-[100px] sm:top-[15px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-[100%] max-w-xl left-2/4 -translate-x-[50%] p-4 pt-8 rounded-lg shadow-black shadow-md rotate-[-3deg]" style="font-size: 1rem; font-family: ZCOOL;">
@@ -1232,7 +1342,7 @@ function getStylePosition(index: number) {
 <!-- End Shotguns -->
 
 <!-- Pistols -->
-        <div v-if="gameName.game === 'Breakpoint'" @click="showHandguns = !showHandguns; showIntel = false; showShotguns = false; showTrig = false; showRando = false;" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[0%] right-[16%] rotate-[1deg] translate-x-[-0%] z-40 cursor-pointer" style="font-size: 0.7rem; font-family: angel;">
+        <div v-if="gameName.game === 'Breakpoint'" @click="showHandguns = !showHandguns; showIntel = false; showShotguns = false; showTrig = false; showRando = false;" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[0%] right-[16%] rotate-[1deg] translate-x-[-0%] z-40 cursor-pointer" style="font-size: 0.7rem; font-family: arma;">
           Handguns 
         </div>
         <div v-show="showHandguns" @click="showHandguns = false" class="absolute top-[100px] sm:top-[10px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-[100%] max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg shadow-black shadow-md rotate-[-1deg]" style="font-size: 0.8rem; font-family: courier;">
@@ -1266,7 +1376,7 @@ function getStylePosition(index: number) {
         </div>
 <!-- End Pistols -->
 
-          <div class="text-center font-bold text-black opacity-80 rotate-[2deg]" style="font-size: 1.5rem; font-family: angel;">{{ selectedRifle }} 
+          <div class="text-center font-bold text-black opacity-70 rotate-[2deg]" style="font-size: 1.5rem; font-family: tops;">{{ selectedRifle }} 
           </div>
           
           <div v-if="!IsSuppressedGun(suppressedGuns[gameName.game],selectedRifle)" class="leading-tight text-center font-bold text-black translate-y-[-0%]" style="font-size: 0.7rem; font-family: ZCOOL;">DAMAGE: {{ rifleDamageValue }} <span v-if="bonusRifleValue" class="text-blue-500 font-bold italic">to {{ rifleDamageValue + bonusRifleValue }} </span> 
@@ -1284,13 +1394,13 @@ function getStylePosition(index: number) {
           <div v-if="bonusRifleValue" @click="showBonuslist = !showBonuslist;" class="text-center text-blue-500 font-bold italic hover:text-blue-500 no-underline hover:underline cursor-pointer translate-y-[-0%]" style="font-size: 0.7rem; font-family: ZCOOL;">+{{ bonusRifleValue }} BONUS DAMAGE ON KILLS CHAINED WITHIN 10s
           </div>
 <!-- RTK LIST -->
-          <span @click="showRTKlist = !showRTKlist;" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute left-[2%] rotate-[-2deg] translate-x-[0%] z-40 cursor-pointer" style="font-size: 0.7rem; font-family: angel;">ROUNDS TO KILL
+          <span @click="showRTKlist = !showRTKlist;" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute left-[2%] rotate-[-2deg] translate-x-[0%] z-40 cursor-pointer" style="font-size: 0.7rem; font-family: arma;">ROUNDS TO KILL
           </span>
 <!-- TTK LIST -->
-          <span v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" @click="showTTKlist = !showTTKlist;" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute right-[2%] rotate-[2deg] translate-x-[0%] z-40 cursor-pointer" style="font-size: 0.7rem; font-family: angel;">TIME TO KILL
+          <span v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" @click="showTTKlist = !showTTKlist;" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute right-[2%] rotate-[2deg] translate-x-[0%] z-40 cursor-pointer" style="font-size: 0.7rem; font-family: arma;">TIME TO KILL
           </span>
           <br>
-          <div class="leading-tight text-center font-light text-black rotate-[-1deg] opacity-90" style="font-size: 0.8rem; font-family: angel;">SENTINEL PERSONNEL:
+          <div class="leading-tight text-center font-light text-black rotate-[-1deg] opacity-90" style="font-size: 0.8rem; font-family: arma;">SENTINEL PERSONNEL:
           </div>
 
           <div class="leading-tight text-center font-bold text-black" style="font-size: 0.7rem;">STEALTHED: 
@@ -1358,7 +1468,7 @@ function getStylePosition(index: number) {
             <span class="text-blue-500 font-bold italic" v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number' && Math.ceil(100/Math.floor(rifleDamageValue)) > Math.ceil(100/Math.floor(rifleDamageValue + bonusRifleValue))"> &nbsp;{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(100/Math.floor((rifleDamageValue + bonusRifleValue)))).toFixed(3) }}s
             </span>
           </span>          
-          <div class="leading-tight text-center font-light text-black rotate-[1deg] opacity-90" style="font-size: 0.8rem; font-family: angel;">WOLF PERSONNEL: 
+          <div class="leading-tight text-center font-light text-black rotate-[1deg] opacity-90" style="font-size: 0.8rem; font-family: arma;">WOLF PERSONNEL: 
             <div class="leading-tight text-red-600 font-bold rotate-[-1deg] opacity-120" style="font-size: 0.7rem; font-family: ZCOOL;">130HP
             </div>
           </div>
@@ -1404,7 +1514,7 @@ function getStylePosition(index: number) {
 
 
 
-          <!-- <div v-if="gameName.game === 'Breakpoint'" @click="showRando =!showRando; showRTK = false; selectedRifle=(SmartRifles[randoRifle]); showTrig = false; showIntel = false; showShotguns = false; showHandguns = false; " class="active:text-[#571111] px-2 border-dotted border-4 text-green-600 border-green-600 hover:text-purple-400 hover:border-purple-700 rounded-lg shadow-black shadow-md font-sans absolute top-[88%] left-[50%] rotate-[-2deg] translate-x-[-50%] z-40 cursor-pointer" style="font-size: 0.9rem; font-family: angel;">RANDOM RIFLE??
+          <!-- <div v-if="gameName.game === 'Breakpoint'" @click="showRando =!showRando; showRTK = false; selectedRifle=(SmartRifles[randoRifle]); showTrig = false; showIntel = false; showShotguns = false; showHandguns = false; " class="active:text-[#571111] px-2 border-dotted border-4 text-green-600 border-green-600 hover:text-purple-400 hover:border-purple-700 rounded-lg shadow-black shadow-md font-sans absolute top-[88%] left-[50%] rotate-[-2deg] translate-x-[-50%] z-40 cursor-pointer" style="font-size: 0.9rem; font-family: arma;">RANDOM RIFLE??
           </div> -->
 
 
@@ -1437,13 +1547,13 @@ function getStylePosition(index: number) {
             - Be mindful of burst fire. Some rifles actually fire 2 rounds instead of 3 when set to burst fire mode. 
           </div>
           <br>
-          <div class="text-black text-center rotate-[-1deg] opacity-80" style="font-size: 1rem; font-family: angel;">ROUNDS TO KILL WOLVES SUPPRESSED
+          <div class="text-black text-center rotate-[-1deg] opacity-80" style="font-size: 1rem; font-family: arma;">ROUNDS TO KILL WOLVES SUPPRESSED
           </div>
           <div class="leading-tight text-right translate-x-[-16%]" style="font-size: 0.7rem; font-family: courier;" v-for="(value,property) in sortedSuppRTK" >
             {{property}}: {{ value }}
           </div>
           <br>
-          <div class="text-red-700 text-center rotate-[-1deg] opacity-80" style="font-size: 1rem; font-family: angel;">ROUNDS TO KILL WOLVES LOUD
+          <div class="text-red-700 text-center rotate-[-1deg] opacity-80" style="font-size: 1rem; font-family: arma;">ROUNDS TO KILL WOLVES LOUD
           </div>
           <div class="leading-tight text-right translate-x-[-16%]" style="font-size: 0.7rem; font-family: courier;" v-for="(value,property) in sortedLoudRTK" >
             {{property}}: {{ value }}
@@ -1469,14 +1579,14 @@ function getStylePosition(index: number) {
             <br>
             <br>
           </div>
-          <div class="text-black text-center rotate-[-1deg] opacity-80" style="font-size: 1rem; font-family: angel;">
+          <div class="text-black text-center rotate-[-1deg] opacity-80" style="font-size: 1rem; font-family: arma;">
             TIME TO KILL WOLVES SUPPRESSED
           </div>
           <div class="leading-tight text-right translate-x-[-10%]" style="font-size: 0.7rem; font-family: courier;" v-for="(value,property) in sortedSuppTTK" >
             {{property}}: {{ value.toFixed(3) }}s
           </div>
           <br>
-          <div class="text-red-700 text-center rotate-[-1deg] opacity-80" style="font-size: 1rem; font-family: angel;">
+          <div class="text-red-700 text-center rotate-[-1deg] opacity-80" style="font-size: 1rem; font-family: arma;">
             TIME TO KILL WOLVES LOUD
           </div>
           <div class="leading-tight text-right translate-x-[-10%]" style="font-size: 0.7rem; font-family: courier;" v-for="(value,property) in sortedLoudTTK" >
@@ -1490,7 +1600,7 @@ function getStylePosition(index: number) {
 
 
 <!-- RTK BUTTON
-<div v-if="gameName.game === 'Breakpoint'" @click="showRTK = !showRTK; showIntel = false; showShotguns = false; showHandguns = false" class="active:text-red-800 px-2 border text-red-800 border-red-800 hover:text-red-600 rounded-lg shadow-black shadow-md font-sans absolute top-[67%] left-[62%] rotate-[-35deg] translate-x-[25%] z-40 cursor-pointer" style="font-family: angel;">
+<div v-if="gameName.game === 'Breakpoint'" @click="showRTK = !showRTK; showIntel = false; showShotguns = false; showHandguns = false" class="active:text-red-800 px-2 border text-red-800 border-red-800 hover:text-red-600 rounded-lg shadow-black shadow-md font-sans absolute top-[67%] left-[62%] rotate-[-35deg] translate-x-[25%] z-40 cursor-pointer" style="font-family: arma;">
           Damage <br>File
         </div>
         <div v-if="damage[gameName.game].hasOwnProperty(GetRifleName(rifles, selectedRifle)) && showRTK" @click="showRTK = false" class="absolute top-[100px] sm:top-[200px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg" style="font-size: 1rem; font-family: courier;">
@@ -1514,8 +1624,9 @@ function getStylePosition(index: number) {
 
 
       <!-- RANGE LABELS -->
-          <div class="absolute top-[55%] left-2/4 -translate-x-2/4 text-2xl">
-            <glitched-writer v-if="ranges && ranges.length==0" :text="'Sorry, rifle not yet ranged with this scope'" appear preset="nier" :style="getRangeStyle()" />
+          <div class="text-center absolute top-[55%] left-2/4 -translate-x-2/4 text-2xl">
+            <glitched-writer v-if="gameName.game === 'Breakpoint' && ranges && ranges.length==0" :text="'Sorry, not yet ranged. But try changing rails or Ballistic Advantage for a potential ranged version. Click FEEDBACK above to request a rifle addition in our Youtube comments.'" appear preset="nier" :style="getRangeStyle()" />
+            <glitched-writer v-if="gameName.game === 'Wildlands' && ranges && ranges.length==0" :text="'Sorry, not yet ranged. But try changing barrels/rail or zoom for a potential ranged version. Click FEEDBACK above to request a rifle addition in our Youtube comments.'" appear preset="nier" :style="getRangeStyle()" />
           </div>
           <div v-for="(range, index) in ranges" class="absolute w-full h-full top-0 left-0" :style="getRangeStyle()">
             <div :style="getStylePosition(index)">
@@ -1523,29 +1634,74 @@ function getStylePosition(index: number) {
             </div>
           </div>
 <!-- RAIL ATTACHMENTS BREAKPOINT --> 
-            <div id="dropdown" class="absolute top-[25%] right-[55%] text-center" :style='getScopeLabelStyle()'>
-              <!-- RAIL:<br> -->
-              <div>
-              <select class="text-center border-4 border-black border-opacity-30 bg-transparent rounded-xl hover:bg-transparent hover:bg-opacity-[100%]" style="font-size: ;" value="">
-                <option value="">RAIL COVER</option>
-                <option value="">PEQ-15</option>
-                <option value="">ATPIALx3</option>
-                <option value=" MAWL-DA">MAWL-DA</option>
-                <option value=" RANGEFINDER">RANGE FINDER</option>
+          <div v-if="gameName.game === 'Breakpoint'" id="dropdown" class="absolute top-[25%] right-[55%] text-center leading-tight" :style='getScopeLabelStyle()'>
+              RAIL:<br>
+            <div class="leading-tight" style="font-size: 1rem;" @click="BA=false">
+              <select class="text-center border-4 border-black border-opacity-30 bg-transparent rounded-xl p-0 hover:bg-black hover:bg-opacity-[10%] cursor-pointer" v-model=rail>
+                <option style="background-color: black;" value="nil0">NONE/OTHER</option>
+                <!-- <option value="nil1">PEQ-15</option>
+                <option value="nil2">ATPIALx3</option> -->
+                <option style="background-color: black;" v-if="fullData[gameName.game][selectedScopeName].hasOwnProperty(selectedRifle + ' MAWL-DA') || fullData[gameName.game][selectedScopeName].hasOwnProperty(selectedRifle + ' MAWL-DA BALLISTIC ADVANTAGE')" value=" MAWL-DA">MAWL-DA</option>
+                <option v-else disabled class="italic" value=" MAWL-DA" >MAWL-DA</option>
+                <option style="background-color: black;" v-if="fullData[gameName.game][selectedScopeName].hasOwnProperty(selectedRifle + ' RANGE FINDER') || fullData[gameName.game][selectedScopeName].hasOwnProperty(selectedRifle + ' RANGE FINDER BALLISTIC ADVANTAGE')" value=" RANGE FINDER">RANGE FINDER</option>
+                <option v-else disabled class="italic" value=" RANGE FINDER">RANGE FINDER</option>
               </select>
-              </div>
             </div>
-<!-- BALLISTIC ADVANTAGE BREAKPOINT -->
-            <div class="absolute top-[25%] left-[55%] text-center" :style='getScopeLabelStyle()' style="font-size: ;">
+          </div> 
+            <!-- BALLISTIC ADVANTAGE BREAKPOINT -->
+            <!-- V-SHOW??? -->
+          <div  v-if="gameName.game === 'Breakpoint' && rail=='nil0' && fullData[gameName.game][selectedScopeName].hasOwnProperty(selectedRifle+' BALLISTIC ADVANTAGE') || rail==' MAWL-DA' && fullData[gameName.game][selectedScopeName].hasOwnProperty(selectedRifle+' MAWL-DA'+' BALLISTIC ADVANTAGE') || rail==' RANGE FINDER' && fullData[gameName.game][selectedScopeName].hasOwnProperty(selectedRifle+' RANGE FINDER'+' BALLISTIC ADVANTAGE')" class="absolute top-[25%] left-[55%] text-center" :style='getScopeLabelStyle()' style="font-size: ;">
               <glitched-writer :text="'BALLISTIC'" appear preset="nier" />
               <br>
               <glitched-writer :text="'ADVANTAGE:'" appear preset="nier" />
 
-              <label class="absolute top-[5%] left-[102%]">
-                <input type="checkbox" class="shadow-black shadow-sm h-9 w-9 accent-current" value="">
-              </label>
-            </div>   
+            <label class="absolute top-[5%] left-[102%]">
+                <input type="checkbox" class="shadow-black shadow-md h-9 w-9 accent-current cursor-pointer" v-model=BA>
+                <!-- <input v-else disabled style="display: none;" type="checkbox" class="shadow-black shadow-md h-9 w-9 accent-current" v-model=BA> -->
+                <!-- set unchecked??? -->
+            </label>
+          </div>
+<!-- BARRELS WILDLANDS --> 
+          <div v-if="gameName.game === 'Wildlands'" id="dropdown" class="absolute top-[25%] right-[55%] text-center leading-tight" :style='getScopeLabelStyle()'>
+              BARREL:<br>
+            <div class="leading-tight" style="font-size: 1rem;" @click="wlRF = 'nil0'; zoom = false">
+              <select class="text-center border-4 border-black border-opacity-30 bg-transparent rounded-xl p-0 hover:bg-black hover:bg-opacity-[10%] cursor-pointer" v-model=barrel>
+                <option style="background-color: rgb(0, 0, 0);" value="nil0">STANDARD BARREL</option>
 
+                <option style="background-color: rgb(0, 0, 0);" v-if="fullData[gameName.game][selectedScopeName].hasOwnProperty(selectedRifle + ' SHORT BARREL') || fullData[gameName.game][selectedScopeName].hasOwnProperty(selectedRifle + ' SHORT BARREL RANGE FINDER') || fullData[gameName.game][selectedScopeName].hasOwnProperty(selectedRifle + ' SHORT BARREL ZOOMED') || fullData[gameName.game][selectedScopeName].hasOwnProperty(selectedRifle + ' SHORT BARREL RANGE FINDER ZOOMED')" value=" SHORT BARREL">SHORT BARREL</option>
+
+                <option v-else disabled class="italic" value=" SHORT BARREL" >SHORT BARREL</option>
+
+                <option style="background-color: rgb(0, 0, 0);" v-if="fullData[gameName.game][selectedScopeName].hasOwnProperty(selectedRifle + ' LONG BARREL') || fullData[gameName.game][selectedScopeName].hasOwnProperty(selectedRifle + ' LONG BARREL RANGE FINDER') || fullData[gameName.game][selectedScopeName].hasOwnProperty(selectedRifle + ' LONG BARREL ZOOMED') || fullData[gameName.game][selectedScopeName].hasOwnProperty(selectedRifle + ' LONG BARREL RANGE FINDER ZOOMED')" value=" LONG BARREL">LONG BARREL</option>
+                
+                <option v-else disabled class="italic" value=" LONG BARREL" >LONG BARREL</option>
+              </select>
+            </div>
+          </div>
+<!-- WILDLANDS RANGE FINDER wlRF -->
+          <div v-if="gameName.game === 'Wildlands'" id="dropdown" class="absolute top-[25%] left-[55%] text-center leading-tight" :style='getScopeLabelStyle()'>RAIL:<br>
+            <select class="text-center border-4 border-black border-opacity-30 bg-transparent rounded-xl p-0 hover:bg-black hover:bg-opacity-[10%] cursor-pointer" v-model=wlRF>
+              <option style="background-color: rgb(0, 0, 0);" value="nil0">NONE/OTHER</option>
+
+              <option style="background-color: rgb(0, 0, 0);" v-if="fullData[gameName.game][selectedScopeName].hasOwnProperty(selectedRifle + ' RANGE FINDER') || barrel ==' SHORT BARREL' && fullData[gameName.game][selectedScopeName].hasOwnProperty(selectedRifle + ' SHORT BARREL RANGE FINDER') || fullData[gameName.game][selectedScopeName].hasOwnProperty(selectedRifle + ' SHORT BARREL RANGE FINDER ZOOMED') || barrel ==' LONG BARREL' && fullData[gameName.game][selectedScopeName].hasOwnProperty(selectedRifle + ' LONG BARREL RANGE FINDER')  || fullData[gameName.game][selectedScopeName].hasOwnProperty(selectedRifle + ' LONG BARREL RANGE FINDER ZOOMED')" value=" RANGE FINDER">RANGE FINDER</option>
+
+              <option v-else disabled class="italic" value=" RANGE FINDER">RANGE FINDER</option>
+              </select>
+          </div>
+            <!-- ZOOMED WILDLANDS -->
+          <div v-if="gameName.game === 'Wildlands' && selectedScopeName === 'TARS101' || selectedScopeName === 'POSP'" class="absolute top-[40%] left-[60%] text-center" :style='getScopeLabelStyle()' style="font-size: ;">
+              <glitched-writer :text="'ZOOM IN:'" appear preset="nier" />
+
+            <label class="absolute top-[0%] left-[102%]">
+
+              <!-- <input type="checkbox" class="shadow-black shadow-md h-5 w-5 accent-current" v-model=zoom> -->
+
+              <input v-if="barrel=='nil0' && fullData[gameName.game][selectedScopeName].hasOwnProperty(selectedRifle +' ZOOMED') || barrel=='nil0' && fullData[gameName.game][selectedScopeName].hasOwnProperty(selectedRifle +' RANGE FINDER ZOOMED') || barrel==' SHORT BARREL' && fullData[gameName.game][selectedScopeName].hasOwnProperty(selectedRifle +' SHORT BARREL ZOOMED') || barrel==' SHORT BARREL' && fullData[gameName.game][selectedScopeName].hasOwnProperty(selectedRifle +' SHORT BARREL RANGE FINDER ZOOMED') || barrel==' LONG BARREL' && fullData[gameName.game][selectedScopeName].hasOwnProperty(selectedRifle+' LONG BARREL ZOOMED') || barrel==' LONG BARREL' && fullData[gameName.game][selectedScopeName].hasOwnProperty(selectedRifle +' LONG BARREL RANGE FINDER ZOOMED')" type="checkbox" class="shadow-black shadow-md h-5 w-5 accent-current cursor-pointer" v-model=zoom>
+
+              <input v-else disabled type="checkbox" class="shadow-black shadow-md h-9 w-9 accent-current" v-model=zoom>
+                <!-- set unchecked??? -->
+            </label>
+          </div>
       </div>
 
   </body>

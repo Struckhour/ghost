@@ -62,9 +62,50 @@ const selectedGame = ref('Breakpoint')
 @font-face {
   font-family: "dolen";
   src: local("dolen"),
-   url(./assets/fonts/Dolen Taith.ttf) format("truetype");
+   url(./assets/fonts/Dolen_Taith.ttf) format("truetype");
 }
 
+
+@font-face {
+  font-family: "bndy";
+  src: local("bndy"),
+   url(./assets/fonts/BndyYlwSolid.ttf) format("truetype");
+}
+
+
+@font-face {
+  font-family: "arma";
+  src: local("arma"),
+   url(./assets/fonts/armalite.ttf) format("truetype");
+}
+
+
+@font-face {
+  font-family: "tops";
+  src: local("tops"),
+   url(./assets/fonts/Top_Secret.ttf) format("truetype");
+}
+
+
+@font-face {
+  font-family: "capt";
+  src: local("capt"),
+   url(./assets/fonts/Capture_it.ttf) format("truetype");
+}
+
+
+@font-face {
+  font-family: "aust";
+  src: local("aust"),
+   url(./assets/fonts/Australianflyingcorpsstencil-gpR1.ttf) format("truetype");
+}
+
+
+@font-face {
+  font-family: "war";
+  src: local("war"),
+   url(./assets/fonts/WARTORN_.ttf) format("truetype");
+}
 
 
 html {
@@ -78,6 +119,7 @@ html {
 .breakpoint {
     height: 750px;
     background-color: #161926;
+    /* background-image: url(./assets/multicamTropic.jpg) ; */
   }
 .wildlands {
     height: 750px;

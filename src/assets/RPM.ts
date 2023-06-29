@@ -156,6 +156,7 @@ export const RPMRifles:string[]=[
         
 // SHOTGUNS
     'ACS12',
+    'BOSG12',
     "SILVERBACK'S KSG12",
     'KSG12',
     'M4 ASSAULT',
@@ -320,6 +321,7 @@ export const RPM: { [gameName: string]: {[rifleName: string]: number}} = {
 
 // SHOTGUNS
     'ACS12':	300,
+    'BOSG12': 220,
     'KSG12':	130,
     'M4':	420,
     'M4 ASSAULT':	420,
