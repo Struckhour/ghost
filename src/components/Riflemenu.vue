@@ -56,7 +56,7 @@
   </button>
 
   <!-- Dropdown menu -->
-  <div class="grid md:grid-cols-2 grid-cols-1 md:w-[30rem] w-[15rem] bg-slate-900 bg-opacity-10 -translate-x-[1rem] z-40 absolute">
+  <div class="grid md:grid-cols-2 grid-cols-1 md:w-[30rem] w-[15rem] bg-slate-900 bg-opacity-10 -translate-x-[0rem] z-40 absolute">
       <div
       v-show="props.show2"
       v-for="(rifle) in rifles" :key="rifle"
