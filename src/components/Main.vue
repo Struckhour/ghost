@@ -947,7 +947,7 @@ function getStylePosition(index: number) {
           />
         </Transition>
 
-        <!-- Scope and Rifle LABELS -->
+        <!-- Rifle and Scope LABELS -->
         <div
           class="
             absolute
@@ -955,37 +955,38 @@ function getStylePosition(index: number) {
             text-center
             w-[32%]
             sm:w-[25%]
-            top-[10%]
-            right-[52%]
-
-          "
-          :style='getScopeLabelStyle()'
-        >
-
-          <u>Scope:</u><br />
-          <glitched-writer :text="selectedScopeName" appear preset="nier" />
-        </div>
-
-        <div
-          class="
-            absolute
-            px-2
-            text-center
-            w-[32%]
-            sm:w-[25%]
-            top-[10%]
-            left-[52%]
-
+            top-[5%]
+            right-[50%]
 
           "
           :style="getRifleLabelStyle()"
         >
-          <div>
+          <div class="text-sm">
             <u>Rifle:</u><br />
             <glitched-writer :text="selectedRifle" appear preset="nier" />  
           </div>
 
         </div>   
+
+        <div
+          class="
+            absolute
+            px-2
+            text-center
+            w-[32%]
+            sm:w-[25%]
+            top-[5%]
+            left-[50%]
+
+            "
+          :style='getScopeLabelStyle()'
+        >
+          <div class="text-sm">
+          <u>Scope:</u><br />
+          <glitched-writer :text="selectedScopeName" appear preset="nier" />
+        </div>
+        </div>
+ 
 <!-- ENDORSEMENT SEZZING -->
         <div v-if="sezzing[gameName.game][selectedScopeName].hasOwnProperty(selectedRifle)" class="absolute h-[15%] w-[30%] top-[30%] right-[10%] text-red-800 rotate-[-10deg] text-2xl" style="font-size: 0.8rem; font-family: arma;">
         {{sezzing[gameName.game][selectedScopeName][selectedRifle]}}
@@ -1650,13 +1651,13 @@ function getStylePosition(index: number) {
           </div> 
             <!-- BALLISTIC ADVANTAGE BREAKPOINT -->
             <!-- V-SHOW??? -->
-          <div  v-if="gameName.game === 'Breakpoint' && rail=='nil0' && fullData[gameName.game][selectedScopeName].hasOwnProperty(selectedRifle+' BALLISTIC ADVANTAGE') || rail==' MAWL-DA' && fullData[gameName.game][selectedScopeName].hasOwnProperty(selectedRifle+' MAWL-DA'+' BALLISTIC ADVANTAGE') || rail==' RANGE FINDER' && fullData[gameName.game][selectedScopeName].hasOwnProperty(selectedRifle+' RANGE FINDER'+' BALLISTIC ADVANTAGE')" class="absolute top-[25%] left-[55%] text-center" :style='getScopeLabelStyle()' style="font-size: ;">
+          <div  v-if="gameName.game === 'Breakpoint' && rail=='nil0' && fullData[gameName.game][selectedScopeName].hasOwnProperty(selectedRifle+' BALLISTIC ADVANTAGE') || rail==' MAWL-DA' && fullData[gameName.game][selectedScopeName].hasOwnProperty(selectedRifle+' MAWL-DA'+' BALLISTIC ADVANTAGE') || rail==' RANGE FINDER' && fullData[gameName.game][selectedScopeName].hasOwnProperty(selectedRifle+' RANGE FINDER'+' BALLISTIC ADVANTAGE')" class="absolute top-[25%] left-[58%] text-center" :style='getScopeLabelStyle()' style="font-size: ;">
               <glitched-writer :text="'BALLISTIC'" appear preset="nier" />
               <br>
               <glitched-writer :text="'ADVANTAGE:'" appear preset="nier" />
 
-            <label class="absolute top-[5%] left-[102%]">
-                <input type="checkbox" class="shadow-black shadow-md h-9 w-9 accent-current cursor-pointer" v-model=BA>
+            <label class="absolute top-[50%] left-[102%]">
+                <input type="checkbox" class="shadow-black shadow-md h-5 w-5 accent-current cursor-pointer" v-model=BA>
                 <!-- <input v-else disabled style="display: none;" type="checkbox" class="shadow-black shadow-md h-9 w-9 accent-current" v-model=BA> -->
                 <!-- set unchecked??? -->
             </label>

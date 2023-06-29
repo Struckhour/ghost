@@ -62,13 +62,13 @@
     </div>
 
     <!-- Dropdown menu -->
-    <div class="grid grid-cols-1 md:w-[12rem] w-[12rem] bg-black bg-opacity-0 z-50 absolute right-2/5 -translate-x-[2rem]">
+    <div class="grid grid-cols-1 md:w-[12rem] w-[12rem] bg-black bg-opacity-0 z-50 absolute right-2/5 -translate-x-[1rem]">
         <div
         v-show="props.show"
         v-for="(scope,index) in scopes" :key="scope"
         class="right-0 py-0 mt-0 rounded-sm shadow-xl shadow-black"
         >
-        <div v-if="greyScopes[index]" @click="changeScope(scope)" class="cursor-pointer px-4 md:py-0 py-2 my-0 bg-slate-900 opacity-80 md:text-[.85rem] text-base text-cyan-300 z-50 hover:bg-cyan-700 hover:text-indigo-100">{{scope}}
+        <div v-if="greyScopes[index]" @click="changeScope(scope)" class="cursor-pointer px-2 md:py-0 py-2 my-0 bg-slate-900 opacity-80 md:text-[.85rem] text-base text-cyan-300 z-50 hover:bg-cyan-700 hover:text-indigo-100">{{scope}}
         </div>
         <div v-else class="cursor-pointer px-4 md:py-0 py-2 my-0 bg-slate-700 opacity-80 md:text-[.85rem] text-base text-gray-500 z-50 font-light italic">{{scope}}
         </div>
