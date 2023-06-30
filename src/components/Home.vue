@@ -3,6 +3,9 @@
 
   const showBScope = ref(false);
   const showWScope = ref(false);
+
+  // const showRScope = ref(false);
+
   const emit = defineEmits(['gameChoice'])
 
   function chooseBreakpoint() {
@@ -37,6 +40,14 @@
                 <img v-show="!showWScope" @mouseover="showWScope = true" src="../assets/wildlands.jpg" class="w-72 h-72 object-cover opacity-100 hover:opacity-100 m-auto rounded-full">
                 <img v-show="showWScope" src="../assets/wildlands.jpg" class="w-72 h-72 object-cover opacity-80 m-auto rounded-full">
             </router-link>
+
+<!-- RYOR LINK -->
+<!-- <router-link to="/app/RYOR" @click="chooseRYOR" class="">
+                <img @mouseout="showRScope=false" src="../assets/transparentscope.png" v-show="showRScope" class="absolute h-[19rem] w-[19rem] md:translate-x-[2.2rem] translate-x-[46px] md:-translate-y-[.5rem] z-40 -translate-y-[.5rem] rounded-full">
+
+                <img v-show="!showRScope" @mouseover="showRScope = true" src="../assets/TigerCamo.jpg" class="w-72 h-72 object-cover opacity-100 hover:opacity-100 m-auto rounded-full">
+                <img v-show="showRScope" src="../assets/TigerCamo.jpg" class="w-72 h-72 object-cover opacity-80 m-auto rounded-full">
+            </router-link>             -->
 
         </div>
     </body>

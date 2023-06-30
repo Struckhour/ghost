@@ -119,18 +119,21 @@ html {
 .breakpoint {
     height: 750px;
     background-color: #161926;
-    /* background-image: url(./assets/multicamTropic.jpg) ; */
+
   }
 .wildlands {
     height: 750px;
     background-color: #1b170f;
+
 }
 
 }
 
 @media only screen and (min-width: 550px) {
 .breakpoint {
-  background-color: #161926;
+  background-color: #16261b;
+
+  /* background-image: url(./assets/BP.jpg); */
   padding-top: 4px;
   height: 60rem;
 
@@ -138,7 +141,9 @@ html {
 }
 
 .wildlands {
-  background-color: #1b170f;
+  background-color: #413721;
+
+  /* background-image: url(./assets/WL.jpg); */
   padding-top: 4px;
   height: 60rem;
 }

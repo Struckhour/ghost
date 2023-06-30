@@ -640,26 +640,26 @@ function getStylePosition(index: number) {
       <div class="text-2xl mt-1 h-20 relative" @click="removeScopeMenu(); removeRifleMenu();">
         <router-link
           to="/"
-          class="active:text-[#571111] px-2 border-dashed border text-[#af3b3b] border-[#af3b3b] hover:bg-lime-900 hover:text-black hover:border-black rounded-lg shadow-black shadow-md font-sans absolute left-[53%] -rotate-[3deg] -translate-x-[146%] z-40 uppercase" style="font-size: ; font-family: aust;">
+          class="active:text-[#571111] px-2 bg-lime-900 border-dashed border-2 text-black border-black hover:bg-black hover:text-white hover:border-red-700 rounded-lg shadow-black shadow-md font-sans absolute left-[53%] -rotate-[3deg] -translate-x-[146%] z-40 uppercase " style="font-size: ; font-family: aust;">
           Redeploy
         </router-link>
-        <div v-if="gameName.game === 'Breakpoint'" @click="showIntel = !showIntel; showShotguns = false; showHandguns = false; showRTK = false; showTrig = false; showRando = false;" class="active:text-[#571111] px-2 border-dashed border text-[#af3b3b] border-[#af3b3b] hover:bg-lime-900 hover:text-black hover:border-black rounded-lg shadow-black shadow-md font-sans absolute left-[53%] -rotate-[-3deg] -translate-x-[70%] z-40 cursor-pointer uppercase" style="font-size: ; font-family: aust;">
+        <div v-if="gameName.game === 'Breakpoint'" @click="showIntel = !showIntel; showShotguns = false; showHandguns = false; showRTK = false; showTrig = false; showRando = false;" class="active:text-[#571111] px-2 bg-lime-900 border-dashed border-2 text-black border-black hover:bg-black hover:text-white hover:border-red-700 rounded-lg shadow-black shadow-md font-sans absolute left-[53%] -rotate-[-3deg] -translate-x-[70%] z-40 cursor-pointer uppercase" style="font-size: ; font-family: aust;">
           Intel
         </div>
-        <div v-if="gameName.game === 'Wildlands'" @click="showWLIntel = !showWLIntel; showShotguns = false; showHandguns = false; showRTK = false; showTrig = false; showRando = false;" class="active:text-[#571111] px-2 border-dashed border text-[#af3b3b] border-[#af3b3b] hover:bg-lime-900 hover:text-black hover:border-black rounded-lg shadow-black shadow-md font-sans absolute left-[53%] -rotate-[-3deg] -translate-x-[70%] z-40 cursor-pointer uppercase" style="font-size: ; font-family: aust;">
+        <div v-if="gameName.game === 'Wildlands'" @click="showWLIntel = !showWLIntel; showShotguns = false; showHandguns = false; showRTK = false; showTrig = false; showRando = false;" class="active:text-[#571111] px-2 bg-lime-900 border-dashed border-2 text-black border-black hover:bg-black hover:text-white hover:border-red-700 rounded-lg shadow-black shadow-md font-sans absolute left-[53%] -rotate-[-3deg] -translate-x-[70%] z-40 cursor-pointer uppercase" style="font-size: ; font-family: aust;">
           Intel
         </div>
-        <div class="active:text-[#571111] px-2 border-dashed border text-[#af3b3b] border-[#af3b3b] hover:text-white hover:bg-red-700 rounded-lg shadow-black shadow-md font-sans absolute left-[53%] rotate-[-2deg] translate-x-[22%] z-40 cursor-pointer uppercase" style="font-size: ; font-family: aust;">
+        <div class="active:text-[#571111] px-2 bg-lime-900 border-dashed border-2 text-black border-black hover:text-white hover:bg-red-700 rounded-lg shadow-black shadow-md font-sans absolute left-[53%] rotate-[-2deg] translate-x-[22%] z-40 cursor-pointer uppercase" style="font-size: ; font-family: aust;">
           <a href="https://www.youtube.com/watch?v=HwlGfuORwAY" target="_blank">Feedback</a>
         </div>
 
 <!-- TRIG BUTTON -->
-        <div @click="showTrig = !showTrig; showIntel = false; showWLIntel = false; showShotguns = false; showHandguns = false; showRTK =false; showRando = false; showRYOR = false; ryorT5XI = false; ryorDR = false; ryorDigital = false; ryorTA31H = false;" class="active:text-[#571111] px-2 border-dashed border text-[#af3b3b] border-[#af3b3b] hover:bg-lime-900 hover:text-black hover:border-black rounded-lg shadow-black shadow-md font-sans absolute top-[50%] left-[53%] rotate-[-1deg] translate-x-[-86%] z-40 cursor-pointer uppercase" style="font-size: ; font-family: aust;">Triggernometry
+        <div @click="showTrig = !showTrig; showIntel = false; showWLIntel = false; showShotguns = false; showHandguns = false; showRTK =false; showRando = false; showRYOR = false; ryorT5XI = false; ryorDR = false; ryorDigital = false; ryorTA31H = false;" class="active:text-[#571111] px-2 bg-lime-900 border-dashed border-2 text-black border-black hover:bg-black hover:text-white hover:border-red-700 rounded-lg shadow-black shadow-md font-sans absolute top-[50%] left-[53%] rotate-[-1deg] translate-x-[-86%] z-40 cursor-pointer uppercase" style="font-size: ; font-family: aust;">Triggernometry
         </div>
 
 <!-- RANDOM BUTTON -->
 
-        <div @click="showRando = true; showRTK = false; getRandomRifle(); showTrig = false; showIntel = false; showWLIntel = false; showShotguns = false; showHandguns = false; rail='nil0'; BA=false; barrel='nil0'; wlRF='nil0'; zoom=false" class="active:text-[#571111] px-2 border-dashed border text-green-600 border-green-600 hover:text-purple-700 hover:bg-green-600 hover:border-purple-700 rounded-lg shadow-black shadow-md font-sans absolute top-[50%] left-[53%] rotate-[2deg] translate-x-[27%] z-40 cursor-pointer uppercase" style="font-size: ; font-family: aust;">RANDOM?
+        <div @click="showRando = true; showRTK = false; getRandomRifle(); showTrig = false; showIntel = false; showWLIntel = false; showShotguns = false; showHandguns = false; rail='nil0'; BA=false; barrel='nil0'; wlRF='nil0'; zoom=false" class="active:text-[#571111] px-2 bg-purple-900 border-dashed border-2 text-green-500 border-green-500 hover:text-purple-900 hover:bg-green-500 hover:border-purple-900 rounded-lg shadow-black shadow-md font-sans absolute top-[50%] left-[53%] rotate-[2deg] translate-x-[27%] z-40 cursor-pointer uppercase" style="font-size: ; font-family: aust;">RANDOM?
         </div>
         
       </div>
@@ -1325,19 +1325,33 @@ function getStylePosition(index: number) {
         </div>
 <!-- DAMAGE FILE CARD -->
 
-        <div v-if="SmartDamage[gameName.game].hasOwnProperty(GetSmartRifleName(SmartRifles, selectedRifle)) && showRTK" class="absolute top-[10px] sm:top-[10px] bg-[#eae4aa] bg-opacity-75 text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg shadow-black shadow-md font-bold rotate-[0.5deg]" style="font-size: 0.8rem; font-family: ZCOOL;">
+        <div v-if="SmartDamage[gameName.game].hasOwnProperty(GetSmartRifleName(SmartRifles, selectedRifle)) && showRTK" class="absolute top-[10px] sm:top-[10px] bg-[#eae4aa] bg-opacity-80 text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg shadow-black shadow-md font-bold rotate-[0.5deg]" style="font-size: 0.8rem; font-family: ZCOOL;">
           
           <!-- Shotguns -->
         <div v-if="gameName.game === 'Breakpoint'" @click="showShotguns = !showShotguns; showIntel = false; showHandguns = false; showTrig = false; showRando = false;" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[0%] left-[1%] rotate-[-1deg] translate-x-[-0%] z-40 cursor-pointer" style="font-size: 0.7rem; font-family: arma;">
           Shotguns 
         </div>
-        <div v-show="showShotguns" @click="showShotguns = false" class="absolute top-[100px] sm:top-[15px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-[100%] max-w-xl left-2/4 -translate-x-[50%] p-4 pt-8 rounded-lg shadow-black shadow-md rotate-[-3deg]" style="font-size: 1rem; font-family: ZCOOL;">
-          <br>
+        <div v-show="showShotguns" @click="showShotguns = false" class="absolute top-[100px] sm:top-[15px] bg-[#eae4aa] text-xl font-serif z-[51] w-[100%] sm:w-[100%] max-w-xl left-2/4 -translate-x-[50%] p-1 pt-8 rounded-xl shadow-black shadow-md rotate-[-1deg] opacity-95" style="font-size: 1rem; font-family: courier;">
+          <!-- <div class="border border-black border-dotted text-center absolute h-[20%] w-1/3" style="font-size: 0.7rem;">All shotguns will one-shot Sentinel personnel targets center mass while undetected.
+          </div>
+          <div class="border border-black border-dotted text-center absolute left-1/3 text-xs h-[16%] w-1/3" style="font-size: 0.7rem;">Rounds to kill Senetinel Detected
+          </div>
+          <div class="border border-black border-dotted text-center absolute left-2/3 text-xs h-[16%] w-1/3" style="font-size: 0.7rem;">Rounds to kill Wolves
+          </div>
+          <div class="border border-black border-dotted text-center absolute top-[23%] left-1/3 text-xs w-1/6" style="font-size: 0.7rem;">Suppressed
+          </div>
+          <div class="border border-black border-dotted text-center absolute top-[23%] left-1/2 text-xs w-1/6" style="font-size: 0.7rem;">Loud
+          </div>
+          <div class="border border-black border-dotted text-center absolute top-[23%] left-2/3 text-xs w-1/6" style="font-size: 0.7rem;">Suppressed
+          </div>
+          <div class="border border-black border-dotted text-center absolute top-[23%] left-[83.3%] text-xs w-1/6" style="font-size: 0.7rem;">Loud
+          </div> -->
+
           <!-- {{ shotguns.Breakpoint }} -->
           <div class=""> 
-          <img class="rounded-xl" src="/assets/ShotgunsBP.png"> 
+          <img class="rounded" src="/assets/ShotgunsBP.png"> 
           </div>
-          <br>
+
           <div @click="showShotguns = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer font-light" style="font-family: courier;">x</div>
         </div>
 <!-- End Shotguns -->
@@ -1346,7 +1360,7 @@ function getStylePosition(index: number) {
         <div v-if="gameName.game === 'Breakpoint'" @click="showHandguns = !showHandguns; showIntel = false; showShotguns = false; showTrig = false; showRando = false;" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[0%] right-[16%] rotate-[1deg] translate-x-[-0%] z-40 cursor-pointer" style="font-size: 0.7rem; font-family: arma;">
           Handguns 
         </div>
-        <div v-show="showHandguns" @click="showHandguns = false" class="absolute top-[100px] sm:top-[10px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-[100%] max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg shadow-black shadow-md rotate-[-1deg]" style="font-size: 0.8rem; font-family: courier;">
+        <div v-show="showHandguns" @click="showHandguns = false" class="absolute top-[100px] sm:top-[10px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-[100%] max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg shadow-black shadow-md rotate-[-1deg] opacity-95" style="font-size: 0.8rem; font-family: courier;">
           <b><u>For those interested</u>,</b><br>
 
           All Handgun rounds start dropping off around 75m to 100m with the exception of Sharp Thunder which begins dropping at 175m. The Ballistic Advantage perk seems to add <i><b>approximately</b></i> 50% range. So headshots past 100m with handguns are guesswork in general, especially without Ballistic Advantage.<br><br>
@@ -1541,9 +1555,9 @@ function getStylePosition(index: number) {
         </div>
 
 <!-- RTK LIST -->
-        <div v-show="showRTKlist" class="absolute top-[10px] sm:top-[20px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg shadow-black shadow-md font-bold rotate-[0deg]" >
+        <div v-show="showRTKlist" class="absolute top-[10px] sm:top-[20px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg shadow-black shadow-md font-bold rotate-[0deg] opacity-95" >
           
-          <div class="leading-tight font-thin italic" style="font-size: 0.7rem; font-family: ZCOOL;">
+          <div class="leading-tight font-thin" style="font-size: 0.7rem; font-family: capt;">
             <br>
             - Be mindful of burst fire. Some rifles actually fire 2 rounds instead of 3 when set to burst fire mode. 
           </div>
@@ -1566,9 +1580,9 @@ function getStylePosition(index: number) {
         </div>
 
 <!-- TTK LIST -->
-        <div v-show="showTTKlist" class="absolute top-[10px] sm:top-[20px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg shadow-black shadow-md font-bold rotate-[0deg]" >
+        <div v-show="showTTKlist" class="absolute top-[10px] sm:top-[20px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg shadow-black shadow-md font-bold rotate-[0deg] opacity-95" >
           
-          <div class="leading-tight font-thin italic" style="font-size: 0.7rem; font-family: ZCOOL;">
+          <div class="leading-tight font-thin" style="font-size: 0.7rem; font-family: capt;">
             <br>
             - Time to kill values are calculated using the rounds per minute and damage values listed in game. They are somewhat helpful for comparison between rifles here but are probably only approximate as they can't account for differences in bullet travel time. 
             <br>
