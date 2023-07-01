@@ -82,7 +82,7 @@
   />
 
   <!-- Dropdown menu -->
-  <div id="riflemenu" class="grid grid-rows-30 grid-cols-1 md:grid-cols-3 md:w-[37rem] w-[14rem] bg-slate-900 bg-opacity-10 -translate-x-[5.5rem] z-40 absolute text-center" style="font-family: ;">
+  <div id="riflemenu" class="grid grid-rows-30 grid-cols-1 md:grid-cols-2 md:w-[25rem] w-[14rem] bg-slate-900 bg-opacity-10 -translate-x-[0rem] z-40 absolute text-center" style="font-family: ;">
 
       <div
       v-show="props.show2"
