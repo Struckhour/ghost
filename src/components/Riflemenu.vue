@@ -44,6 +44,9 @@
         rifle.toLowerCase().includes(query));
     });
 
+    const clearSearch = () => {
+    searchQuery.value = '';
+  }
 
 </script>
 
@@ -73,13 +76,13 @@
     v-if="showSearchBar"
     v-model="searchQuery"
     type="text"
-    class="w-full px-2 py-0 mt-1 text-cyan-300 uppercase bg-black border border-gray-300 rounded-md focus:outline-none focus:border-cyan-300"
+    class="w-full px-2 py-1 mt-1 text-cyan-300 uppercase bg-black border border-gray-300 rounded-md focus:outline-none focus:border-cyan-300"
     style="font-family: ;"
     placeholder="Search..."
   />
 
   <!-- Dropdown menu -->
-  <div id="riflemenu" class="grid grid-rows-30 grid-cols-1 md:grid-cols-2 md:w-[27rem] w-[16rem] bg-slate-900 bg-opacity-10 -translate-x-[0rem] z-40 absolute" style="font-family: ;">
+  <div id="riflemenu" class="grid grid-rows-30 grid-cols-1 md:grid-cols-3 md:w-[37rem] w-[14rem] bg-slate-900 bg-opacity-10 -translate-x-[5.5rem] z-40 absolute text-center" style="font-family: ;">
 
       <div
       v-show="props.show2"
@@ -92,7 +95,7 @@
         <div v-if="sezzing[gameName][selectedScope].hasOwnProperty(rifle)" @click="changeRifle(rifle)" class="cursor-pointer px-4 md:py-0 py-2 md:my-0 my-1  z-40 md:text-[.85rem] text-base text-yellow-400 font-bold hover:bg-yellow-400 hover:text-black">
           {{rifle}}
         </div>
-        <div @click="changeRifle(rifle); showSearchBar=false" class="cursor-pointer px-4 md:py-0 py-2 md:my-0 my-1  z-40 md:text-[.85rem] text-base text-cyan-300 hover:bg-cyan-700 hover:text-indigo-100">
+        <div @click="changeRifle(rifle); clearSearch(); showSearchBar=false;" class="cursor-pointer px-4 md:py-0 py-2 md:my-0 my-1  z-40 md:text-[.85rem] text-base text-cyan-300 hover:bg-cyan-700 hover:text-indigo-100">
           {{rifle}}
         </div>
       </div>
