@@ -23,7 +23,7 @@
 <template>
     <body class="w-screen h-[53rem]">
         <h1 class="text-gray-100 text-center text-xl sm:text-4xl w-3/5 max-w-[500px] m-auto border-b border-gray-200" style="font-family:tops;">The Ghost Recon Bullet Drop Compendium</h1>
-        <h2 class="text-gray-300 mt-1 text-center text-xl" style="font-family:capt;">Brought to you by HeavyHawk and Newblearbomb</h2>
+        <h2 class="text-gray-300 mt-1 text-center text-xl" style="font-family:capt;">Brought to you by HeavyHawk and Struckhour</h2>
         <h2 class="text-cyan-300 mt-6 text-center text-xl" style="font-family:ZCOOL;">
           <glitched-writer :text="'CHOOSE A GAME'" appear preset="nier" /> </h2>
         <div class="md:w-[48rem] w-[400px] m-auto mt-4 grid md:grid-cols-2 grid-cols-1 gap-2">

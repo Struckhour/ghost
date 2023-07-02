@@ -707,7 +707,7 @@ function getStylePosition(index: number) {
         <div @click="rail='nil0'; BA=false; barrel='nil0'; wlRF='nil0'; zoom=false" class="z-40 font-sans tracking-normal justify-self-end mr-2">
           <Riflemenu
             :rifles="alphaRifles"
-            :show2="showRifleMenu"
+            :showMenu="showRifleMenu"
             :rifle-title="selectedRifle"
             :scopeMenu="showScopeMenu"
             :selectedScope="selectedScopeName"
@@ -1519,7 +1519,7 @@ function getStylePosition(index: number) {
           </span>
           
 <!-- FASTEST TTK @click="selectedScopeName='DIGITAL';selectedRifle='MK14 ASSAULT'" -->
-          <div @click="showTTKlist = !showTTKlist;" v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" class="text-right text-red-600 italic translate-x-[0%] translate-y-[-145%] hover:text-purple-500 no-underline hover:underline cursor-pointer" style="font-size: 0.7rem;">FASTEST TTK: 0.143s
+          <div @click="showTTKlist = !showTTKlist;" v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" class="text-right text-red-600 italic translate-x-[0%] translate-y-[-145%] hover:text-purple-500 no-underline hover:underline cursor-pointer" style="font-size: 0.7rem;">FASTEST TTK: 0.000s
           </div>
           <!-- <div v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" class="absolute translate-y-[-70%] right-[3%] text-red-600 font-bold" style="font-size: 0.5rem;">FASTEST KILL RIFLE: {{((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, 'MK14 ASSAULT')])*Math.ceil(130/SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, 'MK14 ASSAULT')])).toFixed(3) }}s
           </div> -->

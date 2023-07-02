@@ -4,24 +4,23 @@
     
     
     const searchQuery = ref('');
-    const showSearchBar = ref(false);
 
 
-    const props = defineProps<{ rifles: string[], rifleTitle: string, show2: boolean, scopeMenu: boolean, selectedScope:string, gameName:string}>()
+    const props = defineProps<{ rifles: string[], rifleTitle: string, showMenu: boolean, scopeMenu: boolean, selectedScope:string, gameName:string}>()
 
     const emit = defineEmits(['selected', 'rifleMenuClicked', 'scopeMenu'])
 
-    let shower = ref(props.show2);
+    let showMenu = ref(props.showMenu);
 
     let scopeMenu = ref(props.scopeMenu);
 
     const isOpen2 = () => {
-      shower.value = !shower.value;
-      emit('rifleMenuClicked', shower.value)
+      showMenu.value = !showMenu.value;
+      emit('rifleMenuClicked', showMenu.value)
       scopeMenu.value = false;
       emit('scopeMenu', scopeMenu.value);
     // Toggle showSearchBar when clicking on the dropdown toggle button
-      showSearchBar.value = shower.value;
+      // showSearchBar.value = showMenu.value;
     }
 
     const rifleTitle1 = computed(() => {
@@ -33,8 +32,8 @@
     const changeRifle = (rifle: string) => {
         rifleName.value = rifle;
         emit('selected', rifleName.value)
-        shower.value = !shower.value;
-        emit('rifleMenuClicked', shower.value);
+        showMenu.value = !showMenu.value;
+        emit('rifleMenuClicked', showMenu.value);
         window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
@@ -73,7 +72,7 @@
 
     <!-- Search bar -->
     <input
-    v-if="showSearchBar"
+    v-show="props.showMenu"
     v-model="searchQuery"
     type="text"
     class="w-full px-2 py-1 mt-1 text-cyan-300 uppercase bg-black border border-gray-300 rounded-md focus:outline-none focus:border-cyan-300"
@@ -85,7 +84,7 @@
   <div id="riflemenu" class="grid grid-rows-30 grid-cols-1 md:grid-cols-2 md:w-[25rem] w-[14rem] bg-slate-900 bg-opacity-10 -translate-x-[0rem] z-40 absolute text-center" style="font-family: ;">
 
       <div
-      v-show="props.show2"
+      v-show="props.showMenu"
       
       v-for="(rifle) in computedRifles"
 
@@ -95,7 +94,7 @@
         <div v-if="sezzing[gameName][selectedScope].hasOwnProperty(rifle)" @click="changeRifle(rifle)" class="cursor-pointer px-4 md:py-0 py-2 md:my-0 my-1  z-40 md:text-[.85rem] text-base text-yellow-400 font-bold hover:bg-yellow-400 hover:text-black">
           {{rifle}}
         </div>
-        <div @click="changeRifle(rifle); clearSearch(); showSearchBar=false;" class="cursor-pointer px-4 md:py-0 py-2 md:my-0 my-1  z-40 md:text-[.85rem] text-base text-cyan-300 hover:bg-cyan-700 hover:text-indigo-100">
+        <div @click="changeRifle(rifle); clearSearch();" class="cursor-pointer px-4 md:py-0 py-2 md:my-0 my-1  z-40 md:text-[.85rem] text-base text-cyan-300 hover:bg-cyan-700 hover:text-indigo-100">
           {{rifle}}
         </div>
       </div>
