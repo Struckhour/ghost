@@ -305,6 +305,21 @@ export const RPM: { [gameName: string]: {[rifleName: string]: number}} = {
     'UMP CQC':	600,
 
 //SNR'S
+    'ZASTAVA M93':	70,
+    'VSK-50':	70,
+    'TAC50 BROWN':	70,
+    'TAC50':	70,
+    'SR-1':	70,
+    'SCORPIO':	70,
+    'RECON-A1':	70,
+    'PALADIN 9 SNR SURVIVAL':	70,
+    'PALADIN 9 SNR':	70,
+    'MSR':	70,
+    'M82 CERBERUS': 70,
+    'M82':	70,
+    'L115A3':	70,
+    'HTI SURVIVAL':	70,
+    'HTI':	70,
     
 //LMG'S
     'T95':	650,

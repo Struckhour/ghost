@@ -1,5 +1,7 @@
 <script setup lang="ts">
   import { ref } from 'vue'
+  import GlitchedWriter from 'vue-glitched-writer';
+
 
   const showBScope = ref(false);
   const showWScope = ref(false);
@@ -20,9 +22,10 @@
 
 <template>
     <body class="w-screen h-[53rem]">
-        <h1 class="text-[#5d6e4e] text-center text-xl sm:text-4xl w-3/5 max-w-[500px] m-auto border-b border-gray-200" style="font-family:angel;">The Ghost Recon Bullet Drop Compendium</h1>
-        <h2 class="text-red-700 mt-1 text-center text-xl" style="font-family:angel;">Brought to you by HeavyHawk and Newblearbomb</h2>
-        <h2 class="text-white mt-6 text-center text-xl">Choose a game</h2>
+        <h1 class="text-gray-100 text-center text-xl sm:text-4xl w-3/5 max-w-[500px] m-auto border-b border-gray-200" style="font-family:tops;">The Ghost Recon Bullet Drop Compendium</h1>
+        <h2 class="text-gray-300 mt-1 text-center text-xl" style="font-family:capt;">Brought to you by HeavyHawk and Newblearbomb</h2>
+        <h2 class="text-cyan-300 mt-6 text-center text-xl" style="font-family:ZCOOL;">
+          <glitched-writer :text="'CHOOSE A GAME'" appear preset="nier" /> </h2>
         <div class="md:w-[48rem] w-[400px] m-auto mt-4 grid md:grid-cols-2 grid-cols-1 gap-2">
 
 <!-- BREAKPOINT LINK -->
@@ -48,7 +51,9 @@
                 <img v-show="!showRScope" @mouseover="showRScope = true" src="../assets/TigerCamo.jpg" class="w-72 h-72 object-cover opacity-100 hover:opacity-100 m-auto rounded-full">
                 <img v-show="showRScope" src="../assets/TigerCamo.jpg" class="w-72 h-72 object-cover opacity-80 m-auto rounded-full">
             </router-link>             -->
-
+            <!-- <div>
+              <img class="z-0 absolute top-[-5%] left-[23%] object-center h-[100%] w-[55%]" src="../assets/crosscomAlpha.png">
+            </div> -->
         </div>
     </body>
 

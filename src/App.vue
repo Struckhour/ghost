@@ -131,9 +131,9 @@ html {
 
 @media only screen and (min-width: 550px) {
 .breakpoint {
-  background-color: #16261b;
+  background-color: #161926;
 
-  /* background-image: url(./assets/BP.jpg); */
+  background-image: url(./assets/camo.jpg);
   padding-top: 4px;
   height: 60rem;
 
@@ -141,9 +141,9 @@ html {
 }
 
 .wildlands {
-  background-color: #413721;
+  background-color: #1b170f;
 
-  /* background-image: url(./assets/WL.jpg); */
+  background-image: url(./assets/multicam.png);
   padding-top: 4px;
   height: 60rem;
 }

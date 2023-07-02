@@ -62,7 +62,7 @@
     </div>
 
     <!-- Dropdown menu -->
-    <div class="text-left grid grid-cols-1 md:w-[11rem] w-[11rem] bg-black bg-opacity-0 z-50 absolute right-2/5 -translate-x-[0rem]">
+    <div class="text-left grid grid-cols-1 md:w-[11rem] w-[11rem] bg-black bg-opacity-0 z-50 absolute right-2/5 -translate-x-[1rem]">
         <div
         v-show="props.show"
         v-for="(scope,index) in scopes" :key="scope"
