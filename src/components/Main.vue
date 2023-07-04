@@ -667,16 +667,20 @@ function getStylePosition(index: number) {
       </div>
 <!-- INTEL CARDS -->
       <div v-show="showIntel" @click="showIntel = false;" class="absolute top-[100px] sm:top-[200px] bg-[#eae4aa] z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg opacity-90" style="font-size: 1rem; font-family: capt;">
-        <div class="text-center leading-tight" style="font-size: 0.9rem;font-family: capt;">Select a rifle, then a scope, then add other range affecting attachments/perks etc. Not everything is ranged yet. Click 
+        <div class="text-center leading-tight rotate-[1deg]" style="font-size: 0.9rem;font-family: capt;">Select a rifle, then a scope, then add other range affecting attachments/perks etc. Not everything is ranged yet. Click 
         <a class="text-red-700 uppercase underline font-bold" href="https://www.youtube.com/watch?v=HwlGfuORwAY" target="_blank">Feedback</a>
           to make rifle/scope/attachment requests in our Youtube comments. And please let us know if you want to help range rifles.
         </div>
-        <div class="text-center text-red-600" style="font-family: capt;">Once you've selected your rifle, click the "dog tags" for detailed damage intel, and more, on your rifle.
+        <div class="text-center text-red-600 text-xs" style="font-family: capt;">Once you've selected your rifle, click the "dog tags" for detailed damage intel, and more, on your rifle.
         </div>
-        <div class="text-center text-2xl rotate-[-2deg] opacity-70" style="font-family: tops;">Damage In Breakpoint
+        <div class="text-center text-2xl rotate-[-1deg] opacity-70" style="font-family: tops;">Range In Breakpoint
+        </div>
+        <div class=" font-light text-xs" style="font-family: courier;">  The reason you don't see the bipod or bipod foregrip combo or the grip pod listed anywhere on this site is because contrary to what it says in game, the 'pod' attachments do not add range. Use them for their other benefits but don't expect them to make your bullets go further. Changing barrels also does not affect bullet drop in Breakpoint contrary to what it claims. Nor do mk1, mk2, mk3 upgrades despite claiming to add range. The only things that actually affect range in Breakpoint are: the MAWL-DA, the Range Finder, the Ballistic Advantage Perk, and +10, +20, +30 range on leveled weapons in gear score mode.
+        </div>
+        <div class="text-center text-2xl rotate-[1deg] text-red-600 opacity-90" style="font-family: tops;">Damage In Breakpoint
         </div>
 
-        <div class="text-center text-xs" style="font-family: courier;">
+        <div class="text- text-xs" style="font-family: courier;">
           Unalerted Sentinel personnel have 39hp.<br>
           Alerted Sentinel personnel have 100hp.<br>
           So a rifle that does 39 damage such as the MK17 Scout when unsuppressed will one-shot an unalerted Sentinel Breacher/Commander/Drone Operator/Radio Operator/Rifleman/Sniper center mass. Once they're alerted you need more rounds to exceed their increased 100hp so 39 damage times 3 rounds will exceed 100hp.<br><br>
@@ -689,14 +693,18 @@ function getStylePosition(index: number) {
       </div>
 <!-- WILDLANDS INTEL -->
       <div v-show="showWLIntel" @click="showWLIntel = false;" class="absolute top-[100px] sm:top-[200px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg opacity-90" style="font-size: 1rem;font-family: courier;">
-        <div class="text-center leading-tight" style="font-size: 0.8rem;font-family: capt;">Select a rifle, then a scope, then add other range affecting attachments/perks etc. Not everything is ranged yet. Click 
+        <div class="text-center leading-tight rotate-[1deg]" style="font-size: 0.8rem;font-family: capt;">Select a rifle, then a scope, then add other range affecting attachments/perks etc. Not everything is ranged yet. Click 
         <a class="text-red-700 uppercase underline font-bold" href="https://www.youtube.com/watch?v=HwlGfuORwAY" target="_blank">Feedback</a>
           to make rifle/scope/attachment requests in our Youtube comments. And please let us know if you want to help range rifles.
         </div>
-        <div class="text-center text-2xl rotate-[-2deg] opacity-70" style="font-family: tops;">Damage In Wildlands
+        <div class="text-center text-2xl rotate-[-1deg] opacity-70" style="font-family: tops;">Range In Wildlands
+        </div>
+        <div class=" font-light text-xs" style="font-family: courier;">  Changing barrels, the Range Finder and zooming in or out on scopes like the TARS101 affect bullet drop in Wildlands.
+        </div>
+        <div class="text-center text-2xl rotate-[1deg] text-red-600 opacity-90" style="font-family: tops;">Damage In Wildlands
         </div>
         <div class="text-center text-xs" style="font-family: courier;">
-        Unalerted sicarios can be one-shot killed by any weapon.<br>
+        Unalerted sicarios can be one-shot killed by any weapon. Unidad sometimes take more.<br>
           <a class="text-blue-700 hover:text-purple-700 text-lg font-bold underline" style="font-family: ZCOOL;" href="https://docs.google.com/spreadsheets/d/1w0KRBZSdb3SFBZVAncBGit3ixPSsSMWpEiOkDSlqrZw/edit#gid=1681802407" target="_blank">Here is an external resource created by others with more details on damage to alerted Unidad enemies in Wildlands.</a>
         </div>
         <div @click="showWLIntel = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer" style="font-family: courier;">x</div>
@@ -1457,7 +1465,7 @@ function getStylePosition(index: number) {
 
 <!-- DAMAGE FILE BUTTON -->
 
-        <button v-if="gameName.game === 'Breakpoint'" @click="showRTK = !showRTK; showIntel = false; showShotguns = false; showHandguns = false; showRando = false;" class="absolute top-[57.25%] right-[19.15%] rotate-[-31deg] translate-x-[0%] z-40 cursor-pointer h-[18.4%] w-[10.4%] border-4 border-dotted border-transparent rounded-3xl hover:bg-white hover:bg-opacity-10 hover:border-black hover:border-opacity-70">
+        <button v-if="gameName.game === 'Breakpoint'" @click="showRTK = !showRTK; showIntel = false; showShotguns = false; showHandguns = false; showRando = false;" class="absolute top-[57.25%] right-[19.15%] rotate-[-31deg] translate-x-[0%] z-40 cursor-pointer h-[18.4%] w-[10.4%] border-4 border-dotted border-transparent rounded-3xl hover:bg-black hover:bg-opacity-20 hover:border-black hover:border-opacity-70">
         </button>        
         <div >
           <img v-if="gameName.game === 'Breakpoint'" class="absolute top-[60.5%] left-[64%] rotate-[36deg] object-fit h-[%] w-[30%]" src="/assets/dogtags.png">
