@@ -1045,18 +1045,38 @@ function getStylePosition(index: number) {
               <option value="T5XI">T5XI</option>
               <option value="DUAL RANGE">DUAL RANGE</option>
               <option value="TARS101">TARS101</option>
+              <option value="VC16">VC16</option>
+              <option value="ACSS">ACSS</option>
               <option value="DIGITAL">DIGITAL</option>
+              <option value="SLX5">SLX5</option>
               <option value="TA31H">TA31H</option>
               <option value="RU LONG-RANGE FOV">RU LONG-RANGE FOV</option>
-              
+              <option value="RU LONG-RANGE">RU LONG-RANGE</option>
+              <option value="EXPS3">EXPS3</option>
+
             </select>
           </div>
-          <img v-if="ryorScope==='T5XI'" class="h-full w-full top-0 absolute top-[0%] object-cover max-h-[42rem] m-auto rounded-full z-[-1]" src="/assets/BP-Scopes/BP-T5XISight.jpg">
-          <img v-else-if="ryorScope==='DUAL RANGE'" class="h-full w-full top-[0%] absolute object-cover max-h-[42rem] m-auto rounded-full z-[-1]" src="/assets/BP-Scopes/BP-Dual-Range-Sight.jpg">
-          <img v-else-if="ryorScope==='TARS101'" class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full z-[-1]" src="/assets/BP-Scopes/BP-TARS101.jpg" />
-          <img v-else-if="ryorScope==='DIGITAL'" class="h-full w-full top-[0%] absolute object-cover max-h-[42rem] m-auto rounded-full z-[-1]" src="/assets/BP-Scopes/BP-Digital-Sight.jpg">
-          <img v-else-if="ryorScope==='TA31H'" class="h-full w-full top-[0%] absolute object-cover max-h-[42rem] m-auto rounded-full z-[-1]" src="/assets/BP-Scopes/BP-TA31H-Sight.jpg">
-          <img v-else="ryorScope==='RU LONG-RANGE FOV'" src="/assets/BP-Scopes/BP-RU-Long-Range-FOV-Sight.jpg" class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full z-[-1]"/>
+          <img v-if="ryorScope==='T5XI'" class="h-full w-full top-0 absolute top-[0%] object-cover max-h-[42rem] m-auto rounded-full z-[-1]" src="/assets/BP-Scopes/BP-T5XISight.jpg"/>
+          
+          <img v-else-if="ryorScope==='DUAL RANGE'" src="/assets/BP-Scopes/BP-Dual-Range-Sight.jpg" class="h-full w-full top-[0%] absolute object-cover max-h-[42rem] m-auto rounded-full z-[-1]"/>
+
+          <img v-else-if="ryorScope==='TARS101'" src="/assets/BP-Scopes/BP-TARS101.jpg" class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full z-[-1]"/>
+
+          <img v-else-if="ryorScope==='VC16'" src="/assets/BP-Scopes/BP-VC16-Sight.jpg" class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full z-[-1]"/>
+
+          <img v-else-if="ryorScope==='ACSS'" src="/assets/BP-Scopes/BP-ACSS-Sight.jpg" class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full  z-[-1]"/>
+
+          <img v-else-if="ryorScope==='DIGITAL'" src="/assets/BP-Scopes/BP-Digital-Sight.jpg" class="h-full w-full top-[0%] absolute object-cover max-h-[42rem] m-auto rounded-full z-[-1]">
+
+          <img v-else-if="ryorScope==='SLX5'" src="/assets/BP-Scopes/BP-SLX5-Sight.jpg" class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full z-[-1]"/>
+
+          <img v-else-if="ryorScope==='TA31H'" src="/assets/BP-Scopes/BP-TA31H-Sight.jpg" class="h-full w-full top-[0%] absolute object-cover max-h-[42rem] m-auto rounded-full z-[-1]"/>
+
+          <img v-else-if="ryorScope==='RU LONG-RANGE FOV'" src="/assets/BP-Scopes/BP-RU-Long-Range-FOV-Sight.jpg" class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full z-[-1]"/>
+
+          <img v-else-if="ryorScope==='RU LONG-RANGE'" src="/assets/BP-Scopes/BP-RU-Long-Range-Sight.jpg" class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full z-[-1]"/>
+
+          <img v-else="ryorScope==='EXPS3'" src="/assets/BP-Scopes/BP-EXPS3.png" class="h-full w-full top-0 absolute object-cover max-h-[42rem] m-auto rounded-full z-[-1]"/>
 
          
           <div class="" style="font-size: 0.7rem; font-family: ZCOOL;">
@@ -1189,13 +1209,83 @@ function getStylePosition(index: number) {
                 <input size="3" class="text-center bg-white bg-opacity-50  border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor8">
                 </div>
                 <!-- line 9 -->
-                <div class="absolute top-[67%] left-[54%]" >
+                <div class="absolute top-[67%] left-[51%]" >
                 <input size="3" class="text-center bg-white bg-opacity-50  border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor9">
                 </div>
                 <!-- line 10 -->
-                <div class="absolute top-[69.3%] right-[54%]" >
+                <div class="absolute top-[69.3%] right-[51%]" >
                 <input size="3" class="text-center bg-white bg-opacity-50  border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor10">
                 </div>
+            </div>
+<!-- RYOR VC16 -->
+            <div v-else-if="ryorScope==='VC16'" class="text-" style="font-size: 0.7rem; font-family: courier;">
+                <!-- line 0 -->
+                <div class="absolute top-[47.6%] right-[51%]">
+                <input size="3" class="text-center bg-white bg-opacity-50 border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor0">
+                </div>
+                <!-- line 1 -->
+                <div class="absolute top-[49.1%] left-[51%]" >
+                <input size="3" class="text-center bg-white bg-opacity-50  border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor1">
+                </div>
+                <!-- line 2 -->
+                <div class="absolute top-[50.8%] right-[51%]" >
+                <input size="3" class="text-center bg-white bg-opacity-50  border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor2">
+                </div>
+                <!-- line 3 -->
+                <div class="absolute top-[52.2%] left-[51%]" >
+                <input size="3" class="text-center bg-white bg-opacity-50  border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor3">
+                </div>
+                <!-- line 4 -->
+                <div class="absolute top-[53.8%] right-[51%]" >
+                <input size="3" class="text-center bg-white bg-opacity-50  border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor4">
+                </div>
+                <!-- line 5 -->
+                <div class="absolute top-[56%] left-[51%]" >
+                <input size="3" class="text-center bg-white bg-opacity-50  border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor5">
+                </div>
+                <!-- line 6 -->
+                <div class="absolute top-[58.5%] right-[51%]" >
+                <input size="3" class="text-center bg-white bg-opacity-50  border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor6">
+                </div>
+                <!-- line 7 -->
+                <div class="absolute top-[60.3%] left-[51%]" >
+                <input size="3" class="text-center bg-white bg-opacity-50  border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor7">
+                </div>
+                <!-- line 8 -->
+                <div class="absolute top-[71%] right-[51%]" >
+                <input size="3" class="text-center bg-white bg-opacity-50  border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor8">
+                </div>
+            </div>
+  <!-- RYOR ACSS -->
+            <div v-else-if="ryorScope==='ACSS'" class="text-">
+              <!-- line 0 -->
+              <div class="absolute top-[48%] right-[51%]">
+              <input size="3" class="text-center bg-white bg-opacity-50 border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor0">
+              </div>
+              <!-- line 1 -->
+              <div class="absolute top-[49.7%] left-[51%]" >
+              <input size="3" class="text-center bg-white bg-opacity-50  border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor1">
+              </div>
+              <!-- line 2 -->
+              <div class="absolute top-[51.6%] right-[51%]" >
+              <input size="3" class="text-center bg-white bg-opacity-50  border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor2">
+              </div>
+              <!-- line 3 -->
+              <div class="absolute top-[53.5%] left-[51%]" >
+              <input size="3" class="text-center bg-white bg-opacity-50  border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor3">
+              </div>
+              <!-- line 4 -->
+              <div class="absolute top-[56.0%] right-[51%]" >
+              <input size="3" class="text-center bg-white bg-opacity-50  border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor4">
+              </div>
+              <!-- line 5 -->
+              <div class="absolute top-[59.2%] left-[51%]" >
+              <input size="3" class="text-center bg-white bg-opacity-50  border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor5">
+              </div>
+              <!-- line 6 -->
+              <div class="absolute top-[63%] right-[51%]" >
+              <input size="3" class="text-center bg-white bg-opacity-50  border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor6">
+              </div>
             </div>
   <!-- RYOR DIGITAL -->
             <div v-else-if="ryorScope==='DIGITAL'" class="text-">
@@ -1225,6 +1315,37 @@ function getStylePosition(index: number) {
               </div>
               <!-- line 6 -->
               <div class="absolute top-[87.3%] right-[50%]" >
+              <input size="3" class="text-center bg-white bg-opacity-50  border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor6">
+              </div>
+            </div>
+  <!-- RYOR SLX5 -->
+            <div v-else-if="ryorScope==='SLX5'" class="text-">
+              <!-- line 0 -->
+              <div class="absolute top-[47.5%] right-[50%]">
+              <input size="3" class="text-center bg-white bg-opacity-50 border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor0">
+              </div>
+              <!-- line 1 -->
+              <div class="absolute top-[50.3%] left-[51%]" >
+              <input size="3" class="text-center bg-white bg-opacity-50  border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor1">
+              </div>
+              <!-- line 2 -->
+              <div class="absolute top-[53.2%] right-[51%]" >
+              <input size="3" class="text-center bg-white bg-opacity-50  border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor2">
+              </div>
+              <!-- line 3 -->
+              <div class="absolute top-[56.5%] left-[52%]" >
+              <input size="3" class="text-center bg-white bg-opacity-50  border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor3">
+              </div>
+              <!-- line 4 -->
+              <div class="absolute top-[60.7%] right-[51%]" >
+              <input size="3" class="text-center bg-white bg-opacity-50  border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor4">
+              </div>
+              <!-- line 5 -->
+              <div class="absolute top-[65.7%] left-[52%]" >
+              <input size="3" class="text-center bg-white bg-opacity-50  border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor5">
+              </div>
+              <!-- line 6 -->
+              <div class="absolute top-[71.7%] right-[51%]" >
               <input size="3" class="text-center bg-white bg-opacity-50  border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor6">
               </div>
             </div>
@@ -1258,7 +1379,8 @@ function getStylePosition(index: number) {
               <input size="3" class="text-center bg-white bg-opacity-50  border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor6">
               </div>
             </div>
-            <div v-else="ryorScope==='RU LONG-RANGE FOV'" class="">
+<!-- RYOR RU LONG-RANGE FOV -->
+            <div v-else-if="ryorScope==='RU LONG-RANGE FOV'" class="">
               <!-- line 0 -->
               <div class="absolute top-[48%] right-[51.2%]">
               <input size="3" class="text-center bg-white bg-opacity-50 border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor0">
@@ -1280,8 +1402,48 @@ function getStylePosition(index: number) {
               <input size="3" class="text-center bg-white bg-opacity-50  border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor5">
               </div>
             </div>
-
-          
+<!-- RU LONG-RANGE -->
+            <div v-else-if="ryorScope==='RU LONG-RANGE'" class="">
+              <!-- line 0 -->
+              <div class="absolute top-[48%] right-[51.2%]">
+              <input size="3" class="text-center bg-white bg-opacity-50 border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor0">
+              </div>
+              <!-- line 1 -->
+              <div class="absolute top-[50.5%] left-[51%]" >
+              <input size="3" class="text-center bg-white bg-opacity-50  border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor1">
+              </div>
+              <!-- line 2 -->
+              <div class="absolute top-[53%] right-[51.2%]" >
+              <input size="3" class="text-center bg-white bg-opacity-50  border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor2">
+              </div>
+              <!-- line 3 -->
+              <div class="absolute top-[55.1%] left-[51%]" >
+              <input size="3" class="text-center bg-white bg-opacity-50  border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor4">
+              </div>
+              <!-- line 4 -->
+              <div class="absolute top-[57.3%] right-[51.2%]" >
+              <input size="3" class="text-center bg-white bg-opacity-50  border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor5">
+              </div>
+              <!-- line 5 -->
+              <div class="absolute top-[59.5%] left-[51.2%]" >
+              <input size="3" class="text-center bg-white bg-opacity-50  border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor5">
+              </div>
+            </div>
+<!-- EXPS3 -->
+          <div v-else="ryorScope==='EXPS3'" class="">
+              <!-- line 0 -->
+              <div class="absolute top-[51%] right-[50%]">
+              <input size="3" class="text-center bg-white bg-opacity-50 border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor0">
+              </div>
+              <!-- line 1 -->
+              <div class="absolute top-[55.5%] left-[52%]" >
+              <input size="3" class="text-center bg-white bg-opacity-50  border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor1">
+              </div>
+              <!-- line 2 -->
+              <div class="absolute top-[64%] right-[50%]" >
+              <input size="3" class="text-center bg-white bg-opacity-50  border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor2">
+              </div>
+            </div>
         </div>
 
             <div class="absolute top-[0%] left-[15%] w-[70%] bg-white rounded text-center text-black opacity-60">Copy and paste the black box below into our Youtube comments and we'll add your work to the compendium!</div>
@@ -1293,47 +1455,8 @@ function getStylePosition(index: number) {
         <div @click="showRYOR = false" class="absolute top-[-5px] right-3 text-5xl cursor-pointer text-white" style="font-family: courier;">x</div>
         </div>
 
-<!-- RANDOM CARD -->
-      
-        <!-- <div v-show="showRando" class="absolute top-[10px] sm:top-[10px] bg-[#eae4aa] bg-opacity-80 text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg shadow-black shadow-md rotate-[-0deg]" style="font-size: 1rem; font-family: arma;">
-          <div class="text-center">
-            <button v-if="gameName.game === 'Breakpoint'" @click="showRando = true; showRTK = false; getRandomRifle(); showTrig = false; showIntel = false; showShotguns = false; showHandguns = false;" class="active:text-[#571111] px-1 border-dotted border-2 text-green-600 border-green-600 hover:text-purple-600 hover:border-purple-700 rounded-lg shadow-black shadow-md font-sans rotate-[-1deg] z-40 cursor-pointer" style="font-size: 1rem; font-family: arma;">Re-roll?
-            </button>
-          </div>
-          <div>
-            <img class="translate-x-[550%] h-[15%] w-[15%] rotate-[-10deg] rounded-md" src="/assets/camo_dice2.png">
-          </div>
-          <div class="text-center text-lime-900 rotate-[-1deg]" style="font-size: 1.5rem; font-family: tops;">
-            {{ selectedRifle }}
-          </div>
-          <br>
-          <div class="text-center">
-            <button v-if="gameName.game === 'Breakpoint'" @click="showRTK = !showRTK; showIntel = false; showShotguns = false; showHandguns = false; showRando = false;" class="active:text-red-800 px-2 border text-red-800 border-red-800 hover:text-red-600 rounded-lg shadow-black shadow-md font-sans rotate-[1deg] translate-x-[0%] z-40 cursor-pointer" style="font-family: arma;">
-            Damage File
-            </button>
-          </div>
-          <div class="text-center text-black" style="font-size: 0.8rem; font-family:courier;">
-            <br>
-            <b>Good Hunting!</b>
-            <br>
-            
-            And please let us know of any un-ranged rifle set-ups you notice! We have completed most rifle/scope combinations but there is still some work to be done. Click <a class="text-red-700 underline font-bold" href="https://www.youtube.com/watch?v=HwlGfuORwAY">Feedback</a> to give us a friendly reminder on something we've missed.
-          </div>
-            
-          
-          <div @click="showRando = false;" class="absolute top-[-5px] right-2 text-5xl cursor-pointer" style="font-family: courier;">x
-          </div>
-      </div> -->
-
 <!-- DAMAGE FILE BUTTON -->
-          <!-- <div v-if="gameName.game === 'Breakpoint'" class="active:text-black px-2 border-4 border-double text-gray-700 border-black hover:bg-gradient-to-l from-gray-500 to-gray-400 rounded-lg shadow-black shadow-md font-sans absolute top-[66%] left-[58%] rotate-[-70deg] translate-x-[25%] z-40 cursor-pointer bg-gradient-to-l from-gray-500 to-gray-400 leading-tight font-bold" style="font-size: 0.7rem; font-family: courier;">
-          DAMAGE,<br>FILE<br>100 - 42 - 019<br>O NEG 
-        </div> -->
-        <!-- <div v-if="gameName.game === 'Breakpoint'" @click="showRTK = !showRTK; showIntel = false; showShotguns = false; showHandguns = false; showRando = false;" class="active:text-black px-2 border-4 border-double text-gray-700 border-black hover:text-black hover:bg-gradient-to-l from-gray-500 to-gray-400 rounded-lg shadow-black shadow-md font-sans absolute top-[65%] left-[56%] rotate-[-58deg] translate-x-[25%] z-40 cursor-pointer bg-gradient-to-r from-gray-500 to-gray-400 leading-tight font-bold" style="font-size: 0.7rem; font-family: courier;">
-          DAMAGE,<br>FILE<br>100 - 42 - 019<br>O NEG 
-        </div> -->
-        <!-- <button v-if="gameName.game === 'Breakpoint'" @click="showRTK = !showRTK; showIntel = false; showShotguns = false; showHandguns = false; showRando = false;" class="absolute top-[59.3%] right-[21.4%] rotate-[-50deg] translate-x-[0%] z-40 cursor-pointer h-[18.1%] w-[10.4%] border-4 border-dotted border-transparent rounded-3xl hover:bg-white hover:bg-opacity-10 hover:border-black hover:border-opacity-70">
-        </button>  -->
+
         <button v-if="gameName.game === 'Breakpoint'" @click="showRTK = !showRTK; showIntel = false; showShotguns = false; showHandguns = false; showRando = false;" class="absolute top-[57.25%] right-[19.15%] rotate-[-31deg] translate-x-[0%] z-40 cursor-pointer h-[18.4%] w-[10.4%] border-4 border-dotted border-transparent rounded-3xl hover:bg-white hover:bg-opacity-10 hover:border-black hover:border-opacity-70">
         </button>        
         <div >
