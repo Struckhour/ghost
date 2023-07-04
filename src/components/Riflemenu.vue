@@ -94,7 +94,8 @@
         <div v-if="sezzing[gameName][selectedScope].hasOwnProperty(rifle)" @click="changeRifle(rifle)" class="cursor-pointer px-4 md:py-0 py-2 md:my-0 my-1  z-40 md:text-[.85rem] text-base text-yellow-400 font-bold hover:bg-yellow-400 hover:text-black">
           {{rifle}}
         </div>
-        <div @click="changeRifle(rifle); clearSearch();" class="cursor-pointer px-4 md:py-0 py-2 md:my-0 my-1  z-40 md:text-[.85rem] text-base text-cyan-300 hover:bg-cyan-700 hover:text-indigo-100">
+        <!-- ADD BELOW TO CLEAR SEARCH BAR ON RIFLE CLICK clearSearch(); -->
+        <div @click="changeRifle(rifle);" class="cursor-pointer px-4 md:py-0 py-2 md:my-0 my-1  z-40 md:text-[.85rem] text-base text-cyan-300 hover:bg-cyan-700 hover:text-indigo-100">
           {{rifle}}
         </div>
       </div>
