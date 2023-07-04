@@ -1448,7 +1448,7 @@ function getStylePosition(index: number) {
 
             <div class="absolute top-[0%] left-[15%] w-[70%] bg-white rounded text-center text-black opacity-60">Copy and paste the black box below into our Youtube comments and we'll add your work to the compendium!</div>
             
-            <div class="absolute top-[20%] left-[11%] border bg-black rounded text-center text-white uppercase w-[78%]" style="font-size: 0.7rem; font-family: ;">'{{ ryorName }}{{ ryorRail }}{{ ryorBA?' BALLISTIC ADVANTAGE':'' }}':[{{ ryor0 }},{{ ryor1 }},{{ ryor2 }},{{ ryor3 }},{{ ryor4 }},{{ ryor5 }},{{ ryor6 }},{{ ryor7 }},{{ ryor8 }},{{ ryor9 }},{{ ryor10 }}],
+            <div class="absolute top-[20%] left-[11%] border bg-black rounded text-center text-white uppercase w-[78%]" style="font-size: 0.7rem; font-family: ;">'{{ ryorName }}{{ ryorRail }}{{ ryorBA?' BALLISTIC ADVANTAGE':'' }}':[{{ ryor0? `${ryor0},`:'' }}{{ ryor1? `${ryor1},`:''}}{{ ryor2? `${ryor2},`:'' }}{{ ryor3? `${ryor3},`:'' }}{{ ryor4? `${ryor4},`:'' }}{{ ryor5? `${ryor5},`:'' }}{{ ryor6? `${ryor6},`:'' }}{{ ryor7? `${ryor7},`:'' }}{{ ryor8? `${ryor8},`:'' }}{{ ryor9? `${ryor9},`:'' }}{{ ryor10? `${ryor10},`:'' }}],
            </div>
            
           </div>
