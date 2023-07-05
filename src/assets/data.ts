@@ -396,10 +396,10 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'MK18 RANGE FINDER':[75,113,175,250,350,450,],
       MP5:[100, 130, 180, 250, 320, 400],
       'MP7':[75,100,150,200,260,338,500],
-      'MPX':[75,'Unreliable bullet drop. Range seems to change between two variables.'],
+      'MPX':['-','-','Unreliable bullet drop. Range seems to change between two variables. - '],
 
       // 'MPX':[75,125,188,280,405,538,750],
-      'MPX TACTICAL':[75,'Unreliable bullet drop. Range seems to change between two variables.'],
+      'MPX TACTICAL':['-','-','Unreliable bullet drop. Range seems to change between two variables. - '],
 
       // 'MPX TACTICAL':[75,113,180,263,363,488],
       'MSR':[175,213,263,313,375,438,],
@@ -485,7 +485,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'STONER MAWL-DA':[100,175,238,325,438,563,663,],
       // UMP:[75,125,175,238,300,400,538], THIS SMG SEEMS BUGGED. 2 RANGES??? DOES MP5 DO THIS?
       // UMP:[75,100,150,200,250,313,400],
-      UMP:[75,'Unreliable bullet drop. Range changes between two variables.'],
+      UMP:['-','-','Unreliable bullet drop. Range changes between two variables. - '],
       'UMP CQC':[75,150,200,250,325,425,538],
 
      

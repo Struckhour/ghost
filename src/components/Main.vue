@@ -972,7 +972,7 @@ function getStylePosition(index: number) {
           :style="getRifleLabelStyle()"
         >
           <div class="text-sm">
-            <u>Rifle:</u><br />
+            <!-- <u>Rifle:</u><br /> -->
             <glitched-writer :text="selectedRifle" appear preset="nier" />  
           </div>
 
@@ -992,7 +992,7 @@ function getStylePosition(index: number) {
           :style='getScopeLabelStyle()'
         >
           <div class="text-sm">
-          <u>Scope:</u><br />
+          <!-- <u>Scope:</u><br /> -->
           <glitched-writer :text="selectedScopeName" appear preset="nier" />
         </div>
         </div>
