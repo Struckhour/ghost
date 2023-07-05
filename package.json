@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "glitched-writer": "^2.0.29",
+    "plotly.js": "^2.24.3",
     "scrollin": "^0.4.1",
     "vue": "^3.2.31",
     "vue-glitched-writer": "^1.2.2",
