@@ -633,7 +633,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'PALADIN 9 SNR':[70,200,275,350,450,560,],
       'PALADIN 9 SNR SURVIVAL':[70,200,275,350,450,560,],
 
-      'MK14 TERMINATION':[200,300,375,450,538,'Futuristic Closed Sight same as the Paladin Optic. - '],
+      'MK14 TERMINATION':[200,300,375,450,538,],
 
     },
 

@@ -686,7 +686,7 @@ function getStylePosition(index: number) {
           So a rifle that does 39 damage such as the MK17 Scout when unsuppressed will one-shot an unalerted Sentinel Breacher/Commander/Drone Operator/Radio Operator/Rifleman/Sniper center mass. Once they're alerted you need more rounds to exceed their increased 100hp so 39 damage times 3 rounds will exceed 100hp.<br><br>
           Wolves always have 130hp.<br>
           With the MK17 Scout 4 rounds at 39 damage is required to exceed a Wolf's 130hp. <br><br>
-          Damage per round, rounds down when the 20% suppressor reduction is applied so 39 minus 20% damage becomes 31 damage, not 31.2. Be advised that there are a few weapons that have incorrect damage stats. In most cases these discrepancies appear to be unintended suppressor debuffs mostly occurring in the heavier handguns that can't even have suppressors(see Handguns button above). The only non handgun damage reduction I've encountered thus far is the underbarrel shotgun which claims 102 damage but fails to kill alerted Sentinel personnel at 100hp with one round center mass. There are a few DMR's that do not appear to suffer the 20% suppressor damage reduction with suppressors on. They are noted in the compendium. Finally, there are some hanguns that do +5 more damage than indicated(see Handguns button on the Damage File sheet for any rifle) and there are some hidden momentum-type damage bonuses applied to certain ASR's and DMR's after a kill. These rifles are also noted in the compendium on their Damage File sheets.
+          Damage per round, rounds down when the 20% suppressor reduction is applied so 39 minus 20% damage becomes 31 damage, not 31.2. Be advised that there are a few weapons that have incorrect damage stats. In most cases these discrepancies appear to be unintended suppressor debuffs mostly occurring in the heavier handguns that can't even have suppressors(<i>see Handguns button on the Damage File sheet</i>). The only non handgun damage reduction I've encountered thus far is the underbarrel shotgun which claims 102 damage but fails to kill alerted Sentinel personnel at 100hp with one round center mass. There are a few DMR's that do not appear to suffer the 20% suppressor damage reduction with suppressors on. They are noted in the compendium. Finally, there are some hanguns that do +5 more damage than indicated(<i>see Handguns button on the Damage File sheet for any rifle</i>) and there are some hidden momentum-type damage bonuses applied to certain ASR's and DMR's after a kill. These rifles are also noted in the compendium on their Damage File sheets.
         </div>
         
         <div @click="showIntel = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer" style="font-family: courier;">x</div>
@@ -967,7 +967,7 @@ function getStylePosition(index: number) {
             sm:w-[25%]
             top-[5%]
             right-[50%]
-
+            underline
           "
           :style="getRifleLabelStyle()"
         >
@@ -987,7 +987,7 @@ function getStylePosition(index: number) {
             sm:w-[25%]
             top-[5%]
             left-[50%]
-
+            underline
             "
           :style='getScopeLabelStyle()'
         >
