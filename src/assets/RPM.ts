@@ -305,21 +305,21 @@ export const RPM: { [gameName: string]: {[rifleName: string]: number}} = {
     'UMP CQC':	600,
 
 //SNR'S
-    'ZASTAVA M93':	70,
-    'VSK-50':	70,
-    'TAC50 BROWN':	70,
-    'TAC50':	70,
-    'SR-1':	70,
-    'SCORPIO':	70,
-    'RECON-A1':	70,
-    'PALADIN 9 SNR SURVIVAL':	70,
-    'PALADIN 9 SNR':	70,
-    'MSR':	70,
-    'M82 CERBERUS': 70,
-    'M82':	70,
-    'L115A3':	70,
-    'HTI SURVIVAL':	70,
-    'HTI':	70,
+    'ZASTAVA M93':	40, //10 in 14.7
+    'VSK-50':	45, // 5 in 6.6s
+    'TAC50 BROWN':	42, //5 in 7.1
+    'TAC50':	38, //10 in 15.8
+    'SR-1':	39, //10 in 15.2
+    'SCORPIO':	42, //5 in 7.1
+    'RECON-A1':	46, //5 in 6.5
+    'PALADIN 9 SNR SURVIVAL':	41, //5 in 7.2
+    'PALADIN 9 SNR':	43, //5 in 6.9
+    'MSR':	43, //5 in 6.9
+    'M82 CERBERUS': 115,
+    'M82':	115, // 5 in 2.6s
+    'L115A3':	45, // 5 in 6.6s
+    'HTI SURVIVAL':	39, //5 in 7.7
+    'HTI':	41, //5 in 7.3
     
 //LMG'S
     'T95':	650,

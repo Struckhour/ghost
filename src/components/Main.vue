@@ -1472,13 +1472,13 @@ function getStylePosition(index: number) {
         </div>
 <!-- DAMAGE FILE CARD -->
 
-        <div v-if="SmartDamage[gameName.game].hasOwnProperty(GetSmartRifleName(SmartRifles, selectedRifle)) && showRTK" class="absolute top-[10px] sm:top-[10px] bg-[#eae4aa] bg-opacity-80 text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg shadow-black shadow-md font-bold rotate-[0.5deg]" style="font-size: 0.8rem; font-family: ZCOOL;">
+      <div v-if="SmartDamage[gameName.game].hasOwnProperty(GetSmartRifleName(SmartRifles, selectedRifle)) && showRTK" class="absolute top-[10px] sm:top-[10px] bg-[#eae4aa] bg-opacity-80 text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg shadow-black shadow-md font-bold rotate-[0.5deg]" style="font-size: 0.8rem; font-family: ZCOOL;">
           
           <!-- Shotguns -->
-        <div v-if="gameName.game === 'Breakpoint'" @click="showShotguns = !showShotguns; showIntel = false; showHandguns = false; showTrig = false; showRando = false;" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[0%] left-[1%] rotate-[-1deg] translate-x-[-0%] z-40 cursor-pointer" style="font-size: 0.7rem; font-family: arma;">
-          Shotguns 
-        </div>
-        <div v-show="showShotguns" @click="showShotguns = false" class="absolute top-[100px] sm:top-[15px] bg-[#eae4aa] text-xl font-serif z-[51] w-[100%] sm:w-[100%] max-w-xl left-2/4 -translate-x-[50%] p-1 pt-8 rounded-xl shadow-black shadow-md rotate-[-1deg] opacity-95" style="font-size: 1rem; font-family: courier;">
+          <div v-if="gameName.game === 'Breakpoint'" @click="showShotguns = !showShotguns; showIntel = false; showHandguns = false; showTrig = false; showRando = false;" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[0%] left-[1%] rotate-[-1deg] translate-x-[-0%] z-40 cursor-pointer" style="font-size: 0.7rem; font-family: arma;">
+            Shotguns 
+          </div>
+          <div v-show="showShotguns" @click="showShotguns = false" class="absolute top-[100px] sm:top-[15px] bg-[#eae4aa] text-xl font-serif z-[51] w-[100%] sm:w-[100%] max-w-xl left-2/4 -translate-x-[50%] p-1 pt-8 rounded-xl shadow-black shadow-md rotate-[-1deg] opacity-95" style="font-size: 1rem; font-family: courier;">
           <!-- <div class="border border-black border-dotted text-center absolute h-[20%] w-1/3" style="font-size: 0.7rem;">All shotguns will one-shot Sentinel personnel targets center mass while undetected.
           </div>
           <div class="border border-black border-dotted text-center absolute left-1/3 text-xs h-[16%] w-1/3" style="font-size: 0.7rem;">Rounds to kill Senetinel Detected
@@ -1538,7 +1538,7 @@ function getStylePosition(index: number) {
         </div>
 <!-- End Pistols -->
 
-          <div class="text-center font-bold text-black opacity-70 rotate-[2deg]" style="font-size: 1.5rem; font-family: tops;">{{ selectedRifle }} 
+          <div class="text-center font-bold text-black opacity-70 rotate-[1deg]" style="font-size: 1.5rem; font-family: tops;">{{ selectedRifle }} 
           </div>
           
           <div v-if="!IsSuppressedGun(suppressedGuns[gameName.game],selectedRifle)" class="leading-tight text-center font-bold text-black translate-y-[-0%]" style="font-size: 0.7rem; font-family: ZCOOL;">DAMAGE: {{ rifleDamageValue }} <span v-if="bonusRifleValue" class="text-blue-500 font-bold italic">to {{ rifleDamageValue + bonusRifleValue }} </span> 
@@ -1555,6 +1555,9 @@ function getStylePosition(index: number) {
 <!-- BONUS DAMAGE -->
           <div v-if="bonusRifleValue" @click="showBonuslist = !showBonuslist;" class="text-center text-blue-500 font-bold italic hover:text-blue-500 no-underline hover:underline cursor-pointer translate-y-[-0%]" style="font-size: 0.7rem; font-family: ZCOOL;">+{{ bonusRifleValue }} BONUS DAMAGE ON KILLS CHAINED WITHIN 10s
           </div>
+<!-- RPM VALUE -->
+          <span class="absolute top-[14%] right-[3%] font-bold" style="font-size: 0.7rem; font-family: ZCOOL;">RPM: {{ RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] }}
+          </span>
 <!-- RTK LIST -->
           <span @click="showRTKlist = !showRTKlist;" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute left-[2%] rotate-[-2deg] translate-x-[0%] z-40 cursor-pointer" style="font-size: 0.7rem; font-family: arma;">ROUNDS TO KILL
           </span>
@@ -1670,7 +1673,7 @@ function getStylePosition(index: number) {
           <!-- <div v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" class="absolute translate-y-[-70%] right-[3%] text-red-600 font-bold" style="font-size: 0.5rem;">FASTEST KILL RIFLE: {{((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, 'MK14 ASSAULT')])*Math.ceil(130/SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, 'MK14 ASSAULT')])).toFixed(3) }}s
           </div> -->
 <!-- SLOWEST TTK @click="selectedScopeName='RU LONG-RANGE'; selectedRifle='SVD-63'" -->
-          <div @click="showTTKlist = !showTTKlist;" v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" class="text-right text-red-600 italic translate-x-[0%] translate-y-[-155%] hover:text-purple-500 no-underline hover:underline cursor-pointer" style="font-size: 0.7rem;">SLOWEST TTK: 1.333s
+          <div @click="showTTKlist = !showTTKlist;" v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" class="text-right text-red-600 italic translate-x-[0%] translate-y-[-155%] hover:text-purple-500 no-underline hover:underline cursor-pointer" style="font-size: 0.7rem;">SLOWEST TTK: 1.538s
           </div>
           <!-- <div v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" class="absolute translate-y-[-40%] right-[3%] text-red-600 font-bold" style="font-size: 0.5rem;">SLOWEST KILL RIFLE: {{((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, 'SVD-63')])*Math.ceil(130/SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, 'SVD-63')])).toFixed(3) }}s
           </div> -->
@@ -1684,7 +1687,7 @@ function getStylePosition(index: number) {
           
           <div @click="showRTK = false" class="absolute top-[-5px] right-2 text-5xl cursor-pointer font-light" style="font-family: courier;">x
           </div>
-        </div>
+      </div>
 <!-- End DAMAGE FILE -->
 
 <!-- BONUS LIST -->
@@ -1743,13 +1746,11 @@ function getStylePosition(index: number) {
           
           <div class="leading-tight font-thin" style="font-size: 0.7rem; font-family: capt;">
             
-            - Time to kill values are calculated using the rounds per minute and damage values listed in game. They are somewhat helpful for comparison between rifles here but are probably only approximate as they can't account for differences in bullet travel time. 
+            - Time to kill values are somewhat helpful for comparison between rifles here but are only approximate as they don't account for possible differences in bullet travel time. 
+
             <br>
             <br>
-            - For Time To Kill calculations Sniper Rifles have been given the RPM value of 70 (same as the FRF2 DMR) since they don't have their own rounds per minute values listed in game. Some Sniper Rifles may actually fire faster than 70 rpm.
-            <br>
-            <br>
-            - Burst fire rifles that lack full auto may have TTK values that are actually longer due to added time between trigger pulls. Watch for more than 3 rounds to kill on "Scout" or "Tactical" rifles and remember that burst mode on some rifles is actually 2 rounds not 3.
+            - Burst fire rifles that lack full auto may have TTK values that are actually longer due to added time between trigger pulls. Watch for more than 3 rounds to kill on "Scout" or "Tactical" rifles and remember that burst mode on a few rifles is actually 2 rounds not 3.
             <br>
             <br>
           </div>
