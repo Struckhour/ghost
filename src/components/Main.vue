@@ -160,6 +160,15 @@ const sortedSuppRTK = Object.fromEntries(
     Object.entries(suppRTK['Breakpoint']).sort((a,b) => a[1]-b[1])
 );
 
+function getSuppRTK() {
+  const orderedRifleNames = Object.keys(sortedSuppRTK)
+  const RTKIndex = orderedRifleNames.indexOf(selectedRifle.value)
+  let newRTKIndex = 0;
+  if (RTKIndex > 0) {
+  newRTKIndex = RTKIndex - 1;}
+ return orderedRifleNames[newRTKIndex]
+}
+
 // RTK WOLF LOUD RIFLE list
 const loudRTK: {[gameName: string]: {[rifleName: string]: number}}={'Breakpoint':{}} 
 
@@ -173,7 +182,7 @@ const sortedLoudRTK = Object.fromEntries(
 
 // TTK WOLF SUPPRESSED RIFLE list
 
-const suppTTK: {[gameName: string]: {[rifleName: string]: number}}={'Breakpoint':{}} 
+const suppTTK: {[gameName: string]: {[rifleName: string]: number}} = {'Breakpoint':{}} 
 
 for (const property in RPM['Breakpoint']) {
   if (SmartDamage['Breakpoint'].hasOwnProperty(property) && !loudGuns['Breakpoint'].includes(property)){
@@ -182,6 +191,15 @@ suppTTK['Breakpoint'][property]=((60/RPM['Breakpoint'][property])*Math.ceil(130/
 const sortedSuppTTK = Object.fromEntries(
     Object.entries(suppTTK['Breakpoint']).sort((a,b) => a[1]-b[1])
 );
+
+function getSuppTTK() {
+  const orderedRifleNames = Object.keys(sortedSuppTTK)
+  const TTKIndex = orderedRifleNames.indexOf(selectedRifle.value)
+  let newTTKIndex = 0;
+  if (TTKIndex > 0) {
+  newTTKIndex = TTKIndex - 1;}
+ return orderedRifleNames[newTTKIndex]
+}
 
 // TTK WOLF LOUD RIFLE list
 
@@ -198,6 +216,11 @@ const sortedLoudTTK = Object.fromEntries(
 //   const tempRifleNames = Object.keys(fullData[gameName.game][randoScope]).slice()
 //   return tempRifleNames.sort().reverse();
 // })
+
+// function getNextLoudTTK() {
+
+//   selectedRifle.value = 
+// }
 
 
 function getRandomRifle() {
@@ -1476,7 +1499,7 @@ function getStylePosition(index: number) {
       <div v-if="SmartDamage[gameName.game].hasOwnProperty(GetSmartRifleName(SmartRifles, selectedRifle)) && showRTK" class="absolute top-[10px] sm:top-[10px] bg-[#eae4aa] bg-opacity-80 text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg shadow-black shadow-md font-bold rotate-[0.5deg]" style="font-size: 0.8rem; font-family: ZCOOL;">
           
           <!-- Shotguns -->
-          <div v-if="gameName.game === 'Breakpoint'" @click="showShotguns = !showShotguns; showIntel = false; showHandguns = false; showTrig = false; showRando = false;" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[0%] left-[1%] rotate-[-1deg] translate-x-[-0%] z-40 cursor-pointer" style="font-size: 0.7rem; font-family: arma;">
+          <div v-if="gameName.game === 'Breakpoint'" @click="showShotguns = !showShotguns; showIntel = false; showHandguns = false; showTrig = false; showRando = false;" class="active:text-red-600 px-1 border text-black border-black hover:text-white hover:bg-black hover:border-white rounded-lg shadow-black shadow-md font-sans absolute top-[0%] left-[1%] rotate-[-1deg] translate-x-[-0%] z-40 cursor-pointer uppercase" style="font-size: 0.7rem; font-family: aust;">
             Shotguns 
           </div>
           <div v-show="showShotguns" @click="showShotguns = false" class="absolute top-[100px] sm:top-[15px] bg-[#eae4aa] text-xl font-serif z-[51] w-[100%] sm:w-[100%] max-w-xl left-2/4 -translate-x-[50%] p-1 pt-8 rounded-xl shadow-black shadow-md rotate-[-1deg] opacity-95" style="font-size: 1rem; font-family: courier;">
@@ -1505,9 +1528,9 @@ function getStylePosition(index: number) {
 <!-- End Shotguns -->
 
 <!-- Pistols -->
-        <div v-if="gameName.game === 'Breakpoint'" @click="showHandguns = !showHandguns; showIntel = false; showShotguns = false; showTrig = false; showRando = false;" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[0%] right-[16%] rotate-[1deg] translate-x-[-0%] z-40 cursor-pointer" style="font-size: 0.7rem; font-family: arma;">
+        <button v-if="gameName.game === 'Breakpoint'" @click="showHandguns = !showHandguns; showIntel = false; showShotguns = false; showTrig = false; showRando = false;" class="active:text-red-600 px-1 border text-black border-black hover:text-white hover:bg-black hover:border-white rounded-lg shadow-black shadow-md font-sans absolute top-[0%] right-[16%] rotate-[1deg] translate-x-[-0%] z-40 cursor-pointer uppercase" style="font-size: 0.7rem; font-family: aust;">
           Handguns 
-        </div>
+        </button>
         <div v-show="showHandguns" @click="showHandguns = false" class="absolute top-[100px] sm:top-[10px] bg-[#eae4aa] text-xl font-serif z-[51] w-[90%] sm:w-[100%] max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg shadow-black shadow-md rotate-[-1deg] opacity-95" style="font-size: 0.8rem; font-family: courier;">
           <b><u>For those interested</u>,</b><br>
 
@@ -1560,11 +1583,11 @@ function getStylePosition(index: number) {
           <span class="absolute top-[14%] right-[3%] font-bold" style="font-size: 0.7rem; font-family: ZCOOL;">RPM: {{ RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] }}
           </span>
 <!-- RTK LIST -->
-          <span @click="showRTKlist = !showRTKlist;" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute left-[2%] rotate-[-2deg] translate-x-[0%] z-40 cursor-pointer" style="font-size: 0.7rem; font-family: arma;">ROUNDS TO KILL
-          </span>
+          <button @click="showRTKlist = !showRTKlist;" class="active:text-red-600 px-1 border border-dotted text-black border-black hover:bg-black hover:text-white hover:border-white rounded-lg shadow-black shadow-md absolute left-[2%] rotate-[-2deg] translate-x-[0%] z-40 cursor-pointer" style="font-size: 0.7rem; font-family: capt;">ROUNDS TO KILL
+          </button>
 <!-- TTK LIST -->
-          <span v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" @click="showTTKlist = !showTTKlist;" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute right-[2%] rotate-[2deg] translate-x-[0%] z-40 cursor-pointer" style="font-size: 0.7rem; font-family: arma;">TIME TO KILL
-          </span>
+          <button v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" @click="showTTKlist = !showTTKlist;" class="active:text-red-600 px-1 border border-dotted text-black border-black hover:bg-black hover:text-white hover:border-white rounded-lg shadow-black shadow-md absolute right-[2%] rotate-[2deg] translate-x-[0%] z-40 cursor-pointer" style="font-size: 0.7rem; font-family: capt;">TIME TO KILL
+          </button>
           <br>
           <div class="leading-tight text-center font-light text-black rotate-[-1deg] opacity-90" style="font-size: 0.8rem; font-family: arma;">SENTINEL PERSONNEL:
           </div>
@@ -1639,22 +1662,29 @@ function getStylePosition(index: number) {
             <div class="leading-tight text-red-600 font-bold rotate-[-1deg] opacity-120" style="font-size: 0.7rem; font-family: ZCOOL;">130HP
             </div>
           </div>
-          
-          <span v-if="!IsLoudGun(loudGuns[gameName.game],selectedRifle)" >SUPPRESSED: {{ Math.ceil(130/Math.floor(rifleDamageValue*0.8)) }}
+<!-- FASTEST TTK @click="selectedScopeName='DIGITAL';selectedRifle='MK14 ASSAULT'" -->
+          <div v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" class="text-right font-light translate-x-[0%] translate-y-[15%] leading-tight" style="font-size: 0.7rem; font-family: ZCOOL">FASTEST: 0.000s
+          </div>          
+          <span v-if="!IsLoudGun(loudGuns[gameName.game],selectedRifle)" class="">SUPPRESSED: {{ Math.ceil(130/Math.floor(rifleDamageValue*0.8)) }}
           </span>
 <!-- BONUS WOLF SUPPRESSED IF -->
-          <span v-if= "bonusRifleValue && Math.ceil(130/Math.floor(rifleDamageValue*0.8)) > Math.ceil(130/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 )) " class="text-blue-500 font-bold italic"> &nbsp; W/BONUS: {{ Math.ceil(130/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 )) }}
+          <span v-if="bonusRifleValue && !IsLoudGun(loudGuns[gameName.game],selectedRifle) && Math.ceil(130/Math.floor(rifleDamageValue*0.8)) > Math.ceil(130/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 )) " class="text-blue-500 font-bold italic"> &nbsp; W/BONUS: {{ Math.ceil(130/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 )) }}
           </span>
           
 <!-- TTK -->
           <span v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" class="absolute right-[3%] text-black">
-<!-- BONUS TTK SUPPRESSED             -->
-            <span v-if="!IsLoudGun(loudGuns[gameName.game],selectedRifle)" >{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(130/Math.floor(rifleDamageValue*0.8)-1)).toFixed(3) }}s
+            <span v-if="!IsLoudGun(loudGuns[gameName.game],selectedRifle)" @click="selectedRifle=getSuppTTK()">{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(130/Math.floor(rifleDamageValue*0.8)-1)).toFixed(3) }}s
             </span>
-            <span class="text-blue-500 font-bold italic" v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number' && Math.ceil(130/Math.floor(rifleDamageValue*0.8)) > Math.ceil(130/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 ))"> &nbsp;{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(130/Math.floor((rifleDamageValue + bonusRifleValue)*0.8)-1)).toFixed(3) }}s
+<!-- BONUS TTK SUPPRESSED -->
+            <span class="text-blue-500 font-bold italic leading-tight" v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number' && !IsLoudGun(loudGuns[gameName.game],selectedRifle) && Math.ceil(130/Math.floor(rifleDamageValue*0.8)) > Math.ceil(130/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 ))"> &nbsp;{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(130/Math.floor((rifleDamageValue + bonusRifleValue)*0.8)-1)).toFixed(3) }}s
             </span>
           </span>
-          <br>
+
+<!-- SLOWEST TTK @click="selectedScopeName='RU LONG-RANGE'; selectedRifle='SVD-63'" -->
+          <div v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" class="text-right font-light translate-x-[0%] translate-y-[-15%] leading-tight" style="font-size: 0.7rem; font-family: ZCOOL">SLOWEST: 1.538s
+          </div>
+
+          
           <span v-if="!IsSuppressedGun(suppressedGuns[gameName.game],selectedRifle)" class="text-red-600 font-bold">LOUD: {{ Math.ceil(130/rifleDamageValue) }}
           </span>
 <!-- BONUS WOLF LOUD IF -->
@@ -1668,21 +1698,11 @@ function getStylePosition(index: number) {
             <span class="text-blue-500 font-bold italic" v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number' && Math.ceil(130/Math.floor(rifleDamageValue)) > Math.ceil(130/Math.floor(rifleDamageValue + bonusRifleValue))"> &nbsp;{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(130/Math.floor((rifleDamageValue + bonusRifleValue))-1)).toFixed(3) }}s</span>
           </span>
           
-<!-- FASTEST TTK @click="selectedScopeName='DIGITAL';selectedRifle='MK14 ASSAULT'" -->
-          <div @click="showTTKlist = !showTTKlist;" v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" class="text-right text-red-600 italic translate-x-[0%] translate-y-[-145%] hover:text-purple-500 no-underline hover:underline cursor-pointer" style="font-size: 0.7rem;">FASTEST TTK: 0.000s
+
+          <div class="translate-y-[0%] leading-tight ">
+          <button @click="selectedRifle = getSuppRTK()" class="border border-dotted border-black hover:bg-black hover:border-white hover:text-white px-1 rounded-lg shadow-black shadow-md lowercase"  style="font-size: ;font-family:capt ;">⇐ Fewer Rounds<br>To Kill  Rifles</button>
+          <button @click="selectedRifle = getSuppTTK()" class="absolute right-0 border border-dotted border-black hover:bg-black hover:border-white hover:text-white px-1 rounded-lg shadow-black shadow-md lowercase" style="font-size: ;font-family:capt ;" >Faster Time To<br> Kill Rifles ⇛</button>
           </div>
-          <!-- <div v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" class="absolute translate-y-[-70%] right-[3%] text-red-600 font-bold" style="font-size: 0.5rem;">FASTEST KILL RIFLE: {{((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, 'MK14 ASSAULT')])*Math.ceil(130/SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, 'MK14 ASSAULT')])).toFixed(3) }}s
-          </div> -->
-<!-- SLOWEST TTK @click="selectedScopeName='RU LONG-RANGE'; selectedRifle='SVD-63'" -->
-          <div @click="showTTKlist = !showTTKlist;" v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" class="text-right text-red-600 italic translate-x-[0%] translate-y-[-155%] hover:text-purple-500 no-underline hover:underline cursor-pointer" style="font-size: 0.7rem;">SLOWEST TTK: 1.538s
-          </div>
-          <!-- <div v-if="typeof RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] === 'number'" class="absolute translate-y-[-40%] right-[3%] text-red-600 font-bold" style="font-size: 0.5rem;">SLOWEST KILL RIFLE: {{((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, 'SVD-63')])*Math.ceil(130/SmartDamage[gameName.game][GetSmartRifleName(SmartRifles, 'SVD-63')])).toFixed(3) }}s
-          </div> -->
-
-
-
-          <!-- <div v-if="gameName.game === 'Breakpoint'" @click="showRando =!showRando; showRTK = false; selectedRifle=(SmartRifles[randoRifle]); showTrig = false; showIntel = false; showShotguns = false; showHandguns = false; " class="active:text-[#571111] px-2 border-dotted border-4 text-green-600 border-green-600 hover:text-purple-400 hover:border-purple-700 rounded-lg shadow-black shadow-md font-sans absolute top-[88%] left-[50%] rotate-[-2deg] translate-x-[-50%] z-40 cursor-pointer" style="font-size: 0.9rem; font-family: arma;">RANDOM RIFLE??
-          </div> -->
 
 
           
@@ -1716,24 +1736,38 @@ function getStylePosition(index: number) {
           <br>
           <div class="text-black text-center rotate-[-2deg] opacity-80" style="font-size: 1rem; font-family: tops;">ROUNDS TO KILL WOLVES SUPPRESSED
           </div>
-          <div class="absolute right-[5%] text-xs rotate-[2deg] opacity-75" style="font-family: arma;">
+          <div class="absolute right-[0%] text-xs rotate-[2deg] opacity-75" style="font-family: arma;">
             TIME TO KILL
           </div>
-          <div class="leading-tight text-right translate-x-[-10%] translate-y-[100%]" style="font-size: 0.7rem; font-family: courier;" v-for="(value,property) in sortedSuppRTK">
+          <div class="leading-tight text-right translate-x-[0%] translate-y-[100%]" style="font-size: 0.7rem; font-family: courier;" v-for="(value,property) in sortedSuppRTK">
+            <div v-if="selectedRifle === property" class="bg-black text-white">
             {{property}}: {{ value }} 
             <span class="italic font-light">{{ sortedSuppTTK.hasOwnProperty(property)? `${sortedSuppTTK[property].toFixed(3)}`:'#.###' }}
             </span>
+            </div>
+            <div v-else>
+            {{property}}: {{ value }} 
+              <span class="italic font-light">{{ sortedSuppTTK.hasOwnProperty(property)? `${sortedSuppTTK[property].toFixed(3)}`:'#.###' }}
+            </span>
+            </div>
           </div>
           <br>
           <div class="text-red-700 text-center rotate-[-2deg] opacity-80" style="font-size: 1rem; font-family: tops;">ROUNDS TO KILL WOLVES LOUD
           </div>
-          <div class="absolute right-[5%] text-xs rotate-[2deg] text-red-700 opacity-75" style="font-family: arma;">
+          <div class="absolute right-[0%] text-xs rotate-[2deg] text-red-700 opacity-75" style="font-family: arma;">
             TIME TO KILL
           </div>
-          <div class="leading-tight text-right translate-x-[-10%] translate-y-[100%]" style="font-size: 0.7rem; font-family: courier;" v-for="(value,property) in sortedLoudRTK" >
+          <div class="leading-tight text-right translate-x-[0%] translate-y-[100%]" style="font-size: 0.7rem; font-family: courier;" v-for="(value,property) in sortedLoudRTK" >
+            <div v-if="selectedRifle === property" class="bg-black text-white">
+            {{property}}: {{ value }}
+            <span class="text-white italic font-light" style="font-family: courier;">{{ sortedLoudTTK.hasOwnProperty(property)? `${sortedLoudTTK[property].toFixed(3)}`:'#.###' }}
+            </span>
+            </div>
+            <div v-else>
             {{property}}: {{ value }}
             <span class="text-red-700 italic font-light" style="font-family: courier;">{{ sortedLoudTTK.hasOwnProperty(property)? `${sortedLoudTTK[property].toFixed(3)}`:'#.###' }}
-            </span>
+            </span> 
+            </div>
           </div>
           <br>
           <div class="flex justify-center">
@@ -1761,18 +1795,18 @@ function getStylePosition(index: number) {
           <div class="absolute right-[0%] text-xs rotate-[5deg] opacity-75" style="font-family: arma;">
             ROUNDS TO KILL
           </div>
-              <!-- Search bar -->
-          <!-- <input
-          v-model="searchQuery"
-          type="text"
-          class="w-1/2 px-2 py-1 mt-1 text-cyan-300 uppercase bg-black border border-gray-300 rounded-md focus:outline-none focus:border-cyan-300"
-          style="font-family: ;"
-          placeholder="Search..."
-          /> -->
-          <div class="leading-tight text-right translate-x-[-10%] translate-y-[100%]" style="font-size: 0.7rem; font-family: courier;" v-for="(value,property) in sortedSuppTTK" >
+
+          <div class="leading-tight text-right translate-x-[0%] translate-y-[100%]" style="font-size: 0.7rem; font-family: courier;" v-for="(value,property) in sortedSuppTTK" >
+            <div v-if="selectedRifle === property" class="bg-black text-white">
             {{property}}: {{ value.toFixed(3) }}s
             <span class="italic font-light" style="font-family: courier;">{{ sortedSuppRTK[property] }}
             </span>
+            </div>
+            <div v-else>
+            {{property}}: {{ value.toFixed(3) }}s
+            <span class="italic font-light" style="font-family: courier;">{{ sortedSuppRTK[property] }}
+            </span>
+            </div>
           </div>
           <br>
           <div class="text-red-700 text-center rotate-[-1deg] opacity-80" style="font-size: 1rem; font-family: tops;">
@@ -1781,11 +1815,19 @@ function getStylePosition(index: number) {
           <div class="absolute right-[0%] text-xs text-red-700 rotate-[5deg] opacity-75" style="font-family: arma;">
             ROUNDS TO KILL
           </div>
-          <div class="leading-tight text-right translate-x-[-10%] translate-y-[100%]" style="font-size: 0.7rem; font-family: courier;" v-for="(value,property) in sortedLoudTTK" >
+          <div class="leading-tight text-right translate-x-[0%] translate-y-[100%]" style="font-size: 0.7rem; font-family: courier;" v-for="(value,property) in sortedLoudTTK" >
+            <div v-if="selectedRifle === property" class="bg-black text-white">
+            {{property}}: {{ value.toFixed(3) }}s
+            <span class="italic font-light text-white" style="font-family: courier;">{{ sortedLoudRTK[property] }}
+            </span>
+            </div>
+            <div v-else>
             {{property}}: {{ value.toFixed(3) }}s
             <span class="italic font-light text-red-700" style="font-family: courier;">{{ sortedLoudRTK[property] }}
             </span>
+            </div>
           </div>
+
           <br>
           <div class="flex justify-center">
           <img class="object-fill h-48 w-96" src="/assets/yes-they-deserved-to-die.gif">
