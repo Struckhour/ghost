@@ -10,6 +10,8 @@ export const SmartRifles:string[]=[
     'TAVOR',
 
     'SR-3M TACTICAL',
+    'SR-3M SCOUT',    
+
     'SR-3M',
     'SILVER STAKE TACTICAL',
     'SILVER STAKE',
@@ -188,7 +190,7 @@ export const SmartDamage: { [gameName: string]: {[rifleName: string]: number}} =
         'TAVOR ASSAULT':	27,
         
         'SR-3M':	32,
-        
+        'SR-3M SCOUT':  34,    
         'SR-3M TACTICAL':	32,
 
         'SILVER STAKE':	37,

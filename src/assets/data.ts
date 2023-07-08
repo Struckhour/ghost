@@ -63,6 +63,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'SCORPIO SCOUT QUIET +30 RANGE':[200,350,475,638,788,],
       'SR-1':[175,440,650,900,],
       'SR-1 +30 RANGE':[0,638],
+      'SR-3M SCOUT':[],    
       'TAC50':[150,313,525,762,1013,],
       'TAC50 BALLISTIC ADVANTAGE':[200,650,'greater than 1000'],
       'TAC50 +30 RANGE':[175,500,],

@@ -10,6 +10,7 @@ export const RPMRifles:string[]=[
     'TAVOR',
 
     'SR-3M TACTICAL',
+    'SR-3M SCOUT',    
     'SR-3M',
     'SILVER STAKE TACTICAL',
     'SILVER STAKE',
@@ -189,6 +190,7 @@ export const RPM: { [gameName: string]: {[rifleName: string]: number}} = {
     'TAVOR ASSAULT':	650,
 
     'SR-3M':	900,
+    'SR-3M SCOUT':  900,    
 
     'SR-3M TACTICAL':	900,
 

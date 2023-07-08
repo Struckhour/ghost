@@ -81,7 +81,8 @@ export const BonusRifles:string[]=[
     '416 ASSAULT SPECIAL',
     '416',
 
-//BR DMR'S
+//BR DMR'S 
+    'MK14 TERMINATION',
     'MK14 ASSAULT BROWN',
     'MK14 ASSAULT',
     'MK14',
@@ -99,7 +100,6 @@ export const BonusRifles:string[]=[
     'SCORPIO SCOUT QUIET',
     'SCORPIO SCOUT',
     'OTS-03',
-    'MK14 TERMINATION',
     'FRF2',
     
 //SMG'S

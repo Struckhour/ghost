@@ -26,13 +26,17 @@ export const SpecialRifles:string[]=[
     'MK17',
 
     'MDR',
+
     'M4A1 TACTICAL',
     'M4A1 CQC',
     'M4A1 ASSAULT',
+    'M4A1 SCOUT',
     'M4A1',
+
     'L85-C',
     'KOBLIN',
     'K1A',
+    'G36C SCOUT',
     'G36C',
 
     'FAL',
@@ -68,9 +72,6 @@ export const SpecialRifles:string[]=[
 
 //ASR DMR'S
     
-    
-    'M4A1 SCOUT',
-    'G36C SCOUT',
     
     
     '553 SCOUT SENTINEL',
@@ -168,19 +169,39 @@ export const SpecialNote: { [gameName: string]: {[rifleName: string]: string}} =
     Breakpoint: {
         
 //ASR'S 
-        'SILVER STAKE TACTICAL':'integrally suppressed, but suppressor can be exchanged for other muzzle attachments in the loadout menu. No full auto.',
+        'SILVER STAKE TACTICAL':'integrally suppressed, but suppressor can be exchanged for other muzzle attachments in the loadout menu. No full auto so time to kill values may be greater than stated. Look for ">".',
         
+        'TAVOR SCOUT':'No full auto so time to kill values may be greater than stated. Look for ">".',
+
+        'SR-3M SCOUT':'No full auto so time to kill values may be greater than stated. Look for ">".',
+
         'MDR':'fires 2 instead of 3 round bursts'	,
 
-        'M4A1 TACTICAL':'integrally suppressed. Only suppressed damage applies. No full auto.',
+        'MK17 SCOUT':'No full auto so time to kill values may be greater than stated. Look for ">".',
+
+        'M4A1 TACTICAL':'integrally suppressed. Only suppressed damage applies. No full auto so time to kill values may be greater than stated. Look for ">".',
+
+        'M4A1 SCOUT':'No full auto so time to kill values may be greater than stated. Look for ">".',
         
+        'G36C SCOUT':'Fires 2 instead of 3 round bursts. No full auto so time to kill values may be greater than stated. Look for ">".',
+
         'G36C':'fires 2 instead of 3 round bursts' ,
         
+        'AUG SCOUT':'No full auto so time to kill values may be greater than stated. Look for ">".',
+
+        'AK74 SCOUT':'No full auto so time to kill values may be greater than stated. Look for ">".',
+
+
         'AK12':'fires 2 instead of 3 round bursts'	,
 
+        '553 SCOUT':'No full auto so time to kill values may be greater than stated. Look for ">".',
+        '553 SCOUT SENTINEL':'No full auto so time to kill values may be greater than stated. Look for ">".',
+
+        '416 SCOUT':'No full auto so time to kill values may be greater than stated. Look for ">".',
+
+
+
 // ASR DMR'S        
-        
-        'G36C SCOUT':'fires 2 instead of 3 round bursts',
         
 //BR DMR'S
 
@@ -205,11 +226,11 @@ export const SpecialNote: { [gameName: string]: {[rifleName: string]: string}} =
 
         'UMP':'fires 2 instead of 3 round bursts'	,
 
-        'SCORPION EVO3 TACTICAL':'integrally suppressed. Only suppressed damage applies. No full auto.',
+        'SCORPION EVO3 TACTICAL':'integrally suppressed. Only suppressed damage applies. No full auto so time to kill values may be greater than stated. Look for ">".',
 
         'SCORPION EVO3 CQC':'WITH THE MAWL-DA 140M IS THE BOTTOM OF THE CIRCLE WITH EXPS3(LARGE SETTING), MH-1, AND PANORAMIC SIGHT.', 
 
-        'MPX TACTICAL':'integrally suppressed. Only suppressed damage applies. No full auto.',
+        'MPX TACTICAL':'integrally suppressed. Only suppressed damage applies. No full auto so time to kill values may be greater than stated. Look for ">".',
 
        
 
