@@ -2,10 +2,11 @@ export const suppressedGuns: { [gameName: string]: string [] } = {
     Breakpoint: [
 // ASR'S
 'M4A1 TACTICAL',
+'SR-3M SCOUT',
 'SR-3M TACTICAL',
 
 // DMR'S
-'SR-3M SCOUT',
+
 
 //SMG'S
 'UMP CQC',

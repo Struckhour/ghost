@@ -189,10 +189,10 @@ export const RPM: { [gameName: string]: {[rifleName: string]: number}} = {
     'TAVOR':	650,
     'TAVOR ASSAULT':	650,
 
-    'SR-3M':	900,
     'SR-3M SCOUT':  900,    
-
     'SR-3M TACTICAL':	900,
+    'SR-3M':	900,
+
 
     'SILVER STAKE':	450,
     'SILVER STAKE TACTICAL':	450,

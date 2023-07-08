@@ -1562,27 +1562,38 @@ function getStylePosition(index: number) {
         </div>
 <!-- End Pistols -->
 
-          <div class="text-center font-bold text-black opacity-70 rotate-[1deg]" style="font-size: 1.5rem; font-family: tops;">{{ selectedRifle }} 
+          <div class="text-center font-bold text-black opacity-70 rotate-[1deg]" style="font-size: 1.5rem; font-family: tops;">
+            {{ selectedRifle }} 
           </div>
           
-          <div v-if="!IsSuppressedGun(suppressedGuns[gameName.game],selectedRifle)" class="leading-tight text-center font-bold text-black translate-y-[-0%]" style="font-size: 0.7rem; font-family: ZCOOL;">DAMAGE: {{ rifleDamageValue }} <span v-if="bonusRifleValue" class="text-blue-500 font-bold italic">to {{ rifleDamageValue + bonusRifleValue }} </span> 
+          <div v-if="!IsSuppressedGun(suppressedGuns[gameName.game],selectedRifle)" class="leading-tight text-center font-bold text-black translate-y-[-0%]" style="font-size: 0.7rem; font-family: ZCOOL;">
+            DAMAGE: {{ rifleDamageValue }} 
+            <span v-if="bonusRifleValue" class="text-blue-500 font-bold italic">
+              to {{ rifleDamageValue + bonusRifleValue }} 
+            </span> 
           </div>
-          <div v-if="!IsLoudGun(loudGuns[gameName.game],selectedRifle)" class="text-center font-bold text-black translate-y-[-0%]" style="font-size: 0.7rem; font-family: ZCOOL;">SUPPRESSED DAMAGE: {{ Math.floor(rifleDamageValue*0.8) }} 
-            <span v-if="bonusRifleValue" class="text-blue-500 font-bold italic">to {{ Math.floor(((rifleDamageValue) + bonusRifleValue)*0.8) }} 
+          <div v-if="!IsLoudGun(loudGuns[gameName.game],selectedRifle)" class="text-center font-bold text-black translate-y-[-0%]" style="font-size: 0.7rem; font-family: ZCOOL;">
+            SUPPRESSED DAMAGE: {{ Math.floor(rifleDamageValue*0.8) }} 
+            <span v-if="bonusRifleValue" class="text-blue-500 font-bold italic">
+              to {{ Math.floor(((rifleDamageValue) + bonusRifleValue)*0.8) }} 
             </span> 
           </div>
 <!-- SPECIAL NOTES -->
-          <div v-if="SpecialNote[gameName.game][GetSpecialRifleName(SpecialRifles, selectedRifle)]" class="leading-tight text-black font-bold" style="font-size: 0.7rem; text-transform: uppercase; font-family: courier;">SPECIAL NOTE: 
-            <span class="leading-tight font-thin" style="font-size: 0.7rem; text-transform: uppercase; font-family: courier;">{{ SpecialNote[gameName.game][GetSpecialRifleName(SpecialRifles, selectedRifle)] }}
+          <div v-if="SpecialNote[gameName.game][GetSpecialRifleName(SpecialRifles, selectedRifle)]" class="leading-tight text-black font-bold" style="font-size: 0.7rem; text-transform: uppercase; font-family: courier;">
+            SPECIAL NOTE: 
+            <span class="leading-tight font-thin" style="font-size: 0.7rem; text-transform: uppercase; font-family: courier;">
+              {{ SpecialNote[gameName.game][GetSpecialRifleName(SpecialRifles, selectedRifle)] }}
             </span>
           </div>
 <!-- BONUS DAMAGE -->
           <div class="text-center">
-            <button v-if="bonusRifleValue" @click="showBonuslist = !showBonuslist;" class="active:text-white border px-1 rounded-xl border-blue-500 hover:bg-black shadow-black shadow-md  text-center text-blue-500 font-bold italic hover:text-blue-500 no-underline hover:underline translate-y-[-0%]" style="font-size: 0.7rem; font-family: ZCOOL;">+{{ bonusRifleValue }} BONUS DAMAGE ON KILLS CHAINED WITHIN 10s
+            <button v-if="bonusRifleValue" @click="showBonuslist = !showBonuslist;" class="active:text-white border px-1 rounded-xl border-blue-500 hover:bg-black shadow-black shadow-md  text-center text-blue-500 font-bold italic hover:text-blue-500 no-underline hover:underline translate-y-[-0%]" style="font-size: 0.7rem; font-family: ZCOOL;">
+              +{{ bonusRifleValue }} BONUS DAMAGE ON KILLS CHAINED WITHIN 10s
             </button>
           </div>
 <!-- RPM VALUE -->
-          <span class="absolute top-[14%] right-[3%] font-bold" style="font-size: 0.7rem; font-family: ZCOOL;">RPM: {{ RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] }}
+          <span class="absolute top-[14%] right-[3%] font-bold" style="font-size: 0.7rem; font-family: ZCOOL;">
+            RPM: {{ RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)] }}
           </span>
 <!-- RTK LIST -->
           <button @click="showRTKlist = !showRTKlist;" class="active:text-red-600 px-1 border border-dotted text-black border-black hover:bg-black hover:text-white hover:border-white rounded-lg shadow-black shadow-md absolute left-[2%] rotate-[-2deg] translate-x-[0%] z-40 cursor-pointer" style="font-size: 0.7rem; font-family: capt;">ROUNDS TO KILL
@@ -1591,100 +1602,132 @@ function getStylePosition(index: number) {
           <button @click="showTTKlist = !showTTKlist;" class="active:text-red-600 px-1 border border-dotted text-black border-black hover:bg-black hover:text-white hover:border-white rounded-lg shadow-black shadow-md absolute right-[2%] rotate-[2deg] translate-x-[0%] z-40 cursor-pointer" style="font-size: 0.7rem; font-family: capt;">TIME TO KILL
           </button>
           <br>
+<!-- RTK AND TTK SELECTED RIFLE -->
           <div class="leading-tight text-center font-light text-black rotate-[-1deg] opacity-90" style="font-size: 0.8rem; font-family: arma;">SENTINEL PERSONNEL:
           </div>
-
+<!-- STEALTHED SENTINEL RTK AND TTK -->
           <div class="leading-tight text-center font-bold text-black" style="font-size: 0.7rem;">STEALTHED: 
             <span class="leading-tight text-red-600">39HP
             </span>
           </div>
 
+<!-- STEALTHED SUPPRESSED -->
           <span v-if="!IsLoudGun(loudGuns[gameName.game],selectedRifle)" > SUPPRESSED: {{ Math.ceil(39/Math.floor(rifleDamageValue*0.8)) }}
           </span>
 <!-- BONUS STEALTHED SUPPRESSED -->
-          <span v-if= "bonusRifleValue && Math.ceil(39/Math.floor(rifleDamageValue*0.8)) > Math.ceil(39/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 ))" class="text-blue-500 font-bold italic"> &nbsp; W/BONUS: {{ Math.ceil(39/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 )) }}
+          <span v-if= "bonusRifleValue && Math.ceil(39/Math.floor(rifleDamageValue*0.8)) > Math.ceil(39/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 ))" class="text-blue-500 font-bold italic">
+             &nbsp; W/BONUS: {{ Math.ceil(39/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 )) }}
           </span>
 
-<!-- TTK -->
-          <span v-if="!IsLoudGun(loudGuns[gameName.game],selectedRifle)" class="absolute right-[3%] text-black">
 <!-- TTK SUPPRESSED -->
-            <span>{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(39/Math.floor(rifleDamageValue*0.8)-1)).toFixed(3) }}s
+          <span v-if="!IsLoudGun(loudGuns[gameName.game],selectedRifle)" class="absolute right-[3%] text-black">
+            <span>
+              {{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(39/Math.floor(rifleDamageValue*0.8)-1)).toFixed(3) }}s
             </span>
 <!-- BONUS TTK SUPPRESSED -->    
-            <span class="text-blue-500 font-bold italic" style="font-family: ZCOOL;" v-if="Math.ceil(39/Math.floor(rifleDamageValue*0.8)) > Math.ceil(39/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 ))"> &nbsp;{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(39/Math.floor((rifleDamageValue + bonusRifleValue)*0.8)-1)).toFixed(3) }}s
+            <span class="text-blue-500 font-bold italic" style="font-family: ZCOOL;" v-if="Math.ceil(39/Math.floor(rifleDamageValue*0.8)) > Math.ceil(39/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 ))">
+               &nbsp;{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(39/Math.floor((rifleDamageValue + bonusRifleValue)*0.8)-1)).toFixed(3) }}s
             </span>
           </span>
           <br>
-          <span v-if="!IsSuppressedGun(suppressedGuns[gameName.game],selectedRifle)" > LOUD: {{ Math.ceil(39/rifleDamageValue) }}
-          </span>
+
+<!-- STEALTHED LOUD -->
+          <span v-if="!IsSuppressedGun(suppressedGuns[gameName.game],selectedRifle)" > 
+            LOUD: {{ Math.ceil(39/rifleDamageValue) }}
 <!-- BONUS STEALTHED LOUD -->
-          <span v-if="!selectedRifle.includes('SR-3M SCOUT') && bonusRifleValue && Math.ceil(39/rifleDamageValue) > Math.ceil(39/(rifleDamageValue + bonusRifleValue))" class="text-blue-500 font-bold italic"> &nbsp; W/BONUS: {{ Math.ceil(39/(rifleDamageValue + bonusRifleValue)) }}
+            <span v-if="bonusRifleValue && Math.ceil(39/rifleDamageValue) > Math.ceil(39/(rifleDamageValue + bonusRifleValue))" class="text-blue-500 font-bold italic">
+               &nbsp; W/BONUS: {{ Math.ceil(39/(rifleDamageValue + bonusRifleValue)) }}
+            </span>
           </span>
 
-<!-- TTK -->
+<!-- TTK STEALTHED LOUD -->
           <span v-if="!IsSuppressedGun(suppressedGuns[gameName.game],selectedRifle)" class="absolute right-[3%] text-black">
-<!-- BONUS TTK LOUD             -->
-            <span>{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(39/rifleDamageValue-1)).toFixed(3) }}s
+            <span>
+              {{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(39/rifleDamageValue-1)).toFixed(3) }}s
             </span>
-            <span class="text-blue-500 font-bold italic" v-if="Math.ceil(39/Math.floor(rifleDamageValue)) > Math.ceil(39/Math.floor((rifleDamageValue + bonusRifleValue) ))"> &nbsp;{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(39/Math.floor((rifleDamageValue + bonusRifleValue)-1))).toFixed(3) }}s
+<!-- BONUS TTK STEALTHED LOUD -->
+            <span class="text-blue-500 font-bold italic" v-if="Math.ceil(39/Math.floor(rifleDamageValue)) > Math.ceil(39/Math.floor((rifleDamageValue + bonusRifleValue) ))">
+               &nbsp;{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(39/Math.floor((rifleDamageValue + bonusRifleValue)-1))).toFixed(3) }}s
             </span>
           </span>
-          
-          <div class="leading-tight text-center font-bold text-red-600" style="font-size: 0.7rem;">DETECTED: 100HP</div>
 
-          <span v-if="!IsLoudGun(loudGuns[gameName.game],selectedRifle)" class="text-red-600 font-bold"> SUPPRESSED: {{ Math.ceil(100/Math.floor(rifleDamageValue*0.8)) }}
+<!-- DETECTED SENTINEL RTK AND TTK -->
+          <div class="leading-tight text-center font-bold text-red-600" style="font-size: 0.7rem;">
+            DETECTED: 100HP
+          </div>
+<!-- RTK SENTINEL SUPPRESSED -->
+          <span v-if="!IsLoudGun(loudGuns[gameName.game],selectedRifle)" class="text-red-600 font-bold">
+             SUPPRESSED: {{ Math.ceil(100/Math.floor(rifleDamageValue*0.8)) }}
+<!-- BONUS RTK SENTINEL SUPPRESSED -->
+            <span v-if= "bonusRifleValue && Math.ceil(100/Math.floor(rifleDamageValue*0.8)) > Math.ceil(100/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 ))" class="text-blue-500 font-bold italic">
+               &nbsp; W/BONUS: {{ Math.ceil(100/Math.floor((rifleDamageValue + bonusRifleValue)*0.8)) }}
+            </span>
           </span>
-<!-- BONUS SENTINEL SUPPRESSED -->
-          <span v-if= "bonusRifleValue && Math.ceil(100/Math.floor(rifleDamageValue*0.8)) > Math.ceil(100/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 ))" class="text-blue-500 font-bold italic"> &nbsp; W/BONUS: {{ Math.ceil(100/Math.floor((rifleDamageValue + bonusRifleValue)*0.8)) }}
-          </span>
-<!-- TTK -->
+<!-- TTK SENTINEL SUPPRESSED -->
           <span class="absolute right-[3%] text-red-600 font-bold">   
-<!-- GREATER THAN TTK                     -->
+<!-- GREATER THAN TTK -->
             <span v-if="(selectedRifle.includes('SCOUT') || selectedRifle.includes('TACTICAL') && !selectedRifle.includes('SR-3M TACTICAL')) && (Math.ceil(100/Math.floor(rifleDamageValue*0.8))) > 3"> >
             </span>
-            <span v-if="!IsLoudGun(loudGuns[gameName.game],selectedRifle)" >{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(100/Math.floor(rifleDamageValue*0.8)-1)).toFixed(3) }}s
+            <span v-if="!IsLoudGun(loudGuns[gameName.game],selectedRifle)">
+              {{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(100/Math.floor(rifleDamageValue*0.8)-1)).toFixed(3) }}s
             </span>
-<!-- BONUS TTK SUPPRESSED             -->
-            <span class="text-blue-500 font-bold italic" v-if="Math.ceil(100/Math.floor(rifleDamageValue*0.8)) > Math.ceil(100/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 ))"> &nbsp;{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(100/Math.floor((rifleDamageValue + bonusRifleValue)*0.8)-1)).toFixed(3) }}s
+<!-- BONUS TTK SUPPRESSED -->
+            <span class="text-blue-500 font-bold italic" v-if="Math.ceil(100/Math.floor(rifleDamageValue*0.8)) > Math.ceil(100/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 ))">
+               &nbsp;{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(100/Math.floor((rifleDamageValue + bonusRifleValue)*0.8)-1)).toFixed(3) }}s
             </span>
           </span>
           <br>
-          <span v-if="!IsSuppressedGun(suppressedGuns[gameName.game],selectedRifle)" class="text-red-600 font-bold"> LOUD: {{ Math.ceil(100/rifleDamageValue) }}
-          </span> 
+<!-- RTK SENTINEL LOUD -->
+          <span v-if="!IsSuppressedGun(suppressedGuns[gameName.game],selectedRifle)" class="text-red-600 font-bold">
+             LOUD: {{ Math.ceil(100/rifleDamageValue) }}
 <!-- BONUS SENTINEL LOUD IF -->
-          <span v-if= "!selectedRifle.includes('SR-3M TACTICAL') && !selectedRifle.includes('SR-3M SCOUT') && bonusRifleValue && Math.ceil(100/rifleDamageValue) > Math.ceil(100/(rifleDamageValue + bonusRifleValue))" class="text-blue-500 font-bold italic"> &nbsp; W/BONUS: {{ Math.ceil(100/(rifleDamageValue + bonusRifleValue)) }}
-          </span>
-
+            <span v-if="bonusRifleValue && Math.ceil(100/rifleDamageValue) > Math.ceil(100/(rifleDamageValue + bonusRifleValue))" class="text-blue-500 font-bold italic">
+               &nbsp; W/BONUS: {{ Math.ceil(100/(rifleDamageValue + bonusRifleValue)) }}
+            </span>
+          </span> 
 <!-- TTK SENTINEL LOUD -->
           <span v-if="!IsSuppressedGun(suppressedGuns[gameName.game],selectedRifle)" class="absolute right-[3%] text-red-600 font-bold"> 
-            <span v-if="(selectedRifle.includes('SCOUT') || selectedRifle.includes('TACTICAL')) && Math.ceil(100/rifleDamageValue) > 3"> > {{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(100/Math.floor(rifleDamageValue)-1)).toFixed(3) }}s
+            <span v-if="(selectedRifle.includes('SCOUT') || selectedRifle.includes('TACTICAL')) && Math.ceil(100/rifleDamageValue) > 3">
+               > {{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(100/Math.floor(rifleDamageValue)-1)).toFixed(3) }}s
             </span>            
-            <span v-else>{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(100/Math.floor(rifleDamageValue)-1)).toFixed(3) }}s
+            <span v-else>
+              {{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(100/Math.floor(rifleDamageValue)-1)).toFixed(3) }}s
             </span>
-            <span class="text-blue-500 font-bold italic" v-if="Math.ceil(100/Math.floor(rifleDamageValue)) > Math.ceil(100/Math.floor(rifleDamageValue + bonusRifleValue))"> &nbsp;{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(100/Math.floor((rifleDamageValue + bonusRifleValue))-1)).toFixed(3) }}s
+            <span class="text-blue-500 font-bold italic" v-if="Math.ceil(100/Math.floor(rifleDamageValue)) > Math.ceil(100/Math.floor(rifleDamageValue + bonusRifleValue))">
+               &nbsp;{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(100/Math.floor((rifleDamageValue + bonusRifleValue))-1)).toFixed(3) }}s
             </span>
-          </span>          
+          </span>
+
+<!-- WOLF RTK AND TTK -->
           <div class="leading-tight text-center font-light text-black rotate-[1deg] opacity-90" style="font-size: 0.8rem; font-family: arma;">WOLF PERSONNEL: 
             <div class="leading-tight text-red-600 font-bold rotate-[-1deg] opacity-120" style="font-size: 0.7rem; font-family: ZCOOL;">130HP
             </div>
           </div>
+
 <!-- FASTEST TTK @click="selectedScopeName='DIGITAL';selectedRifle='MK14 ASSAULT'" -->
           <div class="text-right font-light translate-x-[0%] translate-y-[15%] leading-tight" style="font-size: 0.7rem; font-family: ZCOOL">FASTEST: 0.000s
-          </div>          
-          <span v-if="!IsLoudGun(loudGuns[gameName.game],selectedRifle)" class="">SUPPRESSED: {{ Math.ceil(130/Math.floor(rifleDamageValue*0.8)) }}
-          </span>
+          </div> 
+
+<!-- RTK WOLF SUPPRESSED -->
+          <span v-if="!IsLoudGun(loudGuns[gameName.game],selectedRifle)" class="">
+            SUPPRESSED: {{ Math.ceil(130/Math.floor(rifleDamageValue*0.8)) }}
 <!-- BONUS RTK WOLF SUPPRESSED IF -->
-          <span v-if="bonusRifleValue && !IsLoudGun(loudGuns[gameName.game],selectedRifle) && Math.ceil(130/Math.floor(rifleDamageValue*0.8)) > Math.ceil(130/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 )) " class="text-blue-500 font-bold italic"> &nbsp; W/BONUS: {{ Math.ceil(130/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 )) }}
+            <span v-if="bonusRifleValue && !IsLoudGun(loudGuns[gameName.game],selectedRifle) && Math.ceil(130/Math.floor(rifleDamageValue*0.8)) > Math.ceil(130/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 )) " class="text-blue-500 font-bold italic">
+               &nbsp; W/BONUS: {{ Math.ceil(130/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 )) }}
+            </span>
           </span>
-          
+
 <!-- TTK WOLF SUPPRESSED-->
           <span class="absolute right-[3%] text-black">
-            <span v-if="(!selectedRifle.includes('SCORPIO ') && selectedRifle.includes('SCOUT') || selectedRifle.includes('TACTICAL')) && !IsLoudGun(loudGuns[gameName.game],selectedRifle) && !selectedRifle.includes('SR-3M TACTICAL')"> > {{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(130/Math.floor(rifleDamageValue*0.8)-1)).toFixed(3) }}s
+            <span v-if="(!selectedRifle.includes('SCORPIO ') && selectedRifle.includes('SCOUT') || selectedRifle.includes('TACTICAL')) && !IsLoudGun(loudGuns[gameName.game],selectedRifle) && !selectedRifle.includes('SR-3M TACTICAL')">
+               > {{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(130/Math.floor(rifleDamageValue*0.8)-1)).toFixed(3) }}s
             </span>
-            <span v-else="!IsLoudGun(loudGuns[gameName.game],selectedRifle)">{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(130/Math.floor(rifleDamageValue*0.8)-1)).toFixed(3) }}s
+            <span v-else="!IsLoudGun(loudGuns[gameName.game],selectedRifle)">
+              {{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(130/Math.floor(rifleDamageValue*0.8)-1)).toFixed(3) }}s
             </span>
 <!-- BONUS TTK WOLF SUPPRESSED -->
-            <span class="text-blue-500 font-bold italic leading-tight" v-if="!IsLoudGun(loudGuns[gameName.game],selectedRifle) && Math.ceil(130/Math.floor(rifleDamageValue*0.8)) > Math.ceil(130/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 ))"> &nbsp;{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(130/Math.floor((rifleDamageValue + bonusRifleValue)*0.8)-1)).toFixed(3) }}s
+            <span class="text-blue-500 font-bold italic leading-tight" v-if="!IsLoudGun(loudGuns[gameName.game],selectedRifle) && Math.ceil(130/Math.floor(rifleDamageValue*0.8)) > Math.ceil(130/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 ))">
+               &nbsp;{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(130/Math.floor((rifleDamageValue + bonusRifleValue)*0.8)-1)).toFixed(3) }}s
             </span>
           </span>
 
@@ -1692,27 +1735,34 @@ function getStylePosition(index: number) {
           <div class="text-right font-light translate-x-[0%] translate-y-[-15%] leading-tight" style="font-size: 0.7rem; font-family: ZCOOL">SLOWEST: 1.538s
           </div>
 
-          
-          <span v-if="!IsSuppressedGun(suppressedGuns[gameName.game],selectedRifle)" class="text-red-600 font-bold">LOUD: {{ Math.ceil(130/rifleDamageValue) }}
+<!-- WOLF LOUD RTK --> 
+          <span v-if="!IsSuppressedGun(suppressedGuns[gameName.game],selectedRifle)" class="text-red-600 font-bold">
+            LOUD: {{ Math.ceil(130/rifleDamageValue) }}
+<!-- BONUS WOLF LOUD RTK -->
+            <span v-if= "!selectedRifle.includes('SR-3M TACTICAL') && bonusRifleValue && Math.ceil(130/rifleDamageValue) > Math.ceil(130/(rifleDamageValue + bonusRifleValue)) " class=" text-blue-500 font-bold italic">
+               &nbsp; W/BONUS: {{ Math.ceil(130/(rifleDamageValue + bonusRifleValue)) }}
+            </span>
           </span>
-<!-- BONUS WOLF LOUD IF -->
-          <span v-if= "!selectedRifle.includes('SR-3M TACTICAL') && bonusRifleValue && Math.ceil(130/rifleDamageValue) > Math.ceil(130/(rifleDamageValue + bonusRifleValue)) " class=" text-blue-500 font-bold italic"> &nbsp; W/BONUS: {{ Math.ceil(130/(rifleDamageValue + bonusRifleValue)) }}
-          </span>
-
-<!-- TTK -->
+<!-- WOLF LOUD TTK -->
           <span v-if="!IsSuppressedGun(suppressedGuns[gameName.game],selectedRifle)" class="absolute right-[3%] text-red-600 font-bold"> 
             <span v-if="(!selectedRifle.includes('SCORPIO ') && selectedRifle.includes('SCOUT') || selectedRifle.includes('TACTICAL')) && Math.ceil(130/rifleDamageValue) > 3"> 
               > {{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(130/Math.floor(rifleDamageValue)-1)).toFixed(3) }}s
-
             </span>
-            <span v-else>{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(130/Math.floor(rifleDamageValue)-1)).toFixed(3) }}s</span>
-            <span class="text-blue-500 font-bold italic" v-if="Math.ceil(130/Math.floor(rifleDamageValue)) > Math.ceil(130/Math.floor(rifleDamageValue + bonusRifleValue))"> &nbsp;{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(130/Math.floor((rifleDamageValue + bonusRifleValue))-1)).toFixed(3) }}s</span>
+<!-- BONUS WOLF TTK IF -->
+            <span v-else>
+              {{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(130/Math.floor(rifleDamageValue)-1)).toFixed(3) }}s
+            </span>
+            <span class="text-blue-500 font-bold italic" v-if="Math.ceil(130/Math.floor(rifleDamageValue)) > Math.ceil(130/Math.floor(rifleDamageValue + bonusRifleValue))">
+               &nbsp;{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(130/Math.floor((rifleDamageValue + bonusRifleValue))-1)).toFixed(3) }}s</span>
           </span>
           
-
+<!-- NEXT RIFLE BUTTONS -->
           <div class="translate-y-[0%] leading-tight ">
-          <button @click="selectedRifle = getSuppRTK()" class="border border-dotted border-black hover:bg-black hover:border-white hover:text-white px-1 rounded-lg shadow-black shadow-md lowercase"  style="font-size: ;font-family:capt ;">⇐ Fewer Rounds<br>To Kill  Rifles</button>
-          <button @click="selectedRifle = getSuppTTK()" class="absolute right-0 border border-dotted border-black hover:bg-black hover:border-white hover:text-white px-1 rounded-lg shadow-black shadow-md lowercase" style="font-size: ;font-family:capt ;" >Faster Time To<br> Kill Rifles ⇛</button>
+          <button @click="selectedRifle = getSuppRTK()" class="border border-dotted border-black hover:bg-black hover:border-white hover:text-white px-1 rounded-lg shadow-black shadow-md lowercase"  style="font-size: ;font-family:capt ;">
+            ⇐ Fewer Rounds<br>To Kill  Rifles
+          </button>
+          <button @click="selectedRifle = getSuppTTK()" class="absolute right-0 border border-dotted border-black hover:bg-black hover:border-white hover:text-white px-1 rounded-lg shadow-black shadow-md lowercase" style="font-size: ;font-family:capt ;">
+            Faster Time To<br> Kill Rifles ⇛</button>
           </div>
 
 

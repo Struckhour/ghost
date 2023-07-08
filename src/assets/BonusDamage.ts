@@ -9,15 +9,19 @@ export const BonusRifles:string[]=[
     'TAVOR ASSAULT',
     'TAVOR',
 
+    'SR-3M SCOUT',
     'SR-3M TACTICAL',
     'SR-3M',
+
     'SILVER STAKE TACTICAL',
     'SILVER STAKE',
+
     'SC-40K',
     'SC-20K',
-    'RESISTANCE ASR SHORTY',
-    'MK18',
 
+    'RESISTANCE ASR SHORTY',
+
+    'MK18',
     
     'MK17 SHORTY GARGOYLE',
     'MK17 SHORTY',
@@ -26,13 +30,19 @@ export const BonusRifles:string[]=[
     'MK17',
 
     'MDR',
-    'M4A1 TACTICAL',
+
+    'M4A1 TACTICAL',    
+    'M4A1 SCOUT',
     'M4A1 CQC',
     'M4A1 ASSAULT',
     'M4A1',
+
     'L85-C',
     'KOBLIN',
     'K1A',
+
+    'G36C SCOUT',
+    'G36C',
 
     'FAL',
     
@@ -51,35 +61,42 @@ export const BonusRifles:string[]=[
     'AK47 SHORTY',
     'AK47 ASSAULT',
     'AK47',
+
     'AK12',
+
     'ACR ASSAULT',
     'ACR',
+
     'AC-AR',
+
     'A2 SHORTY',
     'A2',
-    '805 BREN',
-    '516 SHORTY',
-    
-    '4-AC',
-    
-    '516',
-               
 
-//ASR DMR'S
-    
-    
-    'M4A1 SCOUT',
-    'G36C SCOUT',
-    
-    
+    '805 BREN',
+
     '553 SCOUT SENTINEL',
     '553 SCOUT',
     '553',
+
+    '516 SHORTY',
+    '516',   
+
+    '4-AC',
+    
     '416 SCOUT',
     
     '416 SHORTY',
     '416 ASSAULT SPECIAL',
     '416',
+               
+
+//ASR DMR'S
+    
+    
+    
+    
+
+
 
 //BR DMR'S 
     'MK14 TERMINATION',
@@ -167,8 +184,10 @@ export const BonusDamage: { [gameName: string]: {[rifleName: string]: number}} =
     Breakpoint: {
         
         //ASR'S 
+        'SR-3M SCOUT':	+10,
         'SR-3M TACTICAL':	+5,
         'SR-3M':	+5,
+        
         'RESISTANCE ASR SHORTY':	+5,
         'MDR':	+5,
         'FAL':	+5,

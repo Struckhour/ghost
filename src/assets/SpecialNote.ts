@@ -9,6 +9,7 @@ export const SpecialRifles:string[]=[
     'TAVOR ASSAULT',
     'TAVOR',
 
+    'SR-3M SCOUT',
     'SR-3M TACTICAL',
     'SR-3M',
     'SILVER STAKE TACTICAL',
