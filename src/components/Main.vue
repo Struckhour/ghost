@@ -1672,9 +1672,14 @@ function getStylePosition(index: number) {
               {{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(100/Math.floor(rifleDamageValue*0.8)-1)).toFixed(3) }}s
             </span>
 <!-- BONUS TTK SUPPRESSED -->
-            <span class="text-blue-500 font-bold italic" v-if="Math.ceil(100/Math.floor(rifleDamageValue*0.8)) > Math.ceil(100/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 ))">
+            <span v-if="bonusRifleValue && Math.ceil(100/Math.floor(rifleDamageValue*0.8)) > Math.ceil(100/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 ))">
+              <span  v-if="(selectedRifle.includes('SCOUT') || selectedRifle.includes('TACTICAL') && !selectedRifle.includes('SR-3M TACTICAL')) && Math.ceil(100/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 )) > 3" class="text-blue-500 font-bold italic">
+               &nbsp; > {{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(100/Math.floor((rifleDamageValue + bonusRifleValue)*0.8)-1)).toFixed(3) }}s
+              </span>
+              <span  v-else="Math.ceil(100/Math.floor(rifleDamageValue*0.8)) > Math.ceil(100/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 ))" class="text-blue-500 font-bold italic">
                &nbsp;{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(100/Math.floor((rifleDamageValue + bonusRifleValue)*0.8)-1)).toFixed(3) }}s
-            </span>
+              </span>
+            </span>  
           </span>
           <br>
 <!-- RTK SENTINEL LOUD -->
@@ -1693,8 +1698,17 @@ function getStylePosition(index: number) {
             <span v-else>
               {{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(100/Math.floor(rifleDamageValue)-1)).toFixed(3) }}s
             </span>
-            <span class="text-blue-500 font-bold italic" v-if="Math.ceil(100/Math.floor(rifleDamageValue)) > Math.ceil(100/Math.floor(rifleDamageValue + bonusRifleValue))">
+<!-- BONUS TTK SENTINEL LOUD -->
+            <span v-if="bonusRifleValue && Math.ceil(100/Math.floor(rifleDamageValue)) > Math.ceil(100/Math.floor(rifleDamageValue + bonusRifleValue))">
+              <span v-if="(selectedRifle.includes('G36C SCOUT')) && Math.ceil(100/Math.floor(rifleDamageValue + bonusRifleValue)) > 2" class="text-blue-500 font-bold italic">
+               &nbsp; > {{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(100/Math.floor((rifleDamageValue + bonusRifleValue))-1)).toFixed(3) }}s
+              </span>
+              <span v-else-if="(selectedRifle.includes('SCOUT') || selectedRifle.includes('TACTICAL') && !selectedRifle.includes('SR-3M TACTICAL')) && Math.ceil(100/Math.floor(rifleDamageValue + bonusRifleValue)) > 3" class="text-blue-500 font-bold italic">
+               &nbsp; > {{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(100/Math.floor((rifleDamageValue + bonusRifleValue))-1)).toFixed(3) }}s
+              </span>
+              <span v-else class="text-blue-500 font-bold italic">
                &nbsp;{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(100/Math.floor((rifleDamageValue + bonusRifleValue))-1)).toFixed(3) }}s
+              </span>
             </span>
           </span>
 
@@ -1718,16 +1732,21 @@ function getStylePosition(index: number) {
           </span>
 
 <!-- TTK WOLF SUPPRESSED-->
-          <span class="absolute right-[3%] text-black">
-            <span v-if="(!selectedRifle.includes('SCORPIO ') && selectedRifle.includes('SCOUT') || selectedRifle.includes('TACTICAL')) && !IsLoudGun(loudGuns[gameName.game],selectedRifle) && !selectedRifle.includes('SR-3M TACTICAL')">
+          <span v-if="!IsLoudGun(loudGuns[gameName.game],selectedRifle)" class="absolute right-[3%] text-black">
+            <span v-if="(!selectedRifle.includes('SCORPIO ') && selectedRifle.includes('SCOUT') || selectedRifle.includes('TACTICAL')) && !selectedRifle.includes('SR-3M TACTICAL')">
                > {{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(130/Math.floor(rifleDamageValue*0.8)-1)).toFixed(3) }}s
             </span>
-            <span v-else="!IsLoudGun(loudGuns[gameName.game],selectedRifle)">
+            <span v-else>
               {{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(130/Math.floor(rifleDamageValue*0.8)-1)).toFixed(3) }}s
             </span>
 <!-- BONUS TTK WOLF SUPPRESSED -->
-            <span class="text-blue-500 font-bold italic leading-tight" v-if="!IsLoudGun(loudGuns[gameName.game],selectedRifle) && Math.ceil(130/Math.floor(rifleDamageValue*0.8)) > Math.ceil(130/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 ))">
+            <span v-if="bonusRifleValue && Math.ceil(130/Math.floor(rifleDamageValue*0.8)) > Math.ceil(130/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 ))">
+              <span v-if="(!selectedRifle.includes('SCORPIO ') && selectedRifle.includes('SCOUT') || selectedRifle.includes('TACTICAL')) && !selectedRifle.includes('SR-3M TACTICAL') && Math.ceil(130/Math.floor((rifleDamageValue + bonusRifleValue)*0.8 )) > 3" class="text-blue-500 font-bold italic leading-tight">
+               &nbsp;> {{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(130/Math.floor((rifleDamageValue + bonusRifleValue)*0.8)-1)).toFixed(3) }}s
+              </span>
+              <span v-else class="text-blue-500 font-bold italic leading-tight">
                &nbsp;{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(130/Math.floor((rifleDamageValue + bonusRifleValue)*0.8)-1)).toFixed(3) }}s
+              </span>
             </span>
           </span>
 
@@ -1748,12 +1767,18 @@ function getStylePosition(index: number) {
             <span v-if="(!selectedRifle.includes('SCORPIO ') && selectedRifle.includes('SCOUT') || selectedRifle.includes('TACTICAL')) && Math.ceil(130/rifleDamageValue) > 3"> 
               > {{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(130/Math.floor(rifleDamageValue)-1)).toFixed(3) }}s
             </span>
-<!-- BONUS WOLF TTK IF -->
             <span v-else>
               {{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(130/Math.floor(rifleDamageValue)-1)).toFixed(3) }}s
             </span>
-            <span class="text-blue-500 font-bold italic" v-if="Math.ceil(130/Math.floor(rifleDamageValue)) > Math.ceil(130/Math.floor(rifleDamageValue + bonusRifleValue))">
-               &nbsp;{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(130/Math.floor((rifleDamageValue + bonusRifleValue))-1)).toFixed(3) }}s</span>
+<!-- BONUS WOLF TTK IF -->
+            <span v-if="bonusRifleValue && Math.ceil(130/Math.floor(rifleDamageValue)) > Math.ceil(130/Math.floor(rifleDamageValue + bonusRifleValue))">
+              <span v-if="(!selectedRifle.includes('SCORPIO ') && selectedRifle.includes('SCOUT') || selectedRifle.includes('TACTICAL')) && Math.ceil(130/Math.floor(rifleDamageValue + bonusRifleValue)) > 3" class="text-blue-500 font-bold italic">
+               &nbsp;> {{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(130/Math.floor((rifleDamageValue + bonusRifleValue))-1)).toFixed(3) }}s
+              </span>
+              <span v-else class="text-blue-500 font-bold italic">
+               &nbsp;{{ ((60/RPM[gameName.game][GetRPMRifleName(RPMRifles, selectedRifle)])*Math.ceil(130/Math.floor((rifleDamageValue + bonusRifleValue))-1)).toFixed(3) }}s
+              </span>
+            </span>
           </span>
           
 <!-- NEXT RIFLE BUTTONS -->
