@@ -1073,7 +1073,7 @@ function getStylePosition(index: number) {
         <div v-show="showRYOR" class="absolute top-[0%] sm:top-[0%] bg-black bg-opacity-50 text-xl z-[51] h-[100%] w-[100%] sm:w-full max-w-2xl left-2/4 -translate-x-2/4 p-0 pt-8 rounded-lg shadow-black shadow-md leading-tight text-white" style="font-size: 0.7rem; font-family: ZCOOL;">
           <div class="text-center">
             SCOPE:<br>
-            <select class="bg-white bg-opacity-50 border border-black rounded text-center text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryorScope">
+            <select class="bg-white bg-opacity-50 border border-black rounded text-center text-black font-bold cursor-pointer" style="font-size: 0.7rem; font-family: courier;" v-model="ryorScope">
               <option value="T5XI">T5XI</option>
               <option value="DUAL RANGE">DUAL RANGE</option>
               <option value="TARS101">TARS101</option>
@@ -1113,11 +1113,12 @@ function getStylePosition(index: number) {
          
           <div class="" style="font-size: 0.7rem; font-family: ZCOOL;">
             <div class="absolute top-[25%] right-[52%] text-center" >
-            RIFLE NAME:<br><input size="18" class="text-center bg-white bg-opacity-50 border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryorName">
+            RIFLE NAME:<br>
+            <input size="18" class="text-center bg-white bg-opacity-50 border border-black rounded text-black font-bold cursor-pointer" style="font-size: 0.7rem; font-family: courier;" v-model="ryorName">
             </div>
             <div class="absolute top-[25%] left-[52%]">
               RAIL:<br>
-              <select class="text-center bg-white bg-opacity-50 border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryorRail">
+              <select class="text-center bg-white bg-opacity-50 border border-black rounded text-black font-bold cursor-pointer" style="font-size: 0.7rem; font-family: courier;" v-model="ryorRail">
                 <option value="">Rail Cover</option>
                 <option value="">PEQ-15</option>
                 <option value="">ATPIALx3</option>
@@ -1128,7 +1129,7 @@ function getStylePosition(index: number) {
             <div class="absolute top-[40%] left-[52%]">
               BALLISTIC ADVANTAGE:
               <label class="absolute top-[3%] left-[100%]">
-                <input type="checkbox" v-model="ryorBA">
+                <input type="checkbox" v-model="ryorBA" class="cursor-pointer">
               </label>
             </div>
             <div>
@@ -1144,7 +1145,7 @@ function getStylePosition(index: number) {
                 </div>
                 <!-- line 2 -->
                 <div class="absolute top-[56.4%] right-[51%]" >
-                <input size="3" class="text-center bg-white bg-opacity-50  border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor2">
+                <input size="3" class="text-center bg-white bg-opacity-50 border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor2">
                 </div>
                 <!-- line 3 -->
                 <div class="absolute top-[60.6%] left-[51%]" >
