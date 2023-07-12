@@ -1030,7 +1030,7 @@ function getStylePosition(index: number) {
         <div v-show="showTrig" class="absolute top-[10px] sm:top-[10px] bg-[#eae4aa] bg-opacity-75 text-xl font-serif z-[51] w-[90%] sm:w-3/4 max-w-xl left-2/4 -translate-x-2/4 p-4 pt-8 rounded-lg shadow-black shadow-md text-center leading-tight" >
       <!-- RYOR BUTTON -->
 
-            <div v-if="gameName.game === 'Breakpoint'" @click="showRYOR = !showRYOR; showRTK = false; showTrig = false; showIntel = false; showShotguns = false; showHandguns = false; " class="active:text-red-700 px-2 border text-black border-black hover:text-white rounded-lg shadow-black shadow-md font-sans absolute top-[1%] rotate-[-2deg] translate-x-[0%] z-40 cursor-pointer" style="font-size: 0.7rem; font-family: aust;">range your<br> own rifle
+            <div v-if="gameName.game === 'Breakpoint'" @click="showRYOR = !showRYOR; showRTK = false; showTrig = false; showIntel = false; showShotguns = false; showHandguns = false; " class="active:text-red-700 px-2 border text-black border-black hover:text-white hover:bg-black hover:border-white rounded-lg shadow-black shadow-md font-sans absolute top-[1%] rotate-[-2deg] translate-x-[0%] z-40 cursor-pointer" style="font-size: 0.7rem; font-family: aust;">range your<br> own rifle
             </div>
 
             <!-- <router-link to="/app/ryorBP" class="active:text-[#571111] px-2 border text-[#af3b3b] border-[#af3b3b] hover:text-[#ed3b3b] rounded-lg shadow-black shadow-md font-sans absolute top-[1%] left-[20%] rotate-[-2deg] translate-x-[0%] z-40 cursor-pointer" style="font-size: 0.7rem; font-family: arma;">Range your<br> own rifle
