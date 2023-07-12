@@ -1205,47 +1205,47 @@ function getStylePosition(index: number) {
 <!-- RYOR TARS101 -->
               <div v-else-if="ryorScope==='TARS101'" class="text-" style="font-size: 0.7rem; font-family: courier;">
                 <!-- line 0 -->
-                <div class="absolute top-[48%] right-[51%]">
+                <div class="absolute top-[48.5%] right-[51%]">
                 <input size="3" class="text-center bg-white bg-opacity-50 border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor0">
                 </div>
                 <!-- line 1 -->
-                <div class="absolute top-[51.7%] left-[51%]" >
+                <div class="absolute top-[50.2%] left-[51%]" >
                 <input size="3" class="text-center bg-white bg-opacity-50  border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor1">
                 </div>
                 <!-- line 2 -->
-                <div class="absolute top-[53.8%] right-[51%]" >
+                <div class="absolute top-[52.3%] right-[51%]" >
                 <input size="3" class="text-center bg-white bg-opacity-50  border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor2">
                 </div>
                 <!-- line 3 -->
-                <div class="absolute top-[55.9%] left-[51%]" >
+                <div class="absolute top-[54.5%] left-[51%]" >
                 <input size="3" class="text-center bg-white bg-opacity-50  border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor3">
                 </div>
                 <!-- line 4 -->
-                <div class="absolute top-[57.6%] right-[51%]" >
+                <div class="absolute top-[56.4%] right-[51%]" >
                 <input size="3" class="text-center bg-white bg-opacity-50  border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor4">
                 </div>
                 <!-- line 5 -->
-                <div class="absolute top-[59.6%] left-[51%]" >
+                <div class="absolute top-[58.3%] left-[51%]" >
                 <input size="3" class="text-center bg-white bg-opacity-50  border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor5">
                 </div>
                 <!-- line 6 -->
-                <div class="absolute top-[61.3%] right-[51%]" >
+                <div class="absolute top-[60.1%] right-[51%]" >
                 <input size="3" class="text-center bg-white bg-opacity-50  border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor6">
                 </div>
                 <!-- line 7 -->
-                <div class="absolute top-[63.4%] left-[51%]" >
+                <div class="absolute top-[62.1%] left-[51%]" >
                 <input size="3" class="text-center bg-white bg-opacity-50  border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor7">
                 </div>
                 <!-- line 8 -->
-                <div class="absolute top-[64.9%] right-[51%]" >
+                <div class="absolute top-[63.9%] right-[51%]" >
                 <input size="3" class="text-center bg-white bg-opacity-50  border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor8">
                 </div>
                 <!-- line 9 -->
-                <div class="absolute top-[67%] left-[51%]" >
+                <div class="absolute top-[65.6%] left-[51%]" >
                 <input size="3" class="text-center bg-white bg-opacity-50  border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor9">
                 </div>
                 <!-- line 10 -->
-                <div class="absolute top-[69.3%] right-[51%]" >
+                <div class="absolute top-[67.5%] right-[51%]" >
                 <input size="3" class="text-center bg-white bg-opacity-50  border border-black rounded text-black font-bold" style="font-size: 0.7rem; font-family: courier;" v-model="ryor10">
                 </div>
             </div>
