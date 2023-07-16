@@ -324,8 +324,8 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'G2 RANGE FINDER':[75,150,225,338,475,625],
       'G28':[120,175,250,340,450,575,],
       'G28 MAWL-DA':[125,188,275,400,550,],
-      'G28 SCOUT':[],
-      
+      'G28 SCOUT':[100,150,188,225,263,313,438,],
+      'G28 SCOUT MAWL-DA':[100,163,200,263,313,388,540,],
       'G28 SCOUT RANGE FINDER':[100,163,213,275,340,425,595,],
       'G28 WILDERNESS':[],
       'G28 WILDERNESS MAWL-DA':[125,175,250,350,450,588],
