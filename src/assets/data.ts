@@ -82,6 +82,8 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
         "553 SCOUT RANGE FINDER": [100, 150, 250, 300, 400, 475, 575, 675],
         'AK74 SCOUT':[125,188,275,338,425,525,600],
         'AK74 SCOUT MAWL-DA':[125,200,325,400,500,638],
+        'AK74 SCOUT MAWL-DA BALLISTIC ADVANTAGE':[125,388,725],
+        'AK74 SCOUT RANGE FINDER BALLISTIC ADVANTAGE':[125,425,800],
         FRF2:[150, 225, 300, 350, 410, 485],
         'FRF2 BALLISTIC ADVANTAGE':[175,375,650],
         G28:[100, 200, 300, 350, 438, 538, 613, 688, 738],
