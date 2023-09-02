@@ -137,6 +137,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
     'TARS101': {
         '416 SCOUT':[100,150,200,275,325,375,450,525,575,625,675,],
         '416 SCOUT MAWL-DA':[100,175,250,300,400,475,575,650,],
+        '416 SCOUT MAWL-DA BALLISTIC ADVANTAGE':[100,300,500,825,],
         '553 SCOUT':[75,150,225,275,350,425,500,],
         '553 SCOUT MAWL-DA':[75,175,250,338,425,525,625,],
         'AUG SCOUT':[100,166,233,290,350,413,490,550,],
@@ -503,6 +504,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
     'TA31H': {
       ' 416':[100,138,175,200,238,300,375],
       ' 416 MAWL-DA':[100,150,200,225,275,350,450],
+      ' 416 MAWL-DA BALLISTIC ADVANTAGE':[100,225,338,450,663,],
       ' 416 RANGE FINDER':[100,150,200,238,300,375,500],     
       '416 ASSAULT SPECIAL':[100,138,175,200,238,300,375],
       '416 ASSAULT SPECIAL RANGE FINDER':[100,150,200,238,300,375,500],
