@@ -804,6 +804,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'M40A5':[125,225,325,525,725,],
       'M40A5 GOLDEN SUN':[200,300,375,650,],
       'MK14':[150,225,325,625,],
+      'MSR':[175,225,300,450,625,763,850,913],
       'MSR EAGLE SHOT':[200,250,350,575,],
       'PSG-1':[150,200,250,400,550,],
       'PSG-1 LONG BARREL':[150,238,300,488,688],
