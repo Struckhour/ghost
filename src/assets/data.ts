@@ -812,6 +812,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'PSG-1':[150,200,250,400,550,],
       'PSG-1 LONG BARREL':[150,238,300,488,688],
       'SR25':[125,250,350,638,875,],
+      'SR25 RANGE FINDER':[150,275,350,663,913,],
       'SR25 SHORT BARREL':[100,200,275,500,700,],
       'SRSA1':[175,250,325,540,740,850],
       'Z93 AMR':[100,225,	275,400,575,738,838,925,1000,],
