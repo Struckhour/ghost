@@ -766,6 +766,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'M1891 LONG BARREL':[175,250,325,475,600,725,],
       'M40A5 ZOOMED':[175,250,300,400,500,625,],
       'M40A5':[150,225,250,350,425,500,600,],
+      'M40A5 LONG BARREL ZOOMED':[175,275,350,525,675,775,900],
       'MK14 ZOOMED':[150,225,300,475,625,],
       'MK14':[150,200,275,375,500,600,],
       'MK14 LONG BARREL ZOOMED':[175,275,350,600,],
