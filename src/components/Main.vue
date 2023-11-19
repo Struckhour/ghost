@@ -628,11 +628,11 @@ const styleTranslations: { [gameName: string]: {[scopeName: string]: string[]} }
       'top: 70.5%; left: 52%; transform: translate(0px, -1em)',
       ],
         'PKS-07':
-      ['display: none;',
-      'display: none; top: 54%; right: 51%; transform: translate(0px, -1em);',
-      'font-size: 0.8rem; top: 53.2%; right: 51%; transform: translate(0px, -1em);',
-      'top: 56%; left: 52%; transform: translate(0px, -1em)',
-      'font-size: 0.9rem; top: 57.9%; right: 51%; transform: translate(0px, -1em);',
+      ['font-size: 0.9rem; top: 49%; right: 51%; transform: translate(0px, -1em);',
+      'font-size: 0.7rem; top: 51.7%; left: 52.3%; transform: translate(0px, -1em);',
+      'font-size: 1rem; top: 53.5%; right: 50.9%; transform: translate(0px, -1em);',
+      'font-size: 0.8rem; top: 56%; left: 52%; transform: translate(0px, -1em)',
+      'font-size: 1rem; top: 57.9%; right: 51%; transform: translate(0px, -1em);',
       'top: 60%; left: 52%; transform: translate(0px, -1em)',
       ],
     }
