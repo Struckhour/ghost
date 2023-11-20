@@ -220,6 +220,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'MK14 ASSAULT BROWN':[],
       'MK14 ASSAULT BROWN MAWL-DA':[150,200,225,250,280,320,375,400],
       'MK17 SCOUT':[125,175,200,250,300,350,450,500,],
+      'MK17 SCOUT BALLISTIC ADVANTAGE':[125,263,350,463,625,875,'greater than 1000'],
       'SC-20K':[75,138,175,225,275,350,450,500],
       'SC-20K MAWL-DA':[75,150,200,250,300,400,550,625],
       'SCORPIO SCOUT':[170,225,250,280,315,360,430,460,],
