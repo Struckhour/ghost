@@ -190,6 +190,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       },
     'VC16': {
       '416 SCOUT':[75,125,150,200,225,275,350,400],
+      '416 SCOUT BALLISTIC ADVANTAGE':[75,200,275,350,475,675,950,'greater than 1000'],
       '416 SCOUT MAWL-DA':[75,150,175,213,263,325,438,488],
       '416 SCOUT RANGE FINDER':[75,150,188,225,288,350,475,538],
       '553 SCOUT':[],
