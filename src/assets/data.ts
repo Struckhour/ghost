@@ -211,6 +211,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'M110 MAWL-DA':[100,165,205,240,290,350,450,505,],
       'M110 RANGE FINDER':[100,175,210,250,310,395,515,],
       'M4A1 SCOUT':[],
+      'M4A1 SCOUT BALLISTIC ADVANTAGE':[100,200,275,350,475,675,925,'greater than 1000'],
       'M4A1 SCOUT MAWL-DA':[100,150,200,225,275,338,425,488,],
       'M4A1 SCOUT RANGE FINDER':[100,175,200,238,300,363,475,],
       M82:[150,238,288,338,388,463,588,650],
