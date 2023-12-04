@@ -476,7 +476,9 @@ const styleTranslations: { [gameName: string]: {[scopeName: string]: string[]} }
       'top: 55.5%; right: 52%; transform: translate(0px, -1em);',
       'top: 58%; left: 52%; transform: translate(0px, -1em)',
       'top: 60.4%; right: 52%; transform: translate(0px, -1em);',
-      'top: 62.2%; left: 52%; transform: translate(0px, -1em)'
+      'top: 62.2%; left: 52%; transform: translate(0px, -1em);',
+      'top: 72.4%; right: 52%; transform: translate(0px, -1em);',
+
     ],
       'ACSS':
     ['display: none;',
