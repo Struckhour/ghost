@@ -813,6 +813,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'HTI MUDDY BONES':[275,450,650,],
       'L115A3':[100,200,300,475,675,],
       'M40A5':[125,225,325,525,725,],
+      'M40A5 LONG BARREL':[150,300,375,650,925,],
       'M40A5 GOLDEN SUN':[200,300,375,650,],
       'MK14':[150,225,325,625,],
       'MSR':[175,225,300,450,625,763,850,913],
