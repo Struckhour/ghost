@@ -11,13 +11,13 @@ const routes = [
         component: Home,
     },
     {
-        path: '/app/:game',
+        path: '/:game',
         name: 'Breakpoint',
         component: Main,
         props: true,
     },
     {
-        path: '/app/:game',
+        path: '/:game',
         name: 'Wildlands',
         component: Main,
         props: true,

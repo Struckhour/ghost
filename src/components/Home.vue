@@ -29,7 +29,7 @@
         <div class="md:w-[48rem] w-[400px] m-auto mt-4 grid md:grid-cols-2 grid-cols-1 gap-2">
 
 <!-- BREAKPOINT LINK -->
-            <router-link to="/app/Breakpoint" @click="chooseBreakpoint">
+            <router-link to="/Breakpoint" @click="chooseBreakpoint">
                 <img @mouseout="showBScope=false" src="../assets/transparentscope.png" v-show="showBScope" class="absolute h-[19rem] w-[19rem]  md:translate-x-10 translate-x-[50px] -translate-y-[.5rem] z-40 rounded-full">
 
                 <img v-show="!showBScope" @mouseover="showBScope=true" src="../assets/breakpoint.jpg"  class="h-72 w-72 m-auto object-cover opacity-100 hover:opacity-100 rounded-full">
@@ -37,7 +37,7 @@
             </router-link>
 
 <!-- WILDLANDS LINK -->
-            <router-link to="/app/Wildlands" @click="chooseWildlands" class="">
+            <router-link to="/Wildlands" @click="chooseWildlands" class="">
                 <img @mouseout="showWScope=false" src="../assets/transparentscope.png" v-show="showWScope" class="absolute h-[19rem] w-[19rem] md:translate-x-[2.2rem] translate-x-[46px] md:-translate-y-[.5rem] z-40 -translate-y-[.5rem] rounded-full">
 
                 <img v-show="!showWScope" @mouseover="showWScope = true" src="../assets/wildlands.jpg" class="w-72 h-72 object-cover opacity-100 hover:opacity-100 m-auto rounded-full">
