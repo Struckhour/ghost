@@ -16,12 +16,6 @@ const routes = [
         component: Main,
         props: true,
     },
-    {
-        path: '/:game',
-        name: 'Wildlands',
-        component: Main,
-        props: true,
-    },
     // {
     //     path: '/app/:ryorBP',
     //     name: 'BreakpointRYOR',
