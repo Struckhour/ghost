@@ -262,11 +262,9 @@ if(gameName.game === 'Breakpoint') {
 
 let selectedRifle = ref('');
 
-if(gameName.game === 'Breakpoint') {
-  selectedRifle.value = ('Choose a rifle');
-} else {
-  selectedRifle.value = ('Choose a rifle');
-}
+
+selectedRifle.value = ('Choose a rifle');
+
 
 
 const rifleNames = computed(() => {
