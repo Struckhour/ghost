@@ -18,6 +18,7 @@
     const addSpaceList = ['416', '516', '553'];
 
     const router = useRouter();
+
     const isOpen2 = () => {
       showMenu.value = !showMenu.value;
       emit('rifleMenuClicked', showMenu.value)
@@ -56,7 +57,7 @@
 
 <template>
     <!-- Dropdown toggle button -->
-  <button
+  <button id="dropdown-rifles"
       @click="isOpen2"
       class="flex justify-end mr-0 px-1 text-cyan-300 bg-slate-900 hover:text-cyan-200 hover:bg-opacity-[90%] bg-opacity-80 rounded-md border-slate-600 border" style="">
 
