@@ -12,10 +12,22 @@ const routes = [
     },
     {
         path: '/:game',
-        name: 'Breakpoint',
+        name: 'Main',
         component: Main,
         props: true,
     },
+    {
+      path: '/:game/:rifle/:scope',
+      name: 'Selected Both',
+      component: Main,
+      props: true,
+  },
+  {
+    path: '/:game/:rifle/',
+    name: 'Selected Rifle',
+    component: Main,
+    props: true,
+},
     // {
     //     path: '/app/:ryorBP',
     //     name: 'BreakpointRYOR',

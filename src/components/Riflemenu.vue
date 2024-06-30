@@ -1,8 +1,9 @@
 <script setup lang="ts">
     import { ref, computed } from 'vue'
     import sezzing from '../assets/sezzing';
-    
-    
+    import { useRouter } from 'vue-router';
+
+
     const searchQuery = ref('');
 
 
@@ -14,6 +15,9 @@
 
     let scopeMenu = ref(props.scopeMenu);
 
+    const addSpaceList = ['416', '516', '553'];
+
+    const router = useRouter();
     const isOpen2 = () => {
       showMenu.value = !showMenu.value;
       emit('rifleMenuClicked', showMenu.value)
@@ -35,11 +39,12 @@
         showMenu.value = !showMenu.value;
         emit('rifleMenuClicked', showMenu.value);
         window.scrollTo({ top: 0, behavior: "smooth" });
+        router.push(`/${props.gameName}/${rifle}`)
     }
 
     const computedRifles = computed(() => {
     const query = searchQuery.value.toLowerCase();
-      return props.rifles.filter((rifle) => 
+      return props.rifles.filter((rifle) =>
         rifle.toLowerCase().includes(query));
     });
 
@@ -53,8 +58,8 @@
     <!-- Dropdown toggle button -->
   <button
       @click="isOpen2"
-      class="flex justify-end mr-0 px-1 text-cyan-300 bg-slate-900 hover:text-cyan-200 hover:bg-opacity-[90%] bg-opacity-80 rounded-md border-slate-600 border" style="font-family: ;">
-      
+      class="flex justify-end mr-0 px-1 text-cyan-300 bg-slate-900 hover:text-cyan-200 hover:bg-opacity-[90%] bg-opacity-80 rounded-md border-slate-600 border" style="">
+
       <span class="mr-4">{{rifleTitle1.value}}</span>
       <svg
       class="w-5 h-5 text-cyan-300"
@@ -76,16 +81,15 @@
     v-model="searchQuery"
     type="text"
     class="w-full px-2 py-1 mt-1 text-cyan-300 uppercase bg-black border border-gray-300 rounded-md focus:outline-none focus:border-cyan-300"
-    style="font-family: ;"
     placeholder="Search..."
   />
 
   <!-- Dropdown menu -->
-  <div id="riflemenu" class="grid grid-rows-30 grid-cols-1 md:grid-cols-2 md:w-[25rem] w-[14rem] bg-slate-900 bg-opacity-10 -translate-x-[0rem] z-40 absolute text-center" style="font-family: ;">
+  <div id="riflemenu" class="grid grid-rows-30 grid-cols-1 md:grid-cols-2 md:w-[25rem] w-[14rem] bg-slate-900 bg-opacity-10 -translate-x-[0rem] z-40 absolute text-center">
 
       <div
       v-show="props.showMenu"
-      
+
       v-for="(rifle) in computedRifles"
 
       :key="rifle"

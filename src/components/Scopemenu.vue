@@ -1,12 +1,13 @@
 <script setup lang="ts">
     import { ref, computed } from 'vue'
     import fullData from '../assets/data';
- 
+    import { useRouter } from 'vue-router';
+
 
     const props = defineProps<{ scopes: string[]; show: boolean; rifleMenu: boolean; selectedScopeName: string; selectedRifle: string; gameName: string  }>()
 
     const emit = defineEmits(['chosenScope', 'menuClicked', 'rifleMenu'])
-
+    const router = useRouter();
     let shower = ref(props.show);
     let rifleMenu = ref(props.rifleMenu);
 
@@ -26,6 +27,7 @@
         shower.value = !shower.value;
         emit('menuClicked', shower.value)
         emit('chosenScope', scopeName.value);
+        router.push(`/${props.gameName}/${props.selectedRifle}/${scope}`)
 
     }
     const greyScopes = computed(() => {

@@ -62,12 +62,15 @@ const ryorDR = ref(false);
 const ryorDigital = ref(false);
 const ryorTA31H = ref(false);
 
+console.log(route.params);
+
 let gameString = '';
 if (typeof route.params.game === 'string') {
   gameString = route.params.game;
 } else {
   gameString = route.params.game[0];
 }
+
 
 // const gameName = defineProps<{game: string}>()
 const gameName: {game: string} = {game: gameString}
@@ -259,13 +262,31 @@ if(gameName.game === 'Breakpoint') {
   selectedScopeName.value = ('TA31H');
 }
 
-
 let selectedRifle = ref('');
 
+let rifleString = 'Choose a rifle';
+console.log(rifleString)
+console.log(route.params.rifle);
+if (route.params.rifle != undefined) {
+  console.log('past undefined')
+  if (typeof route.params.rifle === 'string') {
+    rifleString = route.params.rifle;
+  } else {
+    rifleString = route.params.rifle[0];
+  }
+}
 
-selectedRifle.value = ('Choose a rifle');
+const addSpaceList = ['416', '516', '553'];
 
+if (addSpaceList.includes(rifleString)) {
+  rifleString = ' '.concat(rifleString);
+}
 
+if (alphaRifles.includes(rifleString)) {
+  selectedRifle.value = rifleString;
+} else {
+  selectedRifle.value = rifleString;
+}
 
 const rifleNames = computed(() => {
   return Object.keys(fullData[gameName.game][selectedScopeName.value]).filter((rifle) => {
@@ -279,11 +300,23 @@ function changeScope(scope: string) {
   if (Object.keys(fullData[gameName.game][scope]).includes(selectedRifle.value)) {
     selectedScopeName.value = scope;
   } else {
+    // console.log(`this rifle ${selectedRifle.value} not in ${scope} list`);
     selectedRifle.value = 'Choose a rifle';
     selectedScopeName.value = scope;
   }
 
 }
+
+let scopeString = '';
+if (route.params.scope) {
+  if (typeof route.params.scope === 'string') {
+    scopeString = route.params.scope;
+  } else {
+    scopeString = route.params.scope[0];
+  }
+  changeScope(scopeString);
+}
+
 
 function removeRifleMenu() {
   if (showRifleMenu.value) {
