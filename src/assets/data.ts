@@ -40,6 +40,7 @@ const fullData: { [gameName: string]: {[scopeName: string]: {[rifleName: string]
       'M4A1 SCOUT MAWL-DA BALLISTIC ADVANTAGE':[125,400,700,1025,],
       'M4A1 SCOUT RANGE FINDER':[125,225,325,425,550,],
       'M82':[175,325,438,588,713,],
+      'M82 BALLISTIC ADVANTAGE':[100,625,],
       'M82 +30 RANGE':[0,475,],
       'M82 CERBERUS':[],
       'MK14':[150,238,288,325,375,463,525,],
